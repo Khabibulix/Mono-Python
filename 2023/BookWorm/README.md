@@ -1,4 +1,4 @@
-#BookWorm
+# BookWorm
 
 <p>I want to make one project to rule them all.
   The goal here is to make an app that will help me to manage my forever growing library</p>
@@ -24,3 +24,10 @@ That's how i see my project, please don't mind the austerity of the schema.
 ![Bookworm](https://github.com/Khabibulix/Mono-Python/assets/80721211/56f55f8c-27c2-4460-9110-51f7d163a0cb)
 
 I want to store my books in a text file, i could have done it in an array, but i want my changes to be persistent. Moreover, an array is a nasty idea for this type of project. I'll need libraries to play with files for this project, i don't think i'll need more for the first step which is a console application.
+
+### 01/06/2023:
+
+Code is on its way. Today i made the implementation for consulting the list. The data structure for the list is now a dictionnary, to be ultra specific, it will be an OrderedDict because i'll need the index of each book later. I d'ont know yet that data structure but i'll make play with it tomorrow. I have another task to do: make a nicer print for all books, i don't like the style of the one i'm currently using.
+
+![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/42a7e1b2-0083-4dbe-8e1b-44bf78c8ab8a)
+
