@@ -1,3 +1,6 @@
+from collections import OrderedDict
+
+
 list_of_books = {}
 
 # Asking and managing input
@@ -19,6 +22,7 @@ while user_choice != "exit":
         if user_choice == "2":
             author = input("Please enter the author: ")
             title = input("Please enter the title: ")
+            # TODO: Retrieve index using OrderedDict
             list_of_books.update({"Book": {"author": author, "title": title}})
 
 
