@@ -31,3 +31,8 @@ Code is on its way. Today i made the implementation for consulting the list. The
 
 ![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/42a7e1b2-0083-4dbe-8e1b-44bf78c8ab8a)
 
+### 02/06/2023
+
+I quitted the OrderedDict, a nested list is doing the job, I don't need to track the order of the books for now. I want it to be sorted by alphabetical order, i can practice my algo next, when the project will be more advanced.
+
+The pretty print function is complete. I added structure to my code using functions to make it more readable, for me and for others. The next step will be to try/catch all inputs, because users are malicious. My code will be more more safe, maybe i'll need to explain how the console app works too. Because i'm the only user yet and i know how it works. Some documentation will be necessary, i'll add it to my todo. I don't think it will be too difficult.
