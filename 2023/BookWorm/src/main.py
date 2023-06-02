@@ -1,7 +1,4 @@
-from collections import OrderedDict
-
-
-list_of_books = {}
+list_of_books = []
 
 # Asking and managing input
 possible_choices = ["1", "2", "3"]
@@ -22,8 +19,13 @@ while user_choice != "exit":
         if user_choice == "2":
             author = input("Please enter the author: ")
             title = input("Please enter the title: ")
-            # TODO: Retrieve index using OrderedDict
-            list_of_books.update({"Book": {"author": author, "title": title}})
+            list_of_books.append([author, title])
+
+        if user_choice == "3":
+            print(list_of_books)
+            book_deleted = input("Which book do you want to delete?: ")
+            # TODO Adding logic to check for number
+            list_of_books.pop(int(book_deleted) - 1)
 
 
 
