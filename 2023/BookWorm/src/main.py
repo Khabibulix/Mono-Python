@@ -10,6 +10,19 @@ def pretty_print(list_to_print):
         print(', '.join(item))
 
 
+def adding_book_to_list():
+    author = input("Please enter the author: ")
+    title = input("Please enter the title: ")
+    list_of_books.append([author, title])
+
+
+def delete_book():
+    print(list_of_books)
+    book_deleted = input("Which book do you want to delete?: ")
+    # TODO Adding logic to check for number
+    list_of_books.pop(int(book_deleted) - 1)
+
+
 # Asking and managing input
 possible_choices = ["1", "2", "3"]
 user_choice = ""
@@ -26,15 +39,10 @@ while user_choice != "exit":
             pretty_print(list_of_books)
 
         if user_choice == "2":
-            author = input("Please enter the author: ")
-            title = input("Please enter the title: ")
-            list_of_books.append([author, title])
+            adding_book_to_list()
 
         if user_choice == "3":
-            print(list_of_books)
-            book_deleted = input("Which book do you want to delete?: ")
-            # TODO Adding logic to check for number
-            list_of_books.pop(int(book_deleted) - 1)
+            delete_book()
 
     else:
         print("Not a valid choice!")
