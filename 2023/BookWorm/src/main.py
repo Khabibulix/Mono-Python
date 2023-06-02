@@ -1,4 +1,14 @@
-list_of_books = []
+list_of_books = [["Goggins", "Can't hurt me"], ["Zola", "Germinal"]]
+
+# Functions
+
+
+def pretty_print(list_to_print):
+    """["author", "title"] -> "AUTHOR, title\""""
+    for item in list_to_print:
+        item[0] = item[0].upper()
+        print(', '.join(item))
+
 
 # Asking and managing input
 possible_choices = ["1", "2", "3"]
@@ -13,8 +23,7 @@ while user_choice != "exit":
         if user_choice == "1" and len(list_of_books) == 0:
             print("The list is empty yet.")
         if user_choice == "1" and len(list_of_books) > 0:
-            # TODO: Make a nicer print!
-            print(list_of_books)
+            pretty_print(list_of_books)
 
         if user_choice == "2":
             author = input("Please enter the author: ")
@@ -26,10 +35,6 @@ while user_choice != "exit":
             book_deleted = input("Which book do you want to delete?: ")
             # TODO Adding logic to check for number
             list_of_books.pop(int(book_deleted) - 1)
-
-
-
-
 
     else:
         print("Not a valid choice!")
