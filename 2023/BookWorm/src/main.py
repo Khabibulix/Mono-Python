@@ -1,3 +1,10 @@
+# TODO Try/catch les inputs
+"""
+Différents inputs à checker: Titre et auteur, on veut un titre de moins de 200 caractères, un auteur de moins de 40 caractères
+
+"""
+# TODO Ajouter option pour documenter pour le user
+# TODO Ajouter option de recherche
 list_of_books = [["Goggins", "Can't hurt me"], ["Zola", "Germinal"]]
 
 # Functions
@@ -19,17 +26,17 @@ def adding_book_to_list():
 def delete_book():
     print(list_of_books)
     book_deleted = input("Which book do you want to delete?: ")
-    # TODO Adding logic to check for number
     list_of_books.pop(int(book_deleted) - 1)
 
 
 # Asking and managing input
-possible_choices = ["1", "2", "3"]
+possible_choices = ["1", "2", "3", "4"]
 user_choice = ""
 while user_choice != "exit":
     user_choice = input("\nDo you want to look at a book? Press 1. \n"
                         "Do you want to add a book? Press 2 \n"
-                        "Do you want to delete a book from the list? Press 3.\n")
+                        "Do you want to delete a book from the list? Press 3.\n"
+                        "Do you want some help? Press 4. \n")
     if user_choice in possible_choices:
 
         # We check if the list is empty else we print the list
