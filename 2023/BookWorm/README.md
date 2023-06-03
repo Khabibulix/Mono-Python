@@ -35,8 +35,12 @@ Code is on its way. Today i made the implementation for consulting the list. The
 
 I quitted the OrderedDict, a nested list is doing the job, I don't need to track the order of the books for now. I want it to be sorted by alphabetical order, i can practice my algo next, when the project will be more advanced.
 
-The pretty print function is complete:
+The pretty print function is complete: <br>
 ![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/45f2018b-ea32-4499-b378-0a919f61de90)
 
  I added structure to my code using functions to make it more readable, for me and for others. The next step will be to try/catch all inputs, because users are malicious. My code will be more more safe, maybe i'll need to explain how the console app works too. Because i'm the only user yet and i know how it works. Some documentation will be necessary, i'll add it to my todo. I don't think it will be too difficult.
+ 
+ ### 03/06/2023
+ 
+ A quick update about input validation, i think i'll be using Regex to assure my input are correct. I'll need a quick recap about try/except before.
 
