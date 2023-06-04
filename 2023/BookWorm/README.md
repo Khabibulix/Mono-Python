@@ -47,3 +47,4 @@ The pretty print function is complete: <br>
 ### 04/06/2023
 
 More config than code today. I wanted  to make TDD for this project, using pytest. But i forgot that i need to mock my inputs for that. I'm struggling with unittest.mock for now and my tests aren't detected, which is disappointing. I think i'll need to focus on that for today, i'll move on tomorrow.
+Let's be honest here, TDD is not necessary here, but i'll learn pytest aside. I'll drop try/except, i think that my code can treat just enough exceptions like this and I'll move on to the last functionnality of this step: the search for a book, by title or by author.
