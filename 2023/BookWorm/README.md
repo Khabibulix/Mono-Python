@@ -44,3 +44,6 @@ The pretty print function is complete: <br>
  
  A quick update about input validation, i think i'll be using Regex to assure my input are correct. I'll need a quick recap about try/except before.
 
+### 04/06/2023
+
+More config than code today. I wanted  to make TDD for this project, using pytest. But i forgot that i need to mock my inputs for that. I'm struggling with unittest.mock for now and my tests aren't detected, which is disappointing. I think i'll need to focus on that for today, i'll move on tomorrow.
