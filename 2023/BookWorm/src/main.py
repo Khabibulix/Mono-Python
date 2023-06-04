@@ -1,3 +1,4 @@
+
 # TODO Try/catch les inputs
 """
 Différents inputs à checker: Titre et auteur, on veut un titre de moins de 200 caractères, un auteur de moins de 40 caractères
@@ -15,12 +16,14 @@ def pretty_print(list_to_print):
     for item in list_to_print:
         item[0] = item[0].upper()
         print(', '.join(item))
+    return list_to_print
 
 
 def adding_book_to_list():
     author = input("Please enter the author: ")
     title = input("Please enter the title: ")
     list_of_books.append([author, title])
+    return list_of_books
 
 
 def delete_book():
@@ -43,7 +46,7 @@ while user_choice != "exit":
         if user_choice == "1" and len(list_of_books) == 0:
             print("The list is empty yet.")
         if user_choice == "1" and len(list_of_books) > 0:
-            pretty_print(list_of_books)
+            print(pretty_print(list_of_books))
 
         if user_choice == "2":
             adding_book_to_list()
