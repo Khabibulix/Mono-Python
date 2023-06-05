@@ -6,6 +6,7 @@
 My plan at the 31/05/2023: <br>
 <pre>
   - [x] Make a really simple console app
+  - [] Make a I/O working app
   - [] Make a GUI to make it easier, perhaps with Tkinter, as i already know that
   - [] Connect it to a database using an API
   - [] Adding backend to share library
@@ -54,3 +55,7 @@ Let's be honest here, TDD is not necessary here, but i'll learn pytest aside. I'
 This is NOT the optimal solution, and NOT the most performant, but it's good enough for now. And working.
 
 Next step is to move on into a setup with input/output, an array is not an option anymore. I want a text file stocking all of my data.
+
+### 05/06/2023
+
+Currently working on I/O. I am encountering some problems because i close my file quite brutally and i can't add or delete some stuff. Code is not working yet, don't know if i need to put all my code into a try/finally block to avoid errors. I'll debug tomorrow, i think it is a big step for today.
