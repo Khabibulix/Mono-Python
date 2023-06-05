@@ -4,13 +4,13 @@
   The goal here is to make an app that will help me to manage my forever growing library</p>
   
 My plan at the 31/05/2023: <br>
-<ul>
-  <li>Make a really simple console app</li>
-  <li>Make a GUI to make it easier, perhaps with Tkinter, as i already know that</li>
-  <li>Connect it to a database using an API</li>
-  <li>Adding backend to share library</li>
-  <li>Go cloud?</li>
-</ul>
+<pre>
+  - [x] Make a really simple console app
+  - [] Make a GUI to make it easier, perhaps with Tkinter, as i already know that
+  - [] Connect it to a database using an API
+  - [] Adding backend to share library
+  - [] Go cloud?
+</pre>
 
 I don't know yet how I will do it, but i'm on my way. I'll be using Python for this project, don't know if that's possible but i'll make my best.
 
@@ -48,3 +48,9 @@ The pretty print function is complete: <br>
 
 More config than code today. I wanted  to make TDD for this project, using pytest. But i forgot that i need to mock my inputs for that. I'm struggling with unittest.mock for now and my tests aren't detected, which is disappointing. I think i'll need to focus on that for today, i'll move on tomorrow.
 Let's be honest here, TDD is not necessary here, but i'll learn pytest aside. I'll drop try/except, i think that my code can treat just enough exceptions like this and I'll move on to the last functionnality of this step: the search for a book, by title or by author.
+
+![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/41e6b096-c9de-48ce-85b4-0db5765f34e2)
+
+This is NOT the optimal solution, and NOT the most performant, but it's good enough for now. And working.
+
+Next step is to move on into a setup with input/output, an array is not an option anymore. I want a text file stocking all of my data.
