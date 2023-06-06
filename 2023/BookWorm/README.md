@@ -59,3 +59,11 @@ Next step is to move on into a setup with input/output, an array is not an optio
 ### 05/06/2023
 
 Currently working on I/O. I am encountering some problems because i close my file quite brutally and i can't add or delete some stuff. Code is not working yet, don't know if i need to put all my code into a try/finally block to avoid errors. I'll debug tomorrow, i think it is a big step for today.
+
+### 06/06/2023
+
+I made some tests, it didn't seem to work until i found a logical bug. I was displaying the list and not the file. Now i'm working on the output itself and it seems to work. However, the file is making some strange writing, i'll need to figure out why.
+
+![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/494a35b6-372e-4bea-88b7-37463ad1aec4)
+
+The consulting function is almost complete, i'll just need to pretty print all of this, without the "[]", it shall not be a problem.
