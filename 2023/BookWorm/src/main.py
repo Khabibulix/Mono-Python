@@ -1,4 +1,5 @@
 # TODO: Make I/O
+import os
 
 list_of_books = [["Goggins", "Can't hurt me"],
                  ["Zola", "Germinal"],
@@ -6,14 +7,13 @@ list_of_books = [["Goggins", "Can't hurt me"],
                  ["Zola", "Nana"]]
 
 
-try:
-    output_file = open("output.txt", "r+")
-    for item in list_of_books:
-        item[0] = item[0].upper()
-        output_file.write(str(item[0] + ", " + item[1]) + "\n")
 
-finally:
-    output_file.close()
+output_file = open("output.txt", "r+")
+for item in list_of_books:
+    item[0] = item[0].upper()
+    output_file.write(str(item[0] + ", " + item[1]) + "\n")
+#File will be closed at exit of the program
+
 
 #Utilities
 def pretty_print(list_to_print):
@@ -30,25 +30,31 @@ def adding_book_to_list():
         author = input("Please enter the author: ")
         title = input("Please enter the title: ")
 
-        if isinstance(title, str) and len(title) > 3 and isinstance(author, str) and len(author) > 10:
+        #Author should be a string, but title could be an int --> 1984
+        if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
             output_file.write(author)
-            output_file.write(title)
+            output_file.write(", " +title)
         else:
             print("Please enter a correct book/author\n")
             adding_book_to_list()
 
-def delete_book_in_output_file(output, title):
-    for line in output.readline():
-        if line == title:
-            line.replace(line, "")
 
+#
+#
+#
+# def delete_book_in_output_file(output, title):
+#     for line in output.readline():
+#         if line == title:
+#             line.replace(line, "")
+#
 
-def delete_book_in_list_of_books():
-    print(list_of_books)
-    book_deleted = input("Which book do you want to delete?: ")
-    title_of_book_deleted = list_of_books[int(book_deleted) - 1]
-    delete_book_in_output_file(output_file, title_of_book_deleted)
-    list_of_books.pop(int(book_deleted) - 1)
+#
+# def delete_book_in_list_of_books():
+#     print(list_of_books)
+#     book_deleted = input("Which book do you want to delete?: ")
+#     title_of_book_deleted = list_of_books[int(book_deleted) - 1]
+#     delete_book_in_output_file(output_file, title_of_book_deleted)
+#     list_of_books.pop(int(book_deleted) - 1)
 #
 #
 # def search_for_book(string_to_search):
@@ -60,7 +66,7 @@ def delete_book_in_list_of_books():
 
 
 
-#
+
 
 # Asking and managing input
 possible_choices = ["1", "2", "3","4","exit"]
@@ -76,10 +82,12 @@ while user_choice != "exit":
     if user_choice in possible_choices:
 
         # We check if the list is empty else we print the list
-        if user_choice == "1" and len(list_of_books) == 0:
+        # TODO Need to check if file is empty, else we display it
+        if user_choice == "1" and os.path.getsize('output.txt') == 0:
             print("The list is empty yet.")
-        if user_choice == "1" and len(list_of_books) > 0:
-            pretty_print(list_of_books)
+        else:
+            print(output_file.readlines())
+            #pretty_print(list_of_books)
 
         if user_choice == "2":
             adding_book_to_list()
@@ -97,3 +105,5 @@ while user_choice != "exit":
     else:
         print("Not a valid choice!")
 
+if user_choice == "exit":
+    output_file.close()

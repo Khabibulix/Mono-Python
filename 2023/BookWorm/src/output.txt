@@ -2,3 +2,4 @@ GOGGINS, Can't hurt me
 ZOLA, Germinal
 BAUDELAIRE, Les fleurs du mal
 ZOLA, Nana
+Victor Hugo, Les misérablesParis
