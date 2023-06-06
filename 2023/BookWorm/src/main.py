@@ -1,5 +1,6 @@
 # TODO: Make I/O
 import os
+from pprint import pprint
 
 list_of_books = [["Goggins", "Can't hurt me"],
                  ["Zola", "Germinal"],
@@ -22,21 +23,21 @@ def pretty_print(list_to_print):
         item[0] = item[0].upper()
         print(', '.join(item))
 
-#Core functions
-def adding_book_to_list():
-        author = ""
-        title = ""
-
-        author = input("Please enter the author: ")
-        title = input("Please enter the title: ")
-
-        #Author should be a string, but title could be an int --> 1984
-        if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
-            output_file.write(author)
-            output_file.write(", " +title)
-        else:
-            print("Please enter a correct book/author\n")
-            adding_book_to_list()
+# #Core functions
+# def adding_book_to_list():
+#         author = ""
+#         title = ""
+#
+#         author = input("Please enter the author: ")
+#         title = input("Please enter the title: ")
+#
+#         #Author should be a string, but title could be an int --> 1984
+#         if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
+#             output_file.write(author)
+#             output_file.write(", " +title)
+#         else:
+#             print("Please enter a correct book/author\n")
+#             adding_book_to_list()
 
 
 #
@@ -82,25 +83,24 @@ while user_choice != "exit":
     if user_choice in possible_choices:
 
         # We check if the list is empty else we print the list
-        # TODO Need to check if file is empty, else we display it
         if user_choice == "1" and os.path.getsize('output.txt') == 0:
-            print("The list is empty yet.")
-        else:
-            print(output_file.readlines())
-            #pretty_print(list_of_books)
+            print("The file is empty yet.")
+            # TODO Adding option to move directly to adding func
+        elif user_choice == "1" and os.path.getsize('output.txt') > 0 :
+            pprint(output_file.readlines())
 
-        if user_choice == "2":
-            adding_book_to_list()
-
-        if user_choice == "3":
-            delete_book_in_list_of_books()
-
-        if user_choice == "4":
-            searching_input = input("Please enter the name of the author, or the book:\n")
-            search_for_book(searching_input)
-            user_consent = input("\nShall we take you back? Y/N:\n")
-            if user_consent == "Y":
-                continue
+        # if user_choice == "2":
+        #     adding_book_to_list()
+        #
+        # if user_choice == "3":
+        #     delete_book_in_list_of_books()
+        #
+        # if user_choice == "4":
+        #     searching_input = input("Please enter the name of the author, or the book:\n")
+        #     search_for_book(searching_input)
+        #     user_consent = input("\nShall we take you back? Y/N:\n")
+        #     if user_consent == "Y":
+        #         continue
 
     else:
         print("Not a valid choice!")
