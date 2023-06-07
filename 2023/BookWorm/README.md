@@ -67,3 +67,9 @@ I made some tests, it didn't seem to work until i found a logical bug. I was dis
 ![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/494a35b6-372e-4bea-88b7-37463ad1aec4)
 
 The consulting function is almost complete, i'll just need to pretty print all of this, without the "[]", it shall not be a problem.
+
+### 07/06/2023
+
+Deleted all references to the original list, which is no longer needed. Working on the suppression function, the app is now able to select correctly the book which will be deleted later. Just wondering if my multi loops setup will be efficient later when the app will get bigger... 
+
+Almost all core functions are now complete and functionnal. I'll need to secure my code before moving on.
