@@ -1,19 +1,18 @@
 # TODO: Make I/O
 import os
-from pprint import pprint
+from pprint import pprint #Used for outputting file
 
-list_of_books = [["Goggins", "Can't hurt me"],
-                 ["Zola", "Germinal"],
-                 ["Baudelaire", "Les fleurs du mal"],
-                 ["Zola", "Nana"]]
+list_of_books = []
 
 
-
-output_file = open("output.txt", "r+")
-for item in list_of_books:
-    item[0] = item[0].upper()
-    output_file.write(str(item[0] + ", " + item[1]) + "\n")
-#File will be closed at exit of the program
+try:
+    output_file = open("output.txt", "r+")
+    if len(list_of_books) > 0:
+        for item in list_of_books:
+            item[0] = item[0].upper()
+            output_file.write(str(item[0] + ", " + item[1]) + "\n")
+finally:
+    output_file.close()
 
 
 #Utilities
@@ -24,20 +23,24 @@ def pretty_print(list_to_print):
         print(', '.join(item))
 
 # #Core functions
-# def adding_book_to_list():
-#         author = ""
-#         title = ""
-#
-#         author = input("Please enter the author: ")
-#         title = input("Please enter the title: ")
-#
-#         #Author should be a string, but title could be an int --> 1984
-#         if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
-#             output_file.write(author)
-#             output_file.write(", " +title)
-#         else:
-#             print("Please enter a correct book/author\n")
-#             adding_book_to_list()
+def adding_book_to_list():
+        author = ""
+        title = ""
+
+        author = input("Please enter the author: ")
+        title = input("Please enter the title: ")
+
+        #Author should be a string, but title could be an int --> 1984
+        if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
+            try:
+                output_file = open('output.txt', 'a')
+                output_file.write("\n" + author)
+                output_file.write(", " +title)
+            finally:
+                output_file.close()
+        else:
+            print("Please enter a correct book/author\n")
+            adding_book_to_list()
 
 
 #
@@ -83,14 +86,18 @@ while user_choice != "exit":
     if user_choice in possible_choices:
 
         # We check if the list is empty else we print the list
-        if user_choice == "1" and os.path.getsize('output.txt') == 0:
-            print("The file is empty yet.")
-            # TODO Adding option to move directly to adding func
-        elif user_choice == "1" and os.path.getsize('output.txt') > 0 :
-            pprint(output_file.readlines())
+        try:
+            output_file = open('output.txt', 'r')
+            if user_choice == "1" and os.path.getsize('output.txt') == 0:
+                print("The file is empty yet.")
+                # TODO Adding option to move directly to adding func
+            elif user_choice == "1" and os.path.getsize('output.txt') > 0 :
+                print(output_file.read())
+        finally:
+            output_file.close()
 
-        # if user_choice == "2":
-        #     adding_book_to_list()
+        if user_choice == "2":
+            adding_book_to_list()
         #
         # if user_choice == "3":
         #     delete_book_in_list_of_books()
@@ -104,6 +111,3 @@ while user_choice != "exit":
 
     else:
         print("Not a valid choice!")
-
-if user_choice == "exit":
-    output_file.close()
