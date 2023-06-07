@@ -2,18 +2,7 @@
 import os
 from pprint import pprint #Used for outputting file
 
-list_of_books = []
-
-
-try:
-    output_file = open("output.txt", "r+")
-    if len(list_of_books) > 0:
-        for item in list_of_books:
-            item[0] = item[0].upper()
-            output_file.write(str(item[0] + ", " + item[1]) + "\n")
-finally:
-    output_file.close()
-
+IS_FILE_EMPTY = os.path.getsize('output.txt') == 0
 
 #Utilities
 def pretty_print(list_to_print):
@@ -23,7 +12,7 @@ def pretty_print(list_to_print):
         print(', '.join(item))
 
 # #Core functions
-def adding_book_to_list():
+def adding_book():
         author = ""
         title = ""
 
@@ -40,25 +29,27 @@ def adding_book_to_list():
                 output_file.close()
         else:
             print("Please enter a correct book/author\n")
-            adding_book_to_list()
+            adding_book()
 
+def delete_book:
+    try:
+        output_file = open('output.txt', 'r')
+        print(output_file.read())
+        book_deleted = input("Which book do you want to delete?: \n"
+                             "To delete the first book, enter 1...")
 
-#
-#
-#
-# def delete_book_in_output_file(output, title):
-#     for line in output.readline():
-#         if line == title:
-#             line.replace(line, "")
-#
+        if book_deleted and int(book_deleted):
+            # TODO !!!Error when empty input
+            content_of_file = output_file.readlines()
+            book_deleted = content_of_file[book_deleted - 1]
+            delete_book_in_output_file(book_deleted)
 
-#
-# def delete_book_in_list_of_books():
-#     print(list_of_books)
-#     book_deleted = input("Which book do you want to delete?: ")
-#     title_of_book_deleted = list_of_books[int(book_deleted) - 1]
-#     delete_book_in_output_file(output_file, title_of_book_deleted)
-#     list_of_books.pop(int(book_deleted) - 1)
+        else:
+            print("Enter the number of the book you want to delete, please")
+            delete_book()
+
+    finally:
+        output_file.close()
 #
 #
 # def search_for_book(string_to_search):
@@ -88,19 +79,19 @@ while user_choice != "exit":
         # We check if the list is empty else we print the list
         try:
             output_file = open('output.txt', 'r')
-            if user_choice == "1" and os.path.getsize('output.txt') == 0:
+            if user_choice == "1" and IS_FILE_EMPTY:
                 print("The file is empty yet.")
                 # TODO Adding option to move directly to adding func
-            elif user_choice == "1" and os.path.getsize('output.txt') > 0 :
+            elif user_choice == "1" and not IS_FILE_EMPTY:
                 print(output_file.read())
         finally:
             output_file.close()
 
         if user_choice == "2":
-            adding_book_to_list()
-        #
-        # if user_choice == "3":
-        #     delete_book_in_list_of_books()
+            adding_book()
+
+        if user_choice == "3":
+            delete_book()
         #
         # if user_choice == "4":
         #     searching_input = input("Please enter the name of the author, or the book:\n")
