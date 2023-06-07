@@ -31,25 +31,35 @@ def adding_book():
             print("Please enter a correct book/author\n")
             adding_book()
 
-def delete_book:
+def delete_book():
+
     try:
         output_file = open('output.txt', 'r')
         print(output_file.read())
-        book_deleted = input("Which book do you want to delete?: \n"
+        # TODO Try/Catch input pour éviter ValueError
+        book_deleted = input("\nWhich book do you want to delete?: \n"
                              "To delete the first book, enter 1...")
 
+    finally:
+        output_file.close()
+
         if book_deleted and int(book_deleted):
-            # TODO !!!Error when empty input
-            content_of_file = output_file.readlines()
-            book_deleted = content_of_file[book_deleted - 1]
-            delete_book_in_output_file(book_deleted)
+
+            try:
+                output_file = open('output.txt', 'r+')
+                content_of_file = output_file.readlines()
+                book_to_delete = content_of_file[int(book_deleted) - 1]
+                # TODO: Effectively delete the book now that's its working
+                print(book_to_delete)
+
+            finally:
+                output_file.close()
 
         else:
             print("Enter the number of the book you want to delete, please")
             delete_book()
 
-    finally:
-        output_file.close()
+
 #
 #
 # def search_for_book(string_to_search):
@@ -70,7 +80,7 @@ while user_choice != "exit":
 
     user_choice = input("\nDo you want to look at a book? Press 1. \n"
                         "Do you want to add a book? Press 2 \n"
-                        "Do you want to delete a book from the list? Press 3.\n"
+                        "Do you want to delete a book? Press 3.\n"
                         "Do you want to search for a book? Press 4.\n"
                         "If you want to quit, write exit.\n"
                         )
