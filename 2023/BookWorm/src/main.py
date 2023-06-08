@@ -1,4 +1,5 @@
 # TODO: Make I/O
+# TODO: Fix bug, adding a book doesn't make the output file not empty
 import os
 from pprint import pprint #Used for outputting file
 
@@ -46,11 +47,22 @@ def delete_book():
         if book_deleted and int(book_deleted):
 
             try:
-                output_file = open('output.txt', 'r+')
+                output_file = open('output.txt', 'r')
                 content_of_file = output_file.readlines()
+                #print(content_of_file)
+                # TODO: Check if file is empty or not
                 book_to_delete = content_of_file[int(book_deleted) - 1]
                 # TODO: Effectively delete the book now that's its working
                 print(book_to_delete)
+
+            finally:
+                output_file.close()
+
+            try:
+                output_file = open('output.txt', 'w+')
+                for line in content_of_file:
+                    if line != book_to_delete:
+                        output_file.write(line)
 
             finally:
                 output_file.close()
@@ -78,7 +90,7 @@ possible_choices = ["1", "2", "3","4","exit"]
 user_choice = ""
 while user_choice != "exit":
 
-    user_choice = input("\nDo you want to look at a book? Press 1. \n"
+    user_choice = input("\nDo you want to look your library? Press 1. \n"
                         "Do you want to add a book? Press 2 \n"
                         "Do you want to delete a book? Press 3.\n"
                         "Do you want to search for a book? Press 4.\n"
