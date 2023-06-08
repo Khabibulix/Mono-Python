@@ -1,7 +1,6 @@
 # TODO: Make I/O
 # TODO: Fix bug, adding a book doesn't make the output file not empty
 import os
-from pprint import pprint #Used for outputting file
 
 IS_FILE_EMPTY = os.path.getsize('output.txt') == 0
 
@@ -36,39 +35,39 @@ def delete_book():
 
     try:
         output_file = open('output.txt', 'r')
-        print(output_file.read())
-        # TODO Try/Catch input pour éviter ValueError
+        if IS_FILE_EMPTY:
+            answer = input("File is empty, do you want to add a new book?\n y/n")
+            if answer == 'y':
+                adding_book()
+        print(f"\nHere is the content of the file: \n {output_file.read()}")
         book_deleted = input("\nWhich book do you want to delete?: \n"
                              "To delete the first book, enter 1...")
 
     finally:
         output_file.close()
 
-        if book_deleted and int(book_deleted):
+        try:
+            if book_deleted and int(book_deleted):
 
-            try:
-                output_file = open('output.txt', 'r')
-                content_of_file = output_file.readlines()
-                #print(content_of_file)
-                # TODO: Check if file is empty or not
-                book_to_delete = content_of_file[int(book_deleted) - 1]
-                # TODO: Effectively delete the book now that's its working
-                print(book_to_delete)
+                try:
+                    output_file = open('output.txt', 'r')
+                    content_of_file = output_file.readlines()
+                    book_to_delete = content_of_file[int(book_deleted) - 1]
 
-            finally:
-                output_file.close()
+                finally:
+                    output_file.close()
 
-            try:
-                output_file = open('output.txt', 'w+')
-                for line in content_of_file:
-                    if line != book_to_delete:
-                        output_file.write(line)
+                try:
+                    output_file = open('output.txt', 'w+')
+                    for line in content_of_file:
+                        if line != book_to_delete:
+                            output_file.write(line)
 
-            finally:
-                output_file.close()
+                finally:
+                    output_file.close()
 
-        else:
-            print("Enter the number of the book you want to delete, please")
+        except:
+            print(f"'{book_deleted}' is not a correct number")
             delete_book()
 
 
@@ -105,6 +104,7 @@ while user_choice != "exit":
                 print("The file is empty yet.")
                 # TODO Adding option to move directly to adding func
             elif user_choice == "1" and not IS_FILE_EMPTY:
+                # TODO Need to strip whitespaces and newlines
                 print(output_file.read())
         finally:
             output_file.close()
