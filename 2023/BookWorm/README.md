@@ -73,3 +73,7 @@ The consulting function is almost complete, i'll just need to pretty print all o
 Deleted all references to the original list, which is no longer needed. Working on the suppression function, the app is now able to select correctly the book which will be deleted later. Just wondering if my multi loops setup will be efficient later when the app will get bigger... 
 
 Almost all core functions are now complete and functionnal. I'll need to secure my code before moving on.
+
+### 08/06/2023
+
+Deletion function is now functionnal and a little more secure with error handling. The next step is to continue with the searching function. I want to make my all code POO friendly. The more simple it is, the less time i will spent on maintenance.
