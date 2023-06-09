@@ -1,17 +1,12 @@
 # TODO: Make I/O
 # TODO: Fix bug, adding a book doesn't make the output file not empty
+# TODO: Move to POO
 import os
 
 IS_FILE_EMPTY = os.path.getsize('output.txt') == 0
+POSSIBLE_CHOICES = ["1", "2", "3","4","exit"]
 
-#Utilities
-def pretty_print(list_to_print):
-    """["author", "title"] -> "AUTHOR, title\""""
-    for item in list_to_print:
-        item[0] = item[0].upper()
-        print(', '.join(item))
-
-# #Core functions
+#Core functions
 def adding_book():
         author = ""
         title = ""
@@ -71,21 +66,24 @@ def delete_book():
             delete_book()
 
 
-#
-#
-# def search_for_book(string_to_search):
-#     possible_matches = []
-#     for item in list_of_books:
-#         if string_to_search.lower() in item[0].lower() or string_to_search.lower() in item[1].lower():
-#             possible_matches.append(item)
-#     print(possible_matches)
+
+def search_for_book(string_to_search):
+    possible_matches = []
+    try:
+        output_file = open('output.txt', 'r')
+
+    finally:
+        output_file.close()
+    # for item in list_of_books:
+    #     if string_to_search.lower() in item[0].lower() or string_to_search.lower() in item[1].lower():
+    #         possible_matches.append(item)
+    print(possible_matches)
 
 
 
 
 
 # Asking and managing input
-possible_choices = ["1", "2", "3","4","exit"]
 user_choice = ""
 while user_choice != "exit":
 
@@ -95,7 +93,7 @@ while user_choice != "exit":
                         "Do you want to search for a book? Press 4.\n"
                         "If you want to quit, write exit.\n"
                         )
-    if user_choice in possible_choices:
+    if user_choice in POSSIBLE_CHOICES:
 
         # We check if the list is empty else we print the list
         try:
