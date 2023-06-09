@@ -5,6 +5,7 @@ import os
 
 IS_FILE_EMPTY = os.path.getsize('output.txt') == 0
 POSSIBLE_CHOICES = ["1", "2", "3","4","exit"]
+EMPTY_FILE_MESSAGE = "The file is empty yet"
 
 #Core functions
 def adding_book():
@@ -31,7 +32,8 @@ def delete_book():
     try:
         output_file = open('output.txt', 'r')
         if IS_FILE_EMPTY:
-            answer = input("File is empty, do you want to add a new book?\n y/n")
+            print(EMPTY_FILE_MESSAGE)
+            answer = input("Do you want to add a new book?\n y/n")
             if answer == 'y':
                 adding_book()
         print(f"\nHere is the content of the file: \n {output_file.read()}")
@@ -69,14 +71,15 @@ def delete_book():
 
 def search_for_book(string_to_search):
     possible_matches = []
+
     try:
         output_file = open('output.txt', 'r')
+        for line in output_file.readlines():
+            if string_to_search in line:
+                possible_matches.append(line)
 
     finally:
         output_file.close()
-    # for item in list_of_books:
-    #     if string_to_search.lower() in item[0].lower() or string_to_search.lower() in item[1].lower():
-    #         possible_matches.append(item)
     print(possible_matches)
 
 
@@ -99,7 +102,7 @@ while user_choice != "exit":
         try:
             output_file = open('output.txt', 'r')
             if user_choice == "1" and IS_FILE_EMPTY:
-                print("The file is empty yet.")
+                print(EMPTY_FILE_MESSAGE)
                 # TODO Adding option to move directly to adding func
             elif user_choice == "1" and not IS_FILE_EMPTY:
                 # TODO Need to strip whitespaces and newlines
@@ -112,13 +115,16 @@ while user_choice != "exit":
 
         if user_choice == "3":
             delete_book()
-        #
-        # if user_choice == "4":
-        #     searching_input = input("Please enter the name of the author, or the book:\n")
-        #     search_for_book(searching_input)
-        #     user_consent = input("\nShall we take you back? Y/N:\n")
-        #     if user_consent == "Y":
-        #         continue
+
+        if user_choice == "4":
+            if not IS_FILE_EMPTY:
+                searching_input = input("Please enter the name of the author, or the book:\n")
+                search_for_book(searching_input)
+                user_consent = input("\nShall we take you back? Y/N:\n")
+                if user_consent == "Y":
+                    continue
+            else:
+                print(EMPTY_FILE_MESSAGE)
 
     else:
         print("Not a valid choice!")
