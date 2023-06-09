@@ -6,7 +6,7 @@
 My plan at the 31/05/2023: <br>
 <pre>
   - [x] Make a really simple console app
-  - [] Make a I/O working app
+  - [x] Make a I/O working app
   - [] Make a GUI to make it easier, perhaps with Tkinter, as i already know that
   - [] Connect it to a database using an API
   - [] Adding backend to share library
@@ -76,4 +76,8 @@ Almost all core functions are now complete and functionnal. I'll need to secure 
 
 ### 08/06/2023
 
-Deletion function is now functionnal and a little more secure with error handling. The next step is to continue with the searching function. I want to make my all code POO friendly. The more simple it is, the less time i will spent on maintenance.
+Deletion function is now functional and a little more secure with error handling. The next step is to continue with the searching function. I want to make my all code POO friendly. The more simple it is, the less time i will spent on maintenance.
+
+### 09/06/2023
+
+All my app is now working and have all CRUD options, including update that i added today. The next step is to make it working while using the POO before making it into a GUI. I have a Library class, where we can add, update, delete or search, each Library will have an owner later on. This will make me gain some time.
