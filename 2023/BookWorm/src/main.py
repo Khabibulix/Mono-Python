@@ -1,10 +1,12 @@
-# TODO: Make I/O
+# TODO: Make I/O CRUD like
 # TODO: Fix bug, adding a book doesn't make the output file not empty
 # TODO: Move to POO
+# TODO: Adding update method
+
 import os
 
 IS_FILE_EMPTY = os.path.getsize('output.txt') == 0
-POSSIBLE_CHOICES = ["1", "2", "3","4","exit"]
+POSSIBLE_CHOICES = ["1", "2", "3","4","5","exit"]
 EMPTY_FILE_MESSAGE = "The file is empty yet"
 
 #Core functions
@@ -20,6 +22,7 @@ def adding_book():
             try:
                 output_file = open('output.txt', 'a')
                 output_file.write("\n" + author)
+                # TODO: Need to do some basic string editing here, to capitalize all
                 output_file.write(", " +title)
             finally:
                 output_file.close()
@@ -36,20 +39,20 @@ def delete_book():
             answer = input("Do you want to add a new book?\n y/n")
             if answer == 'y':
                 adding_book()
-        print(f"\nHere is the content of the file: \n {output_file.read()}")
-        book_deleted = input("\nWhich book do you want to delete?: \n"
+        print(f"\nHere is the content of your library: \n {output_file.read()}")
+        book_to_delete = input("\nWhich book do you want to delete?: \n"
                              "To delete the first book, enter 1...")
 
     finally:
         output_file.close()
 
         try:
-            if book_deleted and int(book_deleted):
+            if book_to_delete and int(book_to_delete):
 
                 try:
                     output_file = open('output.txt', 'r')
                     content_of_file = output_file.readlines()
-                    book_to_delete = content_of_file[int(book_deleted) - 1]
+                    book_to_delete = content_of_file[int(book_to_delete) - 1]
 
                 finally:
                     output_file.close()
@@ -64,8 +67,56 @@ def delete_book():
                     output_file.close()
 
         except:
-            print(f"'{book_deleted}' is not a correct number")
+            print(f"'{book_to_delete}' is not a correct number")
             delete_book()
+            
+def update_book():
+    
+    try:
+        output_file = open('output.txt', "r")
+
+        if IS_FILE_EMPTY:
+            print(EMPTY_FILE_MESSAGE)
+            answer = input("Do you want to add a new book?y/n\n")
+            if answer.lower() == 'y':
+                adding_book()
+
+        print(f"\nHere is the content of your library: \n {output_file.read()}")
+        book_to_update = input("\nWhich book do you want to update?: \n"
+                         "To update the first book, enter 1...")
+    
+    finally:
+        output_file.close()
+
+
+    try:
+        if book_to_update and int(book_to_update):
+
+            try:
+                output_file = open('output.txt', 'r')
+                content_of_file = output_file.readlines()
+                book_to_update = content_of_file[int(book_to_update) - 1]
+
+            finally:
+                output_file.close()
+
+            try:
+                output_file = open('output.txt', 'w')
+                new_book_author = input("What is the author of the new book?:\n")
+                new_book_title = input("What is the title of the new book?:\n")
+                for line in content_of_file:
+                    if line != book_to_update:
+                        output_file.write(line)
+                    else:
+                        output_file.write(f"{new_book_author} , {new_book_title}")
+
+            finally:
+                output_file.close()
+
+    except:
+        print(f"'{book_to_update}' is not a correct number")
+        update_book()
+    
 
 
 
@@ -80,7 +131,7 @@ def search_for_book(string_to_search):
 
     finally:
         output_file.close()
-    print(possible_matches)
+    print(*possible_matches, sep='\n')
 
 
 
@@ -94,6 +145,7 @@ while user_choice != "exit":
                         "Do you want to add a book? Press 2 \n"
                         "Do you want to delete a book? Press 3.\n"
                         "Do you want to search for a book? Press 4.\n"
+                        "Do you want to update a book? Press 5. \n"
                         "If you want to quit, write exit.\n"
                         )
     if user_choice in POSSIBLE_CHOICES:
@@ -125,6 +177,10 @@ while user_choice != "exit":
                     continue
             else:
                 print(EMPTY_FILE_MESSAGE)
+        
+        if user_choice == "5":
+            update_book()
+            
 
     else:
         print("Not a valid choice!")
