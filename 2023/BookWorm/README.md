@@ -81,3 +81,7 @@ Deletion function is now functional and a little more secure with error handling
 ### 09/06/2023
 
 All my app is now working and have all CRUD options, including update that i added today. The next step is to make it working while using the POO before making it into a GUI. I have a Library class, where we can add, update, delete or search, each Library will have an owner later on. This will make me gain some time.
+
+### 10/06/2023
+
+POO is complete, files are now separated as i like it. I'll write some tests for my Library class using mocking, i want to be sure that it will works whatever the context will be.
