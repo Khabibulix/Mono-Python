@@ -1,6 +1,14 @@
+import os
+
 IS_FILE_EMPTY = os.path.getsize('output.txt') == 0
 POSSIBLE_CHOICES = ["1", "2", "3","4","5","exit"]
 EMPTY_FILE_MESSAGE = "The file is empty yet"
+WELCOME_MESSAGE = "\nDo you want to look your library? Press 1.\n" \
+                  "Do you want to add a book? Press 2 \n" \
+                  "Do you want to delete a book? Press 3.\n" \
+                  "Do you want to search for a book? Press 4.\n" \
+                  "Do you want to update a book? Press 5. \n" \
+                  "If you want to quit, write exit.\n"
 
 class Library:
     def adding_book(self):
