@@ -85,3 +85,7 @@ All my app is now working and have all CRUD options, including update that i add
 ### 10/06/2023
 
 POO is complete, files are now separated as i like it. I'll write some tests for my Library class using mocking, i want to be sure that it will works whatever the context will be.
+
+### 12/06/2023
+
+Currently working on testing my application using pytest mocking. I raised a strange behaviour while testing. My adding_book function does not add to my output file, at least not when i'm testing it, which is strange. Maybe my first bug? I'll need to search about it while moving on.
