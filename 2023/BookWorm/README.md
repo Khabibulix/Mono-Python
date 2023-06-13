@@ -89,3 +89,11 @@ POO is complete, files are now separated as i like it. I'll write some tests for
 ### 12/06/2023
 
 Currently working on testing my application using pytest mocking. I raised a strange behaviour while testing. My adding_book function does not add to my output file, at least not when i'm testing it, which is strange. Maybe my first bug? I'll need to search about it while moving on.
+
+### 13/06/2023
+
+Today, i learned about paths, with pathlib, it's easier to play with paths using that and my testing will be better. However, and this is more concerning, my current branch main on Git went missing.
+
+![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/73e27626-9ef0-4343-8a51-6270458ca398)
+
+I'm not a Git god, so i'll need to check why it does that and how i can fix it.
