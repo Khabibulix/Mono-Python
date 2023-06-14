@@ -89,3 +89,7 @@ POO is complete, files are now separated as i like it. I'll write some tests for
 ### 12/06/2023
 
 Currently working on testing my application using pytest mocking. I raised a strange behaviour while testing. My adding_book function does not add to my output file, at least not when i'm testing it, which is strange. Maybe my first bug? I'll need to search about it while moving on.
+
+### 13/06/2023
+
+Problem with Git is fixed, but i didn't understand why, i'll need to relearn Git. Wrote a new test to check my output file path, because it's causing me troubles. My tests on the Library class are not advancig in the right direction yet.
