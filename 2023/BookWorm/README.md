@@ -93,3 +93,14 @@ Currently working on testing my application using pytest mocking. I raised a str
 ### 13/06/2023
 
 Problem with Git is fixed, but i didn't understand why, i'll need to relearn Git. Wrote a new test to check my output file path, because it's causing me troubles. My tests on the Library class are not advancig in the right direction yet.
+
+## Step 2: GUI
+
+### 14/06/2023
+
+Moving on to next step, i made my Tkinter setup and a simple design for my application.
+
+![Sans titre](https://github.com/Khabibulix/Mono-Python/assets/80721211/6bef68c6-0343-47c9-a8fd-5b681f8deeb0)
+
+A week will be sufficient for coding that, maybe one or two days more to fix display bugs.
+
