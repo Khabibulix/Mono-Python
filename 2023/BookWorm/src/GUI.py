@@ -1,22 +1,18 @@
-from tkinter import Tk, Button, Label
+from tkinter import Tk, Button, Label, Frame
 
 class GUI(Tk):
 
     def __init__(self):
         super().__init__()
 
-        label = Label(self, text="Manage your library with BookWorm")
-        label.pack()
-
-        button = Button(self, text="Push me!", command=self.clicking)
-        button.pack()
-
-        self.geometry("300x200")
-
+        #Frames
+        left_container = Frame(self, width=50, height=50, bg="blue")
+        left_container.place(x=15, y=30)
+        
+        #Window config
+        self.geometry("600x400")
         self.title("BookWorm")
 
-    def clicking(self):
-        print("Button clicked")
 
 window = GUI()
 window.mainloop()
