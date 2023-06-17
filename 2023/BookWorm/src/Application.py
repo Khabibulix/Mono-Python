@@ -1,4 +1,4 @@
-from tkinter import Tk, Button, Label, Frame
+from tkinter import Tk, Button, Label, Frame, Entry
 
 TOTAL_WIDTH_OF_WINDOW = 800
 TOTAL_HEIGHT_OF_WINDOW = 400
@@ -24,6 +24,11 @@ class Application(Tk):
 
         right_help_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=210, borderwidth=2, relief="groove", bg="darkblue")
         right_help_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=170)
+
+        #Entry for search_container
+        search_bar = Entry(right_search_container, width=100)
+        search_bar.insert(0," ")
+        search_bar.pack()
 
         #Window config
         self.geometry(f"{TOTAL_WIDTH_OF_WINDOW}x{TOTAL_HEIGHT_OF_WINDOW}")
