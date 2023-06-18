@@ -1,5 +1,7 @@
 from tkinter import Tk, Button, Label, Frame, Entry
 
+OUTPUT_FILE_CONTENT = open('output.txt', 'r').read()
+
 TOTAL_WIDTH_OF_WINDOW = 800
 TOTAL_HEIGHT_OF_WINDOW = 400
 MARGIN_LEFT = 15
@@ -29,6 +31,11 @@ class Application(Tk):
         search_bar = Entry(right_search_container, width=68)
         search_bar.insert(0," ")
         search_bar.pack()
+
+        #Labels
+        left_container_label = Label(left_container, text=OUTPUT_FILE_CONTENT, width=45, height=23)
+        left_container_label.pack()
+
 
         #Window config
         self.geometry(f"{TOTAL_WIDTH_OF_WINDOW}x{TOTAL_HEIGHT_OF_WINDOW}")
