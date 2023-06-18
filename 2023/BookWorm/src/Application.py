@@ -18,21 +18,21 @@ class Application(Tk):
         super().__init__()
 
         #Frames
-        left_container = Frame(self, width=320, height=350, borderwidth=2, relief="groove", bg="lightgray")
+        left_container = Frame(self, width=320, height=350, borderwidth=2, relief="groove")
         left_container.place(x=MARGIN_LEFT, y=30)
 
-        right_button_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=70, borderwidth=2, relief="groove", bg="gray")
+        right_button_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=70, borderwidth=2, relief="groove")
         right_button_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=30)
 
-        right_search_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=50, borderwidth=2, relief="groove", bg="lightblue")
+        right_search_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=50, borderwidth=2, relief="groove")
         right_search_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=70)
 
-        right_help_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=210, borderwidth=2, relief="groove", bg="darkblue")
+        right_help_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=210, borderwidth=2, relief="groove")
         right_help_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=100)
 
         #Entry for search_container
         search_bar = Entry(right_search_container, width=66)
-        search_bar.insert(0," ")
+        search_bar.insert(0,"")
         search_bar.pack()
 
         #Labels
@@ -41,15 +41,31 @@ class Application(Tk):
         right_container_label = Label(right_help_container, text=MAIN_HELP_MESSAGE, width=56, height=18)
         right_container_label.pack()
 
+        # Functions
+        def adding_button_clicked(self):
+            #STEP 1: CHECK INPUT FOR ENTRY -> IF EMPTY CHANGE HELP MESSAGE
+            if len(search_bar.get()) == 0:
+                print("EMPTY")
+            else:
+                print("NOT EMPTY")
+            #STEP 2: UPDATE HELP MESSAGE ELSE
+            #STEP 3: ADD BOOK
+            #STEP 4: UPDATE DISPLAY
+
+
+
         #Buttons
-        add_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Add", padx=1)
-        delete_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Delete", padx=1)
-        search_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Search", padx=1)
-        update_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Update", padx=1)
-        quit_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Quit", padx=1)
+        add_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Add", command=adding_button_clicked(self))
+        delete_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Delete")
+        search_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Search")
+        update_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Update")
+        quit_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Quit")
+
         buttons_list = [add_button, delete_button, search_button, update_button, quit_button]
 
         for index, button in enumerate(buttons_list):
+            button.padx = 1
+            button.width = BUTTON_WIDTH
             button.grid(row=0, column=index)
 
 
