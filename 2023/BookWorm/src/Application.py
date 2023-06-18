@@ -1,4 +1,5 @@
 from tkinter import Tk, Button, Label, Frame, Entry
+from help import *
 
 OUTPUT_FILE_CONTENT = open('output.txt', 'r').read()
 
@@ -24,19 +25,21 @@ class Application(Tk):
         right_button_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=30)
 
         right_search_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=50, borderwidth=2, relief="groove", bg="lightblue")
-        right_search_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=110)
+        right_search_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=70)
 
         right_help_container = Frame(self, width=WIDTH_FOR_RIGHT_CONTAINER, height=210, borderwidth=2, relief="groove", bg="darkblue")
-        right_help_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=170)
+        right_help_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=100)
 
         #Entry for search_container
-        search_bar = Entry(right_search_container, width=68)
+        search_bar = Entry(right_search_container, width=66)
         search_bar.insert(0," ")
         search_bar.pack()
 
         #Labels
         left_container_label = Label(left_container, text=OUTPUT_FILE_CONTENT, width=45, height=23)
         left_container_label.pack()
+        right_container_label = Label(right_help_container, text=MAIN_HELP_MESSAGE, width=56, height=18)
+        right_container_label.pack()
 
         #Buttons
         add_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Add", padx=1)
@@ -50,10 +53,10 @@ class Application(Tk):
             button.grid(row=0, column=index)
 
 
-
         #Window config
         self.geometry(f"{TOTAL_WIDTH_OF_WINDOW}x{TOTAL_HEIGHT_OF_WINDOW}")
         self.title("BookWorm")
+
 
 
 window = Application()
