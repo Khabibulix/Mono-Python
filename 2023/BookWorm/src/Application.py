@@ -26,7 +26,7 @@ class Application(Tk):
         right_help_container.place(x=X_POS_FOR_RIGHT_CONTAINER, y=170)
 
         #Entry for search_container
-        search_bar = Entry(right_search_container, width=100)
+        search_bar = Entry(right_search_container, width=68)
         search_bar.insert(0," ")
         search_bar.pack()
 
