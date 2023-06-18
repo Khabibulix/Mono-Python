@@ -7,8 +7,8 @@ TOTAL_HEIGHT_OF_WINDOW = 400
 MARGIN_LEFT = 15
 WIDTH_FOR_RIGHT_CONTAINER = 420
 # WindowW - LeftContainerW - InitialPlacement * 4
-X_POS_FOR_RIGHT_CONTAINER = TOTAL_WIDTH_OF_WINDOW - 320 - 120
-BUTTON_WIDTH = 4
+X_POS_FOR_RIGHT_CONTAINER = TOTAL_WIDTH_OF_WINDOW - 320 - 110
+BUTTON_WIDTH = 10
 BUTTON_HEIGHT = 1
 
 class Application(Tk):
@@ -39,15 +39,15 @@ class Application(Tk):
         left_container_label.pack()
 
         #Buttons
-        add_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Add")
-        delete_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Delete")
-        search_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Search")
-        update_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Update")
-        quit_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Quit")
+        add_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Add", padx=1)
+        delete_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Delete", padx=1)
+        search_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Search", padx=1)
+        update_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Update", padx=1)
+        quit_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Quit", padx=1)
         buttons_list = [add_button, delete_button, search_button, update_button, quit_button]
 
-        for button in buttons_list:
-            button.pack()
+        for index, button in enumerate(buttons_list):
+            button.grid(row=0, column=index)
 
 
 
