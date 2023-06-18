@@ -41,21 +41,9 @@ class Application(Tk):
         right_container_label = Label(right_help_container, text=MAIN_HELP_MESSAGE, width=56, height=18)
         right_container_label.pack()
 
-        # Functions
-        def adding_button_clicked(self):
-            #STEP 1: CHECK INPUT FOR ENTRY -> IF EMPTY CHANGE HELP MESSAGE
-            if len(search_bar.get()) == 0:
-                print("EMPTY")
-            else:
-                print("NOT EMPTY")
-            #STEP 2: UPDATE HELP MESSAGE ELSE
-            #STEP 3: ADD BOOK
-            #STEP 4: UPDATE DISPLAY
-
-
 
         #Buttons
-        add_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Add", command=adding_button_clicked(self))
+        add_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Add")
         delete_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Delete")
         search_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Search")
         update_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Update")
@@ -67,6 +55,14 @@ class Application(Tk):
             button.padx = 1
             button.width = BUTTON_WIDTH
             button.grid(row=0, column=index)
+
+        # Keybinding
+        add_button.bind('<Button-1>', lambda event: print("EMPTY") if len(search_bar.get()) == 0 else print("NOT EMPTY"))
+
+            # STEP 1: CHECK INPUT FOR ENTRY -> IF EMPTY CHANGE HELP MESSAGE
+            # STEP 2: UPDATE HELP MESSAGE ELSE
+            # STEP 3: ADD BOOK
+            # STEP 4: UPDATE DISPLAY
 
 
         #Window config
