@@ -8,6 +8,8 @@ MARGIN_LEFT = 15
 WIDTH_FOR_RIGHT_CONTAINER = 420
 # WindowW - LeftContainerW - InitialPlacement * 4
 X_POS_FOR_RIGHT_CONTAINER = TOTAL_WIDTH_OF_WINDOW - 320 - 120
+BUTTON_WIDTH = 4
+BUTTON_HEIGHT = 1
 
 class Application(Tk):
 
@@ -35,6 +37,18 @@ class Application(Tk):
         #Labels
         left_container_label = Label(left_container, text=OUTPUT_FILE_CONTENT, width=45, height=23)
         left_container_label.pack()
+
+        #Buttons
+        add_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Add")
+        delete_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Delete")
+        search_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Search")
+        update_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Update")
+        quit_button = Button(right_button_container, width=BUTTON_WIDTH, height=BUTTON_HEIGHT, text="Quit")
+        buttons_list = [add_button, delete_button, search_button, update_button, quit_button]
+
+        for button in buttons_list:
+            button.pack()
+
 
 
         #Window config
