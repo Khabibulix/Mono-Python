@@ -63,6 +63,7 @@ class Application(Tk):
                 right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
             else:
                 right_container_label.config(text=ADDING_HELP_MESSAGE)
+                library.adding_book(search_bar.get())
 
         # Keybinding
         add_button.bind('<Button-1>', click_on_adding_button)

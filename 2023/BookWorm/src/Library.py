@@ -13,11 +13,13 @@ WELCOME_MESSAGE = "\nDo you want to look your library? Press 1.\n" \
 class Library:
     def adding_book(self, str_to_split):
         if ',' in str_to_split:
-            book = str_to_split(",")
+            book = str_to_split.split(", ")
             author = book[0]
             title = book[1]
+            print(author)
+            print(title)
         else:
-            return "Missing coma"
+            print("Missing coma")
 
         # Author should be a string, but title could be an int --> 1984
         # if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
