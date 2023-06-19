@@ -16,23 +16,22 @@ class Library:
             book = str_to_split.split(", ")
             author = book[0]
             title = book[1]
-            print(author)
-            print(title)
+            # Author should be a string, but title could be an int --> 1984
+            if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
+                try:
+                    output_file = open('output.txt', 'a')
+                    output_file.write("\n" + author)
+                    # TODO: Need to do some basic string editing here, to capitalize all
+                    output_file.write(", " + title)
+                finally:
+                    output_file.close()
+                return f"{title} written by {author} has been successfully added to library!"
+            else:
+                return "Nope"
         else:
-            print("Missing coma")
+            return "Missing coma"
 
-        # Author should be a string, but title could be an int --> 1984
-        # if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
-        #     try:
-        #         output_file = open('output.txt', 'a')
-        #         output_file.write("\n" + author)
-        #         # TODO: Need to do some basic string editing here, to capitalize all
-        #         output_file.write(", " + title)
-        #     finally:
-        #         output_file.close()
-        # else:
-        #     print("Please enter a correct book/author\n")
-        #     self.adding_book()
+
 
     def delete_book(self):
 

@@ -63,7 +63,15 @@ class Application(Tk):
                 right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
             else:
                 right_container_label.config(text=ADDING_HELP_MESSAGE)
-                library.adding_book(search_bar.get())
+
+                if library.adding_book(search_bar.get()) == "Missing coma":
+                    right_container_label.config(text=MISSING_COMA_INPUT_MESSAGE)
+
+                if library.adding_book(search_bar.get()) == "Nope":
+                    right_container_label.config(text=INCORRECT_INPUT_MESSAGE)
+
+                else:
+
 
         # Keybinding
         add_button.bind('<Button-1>', click_on_adding_button)

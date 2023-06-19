@@ -13,6 +13,6 @@ SEARCH_HELP_MESSAGE = ""
 
 EMPTY_INPUT_BOX_MESSAGE = "Did you forgot to enter text in the text box?"
 
-INCORRECT_INPUT_MESSAGE = ""
+INCORRECT_INPUT_MESSAGE = "I'm sorry, but i don't think your book exists..."
 
 MISSING_COMA_INPUT_MESSAGE = "Did you forgot to enter your book in this format?: Author, Title"
