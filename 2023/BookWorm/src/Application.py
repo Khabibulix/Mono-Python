@@ -71,6 +71,8 @@ class Application(Tk):
                     right_container_label.config(text=INCORRECT_INPUT_MESSAGE)
 
                 else:
+                    right_container_label.config(text=library.adding_book(search_bar.get()))
+                    left_container_label.config(text=OUTPUT_FILE_CONTENT)
 
 
         # Keybinding
