@@ -12,7 +12,7 @@ WELCOME_MESSAGE = "\nDo you want to look your library? Press 1.\n" \
 
 class Library:
     def adding_book(self, str_to_split):
-        if ',' in str_to_split
+        if ',' in str_to_split:
             book = str_to_split(",")
             author = book[0]
             title = book[1]
@@ -20,17 +20,17 @@ class Library:
             return "Missing coma"
 
         # Author should be a string, but title could be an int --> 1984
-        if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
-            try:
-                output_file = open('output.txt', 'a')
-                output_file.write("\n" + author)
-                # TODO: Need to do some basic string editing here, to capitalize all
-                output_file.write(", " + title)
-            finally:
-                output_file.close()
-        else:
-            print("Please enter a correct book/author\n")
-            self.adding_book()
+        # if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
+        #     try:
+        #         output_file = open('output.txt', 'a')
+        #         output_file.write("\n" + author)
+        #         # TODO: Need to do some basic string editing here, to capitalize all
+        #         output_file.write(", " + title)
+        #     finally:
+        #         output_file.close()
+        # else:
+        #     print("Please enter a correct book/author\n")
+        #     self.adding_book()
 
     def delete_book(self):
 
