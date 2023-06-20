@@ -59,19 +59,20 @@ class Application(Tk):
 
         #Functions for keybinding
         def click_on_adding_button(self):
+            checking_input = library.adding_book(search_bar.get())
             if len(search_bar.get()) == 0:
                 right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
             else:
                 right_container_label.config(text=ADDING_HELP_MESSAGE)
-
-                if library.adding_book(search_bar.get()) == "Missing coma":
+                #CALLING THREE TIMES THE METHOD IS SHIT, FIND AN ALTERNATIVE SOLUTION
+                if checking_input == "Missing coma":
                     right_container_label.config(text=MISSING_COMA_INPUT_MESSAGE)
 
-                if library.adding_book(search_bar.get()) == "Nope":
+                if checking_input == "Nope":
                     right_container_label.config(text=INCORRECT_INPUT_MESSAGE)
 
                 else:
-                    right_container_label.config(text=library.adding_book(search_bar.get()))
+                    right_container_label.config(text=checking_input)
                     left_container_label.config(text=OUTPUT_FILE_CONTENT)
 
 
