@@ -85,8 +85,11 @@ class Application(Tk):
                 right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
 
             else:
-                if checking_input == "Book mismatch":
+                if checking_input == "Number incorrect":
                     right_container_label.config(text=BOOK_NOT_FOUND_MESSAGE)
+
+                if checking_input == "NAN":
+                    right_container_label.config(text=NOT_A_NUMBER_MESSAGE)
 
                 else:
                     right_container_label.config(text=checking_input)

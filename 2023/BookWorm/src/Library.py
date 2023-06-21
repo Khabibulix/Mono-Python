@@ -18,30 +18,36 @@ class Library:
         else:
             return "Missing coma"
 
+    def delete_book(self, number_of_book_to_delete):
+        #Check for input which must be an int
+        if int(number_of_book_to_delete):
+            try:
+                output_file_read_mode = open('output.txt', 'r')
+                #Check for valid number
+                if int(number_of_book_to_delete) <= len(output_file_read_mode.readlines()):
 
-    def delete_book(self, book_to_delete):
 
-        try:
-            output_file = open('output.txt', 'r')
-            #Detection is correct, but deletion is not
-            if book_to_delete in ' '.join(output_file.readlines()):
+                        try:
+                            output_file_write_mode = open('output.txt', 'w+')
 
-                try:
-                    output_file = open('output.txt', 'w+')
+                            for line in output_file_read_mode.readlines():
+                                if line != output_file_write_mode[int(number_of_book_to_delete) + 1]:
+                                    output_file.write(line)
 
-                    for line in content_of_file:
-                        if line != book_to_delete:
-                            output_file.write(line)
+                        finally:
+                            return  f"{output_file_write_mode[int(number_of_book_to_delete) + 1]} has been successfully deleted!"
+                            output_file_write_mode.close()
+                else:
+                    return "Number incorrect"
 
-                finally:
-                    output_file.close()
-                    return  f"{book_to_delete} has been successfully deleted!"
+            finally:
+                output_file_read_mode.close()
 
-            else:
-                return "Book mismatch"
 
-        finally:
-            output_file.close()
+        else:
+            return "NAN"
+
+
 
     def update_book(self):
 
