@@ -1,15 +1,3 @@
-import os
-
-IS_FILE_EMPTY = os.path.getsize('output.txt') == 0
-POSSIBLE_CHOICES = ["1", "2", "3","4","5","exit"]
-EMPTY_FILE_MESSAGE = "The file is empty yet"
-WELCOME_MESSAGE = "\nDo you want to look your library? Press 1.\n" \
-                  "Do you want to add a book? Press 2 \n" \
-                  "Do you want to delete a book? Press 3.\n" \
-                  "Do you want to search for a book? Press 4.\n" \
-                  "Do you want to update a book? Press 5. \n" \
-                  "If you want to quit, write exit.\n"
-
 class Library:
     def adding_book(self, str_to_split):
         if ',' in str_to_split:
@@ -21,7 +9,6 @@ class Library:
                 try:
                     output_file = open('output.txt', 'a')
                     output_file.write("\n" + author)
-                    # TODO: Need to do some basic string editing here, to capitalize all
                     output_file.write(", " + title)
                 finally:
                     output_file.close()
@@ -32,17 +19,16 @@ class Library:
             return "Missing coma"
 
 
-
     def delete_book(self, book_to_delete):
 
         try:
             output_file = open('output.txt', 'r')
-            content_of_file = output_file.readlines()
-
-            if book_to_delete in content_of_file:
+            #Detection is correct, but deletion is not
+            if book_to_delete in ' '.join(output_file.readlines()):
 
                 try:
                     output_file = open('output.txt', 'w+')
+
                     for line in content_of_file:
                         if line != book_to_delete:
                             output_file.write(line)
@@ -56,9 +42,6 @@ class Library:
 
         finally:
             output_file.close()
-
-
-
 
     def update_book(self):
 
@@ -106,6 +89,7 @@ class Library:
             print(f"'{book_to_update}' is not a correct number")
             update_book()
 
+
     def search_for_book(self, string_to_search):
         possible_matches = []
 
@@ -118,3 +102,5 @@ class Library:
         finally:
             output_file.close()
         print(*possible_matches, sep='\n')
+
+
