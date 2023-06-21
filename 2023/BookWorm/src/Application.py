@@ -60,24 +60,33 @@ class Application(Tk):
         #Functions for keybinding
         def click_on_adding_button(self):
             checking_input = library.adding_book(search_bar.get())
+
             if len(search_bar.get()) == 0:
                 right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
+
+            #If input non empty
             else:
                 right_container_label.config(text=ADDING_HELP_MESSAGE)
-                #CALLING THREE TIMES THE METHOD IS SHIT, FIND AN ALTERNATIVE SOLUTION
+
+                #Format is incorrect
                 if checking_input == "Missing coma":
                     right_container_label.config(text=MISSING_COMA_INPUT_MESSAGE)
 
+                #Book title or author is not correct
                 if checking_input == "Nope":
                     right_container_label.config(text=INCORRECT_INPUT_MESSAGE)
 
                 else:
                     right_container_label.config(text=checking_input)
-                    left_container_label.config(text=OUTPUT_FILE_CONTENT)
+                    left_container_label.config(text=open('output.txt', 'r').read())
+
+        def click_on_deleting_button(self):
+            pass
 
 
         # Keybinding
         add_button.bind('<Button-1>', click_on_adding_button)
+        delete_button.bind('<Button-1>', click_on_deleting_button)
 
 
             # STEP 1: CHECK INPUT FOR ENTRY -> IF EMPTY CHANGE HELP MESSAGE
