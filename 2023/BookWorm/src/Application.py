@@ -66,8 +66,6 @@ class Application(Tk):
 
             #If input non empty
             else:
-                right_container_label.config(text=ADDING_HELP_MESSAGE)
-
                 #Format is incorrect
                 if checking_input == "Missing coma":
                     right_container_label.config(text=MISSING_COMA_INPUT_MESSAGE)
@@ -81,18 +79,24 @@ class Application(Tk):
                     left_container_label.config(text=open('output.txt', 'r').read())
 
         def click_on_deleting_button(self):
-            pass
+            checking_input = library.delete_book((search_bar.get()))
+
+            if len(search_bar.get()) == 0:
+                right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
+
+            else:
+                if checking_input == "Book mismatch":
+                    right_container_label.config(text=BOOK_NOT_FOUND_MESSAGE)
+
+                else:
+                    right_container_label.config(text=checking_input)
+                    left_container_label.config(text=open('output.txt', 'r').read())
+
 
 
         # Keybinding
         add_button.bind('<Button-1>', click_on_adding_button)
         delete_button.bind('<Button-1>', click_on_deleting_button)
-
-
-            # STEP 1: CHECK INPUT FOR ENTRY -> IF EMPTY CHANGE HELP MESSAGE
-            # STEP 2: UPDATE HELP MESSAGE ELSE
-            # STEP 3: ADD BOOK
-            # STEP 4: UPDATE DISPLAY
 
 
         #Window config

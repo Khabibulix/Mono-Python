@@ -49,6 +49,8 @@ class Library:
 
                 finally:
                     output_file.close()
+                    return  f"{book_to_delete} has been successfully deleted!"
+
             else:
                 return "Book mismatch"
 
