@@ -33,45 +33,30 @@ class Library:
 
 
 
-    def delete_book(self):
+    def delete_book(self, book_to_delete):
 
         try:
             output_file = open('output.txt', 'r')
-            if IS_FILE_EMPTY:
-                print(EMPTY_FILE_MESSAGE)
-                answer = input("Do you want to add a new book?\n y/n")
-                if answer == 'y':
-                    adding_book()
-            print(f"\nHere is the content of your library: \n {output_file.read()}")
-            book_to_delete = input("\nWhich book do you want to delete?: \n"
-                                   "To delete the first book, enter 1...")
+            content_of_file = output_file.readlines()
+
+            if book_to_delete in content_of_file:
+
+                try:
+                    output_file = open('output.txt', 'w+')
+                    for line in content_of_file:
+                        if line != book_to_delete:
+                            output_file.write(line)
+
+                finally:
+                    output_file.close()
+            else:
+                return "Book mismatch"
 
         finally:
             output_file.close()
 
-            try:
-                if book_to_delete and int(book_to_delete):
 
-                    try:
-                        output_file = open('output.txt', 'r')
-                        content_of_file = output_file.readlines()
-                        book_to_delete = content_of_file[int(book_to_delete) - 1]
 
-                    finally:
-                        output_file.close()
-
-                    try:
-                        output_file = open('output.txt', 'w+')
-                        for line in content_of_file:
-                            if line != book_to_delete:
-                                output_file.write(line)
-
-                    finally:
-                        output_file.close()
-
-            except:
-                print(f"'{book_to_delete}' is not a correct number")
-                delete_book()
 
     def update_book(self):
 
