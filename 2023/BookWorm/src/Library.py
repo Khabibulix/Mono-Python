@@ -22,28 +22,26 @@ class Library:
         #Check for input which must be an int
         if int(number_of_book_to_delete):
             try:
-                output_file_read_mode = open('output.txt', 'r')
+                output_file = open('output.txt', 'r')
                 #Check for valid number
-                if int(number_of_book_to_delete) <= len(output_file_read_mode.readlines()):
+                print("LEN:", len(output_file.readlines()))
+                print(number_of_book_to_delete)
 
+                if number_of_book_to_delete <= len(output_file.readlines()):
+                    print("Passing if check")
+                    print(output_file.readlines()[number_of_book_to_delete + 1])
+                    for line in output_file.readlines():
+                        print(line)
+                        if line != output_file[int(number_of_book_to_delete) + 1]:
+                            output_file.write(line)
+                    return f"{output_file.readlines()[int(number_of_book_to_delete) + 1]} has been successfully deleted!"
 
-                        try:
-                            output_file_write_mode = open('output.txt', 'w+')
-
-                            for line in output_file_read_mode.readlines():
-                                if line != output_file_write_mode[int(number_of_book_to_delete) + 1]:
-                                    output_file.write(line)
-
-                        finally:
-                            return  f"{output_file_write_mode[int(number_of_book_to_delete) + 1]} has been successfully deleted!"
-                            output_file_write_mode.close()
                 else:
+                    print("LEN 2:", len(output_file.readlines()))
                     return "Number incorrect"
 
             finally:
-                output_file_read_mode.close()
-
-
+                output_file.close()
         else:
             return "NAN"
 
@@ -109,4 +107,6 @@ class Library:
             output_file.close()
         print(*possible_matches, sep='\n')
 
+library = Library()
+print(library.delete_book(1))
 

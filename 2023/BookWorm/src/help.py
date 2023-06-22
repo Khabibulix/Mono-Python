@@ -11,5 +11,5 @@ INCORRECT_INPUT_MESSAGE = "I'm sorry, but i don't think your book exists..."
 
 MISSING_COMA_INPUT_MESSAGE = "Did you forgot to enter your book in this format?: Author, Title"
 
-BOOK_NOT_FOUND_MESSAGE = "Did not find your book, did you spell it correctly?"
+BOOK_NOT_FOUND_MESSAGE = "Did not find your book, are you sure the number is correct?"
 
