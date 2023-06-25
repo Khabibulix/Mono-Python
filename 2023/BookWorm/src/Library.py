@@ -109,22 +109,22 @@
 #             output_file.close()
 #         print(*possible_matches, sep='\n')
 
-def delete_book(number_of_book_to_delete, file_to_read):
+def delete_book(number_of_book_to_delete):
         # TODO Checker méthode originelle!
         #Check for input which must be an int
         if int(number_of_book_to_delete):
             #Check for valid number
-            LEN_OF_FILE =
-            print("LEN OF FILE:", len(open("output.txt", 'r+').readlines()))
-            print(open('output.txt', 'r+').readlines())
-            if number_of_book_to_delete <= len(file_to_read.readlines()):
+            LEN_OF_FILE = len(open("output.txt", 'r+').readlines())
+            FILE = open('output.txt', "r+").readlines()
+            print(FILE)
+            if number_of_book_to_delete <= LEN_OF_FILE:
                 print("Passing if check")
-                print(output_file.readlines()[number_of_book_to_delete + 1])
-                for line in output_file.readlines():
+                print(FILE[number_of_book_to_delete - 1])
+                for line in FILE:
                     print(line)
-                    if line != output_file[int(number_of_book_to_delete) + 1]:
-                        output_file.write(line)
-                return f"{output_file.readlines()[int(number_of_book_to_delete) + 1]} has been successfully deleted!"
+                    if line != FILE[int(number_of_book_to_delete) - 1]:
+                        open('output.txt', "w").write(line)
+                return f"{FILE[int(number_of_book_to_delete) - 1]} has been successfully deleted!"
 
             else:
                 print("LEN OF FILE 2:", len(file_to_read.readlines()))
@@ -134,5 +134,4 @@ def delete_book(number_of_book_to_delete, file_to_read):
         else:
             return "NAN"
 
-print(delete_book(1, output_file))
-output_file.close()
+print(delete_book(1))
