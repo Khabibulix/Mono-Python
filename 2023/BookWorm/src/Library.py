@@ -118,20 +118,21 @@ def delete_book(number_of_book_to_delete):
             FILE = open('output.txt', "r+").readlines()
             print(FILE)
             if number_of_book_to_delete <= LEN_OF_FILE:
-                print("Passing if check")
-                print(FILE[number_of_book_to_delete - 1])
+                print(f"Book wannabe deleted: {FILE[number_of_book_to_delete - 1]}")
                 for line in FILE:
-                    print(line)
-                    if line != FILE[int(number_of_book_to_delete) - 1]:
-                        open('output.txt', "w").write(line)
-                return f"{FILE[int(number_of_book_to_delete) - 1]} has been successfully deleted!"
+                    print(f"BOOK -- > {line}")
+                    if line == FILE[int(number_of_book_to_delete) - 1]:
+                        print("Yup")
+                        open('output.txt', "w").write(line.replace(line, ""))
+                    else:
+                        open('output.txt', "a").write(line)
+
+                #return f"{FILE[int(number_of_book_to_delete) - 1]} has been successfully deleted!"
 
             else:
-                print("LEN OF FILE 2:", len(file_to_read.readlines()))
-                print(file_to_read.readlines())
                 return "Number incorrect"
 
         else:
             return "NAN"
 
-print(delete_book(1))
+delete_book(1)
