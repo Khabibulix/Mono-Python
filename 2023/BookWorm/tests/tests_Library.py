@@ -10,7 +10,6 @@ import builtins
 PATH_TO_BOOKWORM_DIRECTORY = Path(__file__).parents[1]
 OUTPUT_FILE_DIRECTORY = Path.joinpath(PATH_TO_BOOKWORM_DIRECTORY, "src")
 
-current_size_of_file = os.path.getsize(OUTPUT_FILE_DIRECTORY)
 
 library = Library()
 
@@ -29,9 +28,15 @@ def test_adding_book_with_correct_input_one():
 def test_adding_book_with_correct_input_two():
     assert library.adding_book("Rastapopoulos, Memories") == "Memories written by Rastapopoulos has been successfully added to library!"
 
+def test_delete_book_with_value_error():
+    assert library.delete_book("e") == "NAN"
 
-#     library.adding_book(OUTPUT_FILE_DIRECTORY)
-#     assert os.path.getsize(OUTPUT_FILE_DIRECTORY) > current_size_of_file
+def test_delete_book_with_number_too_large():
+    LEN = len(open('output.txt', 'r').readlines())
+    assert library.delete_book(LEN + 1) == "Number incorrect"
+
+def test_delete_book_with_zero():
+    assert library.delete_book(0) == "Number incorrect"
 
 
 
