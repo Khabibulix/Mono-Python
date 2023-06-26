@@ -79,8 +79,7 @@ class Application(Tk):
                     left_container_label.config(text=open('output.txt', 'r').read())
 
         def click_on_deleting_button(self):
-            print(search_bar.get())
-            checking_input = library.delete_book((search_bar.get()))
+            checking_input = library.delete_book((int(search_bar.get())))
 
             if len(search_bar.get()) == 0:
                 right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
