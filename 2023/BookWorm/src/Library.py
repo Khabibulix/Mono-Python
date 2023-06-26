@@ -8,7 +8,8 @@ class Library:
             # Author should be a string, but title could be an int --> 1984
             if len(title) >= 3 and isinstance(author, str) and len(author) > 8:
                 try:
-                    output_file = open('output.txt', 'a').write("\n" + author + ", " + title)
+                    output_file = open('output.txt', 'a')
+                    output_file.write("\n" + author + ", " + title)
                 finally:
                     output_file.close()
                 return f"{title} written by {author} has been successfully added to library!"
@@ -18,74 +19,57 @@ class Library:
             return "Missing coma"
 
     def delete_book(self, number_of_book_to_delete):
-        # TODO Checker méthode originelle!
         # Check for input which must be an int
-        if int(number_of_book_to_delete):
-            # Check for valid number
-            len_of_file = len(open("output.txt", 'r+').readlines())
-            file = open('output.txt', "r+").readlines()
+        try:
+            if int(number_of_book_to_delete) and number_of_book_to_delete > 0:
+                # Check for valid number
+                len_of_file = len(open("output.txt", 'r+').readlines())
+                file = open('output.txt', "r+").readlines()
 
-            if number_of_book_to_delete <= len_of_file:
-                for line in file:
-                    if line == file[int(number_of_book_to_delete) - 1]:
-                        open('output.txt', "w").write(line.replace(line, ""))
-                    else:
-                        open('output.txt', "a").write(line)
+                if number_of_book_to_delete <= len_of_file:
+                    for line in file:
+                        if line == file[int(number_of_book_to_delete) - 1]:
+                            open('output.txt', "w").write(line.replace(line, ""))
+                        else:
+                            open('output.txt', "a").write(line)
 
-                return f"{file[int(number_of_book_to_delete) - 1]} has been successfully deleted!"
+                    return f"{file[int(number_of_book_to_delete) - 1]} has been successfully deleted!"
 
-            else:
-                return "Number incorrect"
+            return "Number incorrect"
 
-        else:
+        except ValueError as Ve:
             return "NAN"
 
 
-    def update_book(self):
+    def update_book(self, number_of_book_to_update, new_author, new_title):
+        """
+        Etapes pour cette méthode:
+        1) on récup le numéro du livre à éditer
+        2) on vérifie qu'il est valide
+        3) on demande le nouvel auteur puis le nouveau titre
+        4) on update le tout puis on l'affiche
+        """
 
         try:
-            output_file = open('output.txt', "r")
+            if int(number_of_book_to_update):
 
-            if IS_file_EMPTY:
-                print(EMPTY_file_MESSAGE)
-                answer = input("Do you want to add a new book?y/n\n")
-                if answer.lower() == 'y':
-                    adding_book()
+                file = open('output.txt', 'r+').readlines()
+                book_to_update = file[int(number_of_book_to_update) - 1]
+                print("BEFORE:", file)
 
-            print(f"\nHere is the content of your library: \n {output_file.read()}")
-            book_to_update = input("\nWhich book do you want to update?: \n"
-                                   "To update the first book, enter 1...")
+                output_file = open('output.txt', 'w')
 
-        finally:
-            output_file.close()
+                for line in file:
 
-        try:
-            if book_to_update and int(book_to_update):
+                    if line != book_to_update:
+                        output_file.write(line)
+                    else:
+                        output_file.write(f"{new_author} , {new_title}")
 
-                try:
-                    output_file = open('output.txt', 'r')
-                    content_of_file = output_file.readlines()
-                    book_to_update = content_of_file[int(book_to_update) - 1]
+                return f"{book_to_update} has been changed to {new_author}, {new_title}"
 
-                finally:
-                    output_file.close()
-
-                try:
-                    output_file = open('output.txt', 'w')
-                    new_book_author = input("What is the author of the new book?:\n")
-                    new_book_title = input("What is the title of the new book?:\n")
-                    for line in content_of_file:
-                        if line != book_to_update:
-                            output_file.write(line)
-                        else:
-                            output_file.write(f"{new_book_author} , {new_book_title}")
-
-                finally:
-                    output_file.close()
-
-        except:
-            print(f"'{book_to_update}' is not a correct number")
-            update_book()
+        except ValueError:
+            return "NAN"
 
 
     def search_for_book(self, string_to_search):
@@ -101,7 +85,6 @@ class Library:
             output_file.close()
         print(*possible_matches, sep='\n')
 
-
-
 library = Library()
-print(library.delete_book(1))
+print(library.update_book(1, "Volture", "Candide"))
+
