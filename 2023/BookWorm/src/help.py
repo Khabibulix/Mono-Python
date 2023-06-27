@@ -14,3 +14,8 @@ MISSING_COMA_INPUT_MESSAGE = "Did you forgot to enter your book in this format?:
 
 BOOK_NOT_FOUND_MESSAGE = "Did not find your book, are you sure the number is correct?"
 
+BAD_FORMAT_FOR_UPDATE = "Please enter the book you want to update in this format: \n" \
+                        "Number of book, New_Author, New_Title \n" \
+                        "Ex: 1, Voltaire, Candide"
+
+BAD_NUMBER_FOR_BOOK = "Sorry but the number you enter didn't work..."
