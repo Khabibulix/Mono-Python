@@ -1,3 +1,8 @@
+import re
+
+REGEX_PATTERN_FOR_UPDATE = "[a-zA-Z]+[,].[a-zA-Z]+[,].[a-zA-Z]+"
+# Test, test, test passing. Test test test failing.
+
 
 class Library:
     def adding_book(self, str_to_split):
@@ -41,35 +46,37 @@ class Library:
             return "NAN"
 
 
-    def update_book(self, number_of_book_to_update, new_author, new_title):
-        """
-        Etapes pour cette méthode:
-        1) on récup le numéro du livre à éditer
-        2) on vérifie qu'il est valide
-        3) on demande le nouvel auteur puis le nouveau titre
-        4) on update le tout puis on l'affiche
-        """
+    def update_book(self, str_to_split):
 
-        try:
-            if int(number_of_book_to_update):
+        if len(re.findall(REGEX_PATTERN_FOR_UPDATE, str_to_split)) > 0:
+            book = str_to_split.split(",")
+            number_of_book_to_update = book[0]
+            new_author = book[1]
+            new_title = book[2]
 
-                file = open('output.txt', 'r+').readlines()
-                book_to_update = file[int(number_of_book_to_update) - 1]
-                print("BEFORE:", file)
+            try:
+                if int(number_of_book_to_update):
 
-                output_file = open('output.txt', 'w')
+                    file = open('output.txt', 'r+').readlines()
+                    book_to_update = file[int(number_of_book_to_update) - 1]
+                    print("BEFORE:", file)
 
-                for line in file:
+                    output_file = open('output.txt', 'w')
 
-                    if line != book_to_update:
-                        output_file.write(line)
-                    else:
-                        output_file.write(f"{new_author} , {new_title}")
+                    for line in file:
 
-                return f"{book_to_update} has been changed to {new_author}, {new_title}"
+                        if line != book_to_update:
+                            output_file.write(line)
+                        else:
+                            output_file.write(f"{new_author} , {new_title}, \n")
 
-        except ValueError:
-            return "NAN"
+                    return f"{book_to_update} has been changed to {new_author}, {new_title}"
+
+            except ValueError:
+                return "NAN"
+
+        else:
+            return "Bad format"
 
 
     def search_for_book(self, string_to_search):
@@ -85,6 +92,4 @@ class Library:
             output_file.close()
         print(*possible_matches, sep='\n')
 
-library = Library()
-print(library.update_book(1, "Volture", "Candide"))
 
