@@ -9,7 +9,7 @@ TOTAL_WIDTH_OF_WINDOW = 800
 TOTAL_HEIGHT_OF_WINDOW = 400
 MARGIN_LEFT = 15
 WIDTH_FOR_RIGHT_CONTAINER = 420
-# WindowW - LeftContainerW - InitialPlacement * 4
+# WindowW - LeftContainerW - InitialPlacement
 X_POS_FOR_RIGHT_CONTAINER = TOTAL_WIDTH_OF_WINDOW - 320 - 110
 BUTTON_WIDTH = 10
 BUTTON_HEIGHT = 1
@@ -57,6 +57,7 @@ class Application(Tk):
             button.padx = 1
             button.grid(row=0, column=index)
 
+
         #Functions for keybinding
         def click_on_adding_button(self):
             checking_input = library.adding_book(search_bar.get())
@@ -71,7 +72,7 @@ class Application(Tk):
                     right_container_label.config(text=MISSING_COMA_INPUT_MESSAGE)
 
                 #Book title or author is not correct
-                if checking_input == "Nope":
+                elif checking_input == "Nope":
                     right_container_label.config(text=INCORRECT_INPUT_MESSAGE)
 
                 else:
@@ -79,27 +80,47 @@ class Application(Tk):
                     left_container_label.config(text=open('output.txt', 'r').read())
 
         def click_on_deleting_button(self):
-            checking_input = library.delete_book((int(search_bar.get())))
+            try:
+                checking_input = library.delete_book((int(search_bar.get())))
+
+                if len(search_bar.get()) == 0:
+                    right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
+
+                else:
+                    if checking_input == "Number incorrect":
+                        right_container_label.config(text=BOOK_NOT_FOUND_MESSAGE)
+
+                    if checking_input == "NAN":
+                        right_container_label.config(text=NOT_A_NUMBER_MESSAGE)
+
+                    else:
+                        right_container_label.config(text=checking_input)
+                        left_container_label.config(text=open('output.txt', 'r').read())
+
+            except ValueError:
+                right_container_label.config(text=NOT_A_NUMBER_MESSAGE)
+
+        def click_on_updating_button(self):
+            checking_input = library.update_book(search_bar.get())
 
             if len(search_bar.get()) == 0:
                 right_container_label.config(text=EMPTY_INPUT_BOX_MESSAGE)
 
             else:
-                if checking_input == "Number incorrect":
-                    right_container_label.config(text=BOOK_NOT_FOUND_MESSAGE)
+                if checking_input == "Bad format":
+                    right_container_label.config(text=BAD_FORMAT_FOR_UPDATE)
 
-                if checking_input == "NAN":
-                    right_container_label.config(text=NOT_A_NUMBER_MESSAGE)
+                elif checking_input == "NAN" or checking_input == "Too large":
+                    right_container_label.config(text=BAD_NUMBER_FOR_BOOK)
 
                 else:
                     right_container_label.config(text=checking_input)
                     left_container_label.config(text=open('output.txt', 'r').read())
 
-
-
         # Keybinding
         add_button.bind('<Button-1>', click_on_adding_button)
         delete_button.bind('<Button-1>', click_on_deleting_button)
+        update_button.bind('<Button-1>', click_on_updating_button)
 
 
         #Window config
