@@ -1,7 +1,7 @@
 import re
 
-REGEX_PATTERN_FOR_UPDATE = "[a-zA-Z]+[,].[a-zA-Z]+[,].[a-zA-Z]+"
-# Test, test, test passing. Test test test failing.
+REGEX_PATTERN_FOR_UPDATE = "\d[,][\sa-zA-Z]+.[a-zA-Z\s]+[,].[a-zA-Z\s]+"
+# 1, Emile Zola, Nana OR 3, William Shakespeare, King Lear
 
 
 class Library:
@@ -48,6 +48,8 @@ class Library:
 
     def update_book(self, str_to_split):
 
+        len_of_file = len(open("output.txt", 'r+').readlines())
+
         if len(re.findall(REGEX_PATTERN_FOR_UPDATE, str_to_split)) > 0:
             book = str_to_split.split(",")
             number_of_book_to_update = book[0]
@@ -56,22 +58,25 @@ class Library:
 
             try:
                 if int(number_of_book_to_update):
+                    if int(number_of_book_to_update) <= len_of_file:
 
-                    file = open('output.txt', 'r+').readlines()
-                    book_to_update = file[int(number_of_book_to_update) - 1]
-                    print("BEFORE:", file)
+                        file = open('output.txt', 'r+').readlines()
+                        book_to_update = file[int(number_of_book_to_update) - 1]
+                        print("BEFORE:", file)
 
-                    output_file = open('output.txt', 'w')
+                        output_file = open('output.txt', 'w')
 
-                    for line in file:
+                        for line in file:
 
-                        if line != book_to_update:
-                            output_file.write(line)
-                        else:
-                            output_file.write(f"{new_author} , {new_title}, \n")
+                            if line != book_to_update:
+                                output_file.write(line)
+                            else:
+                                output_file.write(f"{new_author} , {new_title}, \n")
 
-                    return f"{book_to_update} has been changed to {new_author}, {new_title}"
+                        return f"{book_to_update} has been changed to {new_author}, {new_title}"
 
+                    else:
+                        return "Too large"
             except ValueError:
                 return "NAN"
 
@@ -91,5 +96,11 @@ class Library:
         finally:
             output_file.close()
         print(*possible_matches, sep='\n')
+
+test_1 = "1,Emile Zola,Nana"
+test_2 = "3, William Shakespeare, King Lear"
+library = Library()
+print(library.update_book(test_1))
+print(library.update_book(test_2))
 
 
