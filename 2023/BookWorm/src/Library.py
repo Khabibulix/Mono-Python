@@ -62,8 +62,6 @@ class Library:
 
                         file = open('output.txt', 'r+').readlines()
                         book_to_update = file[int(number_of_book_to_update) - 1]
-                        print("BEFORE:", file)
-
                         output_file = open('output.txt', 'w')
 
                         for line in file:
@@ -71,7 +69,7 @@ class Library:
                             if line != book_to_update:
                                 output_file.write(line)
                             else:
-                                output_file.write(f"{new_author} , {new_title}, \n")
+                                output_file.write(f"{new_author.strip()} , {new_title.strip()} \n")
 
                         return f"{book_to_update} has been changed to {new_author}, {new_title}"
 
@@ -82,25 +80,3 @@ class Library:
 
         else:
             return "Bad format"
-
-
-    def search_for_book(self, string_to_search):
-        possible_matches = []
-
-        try:
-            output_file = open('output.txt', 'r')
-            for line in output_file.readlines():
-                if string_to_search in line:
-                    possible_matches.append(line)
-
-        finally:
-            output_file.close()
-        print(*possible_matches, sep='\n')
-
-test_1 = "1,Emile Zola,Nana"
-test_2 = "3, William Shakespeare, King Lear"
-library = Library()
-print(library.update_book(test_1))
-print(library.update_book(test_2))
-
-

@@ -11,7 +11,7 @@ MARGIN_LEFT = 15
 WIDTH_FOR_RIGHT_CONTAINER = 420
 # WindowW - LeftContainerW - InitialPlacement
 X_POS_FOR_RIGHT_CONTAINER = TOTAL_WIDTH_OF_WINDOW - 320 - 110
-BUTTON_WIDTH = 10
+BUTTON_WIDTH = 13
 BUTTON_HEIGHT = 1
 
 class Application(Tk):
@@ -47,11 +47,10 @@ class Application(Tk):
         #Buttons
         add_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Add")
         delete_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Delete")
-        search_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Search")
         update_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Update")
         quit_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Quit")
 
-        buttons_list = [add_button, delete_button, search_button, update_button, quit_button]
+        buttons_list = [add_button, delete_button, update_button, quit_button]
 
         for index, button in enumerate(buttons_list):
             button.padx = 1
@@ -117,10 +116,13 @@ class Application(Tk):
                     right_container_label.config(text=checking_input)
                     left_container_label.config(text=open('output.txt', 'r').read())
 
+        def click_on_quit_button(self):
+            pass
+
         # Keybinding
         add_button.bind('<Button-1>', click_on_adding_button)
         delete_button.bind('<Button-1>', click_on_deleting_button)
-        update_button.bind('<Button-1>', click_on_updating_button)
+        quit_button.bind('<Button-1>', click_on_quit_button)
 
 
         #Window config
