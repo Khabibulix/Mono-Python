@@ -6,10 +6,9 @@ My plan at the 31/05/2023: <br>
 <pre>
   - [x] Make a really simple console app
   - [x] Make a I/O working app
-  - [] Make a GUI to make it easier, perhaps with Tkinter, as i already know that
+  - [x] Make a GUI to make it easier, perhaps with Tkinter, as i already know that
   - [] Connect it to a database using an API
   - [] Adding backend to share library
-  - [] Go cloud?
 </pre>
 
 For this project i'll be using Python, Tkinter and Django.
