@@ -1,7 +1,8 @@
 MAIN_HELP_MESSAGE = "Welcome to BookWorm. \n" \
                     " This application is designed to manage your library with ease. " \
                     "\nTo add a book, enter it in this format: Author, Title\n" \
-                    "To update the first book, enter '1, New-author, New-title'"
+                    "To update the first book, enter '1, New-author, New-title'\n" \
+                    "To delete the first book, enter '1'"
 
 EMPTY_INPUT_BOX_MESSAGE = "Did you forgot to enter text in the text box?"
 

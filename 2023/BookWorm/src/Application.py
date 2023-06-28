@@ -48,7 +48,7 @@ class Application(Tk):
         add_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Add")
         delete_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Delete")
         update_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Update")
-        quit_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Quit")
+        quit_button = Button(right_button_container,width=BUTTON_WIDTH,height=BUTTON_HEIGHT,text="Quit",command=self.destroy)
 
         buttons_list = [add_button, delete_button, update_button, quit_button]
 
@@ -116,13 +116,10 @@ class Application(Tk):
                     right_container_label.config(text=checking_input)
                     left_container_label.config(text=open('output.txt', 'r').read())
 
-        def click_on_quit_button(self):
-            pass
-
         # Keybinding
         add_button.bind('<Button-1>', click_on_adding_button)
         delete_button.bind('<Button-1>', click_on_deleting_button)
-        quit_button.bind('<Button-1>', click_on_quit_button)
+        update_button.bind('<Button-1>', click_on_updating_button)
 
 
         #Window config
