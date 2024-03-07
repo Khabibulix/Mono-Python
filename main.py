@@ -19,29 +19,38 @@ logging.basicConfig(
 
 budget_for_month = Budget(1000)
 
+def cleaning_comas(string):
+    """ 
+    Replace "," by "." to make float conversion later on
+    @param (string) string (Input that will be cleaned)
+    @return (string) string
+    
+    @input 12,4
+    @output 12.4
+    """
+    if isinstance(string, str) and "," in string:
+        coma_idx = str(string).find(",")
+        string.replace(",", "")   
+        return str(string[:coma_idx]) + "." + str(string[coma_idx + 1:])
+
+
 def asking_for_expense_input(): 
     """ 
     Contains all logic to add input for the function Budget.add_expense
     """   
     input_expense = input("Please enter the amount of the expense: ")
-    
-    #12,4 is now 12.4
-    if "," in str(input_expense):
-        coma_idx = str(input_expense).find(",")
-        str(input_expense).replace(",", "")   
-        input_expense = str(input_expense[:coma_idx]) + "." + str(input_expense[coma_idx + 1:])
-
+    input_cleaned = cleaning_comas(input_expense)  
     input_description = input("\nPlease enter the description for the expense, now: ")
     
     #TODO Comportement naze ici, il faudrait checker la validité du float avant
     try:
-        float(input_expense)
-        budget_for_month.add_expense(input_description, input_expense)
+        budget_for_month.add_expense(input_description, float(input_cleaned))
     except ValueError as te:
         #logging.error("User entered a shitty input", te)
         print("Input for expense doesn't seem valid...")
             
-
+def does_file_exists(file):
+    pass
 
 def main():
     
