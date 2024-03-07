@@ -10,7 +10,8 @@ class BudgetTests(unittest.TestCase):
 
     def test_add_expense(self):
         budget = Budget(1000)
-        with open("expenses.txt", "r") as file:
+        #TODO Attention si fichier non existant
+        with open("./output_files/expenses.txt", "r") as file:
             current_length_of_expenses = len(file.readlines())
             budget.add_expense("test_expense", 25)
             self.assertGreater(len(file.readlines()), current_length_of_expenses)

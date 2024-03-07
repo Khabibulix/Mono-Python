@@ -1,11 +1,22 @@
 from Budget import Budget
-import sys, os
+import os, sys, logging
+
+logging.basicConfig(
+    level=logging.WARNING,
+    filename="main.log",
+    filemode="w",
+    format="%(asctime)s %(levelname)s %(message)s"
+    )
+
+
 #____________________________________________________________
 # #TODO 
 # Faire le choix 3
 # Rajouter tests
+# AJouter fonction helper qui checke l'existence de expenses.txt, sinon le créer.
 # Rajouter data visualisation avec un camembert par exemple
 #____________________________________________________________
+
 budget_for_month = Budget(1000)
 
 def asking_for_expense_input(): 
@@ -16,16 +27,18 @@ def asking_for_expense_input():
     
     #12,4 is now 12.4
     if "," in str(input_expense):
-        index_of_coma = str(input_expense).find(",")
+        coma_idx = str(input_expense).find(",")
         str(input_expense).replace(",", "")   
-        input_expense = str(input_expense[:index_of_coma]) + "." + str(input_expense[index_of_coma + 1:])
+        input_expense = str(input_expense[:coma_idx]) + "." + str(input_expense[coma_idx + 1:])
 
     input_description = input("\nPlease enter the description for the expense, now: ")
     
+    #TODO Comportement naze ici, il faudrait checker la validité du float avant
     try:
         float(input_expense)
         budget_for_month.add_expense(input_description, input_expense)
     except ValueError as te:
+        #logging.error("User entered a shitty input", te)
         print("Input for expense doesn't seem valid...")
             
 
@@ -62,6 +75,7 @@ def main():
                     print("The input must end by .txt")
 
             while True:
+                #TODO Gérer logique pour éviter input foireux ou négatif
                 new_initial_budget = input("Enter the new initial budget: ")
                 budget_of_the_month = Budget(new_initial_budget)
                 try:
