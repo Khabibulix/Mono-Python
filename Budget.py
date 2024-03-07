@@ -5,43 +5,47 @@ class Budget:
     """
     def __init__(self, initial_budget):
         self.initial_budget = initial_budget
-        self.expenses = []
     
     
-    def add_expense(self, expense, expense_description):
+    def add_expense(self, expense_description, expense):
         """
         Add expense to expenses list
         @param: (float) expense
         @param: (string) expense_description
         """
-        #TODO List length doesnt change, FIX
-        return self.expenses.append({"expense":expense, "expense_description":expense_description})
+        with open("expenses.txt", "a") as file:
+            file.write(expense_description + ":" + str(expense) + "\n")
     
     def get_expenses(self):
         """
-        Standard getter.
+        Retrieve data from file
         @return (list) expenses
         """
-        if len(self.expenses) == 0:
-            print("You have currently no expenses!")
-        else:
-            return self.expenses
-    
-    def get_representation_for_all_expenses(self):
-        """
-        Nicer print, uses self.get_expenses datas.
-        """
-        for item in self.get_expenses():
-            print(f"You bought some {item["expense_description"]} for {item["expense"]} euros!")
-    
+        with open("expenses.txt", "r") as file:
+            if file == "":
+                print("You have currently no expenses!")
+            else:
+                return file.readlines()
+
     def get_budget_remaining(self):
         """
         Performs calculation on self.initial_budget.
         @return (float) budget_total 
         """
         budget_total = 0
-        for expense in self.expenses:
-            budget_total += expense["expense"]
+        for expense in self.get_expenses():
+            budget_total += int(expense.split(":")[1])
         return budget_total
+    
+    def clear_budget(self):
+        """ 
+        Erases the content of the file, will be useful for creating new budget
+        """
+        open("expenses.txt","w").close()
 
 
+budget = Budget(1000)
+budget.add_expense(expense_description="Cheese", expense=51)
+print(budget.get_expenses())
+budget.clear_budget()
+print(budget.get_expenses())
