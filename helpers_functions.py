@@ -66,20 +66,18 @@ def creating_new_budget(file_name):
     @param (String) file_name (User input)
     """
 
-    if helpers.is_string_a_valid_txt_file_name(file_name):
+    if is_string_a_valid_txt_file_name(file_name):
 
-        if helpers.checking_if_expenses_file_exists_in_output_files:
-            helpers.rename_file(file_name)
-            helpers.create_file()
-            break
+        if checking_if_expenses_file_exists_in_output_files:
+            rename_file(file_name)
+            create_file()
 
         else:
-            helpers.create_file(file_name)
-            break
+            create_file(file_name)
 
     else:
-        file_name = helpers.modifying_file_name_into_valid_text_file_name(file_name)
-        recreating_new_budget(file_name)
+        file_name = modifying_file_name_into_valid_text_file_name(file_name)
+        creating_new_budget(file_name)
 
 #TODO Fonction entière à revoir!
 def asking_for_expense_input(): 
