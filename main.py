@@ -1,5 +1,5 @@
 from Budget import Budget
-from helpers_functions import cleaning_comas, is_file_a_valid_txt_file, rename_file
+import helpers_functions as helpers
 import os, sys, logging
 
 logging.basicConfig(
@@ -14,29 +14,14 @@ logging.basicConfig(
 # #TODO 
 # Faire le choix 3
 # Rajouter tests
-# AJouter fonction helper qui checke l'existence de expenses.txt, sinon le créer.
 # Rajouter data visualisation avec un camembert par exemple
 # Le budget restant ne doit pas être négatif, gérer ce cas!
+# Rajouter une helper function qui checke les strings pour éviter pb de paths
 #____________________________________________________________
 
-budget_for_month = Budget(1000)
+budget_for_month = Budget(1000)       
 
 
-def asking_for_expense_input(): 
-    """ 
-    Contains all logic to add input for the function Budget.add_expense
-    """   
-    input_expense = input("Please enter the amount of the expense: ")
-    input_cleaned = cleaning_comas(input_expense)  
-    input_description = input("\nPlease enter the description for the expense, now: ")
-    
-    #TODO Comportement naze ici, il faudrait checker la validité du float avant
-    try:
-        budget_for_month.add_expense(input_description, float(input_cleaned))
-    except ValueError as te:
-        #logging.error("User entered a shitty input", te)
-        print("Input for expense doesn't seem valid...")
-            
 
 def main():
     
@@ -46,32 +31,21 @@ def main():
         input_instruction_choice = input("\nWhat do you want to do?\n Press 1 to add an expense\n Press 2 to see all expenses for the month\n Press 3 to begin a new budget\n Press 4 to quit\n")
         
         if input_instruction_choice == "1":
-            asking_for_expense_input()
+            helpers.asking_for_expense_input()
            
         elif input_instruction_choice == "2":
             print(budget_for_month.get_expenses())
+            #TODO Attention au négatif ici!
             print(f"You have {budget_for_month.get_budget_remaining()} euros left!")
         
         elif input_instruction_choice == "3":
-            """
-            Ici on veut:
-            1) sauvegarder le fichier texte/csv ailleurs
-            2) supprimer fichier texte pour repartir à zéro
-            3) redéfinir un budget initial
-            """
-            while True:
-                new_file_name = input("Please enter the name of the new budget text file: ")
-                #TODO Checker si le file expenses.txt existe aussi!
-                if is_file_a_valid_txt_file:
-                    rename_file(new_file_name)
-                    #Recreating the file here
-                    open("./output_files/expenses.txt").close()
-                    break
-                else:
-                    print("The input must end by .txt")
+            new_file_name = input("Please enter the name of the new budget text file: ")
+            helpers.creating_new_budget(new_file_name)                
+                
 
             while True:
                 #TODO Gérer logique pour éviter input foireux ou négatif
+                #TODO Boucle dans boucle, à chier, go fonction récursive
                 new_initial_budget = input("Enter the new initial budget: ")
                 budget_of_the_month = Budget(new_initial_budget)
                 try:

@@ -15,12 +15,22 @@ def cleaning_comas(string):
         return str(string[:coma_idx]) + "." + str(string[coma_idx + 1:])
 
 
-def is_file_a_valid_txt_file(file):
+def is_string_a_valid_txt_file_name(file):
     """
     @param (String) file
     @return (Boolean) True si file finit par ".txt"
     """
-    return new_file_name[-4:] == ".txt"
+    return file[-4:] == ".txt"
+
+def modifying_file_name_into_valid_text_file_name(file):
+    """ 
+    @param (String) file (potential invalid file name for text)
+    @return (String) file (valid file name)
+    @input "test"
+    @output "test.txt"
+    """
+    return file + ".txt"
+
 
 
 def checking_if_expenses_file_exists_in_output_files():
@@ -38,3 +48,52 @@ def rename_file(new_name):
     """
     os.rename("./output_files/expenses.txt", "./output_files/" + new_name)
 
+
+def create_file(new_name="expenses.txt"):
+    """ 
+    Recreate an output file using input name
+    @param (String) new_name (User input name for file)
+    """
+    file = open("./output_files/" + new_name, "w").close()
+
+
+def creating_new_budget(file_name):  
+    """
+    Using user input we recreate a new budget file:
+        1) If the file_name is not a valid text file ("text_file.txt"), we change it in adding extension
+        2) If expenses.txt exists, we rename it and we recreate it
+        3) If it doesn't exists, we create a file which name is file_name
+    @param (String) file_name (User input)
+    """
+
+    if helpers.is_string_a_valid_txt_file_name(file_name):
+
+        if helpers.checking_if_expenses_file_exists_in_output_files:
+            helpers.rename_file(file_name)
+            helpers.create_file()
+            break
+
+        else:
+            helpers.create_file(file_name)
+            break
+
+    else:
+        file_name = helpers.modifying_file_name_into_valid_text_file_name(file_name)
+        recreating_new_budget(file_name)
+
+#TODO Fonction entière à revoir!
+def asking_for_expense_input(): 
+    """ 
+    Contains all logic to add input for the function Budget.add_expense
+    """   
+    input_expense = input("Please enter the amount of the expense: ")
+    input_cleaned = helpers.cleaning_comas(input_expense)  
+    
+    input_description = input("\nPlease enter the description for the expense, now: ")
+    
+    #TODO Comportement naze ici, il faudrait checker la validité du float avant
+    try:
+        budget_for_month.add_expense(input_description, float(input_cleaned))
+    except ValueError as te:
+        #logging.error("User entered a shitty input", te)
+        print("Input for expense doesn't seem valid...")
