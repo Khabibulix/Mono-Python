@@ -10,21 +10,25 @@ class BudgetTests(unittest.TestCase):
 
     def test_add_expense(self):
         budget = Budget(1000)
-        current_length_of_expenses = len(budget.get_expenses())
-        budget.add_expense(25, "test_expense")
-        self.assertTrue(len(budget.get_expenses()), current_length_of_expenses + 1)
-    
+        with open("expenses.txt", "r") as file:
+            current_length_of_expenses = len(file.readlines())
+            budget.add_expense("test_expense", 25)
+            self.assertGreater(len(file.readlines()), current_length_of_expenses)
+            budget.clear_budget()
+
     def test_get_expenses(self):
         budget = Budget(1000)
-        budget.add_expense(25, "test_expense")
+        budget.add_expense("test_expense", 25)
         self.assertIsInstance(budget.get_expenses(), list)
-    
+
+
     def test_get_budget_remaining_with_two_correct_expenses(self):
         budget = Budget(1000)
-        budget.add_expense(79.0, "Telephone")
-        budget.add_expense(279.0, "Switch")
+        budget.add_expense("Telephone", 79.0)
+        budget.add_expense("Switch", 279.0)
         self.assertEqual(budget.get_budget_remaining(), 358.0)
-
+        
    
-
+budget = Budget(1000)
+budget.clear_budget()
 unittest.main()

@@ -34,7 +34,8 @@ class Budget:
         """
         budget_total = 0
         for expense in self.get_expenses():
-            budget_total += int(expense.split(":")[1])
+            #cf forum.checkmk.com/t/internal-error-invalid-literal-for-int-with-base-10-when-opening-main-dashboard/31567/18
+            budget_total += int(float(expense.split(":")[1]))
         return budget_total
     
     def clear_budget(self):
@@ -46,6 +47,6 @@ class Budget:
 
 budget = Budget(1000)
 budget.add_expense(expense_description="Cheese", expense=51)
-print(budget.get_expenses())
-budget.clear_budget()
-print(budget.get_expenses())
+budget.get_budget_remaining()
+
+
