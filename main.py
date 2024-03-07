@@ -1,4 +1,5 @@
 from Budget import Budget
+from helpers_functions import cleaning_comas, is_file_a_valid_txt_file, rename_file
 import os, sys, logging
 
 logging.basicConfig(
@@ -15,23 +16,10 @@ logging.basicConfig(
 # Rajouter tests
 # AJouter fonction helper qui checke l'existence de expenses.txt, sinon le créer.
 # Rajouter data visualisation avec un camembert par exemple
+# Le budget restant ne doit pas être négatif, gérer ce cas!
 #____________________________________________________________
 
 budget_for_month = Budget(1000)
-
-def cleaning_comas(string):
-    """ 
-    Replace "," by "." to make float conversion later on
-    @param (string) string (Input that will be cleaned)
-    @return (string) string
-    
-    @input 12,4
-    @output 12.4
-    """
-    if isinstance(string, str) and "," in string:
-        coma_idx = str(string).find(",")
-        string.replace(",", "")   
-        return str(string[:coma_idx]) + "." + str(string[coma_idx + 1:])
 
 
 def asking_for_expense_input(): 
@@ -49,8 +37,6 @@ def asking_for_expense_input():
         #logging.error("User entered a shitty input", te)
         print("Input for expense doesn't seem valid...")
             
-def does_file_exists(file):
-    pass
 
 def main():
     
@@ -76,8 +62,9 @@ def main():
             while True:
                 new_file_name = input("Please enter the name of the new budget text file: ")
                 #TODO Checker si le file expenses.txt existe aussi!
-                if new_file_name[-4:] == ".txt":
-                    os.rename("./output_files/expenses.txt", "./output_files/" + new_file_name)
+                if is_file_a_valid_txt_file:
+                    rename_file(new_file_name)
+                    #Recreating the file here
                     open("./output_files/expenses.txt").close()
                     break
                 else:
