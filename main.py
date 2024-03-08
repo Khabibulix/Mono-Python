@@ -11,12 +11,13 @@ logging.basicConfig(
 
 
 #____________________________________________________________
-# #TODO 
-# Faire le choix 3
+# TODO 
 # Rajouter tests
 # Rajouter data visualisation avec un camembert par exemple
+# Le principe de la data viz serait le suivant, on veut voir combien de sous il nous reste sur le budget initial en mode joli
 # Le budget restant ne doit pas être négatif, gérer ce cas!
 # Rajouter une helper function qui checke les strings pour éviter pb de paths
+# Ajouter fichier texte direct à la classe pour éviter les outputs bizarres
 #____________________________________________________________
 
 budget_for_month = Budget(1000)       
