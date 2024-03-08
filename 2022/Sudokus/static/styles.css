@@ -1,0 +1,62 @@
+body {
+    background: #2596be;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+    border: 1px solid black;
+    border-radius: 6px;
+    height: 300px;
+    flex-direction: column;
+}
+
+
+#commands {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0;
+    width: 300px;
+    height: 10%;
+    border: 1px solid black;
+}
+
+#commands input {
+    margin-bottom: 5px;    
+    border-radius: 6px;
+}
+
+#commands input:hover {
+    background-color:grey ;
+    color: white;
+}
+
+#sudoku_container {
+    margin-top: 0;
+    width: 300px;
+    height: 90%;
+    background-color: grey;
+    color: white;
+}
+
+#sudoku {
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+
+.element input{
+    width: 15px;
+    text-align: center;
+}
+
+.element input:focus{
+    border: 1px solid black;
+    outline: none;
+}
