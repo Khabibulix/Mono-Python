@@ -14,14 +14,7 @@ def main():
     contact_list.add_contact("Arnaud Lefevre", "0690324356")
     contact_list.add_contact("Damien Dujardin", "0664234398")
     contact_list.add_contact("Arthur Delabranche", "0622435434")
-
-
-    print(contact_list.contacts)
-    print(contact_list.search_contact("Phil Lambert"))
-    contact_list.remove_contact("Phil Lambert")
-    print(contact_list.contacts)
-    contact_list.modify_contact("Damien Dujardin", "0722435364")
-    print(contact_list.contacts)
+    contact_list.save_contacts("contacts")
 
 
 

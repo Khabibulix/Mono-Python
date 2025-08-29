@@ -1,3 +1,5 @@
+import csv
+
 class ContactList:
     """
     Stocks contact in the form of a dictionary
@@ -44,7 +46,15 @@ class ContactList:
         """
         self.contacts[contact_name] = contact_number
 
-    def save_contacts(self):
-        pass
+    def save_contacts(self, file_name):
+        """Save contacts to csv file
+
+        :param file_name: Name of the file
+        :type file_name: string
+        """
+        with open(f"./output_files/{file_name}.csv", "w") as file:
+            writer = csv.DictWriter(file, self.contacts.keys())
+            writer.writeheader()
+            writer.writerow(self.contacts)
 
 
