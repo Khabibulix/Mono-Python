@@ -22,6 +22,10 @@ You can launch main.py using ```python main.py```, the other files will not disp
 
 After entering the app, you will need to add your first contact. To do it you will need to enter ```1 + Enter```. The numbers on the left are the commands, if you do not use them the application will loop. It that happens, please press ```Ctrl + C``` to exit or ```7 + Enter```.
 
+### After saving
+
+You will find your saved contact list in ```/output_files``` with the name you picked.
+
 ### How the input works
 
 You will read _full name_. Let me show you some examples.
