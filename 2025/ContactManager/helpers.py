@@ -22,3 +22,29 @@ def check_input_for_phone_number(number):
         return False
     else:
         return True
+
+def check_input_for_file_name(filename):
+    """User input checking for filename.
+    \n'file' is correct, extension is added after
+    Numbers are correct too, but no special characters except '-_'
+    Length should be less than 30 chracters
+
+    :param filename: Name choosed by the user
+    :type filename: str
+    """
+    chars_authorized = "-_"
+    for letter in filename:
+                if letter.isalpha():
+                    continue
+                elif letter.isascii() and letter not in chars_authorized:
+                    return False
+                else:
+                    return True
+
+    if filename.isalpha():
+        if len(filename) <= 30:
+            return True
+        else:
+            return False
+    else:
+        return False

@@ -6,12 +6,12 @@ Helper function pour valider num de tel?
 Tests avec unittest
 """
 from Contact import ContactList
-from helpers import check_input_for_name, check_input_for_phone_number
+from helpers import check_input_for_name, check_input_for_phone_number, check_input_for_file_name
 
 def main():
     contact_list = ContactList({})
     while True:
-        user_input = input("Welcome in Contact Manager, would you like to?\n" \
+        user_input = input("\nWelcome in Contact Manager, would you like to?\n" \
         "1) Add a contact?\n" \
         "2) Remove a contact?\n" \
         "3) Search a contact?\n" \
@@ -35,34 +35,63 @@ def main():
             case "2":
                 #Remove
                 while True:
-                    contact_name_to_remove = input("\nEnter the full name of the contact you want to delete: ")
-                    if check_input_for_name and contact_list.search_contact(contact_name_to_remove):
-                        contact_list.remove_contact(contact_name_to_remove)
-                        print(f"{contact_name_to_remove} successfully remove from contact list! \n")
+                    contact_to_remove = input("\nEnter the full name of the contact you want to delete: ")
+                    if check_input_for_name and contact_list.search_contact(contact_to_remove):
+                        contact_list.remove_contact(contact_to_remove)
+                        print(f"{contact_to_remove} successfully remove from contact list! \n")
                     elif len(contact_list.contacts) == 0:
                         print("Sorry but contact list is actually empty, please add contacts")                    
                     else:
                         print("Sorry the format is incorrect, we need the full name separated by a space")
             case "3":
-                #Search
-                pass
+                while True:
+                    contact_to_search = input("\nPlease enter the full name of the contact you want to search:")
+                    if check_input_for_name:
+                        fetched_contact = contact_list.search_contact(contact_to_search)
+                        if fetched_contact is None:
+                            print("No contact for this name, returning to menu")
+                        else:
+                            print(f"The number for {contact_to_search} is {fetched_contact}.")
+                        break
+                    else:
+                        print("Sorry the format is incorrect, we need the full name separated by a space")
             case "4":
                 #Modify
-                pass
+                while True:
+                    contact_to_modify = input("Please enter the full name of the contact you want to modify: ")
+                    if check_input_for_name(contact_to_modify):
+                        if contact_list.search_contact(contact_to_modify) is not None:
+                            new_number = input(f"Please enter the new number of {contact_to_modify}: ")
+                            if check_input_for_phone_number:
+                                contact_list.modify_contact(contact_to_modify, new_number)
+                                print(f"\nContact {contact_to_modify} succesfully modified")
+                                break
+                            else:
+                                print("Please enter a valid phone number: ")
+                        else:
+                            print("Hey, contact does not exist, maybe add it first.")
+                    else:
+                         print("Sorry the format is incorrect, we need the full name separated by a space")
             case "5":
                 #Save
-                pass
+                if len(contact_list.contacts) != 0:
+                    file_name = input("Please choose a name for the contact list:")
+                    if check_input_for_file_name:
+                        contact_list.save_contacts(file_name)
+                        print(f"{file_name}.csv was succesfully created")
+                else:
+                    print("\nImpossible to save an empty list")
+
             case "6":
                 #View
-                pass
+                if len(contact_list.contacts) == 0:
+                    print("\nContact list is empty for now")
+                else:
+                    print(contact_list.contacts)
             case "7":
                 #Quit
                 break
-    # contact_list.add_contact("Phil Lambert", "0622435434")
-    # contact_list.add_contact("Arnaud Lefevre", "0690324356")
-    # contact_list.add_contact("Damien Dujardin", "0664234398")
-    # contact_list.add_contact("Arthur Delabranche", "0622435434")
-    # contact_list.save_contacts("contacts")
+    
 
 
 
