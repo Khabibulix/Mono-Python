@@ -6,7 +6,7 @@ Helper function pour valider num de tel?
 Tests avec unittest
 """
 from Contact import ContactList
-from helpers import *
+from helpers import check_input_for_name, check_input_for_phone_number
 
 def main():
     contact_list = ContactList({})
@@ -26,11 +26,23 @@ def main():
                 while True:
                     contact_name_input_for_adding = input("Please enter the full name of the contact to add: ")
                     contact_number_input_for_adding = input("Please enter the number of the contact to add: ")
-                    contact_list.add_contact(contact_name_input_for_adding, contact_number_input_for_adding)
+                    if check_input_for_phone_number and check_input_for_name:
+                        contact_list.add_contact(contact_name_input_for_adding, contact_number_input_for_adding)
+                        print(f"{contact_name_input_for_adding} successfully added to contact list!\n")
+                        break
+                    else:
+                        print("Sorry the format is incorrect, we need the full name separated by a space and a valid phone number.")
             case "2":
                 #Remove
-                #Careful with empty?
-                pass
+                while True:
+                    contact_name_to_remove = input("\nEnter the full name of the contact you want to delete: ")
+                    if check_input_for_name and contact_list.search_contact(contact_name_to_remove):
+                        contact_list.remove_contact(contact_name_to_remove)
+                        print(f"{contact_name_to_remove} successfully remove from contact list! \n")
+                    elif len(contact_list.contacts) == 0:
+                        print("Sorry but contact list is actually empty, please add contacts")                    
+                    else:
+                        print("Sorry the format is incorrect, we need the full name separated by a space")
             case "3":
                 #Search
                 pass
