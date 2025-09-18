@@ -70,5 +70,31 @@ def are_all_link_available(link_array, base_url):
     if all(status_code_array):
         return True
 
+def output_text_to_file(content, file):
+    """Write content to a file
 
+    :param content: Data to write
+    :type content: str
+    :param file: Name of the file
+    :type file: str
+    """
+    with open(f"./output/{file}", "a") as f:
+        f.write(content)
+
+def crawl_site(url, links, deepness=1):
+    """Crawl the site recursively
+
+    :param url: Beginning of the crawling way
+    :type url: string
+    :param links: Future links to visit
+    :type links: array
+    :param soup: Current soup
+    :type soup: Beautiful soup generated object for HTML code
+    :param deepness: Deepness of web crawling, defaults to 1
+    :type deepness: int, optional
+    """
+    soup =  creating_soup(fetch_data_from_site(url))
+    output_text_to_file(f"{url} contains: \n {soup.prettify()}", "output.txt")
     
+    crawl_site(links.pop(), links)
+

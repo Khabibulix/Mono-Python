@@ -1,93 +1,0 @@
-
-
-
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-        <meta name="robots" content="index, follow, all" />
-		<link href="/nespas.css" type="text/css" rel="stylesheet">
-		<link href="/src/src/featherlight.css" type="text/css" rel="stylesheet">
-		<link href="/src/src/featherlight.gallery.css" type="text/css" rel="stylesheet">
-		<script src="/src/jquery-1.7.0.min.js"></script>
-		<script src="/src/src/featherlight.js" charset="UTF-8"></script>
-		<script src="/src/src/featherlight.gallery.js" charset="UTF-8"></script>
-		
-<title>[Nes Pas?] </title><meta name="keywords" content="nespas,jeu video,forum,retrogaming,retro,oldies,vintage"><meta name = "description" content="[Nes Pas?]  : DÃ©couvrez nos tests et dossiers de jeux vidÃ©os oldies."/>		
-	</head>
-
-	<body>
-	
-	
-		<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-11471854-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-
-		<div id="pagecontainer">
-			
-			<a href="/"><div style="
-		width:850px;
-		height:220px;
-		float:left;
-		background-image:url(/img/tops/00.png)">
-			
-			<div align = right style= 'width:600px; margin-left:243px; margin-top:23px; height:20px; padding:3px; float:left; color:#ffffff; font-weight:bold; font-size:20px;' id="slogan">
-				Bientôt disponible sur minitel.
-			</div>
-			<script>
-				function loadSlogan(){
-  $("#slogan").load("http://jenesuis.net/slogan.php");
-}
-setInterval(function(){loadSlogan()}, 10000);
-</script>
-			
-			</div></a>
-			
-			<div id="buttonzone">
-				<div id="buttonnews"><a class="liennews" href="/news"><span style="display:none">News</span></a></div>
-				<div id="buttoncritiques"><a class="liencritiques" href="/tests"><span style="display:none">Critiques</span></a></div>
-				<div id="buttondossiers"><a class="liendossiers" href="/dossiers"><span style="display:none">Dossiers</span></a></div>
-				<div id="buttonlexique"><a class="lienlexique" href="/lexique"><span style="display:none">Lexique</span></a></div>
-				<div id="buttongoodies"><a class="liengoodies" href="/goodies"><span style="display:none">Goodies</span></a></div>
-				<div id="buttonforum"><a class="lienforum" href="/forum/"><span style="display:none">Forum</span></a></div>
-				<div id="buttonabout"><a class="lienabout" href="/about"><span style="display:none">A Propos</span></a></div>
-								
-			</div>
-			<div id="middle1"></div>
-			<div id="middle"><div style='font-size:40px;font-weight:bold;margin:0px; margin-bottom:10px; width:800px; float:left;'>Le Manifeste du Oldies</div>
-
-<div id="contenu" align = justify><div align="center">Être Oldies, c'est aimer les pixels. Des gros, bien flashs et carrés;<br/>C'est voir la vie en 256 couleurs et ressembler à un sprite.<br/>Un pur oldies entend en midi. Ses tympans sont en 4 pistes à 2 voix<br/>Et il lit l'heure sur un "Game & Watch" Nintendo aux couleurs de "Donkey Kong".<br/><br/>Être Oldies, c'est penser à "Space Invader" quand on parle de la guerre en Irak<br/>Et visualiser "Streets Of Rage" quand Sarkozy combat l'insécurité.<br/>Sous le lit d'un Oldies traîne un vieux clavier Bontempi miteux,<br/>A coté d'une boite à chaussure remplie de cassettes de jeux Amstrad.<br/><br/>Être Oldies, c'est trouver que la Vectrex surpasse la X-Box en graphismes<br/>Et mettre comme sonnerie sur son portable la musique de "Zelda".<br/>Un Oldies aime les pads "à l'ancienne", avec leur croix directionnelle en forme de "+"<br/>Et coule dans le ciment les sticks analogiques de la Nintendo 64.<br/><br/>Être Oldies, c'est vomir sur les cartes-mémoires, qui en plus sont trop chères;<br/>C'est trouver inutile qu'une manette vibre quand on se prend un gnon.<br/>Le vrai Oldies ne comprend pas qu'un jeu puisse être sur autre chose qu'une cartouche<br/>Et il adore le stupide mécanisme de chargement des jeux Nes.<br/><br/>Être Oldies, c'est configurer Windows en 16 couleurs avec une résolution 640x480<br/>Et regarder pendant des heures le defragmenteur de disque en écoutant Francis Lalanne.<br/>Le puriste Oldies mate "Final Fantasy - Les Créatures de l'Esprit" en noir et blanc<br/>Et cache exprès sa télécommande pour faire comme-à-l'époque-où-y'en-avait-pas.<br/><br/>Être Oldies, c'est organiser des tournois à "Bomberman" en buvant du Tang;<br/>C'est écouter le thème de "Tetris" en Dolby Digital 5.1 sur sa sono Bang & Olufsen.<br/>Un Oldies pur et dur possède un hérisson appelé Sonic, une tortue nommée Bowser<br/>Et refuse de manger des escalopes aux "Toads" de paris.<br/><br/>Être Oldies, c'est trouver que sa voisine ressemble à Koopa Troopa;<br/>C'est vouloir appeler son fils Link et sa fille Daisy.<br/>Un Oldies déclenche exprès une inondation rien que pour téléphoner à son plombier<br/>En espérant qu'il s'appelle Mario et porte une grosse moustache.<br/><br/>Être Oldies, c'est vouer un culte à M. Wright, le manitou de "Sim City"<br/>Et avoir encore envie de se perfectionner à "Street Fighter 2".<br/>Un véritable Oldies joue à "Batman Returns" sur Game Gear<br/>Juste pour le plaisir de planer et se balancer avec le grappin.<br/><br/>Être Oldies, c'est vomir en jouant à "Doom" sur un rétroprojecteur 52"<br/>Après avoir ingurgité 12 litres de rhum, 5kg de bon-becs et des lasagnes à la bolognaises.<br/>Un Oldies pur souche dors avec une peluche Yoshi qu'il n'a pas lavée depuis 1992<br/>Et a deux queues de renard suspendues au rétroviseur de sa Traban (une vraie voiture Oldies).<br/><br/>Être Oldies, c'est se nourrir de fruits en faisant des petits bruits comme dans "Fruity Frank"<br/>Et porter un casque de moto avec une antenne en forme de boule rose.<br/>Le Oldies ne dort pas, il se "met en veille"<br/>Et son cerveau est un CPU de type 68000 cadencé à 7,670442Mhz.<br/><br/>Être Oldies, c'est apprendre à dessiner sur "Art Alive" et trouver ça beau.<br/>C'est élever des lemmings, leur teindre le poil en vert et leur tricoter des blouses bleues.<br/>Un bon vieux Oldies garde son premier Game Boy sous une cloche de verre pressurisée<br/>Et prie chaque soir devant l'autel où trône sa Coleco Vision.<br/><br/>Être Oldies, c'est jouer à "Soleil" juste pour faire tourner sur place son personnage<br/>Tout en écoutant le soundtrack intégral de "Chrono Trigger" sur son MD.<br/>Un Oldies extrémiste défèque sur la Game Cube et urine sur la PS2<br/>Et pense que la Jaguar est une putain de console (car comme tous les extrémistes, il est con)<br/><br/>Si être Oldies c'est ça,<br/>Alors j'en suis.</div><br/><div align="right"><i>Ghost_Rider</i></div></div></div>
-			
-			<div id="footer"></div>
-			
-		</div>
-		
-		
-	<script> 
-			$(document).ready(function(){
-				$('.gallery').featherlightGallery({
-					gallery: {
-						fadeIn: 300,
-						fadeOut: 300
-					},
-					openSpeed:    300,
-					closeSpeed:   300
-				});
-				$('.gallery2').featherlightGallery({
-					gallery: {
-						next: 'next Â»',
-						previous: 'Â« previous'
-					},
-					variant: 'featherlight-gallery2'
-				});
-			});
-		</script>
-	</body>
-</html>
