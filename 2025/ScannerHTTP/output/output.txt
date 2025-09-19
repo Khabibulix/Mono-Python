@@ -10,7 +10,7 @@ http://jenesuis.net contains:
 
 
 
-<title>[Nes Pas?] </title><meta content="nespas,jeu video,forum,retrogaming,retro,oldies,vintage" name="keywords"/><meta content="[Nes Pas?]  : Découvrez nos tests et dossiers de jeux vidéos oldies." name="description"/>
+<title>[Nes Pas?] </title><meta content="nespas,jeu video,forum,retrogaming,retro,oldies,vintage" name="keywords"/><meta content="[Nes Pas?]  : DÃ©couvrez nos tests et dossiers de jeux vidÃ©os oldies." name="description"/>
 </head>
 <body>
 
@@ -22,7 +22,7 @@ http://jenesuis.net contains:
 		float:left;
 		background-image:url(/img/tops/00.png)">
 <div align="right" id="slogan" style="width:600px; margin-left:243px; margin-top:23px; height:20px; padding:3px; float:left; color:#ffffff; font-weight:bold; font-size:20px;">
-				Le site qui prononce Voldemort en rigolant, m�me que c'est pas facile mais qu'on rigole bien.
+				Le site qui ne résiste pas à l'appel du Banga.
 			</div>
 
 </div></a>
@@ -37,7 +37,316 @@ http://jenesuis.net contains:
 </div>
 <div id="middle1"></div>
 <div id="middle"><div style="font-size:40px;font-weight:bold;margin:0px; margin-bottom:10px; width:800px; float:left;">Le Manifeste du Oldies</div>
-<div align="justify" id="contenu"><div align="center">�tre Oldies, c'est aimer les pixels. Des gros, bien flashs et carr�s;<br/>C'est voir la vie en 256 couleurs et ressembler � un sprite.<br/>Un pur oldies entend en midi. Ses tympans sont en 4 pistes � 2 voix<br/>Et il lit l'heure sur un "Game &amp; Watch" Nintendo aux couleurs de "Donkey Kong".<br/> <br/>�tre Oldies, c'est penser � "Space Invader" quand on parle de la guerre en Irak<br/>Et visualiser "Streets Of Rage" quand Sarkozy combat l'ins�curit�.<br/>Sous le lit d'un Oldies tra�ne un vieux clavier Bontempi miteux,<br/>A cot� d'une boite � chaussure remplie de cassettes de jeux Amstrad.<br/> <br/>�tre Oldies, c'est trouver que la Vectrex surpasse la X-Box en graphismes<br/>Et mettre comme sonnerie sur son portable la musique de "Zelda".<br/>Un Oldies aime les pads "� l'ancienne", avec leur croix directionnelle en forme de "+"<br/>Et coule dans le ciment les sticks analogiques de la Nintendo 64.<br/> <br/>�tre Oldies, c'est vomir sur les cartes-m�moires, qui en plus sont trop ch�res;<br/>C'est trouver inutile qu'une manette vibre quand on se prend un gnon.<br/>Le vrai Oldies ne comprend pas qu'un jeu puisse �tre sur autre chose qu'une cartouche<br/>Et il adore le stupide m�canisme de chargement des jeux Nes.<br/> <br/>�tre Oldies, c'est configurer Windows en 16 couleurs avec une r�solution 640x480<br/>Et regarder pendant des heures le defragmenteur de disque en �coutant Francis Lalanne.<br/>Le puriste Oldies mate "Final Fantasy - Les Cr�atures de l'Esprit" en noir et blanc<br/>Et cache expr�s sa t�l�commande pour faire comme-�-l'�poque-o�-y'en-avait-pas.<br/> <br/>�tre Oldies, c'est organiser des tournois � "Bomberman" en buvant du Tang;<br/>C'est �couter le th�me de "Tetris" en Dolby Digital 5.1 sur sa sono Bang &amp; Olufsen.<br/>Un Oldies pur et dur poss�de un h�risson appel� Sonic, une tortue nomm�e Bowser<br/>Et refuse de manger des escalopes aux "Toads" de paris.<br/> <br/>�tre Oldies, c'est trouver que sa voisine ressemble � Koopa Troopa;<br/>C'est vouloir appeler son fils Link et sa fille Daisy.<br/>Un Oldies d�clenche expr�s une inondation rien que pour t�l�phoner � son plombier<br/>En esp�rant qu'il s'appelle Mario et porte une grosse moustache.<br/> <br/>�tre Oldies, c'est vouer un culte � M. Wright, le manitou de "Sim City"<br/>Et avoir encore envie de se perfectionner � "Street Fighter 2".<br/>Un v�ritable Oldies joue � "Batman Returns" sur Game Gear<br/>Juste pour le plaisir de planer et se balancer avec le grappin.<br/> <br/>�tre Oldies, c'est vomir en jouant � "Doom" sur un r�troprojecteur 52"<br/>Apr�s avoir ingurgit� 12 litres de rhum, 5kg de bon-becs et des lasagnes � la bolognaises.<br/>Un Oldies pur souche dors avec une peluche Yoshi qu'il n'a pas lav�e depuis 1992<br/>Et a deux queues de renard suspendues au r�troviseur de sa Traban (une vraie voiture Oldies).<br/> <br/>�tre Oldies, c'est se nourrir de fruits en faisant des petits bruits comme dans "Fruity Frank"<br/>Et porter un casque de moto avec une antenne en forme de boule rose.<br/>Le Oldies ne dort pas, il se "met en veille"<br/>Et son cerveau est un CPU de type 68000 cadenc� � 7,670442Mhz.<br/> <br/>�tre Oldies, c'est apprendre � dessiner sur "Art Alive" et trouver �a beau.<br/>C'est �lever des lemmings, leur teindre le poil en vert et leur tricoter des blouses bleues.<br/>Un bon vieux Oldies garde son premier Game Boy sous une cloche de verre pressuris�e<br/>Et prie chaque soir devant l'autel o� tr�ne sa Coleco Vision.<br/> <br/>�tre Oldies, c'est jouer � "Soleil" juste pour faire tourner sur place son personnage<br/>Tout en �coutant le soundtrack int�gral de "Chrono Trigger" sur son MD.<br/>Un Oldies extr�miste d�f�que sur la Game Cube et urine sur la PS2<br/>Et pense que la Jaguar est une putain de console (car comme tous les extr�mistes, il est con)<br/> <br/>Si �tre Oldies c'est �a,<br/>Alors j'en suis.</div> <br/><div align="right"><i>Ghost_Rider</i></div></div></div>
+<div align="justify" id="contenu"><div align="center">Être Oldies, c'est aimer les pixels. Des gros, bien flashs et carrés;<br/>C'est voir la vie en 256 couleurs et ressembler à un sprite.<br/>Un pur oldies entend en midi. Ses tympans sont en 4 pistes à 2 voix<br/>Et il lit l'heure sur un "Game &amp; Watch" Nintendo aux couleurs de "Donkey Kong".<br/> <br/>Être Oldies, c'est penser à "Space Invader" quand on parle de la guerre en Irak<br/>Et visualiser "Streets Of Rage" quand Sarkozy combat l'insécurité.<br/>Sous le lit d'un Oldies traîne un vieux clavier Bontempi miteux,<br/>A coté d'une boite à chaussure remplie de cassettes de jeux Amstrad.<br/> <br/>Être Oldies, c'est trouver que la Vectrex surpasse la X-Box en graphismes<br/>Et mettre comme sonnerie sur son portable la musique de "Zelda".<br/>Un Oldies aime les pads "à l'ancienne", avec leur croix directionnelle en forme de "+"<br/>Et coule dans le ciment les sticks analogiques de la Nintendo 64.<br/> <br/>Être Oldies, c'est vomir sur les cartes-mémoires, qui en plus sont trop chères;<br/>C'est trouver inutile qu'une manette vibre quand on se prend un gnon.<br/>Le vrai Oldies ne comprend pas qu'un jeu puisse être sur autre chose qu'une cartouche<br/>Et il adore le stupide mécanisme de chargement des jeux Nes.<br/> <br/>Être Oldies, c'est configurer Windows en 16 couleurs avec une résolution 640x480<br/>Et regarder pendant des heures le defragmenteur de disque en écoutant Francis Lalanne.<br/>Le puriste Oldies mate "Final Fantasy - Les Créatures de l'Esprit" en noir et blanc<br/>Et cache exprès sa télécommande pour faire comme-à-l'époque-où-y'en-avait-pas.<br/> <br/>Être Oldies, c'est organiser des tournois à "Bomberman" en buvant du Tang;<br/>C'est écouter le thème de "Tetris" en Dolby Digital 5.1 sur sa sono Bang &amp; Olufsen.<br/>Un Oldies pur et dur possède un hérisson appelé Sonic, une tortue nommée Bowser<br/>Et refuse de manger des escalopes aux "Toads" de paris.<br/> <br/>Être Oldies, c'est trouver que sa voisine ressemble à Koopa Troopa;<br/>C'est vouloir appeler son fils Link et sa fille Daisy.<br/>Un Oldies déclenche exprès une inondation rien que pour téléphoner à son plombier<br/>En espérant qu'il s'appelle Mario et porte une grosse moustache.<br/> <br/>Être Oldies, c'est vouer un culte à M. Wright, le manitou de "Sim City"<br/>Et avoir encore envie de se perfectionner à "Street Fighter 2".<br/>Un véritable Oldies joue à "Batman Returns" sur Game Gear<br/>Juste pour le plaisir de planer et se balancer avec le grappin.<br/> <br/>Être Oldies, c'est vomir en jouant à "Doom" sur un rétroprojecteur 52"<br/>Après avoir ingurgité 12 litres de rhum, 5kg de bon-becs et des lasagnes à la bolognaises.<br/>Un Oldies pur souche dors avec une peluche Yoshi qu'il n'a pas lavée depuis 1992<br/>Et a deux queues de renard suspendues au rétroviseur de sa Traban (une vraie voiture Oldies).<br/> <br/>Être Oldies, c'est se nourrir de fruits en faisant des petits bruits comme dans "Fruity Frank"<br/>Et porter un casque de moto avec une antenne en forme de boule rose.<br/>Le Oldies ne dort pas, il se "met en veille"<br/>Et son cerveau est un CPU de type 68000 cadencé à 7,670442Mhz.<br/> <br/>Être Oldies, c'est apprendre à dessiner sur "Art Alive" et trouver ça beau.<br/>C'est élever des lemmings, leur teindre le poil en vert et leur tricoter des blouses bleues.<br/>Un bon vieux Oldies garde son premier Game Boy sous une cloche de verre pressurisée<br/>Et prie chaque soir devant l'autel où trône sa Coleco Vision.<br/> <br/>Être Oldies, c'est jouer à "Soleil" juste pour faire tourner sur place son personnage<br/>Tout en écoutant le soundtrack intégral de "Chrono Trigger" sur son MD.<br/>Un Oldies extrémiste défèque sur la Game Cube et urine sur la PS2<br/>Et pense que la Jaguar est une putain de console (car comme tous les extrémistes, il est con)<br/> <br/>Si être Oldies c'est ça,<br/>Alors j'en suis.</div> <br/><div align="right"><i>Ghost_Rider</i></div></div></div>
+<div id="footer"></div>
+</div>
+
+</body>
+</html>
+http://jenesuis.net/tests contains: 
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="index, follow, all" name="robots"/>
+<link href="/nespas.css" rel="stylesheet" type="text/css"/>
+<link href="/src/src/featherlight.css" rel="stylesheet" type="text/css"/>
+<link href="/src/src/featherlight.gallery.css" rel="stylesheet" type="text/css"/>
+
+
+
+<title>[Nes Pas?] Test</title><meta content="nespas,jeu video,forum,retrogaming,retro,oldies,vintage" name="keywords"/><meta content="" name="description"/>
+</head>
+<body>
+
+
+<div id="pagecontainer">
+<a href="/"><div style="
+		width:850px;
+		height:220px;
+		float:left;
+		background-image:url(/img/tops/00.png)">
+<div align="right" id="slogan" style="width:600px; margin-left:243px; margin-top:23px; height:20px; padding:3px; float:left; color:#ffffff; font-weight:bold; font-size:20px;">
+				Maintenant en Technicolor.
+			</div>
+
+</div></a>
+<div id="buttonzone">
+<div id="buttonnews"><a class="liennews" href="/news"><span style="display:none">News</span></a></div>
+<div id="buttoncritiques"><a class="liencritiques" href="/tests"><span style="display:none">Critiques</span></a></div>
+<div id="buttondossiers"><a class="liendossiers" href="/dossiers"><span style="display:none">Dossiers</span></a></div>
+<div id="buttonlexique"><a class="lienlexique" href="/lexique"><span style="display:none">Lexique</span></a></div>
+<div id="buttongoodies"><a class="liengoodies" href="/goodies"><span style="display:none">Goodies</span></a></div>
+<div id="buttonforum"><a class="lienforum" href="/forum/"><span style="display:none">Forum</span></a></div>
+<div id="buttonabout"><a class="lienabout" href="/about"><span style="display:none">A Propos</span></a></div>
+</div>
+<div id="middle1"></div>
+<div id="middle">
+<div style="font-size:40px;font-weight:bold;margin:0px; margin-bottom:10px; width:800px; float:left;">Critiques</div><div align="center" style="margin-bottom:20px;"><form action="/critiques/search" method="post">
+<input name="searchfield" placeholder="Rechercher" type="text"/>
+<input checked="" id="searchcrit" name="type" type="radio" value="critiques"/>
+<label for="seachrcrit">Jeu</label>
+<input id="seachauth" name="type" type="radio" value="about"/>
+<label for="seachcrit">Auteur</label><br/>
+<input name="Submit" type="submit" value="Rechercher"/>
+</form></div><div style="width:300px; height:80px; padding:5px; margin-left:100px; float:left; background-color:#dddddd;"><div style="background-image:url(/img/icons/amstrad.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/amstrad-cpc"><span style="display:none">Amstrad CPC</span></a>
+</div>
+<b>Amstrad CPC</b><br/><br/>
+<a href="/tests/amstrad-cpc">36 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px;  float:left; background-color:#cccccc;"><div style="background-image:url(/img/icons/atari.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/atari-st"><span style="display:none">Atari ST</span></a>
+</div>
+<b>Atari ST</b><br/><br/>
+<a href="/tests/atari-st">5 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px; margin-left:100px; float:left; background-color:#cccccc;"><div style="background-image:url(/img/icons/amiga.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/amiga"><span style="display:none">Commodore Amiga</span></a>
+</div>
+<b>Commodore Amiga</b><br/><br/>
+<a href="/tests/amiga">24 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px;  float:left; background-color:#dddddd;"><div style="background-image:url(/img/icons/msx.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/msx"><span style="display:none">MSX</span></a>
+</div>
+<b>MSX</b><br/><br/>
+<a href="/tests/msx">5 critiques</a>
+<br/><br/><a href="/tests/historique/msx">Historique</a> <i>par <a href="/about/pixxell">Pixxell</a></i></div><div style="width:300px; height:80px; padding:5px; margin-left:100px; float:left; background-color:#dddddd;"><div style="background-image:url(/img/icons/gameboy.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/game-boy"><span style="display:none">Nintendo Game Boy/Game Boy Color</span></a>
+</div>
+<b>Nintendo Game Boy/Game Boy Color</b><br/><br/>
+<a href="/tests/game-boy">97 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px;  float:left; background-color:#cccccc;"><div style="background-image:url(/img/icons/nes.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/nintendo-nes"><span style="display:none">Nintendo NES</span></a>
+</div>
+<b>Nintendo NES</b><br/><br/>
+<a href="/tests/nintendo-nes">159 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px; margin-left:100px; float:left; background-color:#cccccc;"><div style="background-image:url(/img/icons/snes.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/super-nintendo"><span style="display:none">Nintendo SNES</span></a>
+</div>
+<b>Nintendo SNES</b><br/><br/>
+<a href="/tests/super-nintendo">115 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px;  float:left; background-color:#dddddd;"><div style="background-image:url(/img/icons/virtualboy.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/virtual-boy"><span style="display:none">Nintendo Virtual Boy</span></a>
+</div>
+<b>Nintendo Virtual Boy</b><br/><br/>
+<a href="/tests/virtual-boy">11 critiques</a>
+<br/><br/><a href="/tests/historique/virtual-boy">Historique</a> <i>par <a href="/about/ecstazy">EcstazY</a></i></div><div style="width:300px; height:80px; padding:5px; margin-left:100px; float:left; background-color:#dddddd;"><div style="background-image:url(/img/icons/gamegear.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/game-gear"><span style="display:none">SEGA Game Gear</span></a>
+</div>
+<b>SEGA Game Gear</b><br/><br/>
+<a href="/tests/game-gear">37 critiques</a>
+<br/><br/><a href="/tests/historique/game-gear">Historique</a> <i>par <a href="/about/ecstazy">EcstazY</a></i></div><div style="width:300px; height:80px; padding:5px;  float:left; background-color:#cccccc;"><div style="background-image:url(/img/icons/mastersystem.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/master-system"><span style="display:none">SEGA Master System</span></a>
+</div>
+<b>SEGA Master System</b><br/><br/>
+<a href="/tests/master-system">23 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px; margin-left:100px; float:left; background-color:#cccccc;"><div style="background-image:url(/img/icons/megadrive.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/megadrive"><span style="display:none">SEGA Megadrive</span></a>
+</div>
+<b>SEGA Megadrive</b><br/><br/>
+<a href="/tests/megadrive">89 critiques</a>
+<br/><br/></div><div style="width:300px; height:80px; padding:5px;  float:left; background-color:#dddddd;"><div style="background-image:url(/img/icons/neogeo.png); width:80px; height:80px;float:left;margin-right:10px;">
+<a class="button80" href="/tests/neo-geo"><span style="display:none">SNK NeoGeo</span></a>
+</div>
+<b>SNK NeoGeo</b><br/><br/>
+<a href="/tests/neo-geo">6 critiques</a>
+<br/><br/><a href="/tests/historique/neo-geo">Historique</a> <i>par <a href="/about/wfh">WFH</a></i></div>
+</div>
+<div id="footer"></div>
+</div>
+
+</body>
+</html>
+http://jenesuis.net/tests/master-system contains: 
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="index, follow, all" name="robots"/>
+<link href="/nespas.css" rel="stylesheet" type="text/css"/>
+<link href="/src/src/featherlight.css" rel="stylesheet" type="text/css"/>
+<link href="/src/src/featherlight.gallery.css" rel="stylesheet" type="text/css"/>
+
+
+
+<title>[Nes Pas?] Test - SEGA Master System</title><meta content="SEGA Master System,test,critique,review,aperÃ§u,preview,nespas,jeu video,forum,retrogaming,retro,oldies,vintage" name="keywords"/><meta content="[Nes Pas?] Test - SEGA Master System : DÃ©couvrez nos tests de jeux vidÃ©os oldies sur SEGA Master System." name="description"/>
+</head>
+<body>
+
+
+<div id="pagecontainer">
+<a href="/"><div style="
+		width:850px;
+		height:220px;
+		float:left;
+		background-image:url(/img/tops/00.png)">
+<div align="right" id="slogan" style="width:600px; margin-left:243px; margin-top:23px; height:20px; padding:3px; float:left; color:#ffffff; font-weight:bold; font-size:20px;">
+				Le site qui connait le nom de famille de Jules-de-chez-Smith-en-face.
+			</div>
+
+</div></a>
+<div id="buttonzone">
+<div id="buttonnews"><a class="liennews" href="/news"><span style="display:none">News</span></a></div>
+<div id="buttoncritiques"><a class="liencritiques" href="/tests"><span style="display:none">Critiques</span></a></div>
+<div id="buttondossiers"><a class="liendossiers" href="/dossiers"><span style="display:none">Dossiers</span></a></div>
+<div id="buttonlexique"><a class="lienlexique" href="/lexique"><span style="display:none">Lexique</span></a></div>
+<div id="buttongoodies"><a class="liengoodies" href="/goodies"><span style="display:none">Goodies</span></a></div>
+<div id="buttonforum"><a class="lienforum" href="/forum/"><span style="display:none">Forum</span></a></div>
+<div id="buttonabout"><a class="lienabout" href="/about"><span style="display:none">A Propos</span></a></div>
+</div>
+<div id="middle1"></div>
+<div id="middle">
+<div style="width:800px; min-height:px;float:left; background-color:#dddddd; padding:5px;margin-bottom:10px;"><div style="width:700px; float:left;min-height:80px;"><div style="font-size:40px;font-weight:bold;margin:0px; margin-bottom:10px; width:800px; float:left;">SEGA Master System</div><i></i></div>
+<div style="float:right; width:80px; height:80px; margin-right:5px; background-image:url(/img/icons/mastersystem.png);"></div></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/36-alex-kidd-in-high-tech-world">Alex Kidd in High-Tech World</a> <i>par <a href="/about/ecstazy">EcstazY</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/74-alex-kidd-in-miracle-world">Alex Kidd in Miracle World</a> <i>par <a href="/about/ecstazy">EcstazY</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/500-alex-kidd-in-shinobi-world">Alex Kidd in Shinobi World</a> <i>par <a href="/about/fogiafour">Fogiafour</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/50-ast-rix-and-the-secret-mission">Astérix and the Secret Mission</a> <i>par <a href="/about/silver">Silver</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/55-bomber-raid">Bomber Raid</a> <i>par <a href="/about/tijentsie">Ti Jen-Tsie</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/496-california-games">California Games</a> <i>par <a href="/about/hebussan">Hebus San</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/513-e-swat">E-Swat</a> <i>par <a href="/about/fogiafour">Fogiafour</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/681-enduro-racer">Enduro Racer</a> <i>par <a href="/about/mrbluesky">MrBlueSky</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/56-fire-and-forget-2">Fire and Forget 2</a> <i>par <a href="/about/tijentsie">Ti Jen-Tsie</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/59-gangster-town">Gangster Town</a> <i>par <a href="/about/tijentsie">Ti Jen-Tsie</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/67-ghost-house">Ghost House</a> <i>par <a href="/about/tijentsie">Ti Jen-Tsie</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/46-golden-axe-warrior">Golden Axe Warrior</a> <i>par <a href="/about/hebussan">Hebus San</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/434-great-volleyball">Great Volleyball</a> <i>par <a href="/about/hebussan">Hebus San</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/685-hang-on">Hang On !</a> <i>par <a href="/about/mrbluesky">MrBlueSky</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/70-indiana-jones-and-the-last-crusade">Indiana Jones and the Last Crusade</a> <i>par <a href="/about/tijentsie">Ti Jen-Tsie</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/76-ninja-the">Ninja (the)</a> <i>par <a href="/about/gabbersteff">Gabbersteff</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/703-outrun">Outrun</a> <i>par <a href="/about/mrbluesky">MrBlueSky</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/62-robocop-versus-terminator">RoboCop versus Terminator</a> <i>par <a href="/about/silver">Silver</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/697-streets-of-rage">Streets of Rage</a> <i>par <a href="/about/super8">super8</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/488-wonder-boy-iii-the-dragon-s-trap">Wonder Boy III : The Dragons Trap</a> <i>par <a href="/about/fogiafour">Fogiafour</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/683-wonderboy-in-monster-land">Wonderboy in Monster Land</a> <i>par <a href="/about/mrbluesky">MrBlueSky</a></i></div><div style="width:700px;height:20px; background-color:#dddddd; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/516-world-soccer">World Soccer</a> <i>par <a href="/about/gabbersteff">Gabbersteff</a></i></div><div style="width:700px;height:20px; background-color:#cccccc; margin-left:50px;float:left;padding:5px;"><a href="/tests/master-system/72-zillion-ii-the-tri-formation">Zillion II: The Tri-Formation</a> <i>par <a href="/about/tijentsie">Ti Jen-Tsie</a></i></div>
+</div>
+<div id="footer"></div>
+</div>
+
+</body>
+</html>
+http://jenesuis.net/tests/master-system/697-streets-of-rage contains: 
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="index, follow, all" name="robots"/>
+<link href="/nespas.css" rel="stylesheet" type="text/css"/>
+<link href="/src/src/featherlight.css" rel="stylesheet" type="text/css"/>
+<link href="/src/src/featherlight.gallery.css" rel="stylesheet" type="text/css"/>
+
+
+
+<title>[Nes Pas?] Test - Streets of Rage sur SEGA Master System (Sega, 1993)</title><meta content="Streets of Rage,SEGA Master System,Sega,1993,test,critique,review,aperÃ§u,preview,nespas,jeu video,forum,retrogaming,retro,oldies,vintage" name="keywords"/><meta content="[Nes Pas?] Test - Streets of Rage sur SEGA Master System (Sega, 1993) : DÃ©couvrez notre test du jeu vidÃ©o oldies Streets of Rage sur SEGA Master System." name="description"/>
+</head>
+<body>
+
+
+<div id="pagecontainer">
+<a href="/"><div style="
+		width:850px;
+		height:220px;
+		float:left;
+		background-image:url(/img/tops/00.png)">
+<div align="right" id="slogan" style="width:600px; margin-left:243px; margin-top:23px; height:20px; padding:3px; float:left; color:#ffffff; font-weight:bold; font-size:20px;">
+				Le site qui change lui-même de trottoir quand il arrive en ville. 
+			</div>
+
+</div></a>
+<div id="buttonzone">
+<div id="buttonnews"><a class="liennews" href="/news"><span style="display:none">News</span></a></div>
+<div id="buttoncritiques"><a class="liencritiques" href="/tests"><span style="display:none">Critiques</span></a></div>
+<div id="buttondossiers"><a class="liendossiers" href="/dossiers"><span style="display:none">Dossiers</span></a></div>
+<div id="buttonlexique"><a class="lienlexique" href="/lexique"><span style="display:none">Lexique</span></a></div>
+<div id="buttongoodies"><a class="liengoodies" href="/goodies"><span style="display:none">Goodies</span></a></div>
+<div id="buttonforum"><a class="lienforum" href="/forum/"><span style="display:none">Forum</span></a></div>
+<div id="buttonabout"><a class="lienabout" href="/about"><span style="display:none">A Propos</span></a></div>
+</div>
+<div id="middle1"></div>
+<div id="middle">
+<div style="width:800px; min-height:186px;float:left; background-color:#dddddd; padding:5px;margin-bottom:10px;">
+<div style="width:552px; min-height:186px;float:left;">
+<div style="font-size:40px;font-weight:bold;margin:0px; width:547px; float:left;">Streets of Rage</div>
+<div style="float:left; width:80px; height:80px; margin-right:5px; background-image:url(/img/icons/mastersystem.png);"></div>
+<div>
+							Sega - 1993
+							<br/><i>Master System of a down</i> par <a href="/about/super8">super8</a><br/><br/>Extras : <span style="color:#aaaaaa;">Musique</span> - <span style="color:#aaaaaa;">Manuel TXT</span> - <span style="color:#aaaaaa;">Manuel PDF</span></div>
+</div>
+<div style="width:248px; height:186px;float:left;">
+<img src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR00.png"/>
+</div>
+</div><div align="justify" id="contenu">Le recul et le travail des archéologues-passionnés du jeu vidéo font que l'on perd de moins en moins de temps à chercher les valeurs sûres et les pépites cachées de la ludothèque d'une console. Les pionniers puis les débrouissailleurs du oldisme ont largement balisé le terrain. Mais aujourd'hui, j'ai envie de me faire un peu mal, histoire de mesurer ma chance d'avoir accès aussi facilement à pratiquement un demi-siècle de vidéoludisme en quelques clics.<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR01.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR01.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR02.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR02.png"/></a></div>
+</div>
+</div> <br/> <br/>Pour celà, je choisis d'abord la Master System ; pas la pire des consoles (je veux bien souffrir, mais pas au point d'être traumatisé), loin de là, mais bien moins réputée que sa concurrente de l'époque, la NES. Pour moi, la Master System, que je n'ai jamais possédée, reste la grande sur tout à fait respectable de la Megadrive (ma console de cur). Une étape nécessaire pour Sega, une console sûrement très sympathique, mais ayant surtout permis d'accoucher du chef d'uvre qu'est la Megadrive par la suite. Regardons un peu la liste des jeux. Pas mal de noms se démarquent, des licences devenues cultes même. Mais nous sommes là pour nous faire du mal, ne perdons pas notre objectif. Tiens, tiens la console a eu le droit à sa version de Streets of Rage. La version originale de ce jeu est sortie en 1991 sur Megadrive : un beat them all <a href="http://www.jenesuis.net/critiques/megadrive/streetsofrage">qualifié de « mythique » par l'ami Ghost ici-même</a> et dont je partage totalement l'avis dithyrambique. Cette version Megadrive étant sûrement LE jeu auquel j'ai le plus joué jusquà présent, je ne devrais qu'être déçu par cette version au rabais, sortie deux ans plus tard, sur un hardware obsolète. Parfait.<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR03.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR03.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR04.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR04.png"/></a></div>
+</div>
+</div> <br/> <br/>Après le logo Sega, un texte défile, le même que sur Megadrive, nous racontant qu'un puissant syndicat du crime a pris le contrôle de la ville et que trois jeunes et fringants policiers ont juré de nettoyer les rues de la délinquance organisée, outrepassant leur fonction. La musique qui accompagne ce texte, toujours signée par Yuzo Koshiro, reste à quelques sons près, toujours aussi galvanisante. Un bon point pour la version Master System. Espérons que la suite ne sera pas aussi réussie.<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR05.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR05.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR06.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR06.png"/></a></div>
+</div>
+</div> <br/> <br/>Après l'écran titre, on nous demande de choisir le niveau de difficulté entre normal et difficile. Puis vient l'écran de sélection du personnage. Visiblement, il n'est pas possible de jouer à 2. Bon, je ne vais pas compter cela comme un mauvais point, étant habitué à jouer seul (pauvre oldies solitaire que je suis). Les trois personnages restent les mêmes que pour la version Megadrive, avec les mêmes statistiques de puissance, de vitesse et de saut. Je vais prendre Blaze, la fille de ce groupe inclusif, nouveau-monde-compatible. Peut être qu'on pourra voir sa petite culotte, qui avait été censurée sur la version PAL Megadrive, héhéhé De toute façon, je suppose que j'aurai le droit à un sprite minuscule avec une maxi-tête, à la manière de Final Fight sur Nes<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR07.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR07.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR08.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR08.png"/></a></div>
+</div>
+</div> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR09.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR09.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR10.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR10.png"/></a></div>
+</div>
+</div> <br/> <br/>Premier niveau, ou plutôt premier Round : la rue commerçante. Et me voilà déjà dans l'erreur, avec mes a priori. Les sprites sont un peu plus petits que sur Megadrive, mais de taille tout à fait correcte (ils font juste un peu petit par rapport au décor). Deuxième constatation, nous avons enfin le droit à la petite culotte de Blaze ! Enfin, je joue en mode normal ; le défi s'annonce plus corsé que sur Megadrive. Seulement deux vies au compteur et une barre de vie qui descend assez vite à chaque torgnole. Mais soyez rassuré, il n'y a rien d'insurmontable. Les ennemis lambdas sont les mêmes que sur Megadrive, aucun ne manque à l'appel : le punk à crête qui te tacle, le rouquin en jean de la tête aux pieds, et la dominatrice en cuissardes armée de son fouet, etc. Le décor, moins détaillé, est très ressemblant à la version Megadrive : il faut admettre que le premier Streets of Rage n'est pas le plus beau jeu de la console 16 bits. Surtout, le thème musical du niveau est tout à fait reconnaissable par rapport à l'original. L'environnement urbain, le gameplay et surtout la musique techno de Street of Rage étant là, on peut se le dire : l'ambiance du jeu sur Master System est totalement préservée.<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR11.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR11.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR12.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR12.png"/></a></div>
+</div>
+</div> <br/> <br/>Avec seulement 2 boutons d'action sur la manette Master System, l'un pour frapper, l'autre pour sauter, on ne risque pas d'appeler les flics à la rescousse par inadvertance dès la première frame du jeu (on s'est tous fait avoir, NES Pas ?). En effet, en cas de situation désespéré, il est possible d'utiliser une attaque spéciale (une fois par vie) se traduisant pas l'arrivée des renforts qui nettoient la place à coup de bazooka, tuant les ennemis lambda sur le coup, ou amochant salement les boss de niveau. Sur Master System, pour utiliser l'attaque spéciale, il faut mettre le jeu sur pause, puis appuyer sur le bouton 1. Pas facile lorsque le bouton pause est sur la console <a href="http://www.jenesuis.net/dossiers/mastersysteminstallerunboutonpausesursamanette">Sauf si vous installez un bouton pause directement sur la manette, grâce à la méthode MrBlueSky</a> !<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR13.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR13.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR14.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR14.png"/></a></div>
+</div>
+</div> <br/> <br/>Votre personnage se contrôle exactement comme sur Megadrive. Il enchaine les mêmes combos poings-pieds, les mêmes prises lors des chops. Si la planchette japonaise est parfois difficile à sortir, le German Suplex fait toujours autant de miracles sur vos ennemis, même sur un boss qui fait deux fois votre taille. Et comme sur Megadrive, cette prise fait trembler l'écran de jeu, de façon encore plus prononcée ici ; jouissif. Cependant, on a tendance à abuser rapidement de la combinaison saut + coup de pied, pour pallier à un manque de souplesse dans les déplacements du personnage, et une hitbox pas toujours précise. Il est toujours possible d'attraper des bouteilles en verre, des gouttières, des couteaux, etc., pour faire encore plus mal à la racaille. Des pommes et des cuisses de poulets vous remontent votre jauge de vie. Certains items font monter votre compteur de points, gagner des vies, ou vous offrent une attaque spéciale supplémentaire. Tout ces objets se trouvent sur votre chemin, au hasard d'une poubelle ou d'une cabine téléphonique que vous aurez à coeur d'exploser à coup de poings.<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR15.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR15.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR16.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR16.png"/></a></div>
+</div>
+</div> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR17.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR17.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR18.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR18.png"/></a></div>
+</div>
+</div> <br/> <br/>A la fin du premier niveau, arrive le boss. Et il s'agit du même que sur Megadrive, à savoir un grand gaillard avec un boomerang dont vous disposerez facilement. Si le thème musical du boss est bien moins classe que sur Megadrive, il est ici plus rapide, entrainant, voire plus intense. Bref, tout le sel du Streets of Rage original est présent sur cette cartouche. Fou.<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR19.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR19.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR20.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR20.png"/></a></div>
+</div>
+</div> <br/> <br/>On pourrait se demander quel est le prix à payer pour faire rentrer un mythe de la Megadrive dans une cartouche Master System. Moins de niveau ? Et bien non, les huit niveaux sont présents, avec leurs détails caractéristiques : les vagues sur la plage du niveau 3, le monte charge extérieur du niveau 7 laissant progressivement apparaître une skyline de nuit de toute beauté, le soleil se levant progressivement à travers les fenêtres durant le niveau 8, etc.<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR21.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR21.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR22.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR22.png"/></a></div>
+</div>
+</div> <br/> <br/>Les boss de niveau répondent également tous présents : le punk à boomerang, l'efflanqué peroxydé avec les griffes, le catcheur en slip, le gros balèze cracheur de feu, et les deux salopes qui sautent tout le temps. Il y a même un ajout par rapport à la version originale : le boss du cinquième niveau qui était un combat contre deux efflanqués peroxydés avec les griffres sur Megadrive (le même boss que pour le niveau 2, mais en double, vous suivez ?), est remplacé ici par un nain/gnome/farfadet violet avec un grand chapeau noir, qui vous lance des roquettes lorsqu'il se penche. Ca détonne mais ça a au moins le mérite de surprendre ?<br/> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR23.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR23.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR24.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR24.png"/></a></div>
+</div>
+</div> <br/><div style="width:800px; margin-left:5px; min-height:240px; float:left;">
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR25.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR25.png"/></a></div>
+</div>
+<div style="width:399px; min-height:240px; float:left; margin:0px;">
+<div align="center"><a class="gallery" href="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR26.png"><img alt="" class="mini" src="http://www.jenesuis.net/images_site/jeux/sms/Streets%20of%20Rage/SoR26.png"/></a></div>
+</div>
+</div> <br/> <br/>Alors que j'étais parti pour me moquer, me voilà honteux, mais heureux d'avoir découvert, ou plutôt redécouvert un jeu que je connais par coeur, sous un autre angle. Plus que le support, c'est l'expérience de jeu qui compte. Tout y est, jusqu'à la cinématique de fin, toujours accompagnée de sa douce musique venant gratifier les efforts de nos héros. En 2020, l'intérêt de cette version Master System de Streets of Rage est clairement limité ; le jeu Megadrive étant supérieure en tous points, et bien plus facile à dénicher, que ce soit sur cartouche ou sur les compiles rétro et autres consoles virtuelles. Mais il faut souligner l'effort des équipes de l'époque, qui ont oeuvré à cette adaptation de qualité, à destination des enfants qui n'avaient pas encore eu l'occasion de franchir le pas de la next-gen, même 3 ans après la sortie de la Megadrive (en Europe). Il ne semble donc pas impossible d'offrir une même expérience de jeu, tout au moins aussi plaisante, alors même que l'on joue sur un hardware offrant techniquement moins de possibilités qu'en version originale. Prends ça dans les dents, Cyberpunk 2077.</div><div style="width:800px; min-height:20px;float:left; background-color:#dddddd; padding:5px;margin-bottom:10px; margin-top:10px;">
+<b>Le point de vue de César Ramos : </b><br/>Pas aussi fréquent que sur Megadrive et beaucoup plus cher : CQFD.</div>
+</div>
 <div id="footer"></div>
 </div>
 

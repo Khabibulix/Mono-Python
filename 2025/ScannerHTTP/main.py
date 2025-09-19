@@ -5,12 +5,25 @@ from utils import *
 # url = random.choice(url_list)
 url = "http://jenesuis.net"
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-soup =  creating_soup(fetch_data_from_site(url))
 
 
 def main():
-    available_links = grab_all_links_from_existing_soup(soup, url)
-    crawl_site(url, available_links)
+    delete_content_of_file("output.txt")
+    soup =  creating_soup(fetch_data_from_site(url))
+    crawl_site(url)
+    
+    while True:
+        available_links = grab_all_links_from_existing_soup(soup, url)
+        
+        for link in available_links:
+            print(f"{available_links.index(link)}:  {link}\n")
+
+        index_of_site = input("Choose the number of the link:  ")
+        new_url = available_links[int(index_of_site)]
+        soup = creating_soup(fetch_data_from_site(new_url))
+        crawl_site(new_url)
+
+
 
 if __name__ == "__main__":
     main()

@@ -78,11 +78,11 @@ def output_text_to_file(content, file):
     :param file: Name of the file
     :type file: str
     """
-    with open(f"./output/{file}", "a") as f:
+    with open(f"./output/{file}", "a", encoding="utf-8") as f:
         f.write(content)
 
 def delete_content_of_file(file):
-    with open(f"./output/{file}", "w") as f:
+    with open(f"./output/{file}", "w", encoding='utf-8') as f:
         f.write('')
 
 def clean_soup(soup):
@@ -90,20 +90,15 @@ def clean_soup(soup):
         script.decompose()
     return soup
 
-def crawl_site(url, links, deepness=1):
+def crawl_site(url, deepness=1):
     """Crawl the site recursively
 
     :param url: Beginning of the crawling way
     :type url: string
-    :param links: Future links to visit
-    :type links: array
-    :param soup: Current soup
-    :type soup: Beautiful soup generated object for HTML code
     :param deepness: Deepness of web crawling, defaults to 1
     :type deepness: int, optional
     """
     soup =  creating_soup(fetch_data_from_site(url))
-    delete_content_of_file("output.txt")
     
     output_text_to_file(f"{url} contains: \n {clean_soup(soup)}", "output.txt")
     
