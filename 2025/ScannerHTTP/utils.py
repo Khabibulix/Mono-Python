@@ -81,6 +81,15 @@ def output_text_to_file(content, file):
     with open(f"./output/{file}", "a") as f:
         f.write(content)
 
+def delete_content_of_file(file):
+    with open(f"./output/{file}", "w") as f:
+        f.write('')
+
+def clean_soup(soup):
+    for script in soup.find_all('script'):
+        script.decompose()
+    return soup
+
 def crawl_site(url, links, deepness=1):
     """Crawl the site recursively
 
@@ -94,7 +103,9 @@ def crawl_site(url, links, deepness=1):
     :type deepness: int, optional
     """
     soup =  creating_soup(fetch_data_from_site(url))
-    output_text_to_file(f"{url} contains: \n {soup.prettify()}", "output.txt")
+    delete_content_of_file("output.txt")
     
-    crawl_site(links.pop(), links)
+    output_text_to_file(f"{url} contains: \n {clean_soup(soup)}", "output.txt")
+    
+    # crawl_site(links.pop(), links)
 
