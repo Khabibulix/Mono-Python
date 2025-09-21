@@ -25,11 +25,13 @@ def grab_all_links_from_existing_soup(soup, base_url):
     link_array = []
     links = soup.find_all('a')
     for link in links:
+        #absolute URL
         if base_url in link.get("href"):
             link_array.append(link.get('href'))
+        #relative URL
         else:
             link_array.append(base_url + link.get('href'))
-    return link_array
+    return list(set(link_array))
 
 def separate_internal_and_external_links(link_array, base_url):
     """Returns two arrays, one of external links and one of internal links
@@ -86,9 +88,9 @@ def delete_content_of_file(file):
         f.write('')
 
 def clean_soup(soup):
-    for script in soup.find_all('script'):
-        script.decompose()
-    return soup
+    for data in soup(['style', 'script']):
+        data.decompose()
+    return ' '.join(soup.stripped_strings)
 
 def crawl_site(url, deepness=1):
     """Crawl the site recursively
@@ -103,4 +105,3 @@ def crawl_site(url, deepness=1):
     output_text_to_file(f"{url} contains: \n {clean_soup(soup)}", "output.txt")
     
     # crawl_site(links.pop(), links)
-
