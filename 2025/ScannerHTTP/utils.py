@@ -25,7 +25,7 @@ def grab_all_links_from_existing_soup(soup, base_url):
     link_array = []
     links = soup.find_all('a')
     for link in links:
-        if "http" in link:
+        if base_url in link.get("href"):
             link_array.append(link.get('href'))
         else:
             link_array.append(base_url + link.get('href'))
