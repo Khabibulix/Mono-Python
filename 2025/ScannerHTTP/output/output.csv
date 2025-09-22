@@ -1,2 +1,9 @@
 URL,Status_code
+http://jenesuis.net/dossiers,200
+http://jenesuis.net/news,200
+http://jenesuis.net/lexique,200
+http://jenesuis.net/about,200
+http://jenesuis.net/,200
 http://jenesuis.net/tests,200
+http://jenesuis.net/forum/,200
+http://jenesuis.net/goodies,200

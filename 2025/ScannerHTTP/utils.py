@@ -1,5 +1,6 @@
-import requests, csv
+import requests, csv, os
 from bs4 import BeautifulSoup
+write_once = True
 
 def fetch_data_from_site(site_url):
     """Fetch html code from the site in parameter, return site content
@@ -13,6 +14,9 @@ def fetch_data_from_site(site_url):
 
 def creating_soup(html_content):
     return BeautifulSoup(html_content, 'lxml')
+
+def is_file_empty(file):
+    return os.stat(f"./output/{file}").st_size == 0
 
 def grab_all_links_from_existing_soup(soup, base_url):
     """Extract only links from soup and returning them in an array
@@ -34,28 +38,24 @@ def grab_all_links_from_existing_soup(soup, base_url):
     return list(set(link_array))
 
 def output_text_to_file(content, file):
-    """Write content to a file
+    """Write content to a CSV file
 
     :param content: Data to write
     :type content: str
     :param file: Name of the file
     :type file: str
     """
-    # Check nom fichier, si extension correcte... etc.
-    with open(f"./output/{file}", 'w', newline='') as csvfile:
+
+    with open(f"./output/{file}", 'a', newline='') as csvfile:
         fieldnames = ["URL", "Status_code"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+        if is_file_empty("output.csv"):
+            writer.writeheader()
         writer.writerow({'URL':content[0], 'Status_code':content[1]})
 
 def delete_content_of_file(file):
     with open(f"./output/{file}", "w", encoding='utf-8') as f:
         f.write('')
-
-def clean_soup(soup):
-    for data in soup(['style', 'script']):
-        data.decompose()
-    return ' '.join(soup.stripped_strings)
 
 def crawl_site(url, deepness=1):
     """Crawl the site recursively
@@ -65,7 +65,12 @@ def crawl_site(url, deepness=1):
     :param deepness: Deepness of web crawling, defaults to 1
     :type deepness: int, optional
     """
-    soup =  creating_soup(fetch_data_from_site(url))
-    
-    output_text_to_file(f"{url} contains: \n {clean_soup(soup)}", "output.txt")
+    if deepness == 1:
+        soup = creating_soup(fetch_data_from_site(url))
+        available_links = grab_all_links_from_existing_soup(soup, url)
+        print(available_links)
+        for link in available_links:
+            output_text_to_file([link, requests.get(link).status_code],"output.csv")
+    else:
+        print("couille dans potage")
     
