@@ -1,6 +1,5 @@
 import requests, csv, os
 from bs4 import BeautifulSoup
-write_once = True
 
 def fetch_data_from_site(site_url):
     """Fetch html code from the site in parameter, return site content
@@ -65,12 +64,18 @@ def crawl_site(url, deepness=1):
     :param deepness: Deepness of web crawling, defaults to 1
     :type deepness: int, optional
     """
+    # delete_content_of_file("output.csv")
     if deepness == 1:
         soup = creating_soup(fetch_data_from_site(url))
         available_links = grab_all_links_from_existing_soup(soup, url)
-        print(available_links)
+
         for link in available_links:
             output_text_to_file([link, requests.get(link).status_code],"output.csv")
-    else:
-        print("couille dans potage")
     
+    elif deepness == 2:
+        soup = creating_soup(fetch_data_from_site(url))
+        available_links = grab_all_links_from_existing_soup(soup, url)
+
+        for link in available_links:
+            soup = creating_soup(fetch_data_from_site(link))
+            grab_all_links_from_existing_soup(soup, link)

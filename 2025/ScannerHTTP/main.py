@@ -8,8 +8,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleW
 
 
 def main():
-    delete_content_of_file("output.csv")
-    crawl_site(url)
+    crawl_site(url, 2)
     
     # while True:
     #     available_links = grab_all_links_from_existing_soup(soup, url)
