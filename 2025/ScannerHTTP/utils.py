@@ -1,4 +1,4 @@
-import requests
+import requests, csv
 from bs4 import BeautifulSoup
 
 def fetch_data_from_site(site_url):
@@ -33,45 +33,6 @@ def grab_all_links_from_existing_soup(soup, base_url):
             link_array.append(base_url + link.get('href'))
     return list(set(link_array))
 
-def separate_internal_and_external_links(link_array, base_url):
-    """Returns two arrays, one of external links and one of internal links
-
-    :param link_array: String array of all availables links on the original page
-    :type link_array: array
-    :param base_url: Base url, first crawled
-    :type base_url: string
-    """
-    ext_links = []
-    int_links = []
-
-    for link in link_array:
-        if base_url in link:
-            int_links.append(link)
-        else:
-            ext_links.append(link)
-
-    return int_links, ext_links
-
-def are_all_link_available(link_array, base_url):
-    """Returning true if status code for all available links is OK
-
-    :param link_array: String array of all availables links on the original page
-    :type link_array: array
-    :param base_url: Base url, first crawled
-    :type base_url: string
-    """
-    status_code_array = []
-
-    if len(link_array) == 0:
-        return False
-
-    for link in link_array:
-        status_code = requests.get(link).status_code
-        status_code_array.append(status_code == 200)
-    
-    if all(status_code_array):
-        return True
-
 def output_text_to_file(content, file):
     """Write content to a file
 
@@ -80,8 +41,12 @@ def output_text_to_file(content, file):
     :param file: Name of the file
     :type file: str
     """
-    with open(f"./output/{file}", "a", encoding="utf-8") as f:
-        f.write(content)
+    # Check nom fichier, si extension correcte... etc.
+    with open(f"./output/{file}", 'w', newline='') as csvfile:
+        fieldnames = ["URL", "Status_code"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerow({'URL':content[0], 'Status_code':content[1]})
 
 def delete_content_of_file(file):
     with open(f"./output/{file}", "w", encoding='utf-8') as f:
@@ -104,4 +69,3 @@ def crawl_site(url, deepness=1):
     
     output_text_to_file(f"{url} contains: \n {clean_soup(soup)}", "output.txt")
     
-    # crawl_site(links.pop(), links)

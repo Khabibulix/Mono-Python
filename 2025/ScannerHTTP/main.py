@@ -8,20 +8,21 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleW
 
 
 def main():
-    delete_content_of_file("output.txt")
-    soup =  creating_soup(fetch_data_from_site(url))
-    crawl_site(url)
+    output_text_to_file(["http://jenesuis.net/tests", 200], "output.csv")
+    # delete_content_of_file("output.txt")
+    # soup =  creating_soup(fetch_data_from_site(url))
+    # crawl_site(url)
     
-    while True:
-        available_links = grab_all_links_from_existing_soup(soup, url)
+    # while True:
+    #     available_links = grab_all_links_from_existing_soup(soup, url)
         
-        for counter, link in enumerate(available_links):
-            print(f"{counter}:\t{link}\n")
+    #     for counter, link in enumerate(available_links):
+    #         print(f"{counter}:\t{link}\n")
 
-        index_of_site = input("Choose the number of the link:  ")
-        new_url = available_links[int(index_of_site)]
-        soup = creating_soup(fetch_data_from_site(new_url))
-        crawl_site(new_url)
+    #     index_of_site = input("Choose the number of the link:  ")
+    #     new_url = available_links[int(index_of_site)]
+    #     soup = creating_soup(fetch_data_from_site(new_url))
+    #     crawl_site(new_url)
 
 
 
