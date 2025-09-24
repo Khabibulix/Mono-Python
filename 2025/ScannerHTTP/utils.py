@@ -28,12 +28,13 @@ def grab_all_links_from_existing_soup(soup, base_url):
     link_array = []
     links = soup.find_all('a')
     for link in links:
-        #absolute URL
-        if base_url in link.get("href"):
-            link_array.append(link.get('href'))
-        #relative URL
-        else:
-            link_array.append(base_url + link.get('href'))
+        if link.get("href"):
+            #absolute URL
+            if base_url in link.get("href"):
+                link_array.append(link.get('href'))
+            #relative URL
+            else:
+                link_array.append(base_url + link.get('href'))
     return list(set(link_array))
 
 def output_text_to_file(content, file):
@@ -78,4 +79,4 @@ def crawl_site(url, deepness=1):
 
         for link in available_links:
             soup = creating_soup(fetch_data_from_site(link))
-            grab_all_links_from_existing_soup(soup, link)
+            available_links.append(grab_all_links_from_existing_soup(soup, link))
