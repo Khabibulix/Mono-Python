@@ -84,3 +84,6 @@ def crawl_site(url, deepness=1):
             
             for final_link in list(set(final_links)):            
                 output_text_to_file(final_link)
+
+    else:
+        print("Not a good idea to crawl so much...")
