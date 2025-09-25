@@ -80,7 +80,13 @@ def extract_index_page(url):
     if "/" in url and "http" in url:
         return "http://" + url.split("/")[2]
 
-def crawl_site(url, deepness=1):
+def is_line_already_existing_in_file(line, file="output.csv"):
+    with open(f"./output/{file}", "r", encoding='utf-8') as f:
+        if line in f.read():
+            return True
+        return False
+
+def crawl_site(url, deepness, output_file):
     """Crawl the site recursively
 
     :param url: Beginning of the crawling way
@@ -88,25 +94,25 @@ def crawl_site(url, deepness=1):
     :param deepness: Deepness of web crawling, defaults to 1
     :type deepness: int, optional
     """
-    delete_content_of_file()
+    delete_content_of_file(output_file)
     soup = creating_soup(fetch_data_from_site(url))
-    available_links = grab_all_links_from_existing_soup(soup, url)
+    available_links = grab_all_links_from_existing_soup(soup, url, extract_index_page(url))
     
     if deepness == 1:
 
         for link in list(set(available_links)):
-            output_text_to_file(link)
+            if not is_line_already_existing_in_file(link, output_file):
+                output_text_to_file(link, output_file)
     
     elif deepness == 2:
 
         for link in list(set(available_links)):
             soup = creating_soup(fetch_data_from_site(link))
-            final_links = grab_all_links_from_existing_soup(soup, link)
+            final_links = grab_all_links_from_existing_soup(soup, link, extract_index_page(url))
             
-            for final_link in list(set(final_links)):            
-                output_text_to_file(final_link)
+            for final_link in list(set(final_links)):   
+                if not is_line_already_existing_in_file(link, output_file):         
+                    output_text_to_file(final_link, output_file)
 
     else:
         print("Not a good idea to crawl so much...")
-
-print(extract_index_page("http://www.google.com/contact"))
