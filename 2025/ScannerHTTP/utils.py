@@ -1,7 +1,9 @@
-import requests, csv, os
+import requests, csv, os, re
 from bs4 import BeautifulSoup
 
-available_links = []
+
+url_pattern = "(https?://(?:www.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|www.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|https?://(?:www.|(?!www))[a-zA-Z0-9]+.[^s]{2,}|www.[a-zA-Z0-9]+.[^s]{2,})"
+
 
 def fetch_data_from_site(site_url):
     """Fetch html code from the site in parameter, return site content
@@ -19,12 +21,14 @@ def creating_soup(html_content):
 def is_file_empty(file):
     return os.stat(f"./output/{file}").st_size == 0
 
-def grab_all_links_from_existing_soup(soup, base_url):
+def grab_all_links_from_existing_soup(soup, url_to_check, base_url):
     """Extract only links from soup and returning them in an array
 
     :param soup: Already existing soup (HTML code parsed with bs4)
     :type soup: string
-    :param base_url: Base url, first crawled
+    :param url_to_check: Current URL checked
+    :type url_to_check: string
+    :param base_url: Base url of the site, index page
     :type base_url: string
     """
     link_array = []
@@ -35,7 +39,7 @@ def grab_all_links_from_existing_soup(soup, base_url):
             if base_url in link.get("href"):
                 link_array.append(link.get('href'))
             #relative URL
-            else:
+            if link.get("href")[0] == "/":
                 link_array.append(base_url + link.get('href'))
     return list(set(link_array))
 
@@ -55,9 +59,26 @@ def output_text_to_file(link_to_write, file="output.csv"):
             writer.writeheader()
         writer.writerow({'URL':link_to_write, 'Status_code':requests.get(link_to_write).status_code})
 
-def delete_content_of_file(file):
+def delete_content_of_file(file="output.csv"):
     with open(f"./output/{file}", "w", encoding='utf-8') as f:
         f.write('')
+
+def is_valid_url(url):
+    """Check an URL input, boolean return
+
+    :param url: URL to check
+    :type url: string
+    """
+    return True if re.match(url_pattern, url) else False
+
+def extract_index_page(url):
+    """http://www.google.com/contact --> http://www.google.com
+
+    :param url: URL to extract main domain
+    :type url: string
+    """
+    if "/" in url and "http" in url:
+        return "http://" + url.split("/")[2]
 
 def crawl_site(url, deepness=1):
     """Crawl the site recursively
@@ -67,7 +88,7 @@ def crawl_site(url, deepness=1):
     :param deepness: Deepness of web crawling, defaults to 1
     :type deepness: int, optional
     """
-    # delete_content_of_file("output.csv")
+    delete_content_of_file()
     soup = creating_soup(fetch_data_from_site(url))
     available_links = grab_all_links_from_existing_soup(soup, url)
     
@@ -87,3 +108,5 @@ def crawl_site(url, deepness=1):
 
     else:
         print("Not a good idea to crawl so much...")
+
+print(extract_index_page("http://www.google.com/contact"))
