@@ -1,4 +1,4 @@
-import requests, csv, os, re
+import requests, csv, os, re, time, math
 from bs4 import BeautifulSoup
 
 
@@ -21,7 +21,7 @@ def creating_soup(html_content):
 def is_file_empty(file):
     return os.stat(f"./output/{file}").st_size == 0
 
-def grab_all_links_from_existing_soup(soup, url_to_check, base_url):
+def grab_all_links_from_existing_soup(soup, base_url):
     """Extract only links from soup and returning them in an array
 
     :param soup: Already existing soup (HTML code parsed with bs4)
@@ -53,11 +53,17 @@ def output_text_to_file(link_to_write, file="output.csv"):
     """
 
     with open(f"./output/{file}", 'a', newline='') as csvfile:
-        fieldnames = ["URL", "Status_code"]
+        fieldnames = ["URL", "Status_code", "Time_for_fetching_in_seconds"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         if is_file_empty(file):
             writer.writeheader()
-        writer.writerow({'URL':link_to_write, 'Status_code':requests.get(link_to_write).status_code})
+        start = time.time()
+        status_code = requests.get(link_to_write).status_code
+        end = time.time()
+        writer.writerow({
+            'URL':link_to_write,
+            'Status_code':status_code,
+            'Time_for_fetching_in_seconds': round(end - start, 4)})
 
 def delete_content_of_file(file="output.csv"):
     with open(f"./output/{file}", "w", encoding='utf-8') as f:
@@ -96,7 +102,7 @@ def crawl_site(url, deepness, output_file):
     """
     delete_content_of_file(output_file)
     soup = creating_soup(fetch_data_from_site(url))
-    available_links = grab_all_links_from_existing_soup(soup, url, extract_index_page(url))
+    available_links = grab_all_links_from_existing_soup(soup, extract_index_page(url))
     
     if deepness == 1:
 
@@ -108,7 +114,7 @@ def crawl_site(url, deepness, output_file):
 
         for link in list(set(available_links)):
             soup = creating_soup(fetch_data_from_site(link))
-            final_links = grab_all_links_from_existing_soup(soup, link, extract_index_page(url))
+            final_links = grab_all_links_from_existing_soup(soup, extract_index_page(url))
             
             for final_link in list(set(final_links)):   
                 if not is_line_already_existing_in_file(link, output_file):         
