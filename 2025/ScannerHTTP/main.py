@@ -1,10 +1,9 @@
 import random, argparse
-from utils import *
+from utils import is_valid_url
+from basic_connection import crawl_site
 
 # url_list = ["http://jenesuis.net", "https://www.data-bird.co/blog/web-scraping-python", "https://repo.zenk-security.com/"]
 # url = random.choice(url_list)
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-
 
 def main(url, deepness, output_file):
     if is_valid_url(url):
