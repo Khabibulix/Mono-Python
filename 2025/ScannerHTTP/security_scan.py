@@ -1,4 +1,4 @@
-import requests
+import requests, socket, json
 from wappalyzer import analyze
 
 def scan_with_wappalyzer(url):
@@ -21,4 +21,28 @@ def scan_http_headers_with_requests(url):
     """
     return requests.get(url).headers
 
-print(scan_http_headers_with_requests("http://jenesuis.net"))
+
+def fetch_geolocation_for_ip(url):
+    """Returns geographical infos about URL
+
+    :param url: URL to analyze
+    :type url: string, valid URL
+    """
+    ip_address = socket.gethostbyname(url)
+    return requests.get(f'http://ip-api.com/json/{ip_address}').json()
+
+def export_full_scan_to_json(url, file="scan.json"):
+    """Generate full random into JSON file
+
+    :param url: URL to scan
+    :type url: string
+    :param file: Name of JSON file, defaults to "scan.json"
+    :type file: str, optional
+    """
+    wapp = scan_with_wappalyzer(url)
+    headers = scan_http_headers_with_requests(url)
+    ip = fetch_geolocation_for_ip(url)
+    with open(f"./output/{file}", 'w', newline='') as jsonfile:
+        jsonfile.write(json.dumps({"wapp":wapp, "headers":headers, "ip":ip}))
+
+export_full_scan_to_json("http://jenesuis.net")
