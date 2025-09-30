@@ -1,5 +1,6 @@
 import requests, socket, json
 from wappalyzer import analyze
+from utils import extract_domain_name
 
 def scan_with_wappalyzer(url):
     """Grab technologies infos using wappalyzer module
@@ -39,10 +40,10 @@ def export_full_scan_to_json(url, file="scan.json"):
     :param file: Name of JSON file, defaults to "scan.json"
     :type file: str, optional
     """
+    ip = fetch_geolocation_for_ip(extract_domain_name(url))
     wapp = scan_with_wappalyzer(url)
-    headers = scan_http_headers_with_requests(url)
-    ip = fetch_geolocation_for_ip(url)
+    headers = scan_http_headers_with_requests(url)    
     with open(f"./output/{file}", 'w', newline='') as jsonfile:
-        jsonfile.write(json.dumps({"wapp":wapp, "headers":headers, "ip":ip}))
+        jsonfile.write(json.dumps({**wapp, **headers, **ip}, indent=4))
 
-export_full_scan_to_json("http://jenesuis.net")
+export_full_scan_to_json("http://www.jenesuis.net")

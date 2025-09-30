@@ -29,9 +29,18 @@ def extract_index_page(url):
     if "/" in url and "http" in url:
         return "http://" + url.split("/")[2]
 
+def extract_domain_name(url):
+    """http://www.google.com/contact --> google.com
+
+    :param url: URL to extract domain name
+    :type url: string
+    """
+    if "/" in url and "http" in url:
+        return url.split("www.")[1]
+
+
 def is_line_already_existing_in_file(line, file="output.csv"):
     with open(f"./output/{file}", "r", encoding='utf-8') as f:
         if line in f.read():
             return True
         return False
-

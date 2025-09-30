@@ -1,0 +1,56 @@
+{
+    "http://www.jenesuis.net": {
+        "Amazon Web Services": {
+            "version": "",
+            "confidence": 100,
+            "categories": [
+                "PaaS"
+            ],
+            "groups": [
+                "Servers"
+            ]
+        },
+        "Apache HTTP Server": {
+            "version": "",
+            "confidence": 100,
+            "categories": [
+                "Web servers"
+            ],
+            "groups": [
+                "Servers"
+            ]
+        },
+        "jQuery": {
+            "version": "1.7.0",
+            "confidence": 100,
+            "categories": [
+                "JavaScript libraries"
+            ],
+            "groups": [
+                "Web development"
+            ]
+        }
+    },
+    "Date": "Tue, 30 Sep 2025 22:41:28 GMT",
+    "Server": "Apache",
+    "Vary": "Accept-Encoding",
+    "Content-Encoding": "gzip",
+    "Content-Length": "3298",
+    "Keep-Alive": "timeout=5, max=100",
+    "Connection": "Keep-Alive",
+    "Content-Type": "text/html; charset=ISO-8859-1",
+    "status": "success",
+    "country": "France",
+    "countryCode": "FR",
+    "region": "IDF",
+    "regionName": "\u00cele-de-France",
+    "city": "Paris",
+    "zip": "75001",
+    "lat": 48.8558,
+    "lon": 2.3494,
+    "timezone": "Europe/Paris",
+    "isp": "Online S.A.S.",
+    "org": "ONLINE",
+    "as": "AS12876 SCALEWAY S.A.S.",
+    "query": "62.210.115.126"
+}
