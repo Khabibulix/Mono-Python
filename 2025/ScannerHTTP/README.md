@@ -1,4 +1,4 @@
-# Scanner HTTP
+# Scanner HTTP (stopped project)
 
 ### What i learned
 
@@ -31,3 +31,4 @@ BUT, now we want to display some security headers like server versions, known CV
 ## What each Python script contains
 
 - _utils.py_ contains all the internal logic except the code responsible for connection
+
