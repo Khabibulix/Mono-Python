@@ -1,7 +1,8 @@
 from process_manager import * 
 
 def main():
-    get_processes()
+    print(get_processes())
 
-if __name__ == "__main":
+
+if __name__ == "__main__":
     main()
