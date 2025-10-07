@@ -1,7 +1,9 @@
 from process_manager import * 
 
 def main():
-    print(get_processes())
+    # get_processes()
+    # print(datas)
+    # print(get_infos_for_process_with_pid(104))
 
 
 if __name__ == "__main__":
