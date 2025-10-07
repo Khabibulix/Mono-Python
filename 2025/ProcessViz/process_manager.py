@@ -32,7 +32,7 @@ def get_infos_for_process_with_pid(pid):
     if psutil.pid_exists(pid):
         fetch_infos_for_process(psutil.Process(pid), pid)
     else:
-        return None
+        return []
     return datas
 
 
