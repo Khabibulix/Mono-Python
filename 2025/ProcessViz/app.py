@@ -1,11 +1,15 @@
-from flask import Flask
+from flask import Flask, render_template # type: ignore
 from process_manager import *
 
 app = Flask(__name__)
 
-@app.route("/processes")
+@app.route("/")
 def display_processes():
-    return get_processes()
+    return render_template('index.html', get_processes=get_processes())
+
+@app.route("/process/<int:pid>")
+def display_one_process(pid):
+    return get_infos_for_process_with_pid(pid)
 
 if __name__ == "__main__":
     app.run(debug=True)

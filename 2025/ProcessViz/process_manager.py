@@ -1,4 +1,4 @@
-import psutil, copy, time
+import psutil, time # type: ignore
 
 datas = {}
 
