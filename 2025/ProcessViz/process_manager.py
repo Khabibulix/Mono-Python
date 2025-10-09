@@ -8,7 +8,7 @@ def fetch_infos_for_process(process, process_pid):
         process_name = process.name()
         process_memory_usage = process.memory_percent()
         process_path = process.exe()
-        process_starting_time = (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(process.create_time())))
+        process_starting_time = (time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(process.create_time())))
         process_status = process.status()
 
 
