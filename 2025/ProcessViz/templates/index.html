@@ -2,17 +2,18 @@
     <head>
         <title>Process Visualizer</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}} ">
+        <script src="{{ url_for('static', filename='script.js')}}"></script>
     </head>
     <body>
             <h1>List of processes</h1>
             {% for k, v in get_processes.items() %}
             <div class="flex_container">
-                <table style="border: 1px solid black;">
+                <table onclick="grab_process_pid(this)">
                     <caption>{{k}}</caption>
                         {% for key, value in v.items()%}
                             <tr>
                                 <th>{{key}}</th>
-                                <th style="font-weight: 100;" class="value">{{value}}</th>
+                                <th class="value">{{value}}</th>
                             </tr>
                         {% endfor %}
                 <br>

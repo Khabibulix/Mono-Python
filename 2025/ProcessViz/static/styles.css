@@ -13,13 +13,19 @@ caption {
 }
 
 table {
-    width: 80%;
+    width: 90%;
     padding: 5px;
+    border: 1px solid white;
+}
+
+table:hover {
+    border: 1px solid yellow;
 }
 
 th {
     text-align: left;    
     width: 10%;
+    font-weight: 100;
 }
 
 .value {
