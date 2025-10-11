@@ -29,6 +29,7 @@ def fetch_infos_for_process(process, process_pid):
 
 
 def get_infos_for_process_with_pid(pid):
+    datas.clear()
     if psutil.pid_exists(pid):
         fetch_infos_for_process(psutil.Process(pid), pid)
     else:

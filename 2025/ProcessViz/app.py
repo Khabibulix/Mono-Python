@@ -1,4 +1,4 @@
-from flask import Flask, render_template # type: ignore
+from flask import Flask, render_template, request, jsonify
 from process_manager import *
 
 app = Flask(__name__)
@@ -8,8 +8,8 @@ def display_processes():
     return render_template('index.html', get_processes=get_processes())
 
 
-@app.route("/process/<int:pid>")
-def display_one_process(pid):
+@app.route("/process/<int:pid>", methods=["GET"])
+def process(pid):
     return get_infos_for_process_with_pid(pid)
 
 if __name__ == "__main__":
