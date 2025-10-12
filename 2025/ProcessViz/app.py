@@ -10,7 +10,7 @@ def display_processes():
 
 @app.route("/process/<int:pid>", methods=["GET"])
 def process(pid):
-    return get_infos_for_process_with_pid(pid)
+    return render_template('process.html', get_processes=get_infos_for_process_with_pid(pid))
 
 if __name__ == "__main__":
     app.run(debug=True)
