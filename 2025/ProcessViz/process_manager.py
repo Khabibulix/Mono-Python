@@ -10,6 +10,9 @@ def fetch_infos_for_process(process, process_pid):
         process_path = process.exe()
         process_starting_time = (time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(process.create_time())))
         process_status = process.status()
+        process_parent = process.parent().name() if process.parent() is not None else process.parent()
+
+
 
 
     if len(process.net_connections()) > 0:
@@ -24,7 +27,8 @@ def fetch_infos_for_process(process, process_pid):
             "path": process_path,
             "time alive": process_starting_time,
             "status": process_status,
-            "connections": active_connections
+            "connections": active_connections,
+            "parent": process_parent # Name of parent process
         }
 
 
