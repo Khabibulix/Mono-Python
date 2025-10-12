@@ -1,4 +1,4 @@
-import psutil, time # type: ignore
+import psutil, time
 
 datas = {}
 
@@ -31,7 +31,10 @@ def fetch_infos_for_process(process, process_pid):
 def get_infos_for_process_with_pid(pid):
     datas.clear()
     if psutil.pid_exists(pid):
-        fetch_infos_for_process(psutil.Process(pid), pid)
+        try:
+            fetch_infos_for_process(psutil.Process(pid), pid)
+        except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
+            pass
     else:
         return []
     return datas
@@ -41,6 +44,6 @@ def get_processes():
     for process_pid in psutil.pids():
         try:
             fetch_infos_for_process(psutil.Process(process_pid), process_pid)
-        except psutil.AccessDenied:
+        except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
             continue
     return datas
