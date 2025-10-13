@@ -1,8 +1,28 @@
-import psutil, time
+import psutil, time, hashlib
 
 datas = {}
 
+def grab_sha256_hash_of_process(path_of_process):
+    h = hashlib.sha256()
+    with open(path_of_process, 'rb') as f:
+        while True:
+            chunk = f.read(65536)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest()
+
+    
+
 def fetch_infos_for_process(process, process_pid):
+    """Main function to provide infos about processes.
+    Edits the dict named datas, for more infos about psutil module, see over here: https://psutil.readthedocs.io/en/latest/
+
+    :param process: Process to analyze
+    :type process: psutil.Process object
+    :param process_pid: PID of the process
+    :type process_pid: int
+    """
     
     with process.oneshot():
         process_name = process.name()
@@ -11,8 +31,11 @@ def fetch_infos_for_process(process, process_pid):
         process_starting_time = (time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(process.create_time())))
         process_status = process.status()
         process_parent = process.parent().name() if process.parent() is not None else process.parent()
-
-
+        
+        if process_path != '' and process_path[-4:] == '.exe':
+            process_hash = grab_sha256_hash_of_process(process_path)
+        else:
+            process_hash = None
 
 
     if len(process.net_connections()) > 0:
@@ -28,7 +51,8 @@ def fetch_infos_for_process(process, process_pid):
             "time alive": process_starting_time,
             "status": process_status,
             "connections": active_connections,
-            "parent": process_parent # Name of parent process
+            "parent": process_parent,
+            "hash": process_hash
         }
 
 
@@ -45,9 +69,21 @@ def get_infos_for_process_with_pid(pid):
 
 
 def get_processes():
+    """Function to loop in all existing process and to grab datas about them
+
+    :return: datas
+    :rtype: dict
+    """
     for process_pid in psutil.pids():
         try:
             fetch_infos_for_process(psutil.Process(process_pid), process_pid)
         except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
             continue
     return datas
+
+alived_pids_for_tests = [12700, 580, 11420]
+
+
+
+def review_process(process_pid):
+    pass
