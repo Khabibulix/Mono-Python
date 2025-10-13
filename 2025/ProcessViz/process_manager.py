@@ -1,6 +1,15 @@
 import psutil, time, hashlib
 
 datas = {}
+SUSPICIOUS_PATHS = [
+    r"C:\Users",
+    r"C:\Temp",
+    r"C:\Windows\Temp",
+    r"C:\ProgramData",
+    r"C:\$Recycle.Bin",
+    r"C:\PerfLogs",
+    r"C:\Logs"
+]
 
 def grab_sha256_hash_of_process(path_of_process):
     h = hashlib.sha256()
@@ -31,7 +40,7 @@ def fetch_infos_for_process(process, process_pid):
         process_starting_time = (time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(process.create_time())))
         process_status = process.status()
         process_parent = process.parent().name() if process.parent() is not None else process.parent()
-        
+
         if process_path != '' and process_path[-4:] == '.exe':
             process_hash = grab_sha256_hash_of_process(process_path)
         else:
@@ -83,7 +92,33 @@ def get_processes():
 
 alived_pids_for_tests = [12700, 580, 11420]
 
+def analyze_process(process_pid):
+    score = 0
+    justifications = {}
+    current_process = psutil.Process(process_pid) if psutil.pid_exists(process_pid) else None
+
+    if not current_process:
+        return
 
 
-def review_process(process_pid):
-    pass
+    # Exec non dans dossier standard 20
+    if any(current_process.exe().lower().startswith(p.lower() for p in SUSPICIOUS_PATHS)):
+        score += 20
+        justifications["Non standard path"] = True
+    else:
+        return []
+
+    return [score, justifications]
+    # Process non signe, voir pefile, 30
+    # Binaire sys mais faux chemin 25
+    # Non associe a un service mais lance comme systeme 15
+    # Chemin supprime 15
+    # A lance des scripts 20
+    # Communique avec Internet 20
+    # Reduction du score si dans chemin sys -20
+    """
+    Check differents parametres, augmenter score, ajouter justif
+    """
+    
+
+# analyze_process(580)
