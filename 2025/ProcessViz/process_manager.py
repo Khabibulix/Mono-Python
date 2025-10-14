@@ -1,5 +1,5 @@
 import psutil, time
-from utils import grab_sha256_hash_of_process, is_signed
+from utils import grab_sha256_hash_of_process, is_signed, is_invocating_scripts
 
 
 datas = {}
@@ -11,6 +11,12 @@ SUSPICIOUS_PATHS = [
     r"C:\$Recycle.Bin",
     r"C:\PerfLogs",
     r"C:\Logs"
+]
+
+POTENTIALLY_TRUSTFUL_PATHS = [
+    r"C:\Windows\System32\drivers",
+    r"C:\Windows\System32",
+    r"C:\Windows"
 ]
 
 
@@ -81,7 +87,7 @@ def get_processes():
             continue
     return datas
 
-alived_pids_for_tests = [12700, 580, 11420]
+#alived_pids_for_tests = [12700, 580, 11420]
 
 def analyze_process(process_pid):
     score = 0
@@ -97,20 +103,29 @@ def analyze_process(process_pid):
             score += 20
             justifications["Non standard path"] = True
 
+    # Exec path in sys path decrements non-trustfullness score
+    for path in POTENTIALLY_TRUSTFUL_PATHS:
+        if current_process.exe().lower().startswith(path):
+            score -= 20
+
     # Is binary signed
     if not is_signed(current_process.exe()):
         score += 30
         justifications["Not signed file signature"] = True
 
+    # Invocating Python scripts
+    if is_invocating_scripts(current_process):
+        score += 20
+        justifications["Invocating Python scripts"] = True
+
     # Binaire sys mais faux chemin 25
+
     # Non associe a un service mais lance comme systeme 15
     # Chemin supprime 15
-    # A lance des scripts 20
+    # Exécutable avec chemin contenant des caractères inhabituels 15
     # Communique avec Internet 20
-    # Reduction du score si dans chemin sys -20
-    """
-    Check differents parametres, augmenter score, ajouter justif
-    """
+    
+
     return {"score":score, "justifications":justifications}
 
 print(analyze_process(11420)["score"])

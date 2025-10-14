@@ -1,4 +1,4 @@
-import hashlib, subprocess, os
+import hashlib, subprocess, os, psutil
 
 
 def grab_sha256_hash_of_process(path_of_process):
@@ -21,8 +21,23 @@ def is_signed(filepath):
             text = True
         )
         output = result.stderr + result.stdout
-        print(result)
         return False if "No signature found" in output else True
 
     except FileNotFoundError as fnfe:
-        return "signtool.exe not found"
+        return "signtool.exe not found, must be in /bin folder"
+    
+def is_invocating_scripts(process: psutil.Process):
+    try:
+        cmd = process.cmdline()
+        name = process.name().lower()
+        exe = process.exe() if process.exe() else ""
+
+        is_python_process = ("python" in name or "python" in exe.lower())
+
+        if is_python_process:
+            for arg in cmd:
+                if arg.endswith(".py") or arg.endswith(".pyw") or arg.startswith("-c"):
+                    return True
+        return False
+    except (psutil.AccessDenied, psutil.NoSuchProcess):
+        return False
