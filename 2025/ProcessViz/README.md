@@ -13,6 +13,7 @@
 - Consulting a process via its PID
 - View metrics for memory, CPU usage... etc
 
+
 ## Possible improvements
 
 - Adding IA to identify strange processes
@@ -27,3 +28,4 @@
 
 - Jinja templates
 - Review for dictionary/JSON
+- Hashlib, Radon, Signtool
