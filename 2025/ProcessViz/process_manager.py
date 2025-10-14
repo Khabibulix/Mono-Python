@@ -1,4 +1,4 @@
-import psutil, time, hashlib
+import psutil, time, hashlib, pefile
 
 datas = {}
 SUSPICIOUS_PATHS = [
@@ -101,14 +101,14 @@ def analyze_process(process_pid):
         return
 
 
-    # Exec non dans dossier standard 20
-    if any(current_process.exe().lower().startswith(p.lower() for p in SUSPICIOUS_PATHS)):
-        score += 20
-        justifications["Non standard path"] = True
-    else:
-        return []
+    # Exec path not in standard folder
+    for path in SUSPICIOUS_PATHS:
+        if current_process.exe().lower().startswith(path):
+            score += 20
+            justifications["Non standard path"] = True
+        else:
+            return 0
 
-    return [score, justifications]
     # Process non signe, voir pefile, 30
     # Binaire sys mais faux chemin 25
     # Non associe a un service mais lance comme systeme 15
@@ -119,6 +119,6 @@ def analyze_process(process_pid):
     """
     Check differents parametres, augmenter score, ajouter justif
     """
-    
+    return [score, justifications]
 
-# analyze_process(580)
+print(analyze_process(580))
