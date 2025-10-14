@@ -1,4 +1,6 @@
-import psutil, time, hashlib, pefile
+import psutil, time
+from utils import grab_sha256_hash_of_process, is_signed
+
 
 datas = {}
 SUSPICIOUS_PATHS = [
@@ -11,17 +13,6 @@ SUSPICIOUS_PATHS = [
     r"C:\Logs"
 ]
 
-def grab_sha256_hash_of_process(path_of_process):
-    h = hashlib.sha256()
-    with open(path_of_process, 'rb') as f:
-        while True:
-            chunk = f.read(65536)
-            if not chunk:
-                break
-            h.update(chunk)
-    return h.hexdigest()
-
-    
 
 def fetch_infos_for_process(process, process_pid):
     """Main function to provide infos about processes.
@@ -100,16 +91,17 @@ def analyze_process(process_pid):
     if not current_process:
         return
 
-
     # Exec path not in standard folder
     for path in SUSPICIOUS_PATHS:
         if current_process.exe().lower().startswith(path):
             score += 20
             justifications["Non standard path"] = True
-        else:
-            return 0
 
-    # Process non signe, voir pefile, 30
+    # Is binary signed
+    if not is_signed(current_process.exe()):
+        score += 30
+        justifications["Not signed file signature"] = True
+
     # Binaire sys mais faux chemin 25
     # Non associe a un service mais lance comme systeme 15
     # Chemin supprime 15
@@ -119,6 +111,6 @@ def analyze_process(process_pid):
     """
     Check differents parametres, augmenter score, ajouter justif
     """
-    return [score, justifications]
+    return {"score":score, "justifications":justifications}
 
-print(analyze_process(580))
+print(analyze_process(11420)["score"])
