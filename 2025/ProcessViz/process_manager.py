@@ -1,5 +1,5 @@
 import psutil, time
-from utils import grab_sha256_hash_of_process, is_signed, is_invocating_scripts
+from utils import *
 
 
 datas = {}
@@ -18,7 +18,6 @@ POTENTIALLY_TRUSTFUL_PATHS = [
     r"C:\Windows\System32",
     r"C:\Windows"
 ]
-
 
 def fetch_infos_for_process(process, process_pid):
     """Main function to provide infos about processes.
@@ -95,7 +94,7 @@ def analyze_process(process_pid):
     current_process = psutil.Process(process_pid) if psutil.pid_exists(process_pid) else None
 
     if not current_process:
-        return
+        return None
 
     # Exec path not in standard folder
     for path in SUSPICIOUS_PATHS:
@@ -118,14 +117,18 @@ def analyze_process(process_pid):
         score += 20
         justifications["Invocating Python scripts"] = True
 
-    # Binaire sys mais faux chemin 25
-
     # Non associe a un service mais lance comme systeme 15
-    # Chemin supprime 15
+    # Deleted path
+    if is_deleted_executable(current_process):
+        score += 15
+        justifications["Deleted path"] = True
     # Exécutable avec chemin contenant des caractères inhabituels 15
-    # Communique avec Internet 20
-    
+    # Communique avec Internet 20    
 
     return {"score":score, "justifications":justifications}
 
-print(analyze_process(11420)["score"])
+output = analyze_process(580)
+if output is None:
+    print(output)
+else:
+    print(output['score'], output['justifications'])
