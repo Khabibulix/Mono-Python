@@ -14,6 +14,7 @@
 - View metrics for memory, CPU usage... etc
 
 ### Where I am at 14/10/25
+
 Web app is styled with CSS, vanilla CSS and I'm using JS to grab a click event on a process and display it in a new Flask route. The web-app looks slow to load but is working as intended.
 Next step is to analyze the process to display a _score of trust_, it will be the beginning of data visualisation.
 

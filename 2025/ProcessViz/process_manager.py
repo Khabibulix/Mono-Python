@@ -4,6 +4,17 @@ from config_loader import CONFIG
 
 
 datas = {}
+raw_metrics =  {
+    "path_suspicious": False,
+    "path_trustworthy": False,
+    "is_signed": True,
+    "invokes_python": False,
+    "not_bound_to_service": False,
+    "path_deleted": False,
+    "strange_chars": False,
+    "network_active": False
+}
+MAX_SCORE = 135
 
 
 def fetch_infos_for_process(process, process_pid):
@@ -95,51 +106,61 @@ def analyze_process(process_pid):
         if exe_path.startswith(path):
             score += 20
             justifications["Non standard path"] = True
+            raw_metrics["path_suspicious"] = True
 
     # Exec path in sys path decrements non-trustfullness score
     for path in CONFIG["paths"]["trustworthy"]:
         if exe_path.startswith(path):
             score -= 20
 
-    # Is binary signed
+    # Is not binary signed
     if not is_signed(exe_path):
         score += 30
         justifications["Not signed file signature"] = True
+        raw_metrics["is_signed"] = False
 
     # Invocating Python scripts
     if is_invocating_scripts(current_process):
         score += 20
         justifications["Invocating Python scripts"] = True
+        raw_metrics["invokes_python"] = True
 
     # Non associe a un service mais lance comme systeme 15
     if not is_process_bound_to_a_service(current_process):
         score += 15
         justifications["Not bound to a service"] = True
-
+        raw_metrics["not_bound_to_service"] = True
 
     # Deleted path
     if is_deleted_executable(current_process):
         score += 15
         justifications["Deleted path"] = True
+        raw_metrics["path_deleted"] = True
 
     # Strange char in path
     if re.search(r'[^a-zA-Z0-9_:\\\.\- ]', exe_path):
         score += 15
         justifications["Unusual characters in path"] = True
-    
+        raw_metrics["strange_chars"] = True
+
     # Internet connections
     try:
         if any(conn.status == psutil.CONN_ESTABLISHED and conn.raddr for conn in current_process.net_connections(kind='inet')):
             score += 20
             justifications["Communicates over network"] = True   
+            raw_metrics["network_active"] = True
     except (psutil.AccessDenied, psutil.NoSuchProcess):
         pass
 
-    return {"score":score, "justifications":justifications}
+    return {
+        "score":normalizing_score(score, MAX_SCORE),
+        "justifications":justifications,
+        "raw_metrics":raw_metrics
+    }
 
 output = analyze_process(580)
 
 if output is None:
     print(output)
 else:
-    print(output['score'], output['justifications'])
+    print(output['score'], output['justifications'], output['raw_metrics'])

@@ -60,7 +60,6 @@ def get_services() -> dict:
             pid = 0
         
         name = service.Name
-        # display = getattr(service, 'DisplayName', None)
 
         if pid > 0:
             results.setdefault(pid, []).append(name)
@@ -71,3 +70,5 @@ def get_services() -> dict:
 def is_process_bound_to_a_service(process: psutil.Process) -> bool:
     return True if get_services().get(process.pid) is not None else False
 
+def normalizing_score(score, max_score):
+    return min(int((score / max_score) * 100), 100)
