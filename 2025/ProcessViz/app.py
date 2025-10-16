@@ -1,8 +1,20 @@
 import pythoncom, asyncio
-from quart import Quart, render_template, request
+from quart import Quart, render_template
 from process_manager import *
 
 app = Quart(__name__)
+
+process_cache = None
+
+async def refresh_cache():
+    global process_cache
+    while True:
+        try:
+            data = await asyncio.to_thread(get_processes)
+            process_cache = data
+        except Exception as e:
+            print("Cache error")
+        await asyncio.sleep(3)
 
 # For using WMI in Quart context
 def run_wmi_function(fn, *args, **kwargs):
@@ -12,17 +24,22 @@ def run_wmi_function(fn, *args, **kwargs):
     finally:
         pythoncom.CoUninitialize()
 
+@app.before_serving
+async def startup():
+    app.add_background_task(refresh_cache)
+
 @app.route("/")
 async def display_processes():
-    processes = await asyncio.to_thread(get_processes)
-    return await render_template('index.html', get_processes=processes)
+    if process_cache is None:
+        return "⏳ Loading datas, you'll be kind to wait a bit...", 503
+    return await render_template('index.html', get_processes=process_cache)
 
 
 @app.route("/process/<int:pid>", methods=["GET"])
 async def process_view(pid):
     infos = await asyncio.to_thread(run_wmi_function, get_infos_for_process_with_pid, pid)
     result = await asyncio.to_thread(run_wmi_function, analyze_process, pid)
-    return await render_template('process.html', get_processes=infos, result=result)
+    return await render_template('process.html', process_info=infos, result=result)
 
 if __name__ == "__main__":
     app.run(debug=True)

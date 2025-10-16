@@ -4,19 +4,22 @@
 
 {% block content %}
     <div class="flex-container">
+        {% for name, details in process_info.items() %}
+        <h2>{{ name }}</h2>
         <table>
-            {% for k, v in get_processes.items() %}
-                <caption>{{k}}</caption> 
-                {% for key, value in v.items()%} 
-                    <tr> 
-                        <th>{{key}}</th>
-                        <th class="value">{{value}}</th> 
-                    </tr> 
-                {% endfor %} 
-                <br>
-            {% endfor %}
+            <tbody>
+                {% for key, value in details.items() %}
+                    <tr>
+                        <th>{{ key }}</th>
+                        <td class="value">{{ value }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
+    {% endfor %}
     </div>
+
+    
     
 
     <h3>Résultat d'analyse</h3>

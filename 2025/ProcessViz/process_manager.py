@@ -58,7 +58,12 @@ def get_infos_for_process_with_pid(pid):
             pass
     else:
         return []
-    return datas
+    
+    for proc_name, details in datas.items():
+            if details.get("PID") == pid:
+                return {proc_name: details}
+            
+    return []
 
 
 def get_processes():
