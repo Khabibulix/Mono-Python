@@ -10,7 +10,7 @@ async def refresh_cache():
     global process_cache
     while True:
         try:
-            data = await asyncio.to_thread(get_processes)
+            data = await asyncio.to_thread(ProcessGetter.get_processes)
             process_cache = data
         except Exception as e:
             print("Cache error")
@@ -35,11 +35,26 @@ async def display_processes():
     return await render_template('index.html', get_processes=process_cache)
 
 
-@app.route("/process/<int:pid>", methods=["GET"])
+@app.route("/process/<int:pid>")
 async def process_view(pid):
-    infos = await asyncio.to_thread(run_wmi_function, get_infos_for_process_with_pid, pid)
-    result = await asyncio.to_thread(run_wmi_function, analyze_process, pid)
+    def fetch_and_analyze():
+        pythoncom.CoInitialize()
+        try:
+            infos = ProcessGetter.get_infos_for_process_with_pid(pid)
+            if not infos:
+                return None, None
+            analyzer = ProcessAnalyzer(pid)
+            result = analyzer.run()
+            return infos, result
+        finally:
+            pythoncom.CoUninitialize()
+    
+    infos, result = await asyncio.to_thread(fetch_and_analyze)
+
+    if not infos:
+        return "Process not found", 404
     return await render_template('process.html', process_info=infos, result=result)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    print(ProcessGetter.get_infos_for_process_with_pid(456))
+    # app.run(debug=True)
