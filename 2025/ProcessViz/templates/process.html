@@ -1,9 +1,44 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 
-{% block head %}
-    {{super()}}
-{% endblock %}
+{% block title %}Analyse du processus{% endblock %}
 
 {% block content %}
-    {{super()}}
+    <div class="flex-container">
+        <table>
+            {% for k, v in get_processes.items() %}
+                <caption>{{k}}</caption> 
+                {% for key, value in v.items()%} 
+                    <tr> 
+                        <th>{{key}}</th>
+                        <th class="value">{{value}}</th> 
+                    </tr> 
+                {% endfor %} 
+                <br>
+            {% endfor %}
+        </table>
+    </div>
+    
+
+    <h3>Résultat d'analyse</h3>
+    <p><strong>Score :</strong> {{ result["score"] }} / 100</p>
+    <p><strong>Niveau de risque :</strong> {{ result["risk_level"] }}</p>
+
+    <h4>Justifications</h4>
+    <ul>
+        {% for reason in result["justifications"].keys() %}
+            <li>{{ reason }}</li>
+        {% else %}
+            <li>Aucune justification détectée</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Raw Metrics</h4>
+    <table>
+        {% for metric, value in result["raw_metrics"].items() %}
+            <tr>
+                <td>{{ metric }}</td>
+                <td>{{ "✅" if value else "❌" }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
