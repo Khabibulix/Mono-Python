@@ -72,3 +72,13 @@ def is_process_bound_to_a_service(process: psutil.Process) -> bool:
 
 def normalizing_score(score, max_score):
     return min(int((score / max_score) * 100), 100)
+
+def analyze_score_risk(score):
+    risk = ''
+    if score >= 80:
+        risk = "critical"
+    elif score >= 50:
+        risk = "warning"
+    else:
+        risk = "safe"
+    return risk
