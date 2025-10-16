@@ -1,4 +1,4 @@
-import psutil, time
+import psutil, time, re
 from utils import *
 
 
@@ -93,22 +93,29 @@ def analyze_process(process_pid):
     justifications = {}
     current_process = psutil.Process(process_pid) if psutil.pid_exists(process_pid) else None
 
+
+    try:
+        exe_path = current_process.exe().lower()
+    except (psutil.AccessDenied, psutil.NoSuchProcess):
+        return None
+
+
     if not current_process:
         return None
 
     # Exec path not in standard folder
     for path in SUSPICIOUS_PATHS:
-        if current_process.exe().lower().startswith(path):
+        if exe_path.startswith(path):
             score += 20
             justifications["Non standard path"] = True
 
     # Exec path in sys path decrements non-trustfullness score
     for path in POTENTIALLY_TRUSTFUL_PATHS:
-        if current_process.exe().lower().startswith(path):
+        if exe_path.startswith(path):
             score -= 20
 
     # Is binary signed
-    if not is_signed(current_process.exe()):
+    if not is_signed(exe_path):
         score += 30
         justifications["Not signed file signature"] = True
 
@@ -118,16 +125,30 @@ def analyze_process(process_pid):
         justifications["Invocating Python scripts"] = True
 
     # Non associe a un service mais lance comme systeme 15
+    if not is_process_bound_to_a_service(current_process):
+        score += 15
+        justifications["Not bound to a service"] = True
+
+
     # Deleted path
     if is_deleted_executable(current_process):
         score += 15
         justifications["Deleted path"] = True
-    # Exécutable avec chemin contenant des caractères inhabituels 15
-    # Communique avec Internet 20    
+
+    # Strange char in path
+    if re.search(r'[^a-zA-Z0-9_:\\\.\- ]', exe_path):
+        score += 15
+        justifications["Unusual characters in path"] = True
+    
+    # Internet connections
+    if any(conn.status == psutil.CONN_ESTABLISHED and conn.raddr for conn in current_process.net_connections(kind='inet')):
+        score += 20
+        justifications["Communicates over network"] = True   
 
     return {"score":score, "justifications":justifications}
 
 output = analyze_process(580)
+
 if output is None:
     print(output)
 else:

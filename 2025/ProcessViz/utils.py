@@ -67,6 +67,7 @@ def get_services() -> dict:
         
     return results
 
-print(get_services())
-        
+
+def is_process_bound_to_a_service(process: psutil.Process) -> bool:
+    return True if get_services().get(process.pid) is not None else False
 
