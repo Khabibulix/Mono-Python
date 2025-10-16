@@ -22,11 +22,15 @@ Next step is to analyze the process to display a _score of trust_, it will be th
 
 Full glow-up on all the web-app. Switching to Quart + asyncio speeds up the loading. However, i got a Lighthouse score of 55 in performances, which is pretty bad. The content is available after 21,4s and its size is 176KiB. After caching and Quart migration, content is available after 1,7s, and performance score is at 97.
 
+
 ## Possible improvements
 
 - Adding IA to identify strange processes
 - Testing from another machine/VM
-- Make it quicker
+- ~~Make it quicker~~
+- Play with ChartJS to display statistics
+- Add a real logging file for easier debug
+- Styling of _waiting web-page_
 
 ## What i want to learn
 
