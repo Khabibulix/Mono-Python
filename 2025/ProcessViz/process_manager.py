@@ -1,23 +1,10 @@
 import psutil, time, re
 from utils import *
+from config_loader import CONFIG
 
 
 datas = {}
-SUSPICIOUS_PATHS = [
-    r"C:\Users",
-    r"C:\Temp",
-    r"C:\Windows\Temp",
-    r"C:\ProgramData",
-    r"C:\$Recycle.Bin",
-    r"C:\PerfLogs",
-    r"C:\Logs"
-]
 
-POTENTIALLY_TRUSTFUL_PATHS = [
-    r"C:\Windows\System32\drivers",
-    r"C:\Windows\System32",
-    r"C:\Windows"
-]
 
 def fetch_infos_for_process(process, process_pid):
     """Main function to provide infos about processes.
@@ -93,6 +80,8 @@ def analyze_process(process_pid):
     justifications = {}
     current_process = psutil.Process(process_pid) if psutil.pid_exists(process_pid) else None
 
+    if not current_process:
+        return None
 
     try:
         exe_path = current_process.exe().lower()
@@ -100,17 +89,15 @@ def analyze_process(process_pid):
         return None
 
 
-    if not current_process:
-        return None
-
+    
     # Exec path not in standard folder
-    for path in SUSPICIOUS_PATHS:
+    for path in CONFIG["paths"]["suspicious"]:
         if exe_path.startswith(path):
             score += 20
             justifications["Non standard path"] = True
 
     # Exec path in sys path decrements non-trustfullness score
-    for path in POTENTIALLY_TRUSTFUL_PATHS:
+    for path in CONFIG["paths"]["trustworthy"]:
         if exe_path.startswith(path):
             score -= 20
 
@@ -141,9 +128,12 @@ def analyze_process(process_pid):
         justifications["Unusual characters in path"] = True
     
     # Internet connections
-    if any(conn.status == psutil.CONN_ESTABLISHED and conn.raddr for conn in current_process.net_connections(kind='inet')):
-        score += 20
-        justifications["Communicates over network"] = True   
+    try:
+        if any(conn.status == psutil.CONN_ESTABLISHED and conn.raddr for conn in current_process.net_connections(kind='inet')):
+            score += 20
+            justifications["Communicates over network"] = True   
+    except (psutil.AccessDenied, psutil.NoSuchProcess):
+        pass
 
     return {"score":score, "justifications":justifications}
 

@@ -1,0 +1,28 @@
+{
+   "paths": {
+        "suspicious": [
+            "C:\\Users",
+            "C:\\Temp",
+            "C:\\Windows\\Temp",
+            "C:\\ProgramData",
+            "C:\\$Recycle.Bin",
+            "C:\\PerfLogs",
+            "C:\\Logs"
+        ],
+        "trustworthy": [
+            "C:\\Windows\\System32\\drivers",
+            "C:\\Windows\\System32",
+            "C:\\Windows"
+        ]
+   },
+  "weights": {
+    "suspicious_path": 20,
+    "trustworthy_path": -20,
+    "not_signed": 30,
+    "invokes_python": 20,
+    "not_bound_to_service": 15,
+    "deleted_path": 15,
+    "strange_chars": 15,
+    "network_activity": 20
+  }
+}
