@@ -31,6 +31,7 @@ Next step is to analyze the process to display a _score of trust_, it will be th
 
 ## What i learned/relearned:
 
-- Jinja templates
+- Jinja templates, playing with Win32 APIs
 - Review for dictionary/JSON
 - Hashlib, Radon, Signtool
+- Quart
