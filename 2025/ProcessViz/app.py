@@ -56,5 +56,4 @@ async def process_view(pid):
     return await render_template('process.html', process_info=infos, result=result)
 
 if __name__ == "__main__":
-    print(ProcessGetter.get_infos_for_process_with_pid(456))
-    # app.run(debug=True)
+    app.run(debug=True)

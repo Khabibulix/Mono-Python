@@ -60,7 +60,7 @@ class ProcessGetter:
         for process_pid in psutil.pids():
             try:
                 proc_info = ProcessGetter.fetch_infos_for_process(psutil.Process(process_pid), process_pid)
-                processes[proc_info["PID"]] = proc_info
+                processes[proc_info["name"]] = proc_info
             except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
                 continue
         return processes
