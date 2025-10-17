@@ -82,3 +82,29 @@ def analyze_score_risk(score):
     else:
         risk = "safe"
     return risk
+
+def build_process_tree(processes_by_pid):
+    tree = {}
+    children = {}
+
+    for pid, info in processes_by_pid.items():
+        parent = info["parent_pid"]
+        if parent not in children:
+            children[parent] = []
+        children[parent].append(pid)
+
+    def build_subtree(pid):
+        node = {
+            "pid":pid,
+            "name": processes_by_pid[pid]["name"],
+            "children": []
+        }
+        for child_pid in children.get(pid, []):
+            node["children"].append(build_subtree(child_pid))
+        return node
+    
+    #Find roots
+    roots = [pid for pid in processes_by_pid if processes_by_pid[pid]["parent_pid"] not in processes_by_pid]
+
+    forest = [build_subtree(pid) for pid in roots]
+    return forest

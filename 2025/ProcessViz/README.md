@@ -25,12 +25,13 @@ Full glow-up on all the web-app. Switching to Quart + asyncio speeds up the load
 
 ## Possible improvements
 
-- Adding IA to identify strange processes
-- Testing from another machine/VM
 - ~~Make it quicker~~
-- Play with ChartJS to display statistics
 - Add a real logging file for easier debug
 - Styling of _waiting web-page_
+- Process Tree
+- DLL & files opened
+- Geolocation of opened connections
+- DB conn?
 
 ## What i want to learn
 

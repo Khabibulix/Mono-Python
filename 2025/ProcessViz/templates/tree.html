@@ -1,0 +1,12 @@
+{% macro render_node(node) %}
+    <li>
+        {{node.name}} (PID {{node.pid}})
+        {% if node.children %}
+            <ul>
+                {% for child in node.children %}
+                    {{ render_node(child) }}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endmacro %}

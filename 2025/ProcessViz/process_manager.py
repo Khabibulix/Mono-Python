@@ -24,6 +24,7 @@ class ProcessGetter:
             process_starting_time = (time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(process.create_time())))
             process_status = process.status()
             process_parent = process.parent().name() if process.parent() is not None else process.parent()   
+            process_parent_pid = process.ppid()
             process_hash = grab_sha256_hash_of_process(process_path) if process_path.endswith('.exe') else None
 
         try:
@@ -41,7 +42,8 @@ class ProcessGetter:
             "status": process_status,
             "connections": active_connections,
             "parent": process_parent,
-            "hash": process_hash
+            "hash": process_hash,
+            "parent_pid":process_parent_pid
         }
 
 

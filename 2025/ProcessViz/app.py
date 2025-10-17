@@ -34,7 +34,6 @@ async def display_processes():
         return "⏳ Loading datas, you'll be kind to wait a bit...", 503
     return await render_template('index.html', get_processes=process_cache)
 
-
 @app.route("/process/<int:pid>")
 async def process_view(pid):
     def fetch_and_analyze():
