@@ -54,5 +54,18 @@ async def process_view(pid):
         return "Process not found", 404
     return await render_template('process.html', process_info=infos, result=result)
 
+@app.route("/tree")
+async def display_process_tree():
+    if process_cache is None:
+        return "Loading...", 503
+    
+    processes_by_pid = {
+        v["PID"]: v for v in process_cache.values()
+    }
+
+    tree = build_process_tree(processes_by_pid)
+
+    return await render_template("tree.html", process_tree=tree)
+
 if __name__ == "__main__":
     app.run(debug=True)

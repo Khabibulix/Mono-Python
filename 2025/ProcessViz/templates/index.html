@@ -7,6 +7,7 @@
     </head>
     <body>
             <h1>List of processes</h1>
+            <a href="{{url_for('display_process_tree')}}">See Process Tree</a>
             {% block content %}
                 {% for k, v in get_processes.items() %}
                 <div class="flex_container">
