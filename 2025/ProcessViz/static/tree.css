@@ -1,0 +1,45 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+ul.tree {
+    list-style: none;
+    padding-left: 1rem;
+    border-left: 2px solid #ccc;
+}
+
+.tree li {
+    margin: 0.3rem 0;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.tree li::before {
+    content: "├──";
+    position: absolute;
+    left: 0;
+    color: #888;
+}
+
+.tree li:last-child::before {
+    content: "└──"
+}
+
+.node {
+    font-weight: bold;
+}
+
+.pid {
+    font-weight: normal;
+    color: #666;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}

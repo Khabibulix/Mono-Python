@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Arbre des processus</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='tree.css')}}">
 </head>
 <body>
     <h1>Arborescence des processus</h1>
 
     {% macro render_node(node) %}
         <li>
-            {{node.name}} (PID {{node.pid}})
+            <span class="node">{{node.name}} <span class="pid">(PID {{node.pid}})</span></span>
             {% if node.children %}
                 <ul>
                     {% for child in node.children %}
@@ -19,7 +21,7 @@
         </li>
     {% endmacro %}
 
-    <ul>
+    <ul class="tree">
         {% for root in process_tree %}
             {{ render_node(root) }}
         {% endfor %}
