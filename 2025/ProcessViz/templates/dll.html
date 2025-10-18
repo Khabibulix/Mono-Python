@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}DLL Viewer - {{ path | basename }}{% endblock %}
+{% block title %}DLL Viewer - {{ basename(path) }}{% endblock %}
 
 {% block content %}
     <h2>DLL Inspectée</h2>

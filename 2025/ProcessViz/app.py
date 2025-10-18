@@ -18,13 +18,11 @@ async def refresh_cache():
             print("Cache error")
         await asyncio.sleep(3)
 
-# For using WMI in Quart context
-def run_wmi_function(fn, *args, **kwargs):
-    pythoncom.CoInitialize()
-    try:
-        return fn(*args, **kwargs)
-    finally:
-        pythoncom.CoUninitialize()
+@app.context_processor
+def utility_processor():
+    def basename(path):
+        return os.path.basename(path)
+    return dict(basename=basename)
 
 @app.before_serving
 async def startup():
@@ -71,7 +69,7 @@ async def display_process_tree():
 
 @app.route("/process/<int:pid>/dll")
 async def dll_view(pid):
-    path = request.arg.get("path")
+    path = request.args.get("path")
     if not path:
         abort(400, "Missing path param")
 

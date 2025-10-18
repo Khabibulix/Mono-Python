@@ -36,7 +36,7 @@ class ProcessGetter:
                     seen = set()
                     
                     for map in raw_maps:
-                        path = getattr(m, 'path', None) or getattr(m, 'addr', None) or ''
+                        path = getattr(map, 'path', None) or getattr(map, 'addr', None) or ''
                         if not path:
                             continue
                         if path in seen:
