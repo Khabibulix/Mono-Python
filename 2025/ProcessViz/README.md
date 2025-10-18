@@ -30,8 +30,12 @@ Full glow-up on all the web-app. Switching to Quart + asyncio speeds up the load
 - Styling of _waiting web-page_
 - ~~Process Tree~~
 - ~~DLL & files opened~~
+- Opening and inspecting DLL files on click
 - Geolocation of opened connections
 - DB conn
+
+## Bugs
+ - "Certains objets retournés par psutil.Process().memory_maps() n’ont pas d’attribut .path, ni .addr, ou le retour est vide — mais la ligne échoue au moment du getattr(m, 'path', None)"
 
 ## What i want to learn
 
