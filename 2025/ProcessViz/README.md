@@ -31,7 +31,7 @@ Full glow-up on all the web-app. Switching to Quart + asyncio speeds up the load
 - ~~Process Tree~~
 - DLL & files opened
 - Geolocation of opened connections
-- DB conn?
+- DB conn
 
 ## What i want to learn
 

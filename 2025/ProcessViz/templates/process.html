@@ -10,7 +10,21 @@
                 {% for name, details in process_info.items() %}
                     <tr>
                         <th>{{ name }}</th>
-                        <td class="value">{{ details }}</td>
+                        <td class="value">
+                            {% if name == 'opened_files' %}
+                                {% if details %}
+                                    <ul>
+                                        {% for file_path in details %}
+                                            <li>{{file_path}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <em>No opened files or access not granted</em>
+                                {% endif %}
+                            {% else %}
+                                {{ details }}
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

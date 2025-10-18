@@ -19,18 +19,18 @@ ul.tree {
 .tree li {
     margin: 0.3rem 0;
     position: relative;
-    padding-left: 1rem;
+    padding-left: 3rem;
 }
 
 .tree li::before {
-    content: "├──";
+    content: "├──   ";
     position: absolute;
     left: 0;
     color: #888;
 }
 
 .tree li:last-child::before {
-    content: "└──"
+    content: "└──   "
 }
 
 .node {

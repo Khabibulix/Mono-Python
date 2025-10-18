@@ -7,7 +7,7 @@ MAX_SCORE = 135
 
 class ProcessGetter:
     @staticmethod    
-    def fetch_infos_for_process(process, process_pid):
+    def fetch_infos_for_process(process, process_pid, include_opened_files=False):
         """Main function to provide infos about processes.
         Edits the dict named datas, for more infos about psutil module, see over here: https://psutil.readthedocs.io/en/latest/
 
@@ -26,6 +26,14 @@ class ProcessGetter:
             process_parent = process.parent().name() if process.parent() is not None else process.parent()   
             process_parent_pid = process.ppid()
             process_hash = grab_sha256_hash_of_process(process_path) if process_path.endswith('.exe') else None
+            
+            if include_opened_files:
+                try:
+                    process_opened_files = [f.path for f in process.open_files()]
+                except (psutil.AccessDenied, psutil.NoSuchProcess, OSError) as e:
+                    process_opened_files = []
+            else:
+                process_opened_files = None
 
         try:
             connections = process.net_connections()
@@ -35,7 +43,7 @@ class ProcessGetter:
 
         return {
             "name": process_name,
-            "PID": process.pid,
+            "PID": process_pid,
             "memory usage": round(process_memory_usage, 2),
             "path": process_path,
             "time alive": process_starting_time,
@@ -43,7 +51,8 @@ class ProcessGetter:
             "connections": active_connections,
             "parent": process_parent,
             "hash": process_hash,
-            "parent_pid":process_parent_pid
+            "parent_pid":process_parent_pid,
+            "opened_files":process_opened_files
         }
 
 
@@ -52,7 +61,7 @@ class ProcessGetter:
         if not psutil.pid_exists(pid):
             return None
         try:
-            return ProcessGetter.fetch_infos_for_process(psutil.Process(pid), pid)
+            return ProcessGetter.fetch_infos_for_process(psutil.Process(pid), pid, include_opened_files=True)
         except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
             return None
 
@@ -61,7 +70,7 @@ class ProcessGetter:
         processes = {}
         for process_pid in psutil.pids():
             try:
-                proc_info = ProcessGetter.fetch_infos_for_process(psutil.Process(process_pid), process_pid)
+                proc_info = ProcessGetter.fetch_infos_for_process(psutil.Process(process_pid), process_pid, include_opened_files=False)
                 processes[proc_info["name"]] = proc_info
             except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
                 continue
