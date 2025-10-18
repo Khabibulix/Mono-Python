@@ -11,7 +11,7 @@
                     <tr>
                         <th>{{ name }}</th>
                         <td class="value">
-                            {% if name == 'opened_files' %}
+                            {% if name == 'opened_files' or name == 'opened_dll' %}
                                 {% if details %}
                                 <div class="file-list-container">
                                     <ul class="file-list short-list">

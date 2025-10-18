@@ -30,10 +30,13 @@ class ProcessGetter:
             if include_opened_files:
                 try:
                     process_opened_files = [f.path for f in process.open_files()]
+                    process_opened_dll = [f.path for f in process.memory_maps()]
                 except (psutil.AccessDenied, psutil.NoSuchProcess, OSError) as e:
                     process_opened_files = []
+                    process_opened_dll = []
             else:
                 process_opened_files = None
+                process_opened_dll = None
 
         try:
             connections = process.net_connections()
@@ -52,7 +55,8 @@ class ProcessGetter:
             "parent": process_parent,
             "hash": process_hash,
             "parent_pid":process_parent_pid,
-            "opened_files":process_opened_files
+            "opened_files":process_opened_files,
+            "opened_dll":process_opened_dll
         }
 
 
