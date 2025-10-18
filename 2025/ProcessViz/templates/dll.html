@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}DLL Viewer - {{ path | basename }}{% endblock %}
+
+{% block content %}
+    <h2>DLL Inspectée</h2>
+    <p><strong>Fichier :</strong> {{ path }}</p>
+    <p><strong>Processus :</strong> PID {{ pid }}</p>
+    <p>
+        <a href="{{ url_for('process_view', pid=pid) }}">← Retour au processus</a>
+    </p>
+
+    <h3>Chaînes ASCII détectées (limité à 100)</h3>
+    {% if strings %}
+        <pre class="code-block">
+{{ strings|join('\n') }}
+        </pre>
+    {% else %}
+        <em>Aucune chaîne ASCII détectée dans les 64 Ko.</em>
+    {% endif %}
+
+    <h3>Hexdump (512 premiers octets)</h3>
+    {% if hexdump %}
+        <pre class="hexdump-block">
+{{ hexdump|join('\n') }}
+        </pre>
+    {% else %}
+        <em>Hexdump vide ou erreur de lecture.</em>
+    {% endif %}
+{% endblock %}

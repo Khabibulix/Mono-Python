@@ -30,7 +30,31 @@ class ProcessGetter:
             if include_opened_files:
                 try:
                     process_opened_files = [f.path for f in process.open_files()]
-                    process_opened_dll = [f.path for f in process.memory_maps()]
+                    
+                    raw_maps = process.memory_maps()
+                    opened_dll = []
+                    seen = set()
+                    
+                    for map in raw_maps:
+                        path = getattr(m, 'path', None) or getattr(m, 'addr', None) or ''
+                        if not path:
+                            continue
+                        if path in seen:
+                            continue
+                        seen.add(path)
+                        
+                        if not looks_like_shared_lib(path):
+                            continue
+
+                        accessible, err = is_readable(path)
+                        opened_dll.append({
+                            "path": path,
+                            "accessible": accessible,
+                            "error": err
+                        })
+
+                        process_opened_dll = opened_dll
+
                 except (psutil.AccessDenied, psutil.NoSuchProcess, OSError) as e:
                     process_opened_files = []
                     process_opened_dll = []

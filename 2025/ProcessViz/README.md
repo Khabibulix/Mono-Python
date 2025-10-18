@@ -29,7 +29,7 @@ Full glow-up on all the web-app. Switching to Quart + asyncio speeds up the load
 - Add a real logging file for easier debug
 - Styling of _waiting web-page_
 - ~~Process Tree~~
-- DLL & files opened
+- ~~DLL & files opened~~
 - Geolocation of opened connections
 - DB conn
 

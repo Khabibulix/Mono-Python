@@ -11,7 +11,7 @@
                     <tr>
                         <th>{{ name }}</th>
                         <td class="value">
-                            {% if name == 'opened_files' or name == 'opened_dll' %}
+                            {% if name == 'opened_files' %}
                                 {% if details %}
                                 <div class="file-list-container">
                                     <ul class="file-list short-list">
@@ -31,6 +31,38 @@
                                 {% else %}
                                     <em>No opened files or access not granted</em>
                                 {% endif %}
+                            {% elif name == 'opened_dll' %}
+                                {% if details %}
+                                <div class="file-list-container">
+                                    <ul class="file-list short-list">
+                                        {% for dll in details[:3] %}
+                                            <li>
+                                                {% if dll.accessible %}
+                                                    <a href="url_for('dll_view', pid=process_info.PID, path=dll.path|urlencode) }}">{{ dll.path }}"></a>
+                                                {% else %}
+                                                    {{dll.path}} <small style="color:red;">{{dll.error}}</small>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% if details|length > 3 %}
+                                        <ul class="file-list full-list" style="display: none;">
+                                            {% for dll in details[3:] %}
+                                                <li>
+                                                {% if dll.accessible %}
+                                                    <a href="{{ url_for('dll_view', pid=process_info.PID, path=dll.path|urlencode) }}">{{ dll.path }}</a>
+                                                {% else %}
+                                                    {{ dll.path }} <small style="color: red;">({{ dll.error }})</small>
+                                                {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                    <button class="toggle-btn" onclick="toggleFileList(this)">Voir plus</button>
+                                </div>
+                                {% else %}
+                                    <em>No DLL or access not granted</em>
+                                {% endif % }
                             {% else %}
                                 {{ details }}
                             {% endif %}

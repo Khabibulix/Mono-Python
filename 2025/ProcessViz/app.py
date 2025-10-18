@@ -1,6 +1,8 @@
-import pythoncom, asyncio
-from quart import Quart, render_template
+import pythoncom, asyncio, os, re
+from quart import Quart, render_template, request, abort
 from process_manager import *
+from utils import is_readable
+from urllib.parse import unquote_plus
 
 app = Quart(__name__)
 
@@ -66,6 +68,47 @@ async def display_process_tree():
     tree = build_process_tree(processes_by_pid)
 
     return await render_template("tree.html", process_tree=tree)
+
+@app.route("/process/<int:pid>/dll")
+async def dll_view(pid):
+    path = request.arg.get("path")
+    if not path:
+        abort(400, "Missing path param")
+
+    path = unquote_plus(path)
+    readable, error = is_readable(path)
+    if not readable:
+        abort(403, f"Cannot access DLL: {error}")
+    
+    try:
+        with open(path, 'rb') as f:
+            data = f.read(64 * 1024)
+    except Exception as e:
+        abort(500, f"Error reading file: {e}")
+
+    ascii_strings = re.findall(rb'[\x20-\x7E]{4,}', data)
+    strings = [s.decode('ascii', errors='ignore') for s in ascii_strings[:100]]
+
+    def hexdump(data:bytes, length:int = 16):
+        result = []
+        for i in range(0, min(len(data), 512), length):
+            chunk = data[i:i+length]
+            hex_part = ' '.join(f'{b:02x}' for b in chunk)
+            # Classic ASCII Chars, 32 is ' ' and 127 is '~'
+            ascii_part = ''.join(chr(b) if 32 <= b < 127 else '.' for b in chunk)
+            result.append(f"{i:08x} {hex_part:<48} |{ascii_part}|")
+        return result
+    
+    hex_lines = hexdump(data)
+
+    return await render_template(
+        "dll.html",
+        pid=pid,
+        path=path,
+        strings=strings,
+        hexdump=hex_lines    
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
