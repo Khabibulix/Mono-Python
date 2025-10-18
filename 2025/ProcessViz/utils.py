@@ -1,4 +1,30 @@
-import hashlib, subprocess, os, psutil, wmi
+import hashlib, subprocess, os, psutil
+from typing import Tuple
+
+try:
+    import wmi
+except ImportError:
+    wmi = None 
+
+
+
+def looks_like_shared_lib(path: str) -> bool:
+    if not path:
+        return False
+    p = path.lower()
+    return p.endswith(".dll")
+
+def is_readable(path:str) ->  Tuple[bool, str]:
+    if not path:
+        return False, "empty path"
+    if not os.path.exists(path):
+        return False, "not found"
+    if not os.path.isfile(path):
+        return False, "not a file"
+    if not os.access(path, os.R_OK):
+        return False, "permission denied"
+    return True, ''
+
 
 
 def grab_sha256_hash_of_process(path: str) -> str:
