@@ -13,11 +13,21 @@
                         <td class="value">
                             {% if name == 'opened_files' %}
                                 {% if details %}
-                                    <ul>
-                                        {% for file_path in details %}
+                                <div class="file-list-container">
+                                    <ul class="file-list short-list">
+                                        {% for file_path in details[:3] %}
                                             <li>{{file_path}}</li>
                                         {% endfor %}
                                     </ul>
+                                    {% if details|length > 3 %}
+                                           <ul class="file-list full-list" style="display: none;">
+                                            {% for file_path in details[3:] %}
+                                                <li>{{file_path}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                    <button class="toggle-btn" onclick="toggleFileList(this)">Voir plus</button>
+                                </div>
                                 {% else %}
                                     <em>No opened files or access not granted</em>
                                 {% endif %}
@@ -27,6 +37,22 @@
                         </td>
                     </tr>
                 {% endfor %}
+
+                <script>
+                    function toggleFileList(button) {
+                        const container = button.parentElement;
+                        const fullList = container.querySelector('.full-list');
+
+                        if (fullList.style.display == 'none') {
+                            fullList.style.display = 'block';
+                            button.textContent = 'Voir moins';
+                        } else {
+                            fullList.style.display = 'none';
+                            button.textContent = "Voir plus";
+                        }
+                    }
+                </script>
+
             </tbody>
         </table>
     

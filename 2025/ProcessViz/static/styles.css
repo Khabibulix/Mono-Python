@@ -37,3 +37,19 @@ th {
     display: flex;
     justify-content: center;
 }
+
+.toggle-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+.toggle-btn:hover {
+    background-color: #0056b3;
+}
