@@ -1,4 +1,4 @@
-import psutil, time, re
+import psutil, time, re, asyncio
 from utils import *
 from utils_process import *
 from utils_services import *
@@ -9,7 +9,7 @@ MAX_SCORE = 135
 
 class ProcessGetter:
     @staticmethod    
-    def fetch_infos_for_process(process, process_pid, include_opened_files=False):
+    async def fetch_infos_for_process(process, process_pid, include_opened_files=False):
         """Main function to provide infos about processes.
         Edits the dict named datas, for more infos about psutil module, see over here: https://psutil.readthedocs.io/en/latest/
 
@@ -32,7 +32,7 @@ class ProcessGetter:
         process_hash = None
 
         if process_path and process_path.endswith(".exe"):
-            process_hash = grab_sha256_hash_of_process(process_path)
+            process_hash = await grab_sha256_async(process_path)
 
         process_opened_files = None
         process_opened_dll = None

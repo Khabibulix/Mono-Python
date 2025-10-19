@@ -2,7 +2,7 @@ import pythoncom, os, re, logging, asyncio
 from setup_log import setup_logger
 from quart import Quart, render_template, request, abort
 from process_manager import *
-from utils import is_readable
+from utils import is_readable, grab_sha256_async
 from urllib.parse import unquote_plus
 
 

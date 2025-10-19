@@ -11,6 +11,13 @@ Process Viz is a fast and asynchronous web application designed to capture and v
 - [Learning Objectives](#what-i-want-to-learn)
 - [What I learned](#what-i-learnedrelearned)
 
+## How to launch things
+
+- ```python app.py``` for main app
+- ```python -m unittest discover -s tests``` for unittest tests
+
+
+
 ## Expectations at 05/10/25
 
 - Script that generate processes snapshots to stock on a server
@@ -41,7 +48,7 @@ Working on DLL and opened files. It is now possible to check certain metrics abo
 ###  📅  19/10/25
 
 Adding loggings features and removing asyncio noise, quick debug on process main page click events.
-Optimizing psutil with attrs[], calls are less frequent, then faster.
+Optimizing psutil with attrs[], calls are less frequent, then faster. Beginning of TDD for all processes classes.
 
 
 ## Possible improvements
@@ -53,11 +60,10 @@ Optimizing psutil with attrs[], calls are less frequent, then faster.
 - ✅    DLL & files opened
 - ✅    Opening and inspecting DLL files on click
 - ✅    Profile code
-- Better structuration of UI
+- ✅    Optimize _psutil_ with attrs
 - Test coverage for classes
 - Geolocation of opened connections
 - DB conn
-- ✅    Optimize _psutil_ with attrs
 - More DLL infos with pefile
 - Read files async style with _aiofiles_
 - Hashing files in _WebAssembly_ to free the back-end, _Pyodide_, then _Rust-WASM_
@@ -81,4 +87,4 @@ Optimizing psutil with attrs[], calls are less frequent, then faster.
 - Services
 - Hashlib, Radon, Signtool, Psutil
 - Quart, context processor
-- Py-Spy
+- Py-Spy, Mocking with _unittest.mock_
