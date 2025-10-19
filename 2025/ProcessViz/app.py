@@ -34,7 +34,7 @@ async def startup():
 @app.route("/")
 async def display_processes():
     if process_cache is None:
-        return "⏳ Loading datas, you'll be kind to wait a bit...", 503
+        return await render_template("loading.html"), 503
     return await render_template('index.html', get_processes=process_cache)
 
 @app.route("/process/<int:pid>")
@@ -63,7 +63,7 @@ async def process_view(pid):
 async def display_process_tree():
     if process_cache is None:
         logger.warning("Cache not ready when accessing /tree")
-        return "Loading...", 503
+        return await render_template("loading.html"), 503
     
     processes_by_pid = {
         v["PID"]: v for v in process_cache.values()

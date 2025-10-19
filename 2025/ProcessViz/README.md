@@ -1,10 +1,13 @@
 # Process Viz (current project)
 
 
+Process Viz is a fast and asynchronous web application designed to capture and visualize process snapshots on a server. Built initially with FastAPI and evolving towards Quart with asyncio, it allows users to browse and analyze system processes in real-time through a clean web interface.
+
+### Table of contents
+
 - [Expectations](#expectations-at-051025)
 - [DevLog](#where-i-am-at-141025)
 - [Improvements?](#possible-improvements)
-- [Bugs](#bugs)
 - [Learning Objectives](#what-i-want-to-learn)
 - [What I learned](#what-i-learnedrelearned)
 
@@ -35,11 +38,16 @@ Full glow-up on all the web-app. Switching to Quart + asyncio speeds up the load
 Working on DLL and opened files. It is now possible to check certain metrics about a process via its PID, if a file is signed, if the path is a standard one. All of that displays a _risk level_
 
 
+###  📅  19/10/25
+
+Adding loggings features and removing asyncio noise, quick debug on process main page click events.
+
+
 ## Possible improvements
 
-- ✅ Make it quicker
-- ✅ Add a real logging file for easier debug
-- Styling of _waiting web-page_
+- ✅    Make it quicker
+- ✅    Add a real logging file for easier debug
+- ✅    Styling of _waiting web-page_
 - ✅    Process Tree
 - ✅    DLL & files opened
 - ✅    Opening and inspecting DLL files on click
