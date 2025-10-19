@@ -66,8 +66,19 @@ class ProcessGetter:
 
         try:
             connections = process.net_connections()
-            active_connections = [connections[0][3], connections[0][-1]] if connections else None
-        except psutil.AccessDenied:
+            active_connections = []
+
+            for conn in connections:
+                addr = conn.raddr if conn.raddr else conn.laddr
+                ip = addr.ip if hasattr(addr, 'ip') else addr[0]
+                port = addr.port if hasattr(addr, 'port') else addr[1]
+                status = conn.status
+                active_connections.append(f"{ip}:{port} -> {status}")
+
+            if not active_connections:
+                active_connections = None
+
+        except (psutil.AccessDenied, psutil.NoSuchProcess):
             active_connections = None
 
         return {
