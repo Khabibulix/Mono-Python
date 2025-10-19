@@ -1,11 +1,5 @@
-import hashlib, subprocess, os, psutil
+import hashlib, subprocess, os
 from typing import Tuple
-
-try:
-    import wmi
-except ImportError:
-    wmi = None 
-
 
 
 def looks_like_shared_lib(path: str) -> bool:
@@ -50,46 +44,12 @@ def is_signed(filepath: str) -> bool | str:
     except FileNotFoundError:
         return "signtool.exe not found, must be in /bin folder"
     
-def is_invocating_scripts(process: psutil.Process) -> bool:
-    try:
-        cmdline = process.cmdline()
-        name = process.name().lower()
-        exe = process.exe() if process.exe() else ""
-
-        if "python" in name or "python" in exe:
-            return any(arg.endswith((".py", ".pyw")) or arg.startswith("-c") for arg in cmdline)
-        return False
-    
-    except (psutil.AccessDenied, psutil.NoSuchProcess):
-        return False
-    
-def is_deleted_executable(process: psutil.Process) -> bool:
-    try: 
-        exe_path = process.exe()
-        return not os.path.exists(exe_path)
-    except (psutil.AccessDenied, psutil.NoSuchProcess):
-        return False
-
-def get_services() -> dict:
-    results = {}
-
-    for service in wmi.WMI().Win32_Service():
-        
-        try:
-            pid = int(service.ProcessID) if service.ProcessID not in (None, '') else 0
-        except Exception:
-            pid = 0
-        
-        name = service.Name
-
-        if pid > 0:
-            results.setdefault(pid, []).append(name)
-        
-    return results
 
 
-def is_process_bound_to_a_service(process: psutil.Process) -> bool:
-    return process.pid in get_services()
+
+
+
+
 
 def normalizing_score(score, max_score):
     return min(int((score / max_score) * 100), 100)
