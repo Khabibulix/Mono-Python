@@ -11,7 +11,7 @@
             {% block content %}
                 {% for k, v in get_processes.items() %}
                 <div class="flex_container">
-                    <table onclick="send_data(this)" data-pid="{{v['PID']}}">
+                    <table onclick="send_data(this)" data-pid="{{v['PID']}}" style="cursor:pointer;">
                         <caption>{{k}}</caption>
                             {% for key, value in v.items()%}
                                 <tr>
@@ -26,13 +26,9 @@
 
                 <script>
                         function send_data(process) {
-                            if (document.URL == 'http://localhost:5000/' ) {
-                                var pid = process.dataset.pid;
-                                window.location.href = `process/${pid}`;
-                    
-                            } else {
-                                console.log(document.URL)
-                            }
+                            console.log("Current pathname:", window.location.pathname);
+                            var pid = process.dataset.pid;
+                            window.location.href = `process/${pid}`;
                         }
                     </script>
             {%endblock%}      

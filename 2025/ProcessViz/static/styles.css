@@ -45,6 +45,10 @@ th {
     margin-left: 10px;
 }
 
+table:hover {
+    border: 1px solid purple;
+}
+
 
 tbody tr:hover {
     background-color: #222;
@@ -55,6 +59,13 @@ tbody tr:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    background: transparent;
+    pointer-events: auto;
+}
+
+.flex_container table {
+    position: relative;
+    z-index: 10; 
 }
 
 .toggle-btn {
