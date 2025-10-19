@@ -61,6 +61,7 @@ Adding loggings features and removing asyncio noise, quick debug on process main
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
 - Workers _Dask_
 - Plugin System and _REPL_ for modifying system while running
+- Lazy loading, load only x's first processes then frontend JS
 
 
 ## What i want to learn
