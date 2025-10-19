@@ -41,6 +41,7 @@ Working on DLL and opened files. It is now possible to check certain metrics abo
 ###  📅  19/10/25
 
 Adding loggings features and removing asyncio noise, quick debug on process main page click events.
+Optimizing psutil with attrs[], calls are less frequent, then faster.
 
 
 ## Possible improvements
@@ -51,9 +52,12 @@ Adding loggings features and removing asyncio noise, quick debug on process main
 - ✅    Process Tree
 - ✅    DLL & files opened
 - ✅    Opening and inspecting DLL files on click
+- ✅    Profile code
+- Better structuration of UI
+- Test coverage for classes
 - Geolocation of opened connections
 - DB conn
-- Replace _psutil_ by _ETW_
+- ✅    Optimize _psutil_ with attrs
 - More DLL infos with pefile
 - Read files async style with _aiofiles_
 - Hashing files in _WebAssembly_ to free the back-end, _Pyodide_, then _Rust-WASM_
@@ -62,6 +66,7 @@ Adding loggings features and removing asyncio noise, quick debug on process main
 - Workers _Dask_
 - Plugin System and _REPL_ for modifying system while running
 - Lazy loading, load only x's first processes then frontend JS
+- Auto fetch() without reloading page for standard access in / and /tree
 
 
 ## What i want to learn
@@ -74,5 +79,6 @@ Adding loggings features and removing asyncio noise, quick debug on process main
 - Jinja templates, playing with Win32 APIs
 - Review for dictionary/JSON
 - Services
-- Hashlib, Radon, Signtool
+- Hashlib, Radon, Signtool, Psutil
 - Quart, context processor
+- Py-Spy

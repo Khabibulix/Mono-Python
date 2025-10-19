@@ -17,52 +17,57 @@ class ProcessGetter:
         :type process: psutil.Process object
         :param process_pid: PID of the process
         :type process_pid: int
-        """
-    
+        """        
+
         with process.oneshot():
-            process_name = process.name()
-            process_memory_usage = process.memory_percent()
-            process_path = process.exe()
-            process_starting_time = (time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(process.create_time())))
-            process_status = process.status()
-            process_parent = process.parent().name() if process.parent() is not None else process.parent()   
-            process_parent_pid = process.ppid()
-            process_hash = grab_sha256_hash_of_process(process_path) if process_path.endswith('.exe') else None
+            info = process.as_dict(attrs=[
+            "name", "memory_percent", "exe", "create_time", "status", "ppid"
+        ])
+            try:
+                process_parent = process.parent().name() if process.parent() else None
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                process_parent = None
             
-            if include_opened_files:
-                try:
-                    process_opened_files = [f.path for f in process.open_files()]
+        process_path = info.get("exe", None)
+        process_hash = None
+
+        if process_path and process_path.endswith(".exe"):
+            process_hash = grab_sha256_hash_of_process(process_path)
+
+        process_opened_files = None
+        process_opened_dll = None
+
+        if include_opened_files:
+            try:
+                process_opened_files = [f.path for f in process.open_files()]
+                
+                raw_maps = process.memory_maps()
+                opened_dll = []
+                seen = set()
+                
+                for map in raw_maps:
+                    path = getattr(map, 'path', None) or getattr(map, 'addr', None) or ''
+                    if not path:
+                        continue
+                    if path in seen:
+                        continue
+                    seen.add(path)
                     
-                    raw_maps = process.memory_maps()
-                    opened_dll = []
-                    seen = set()
-                    
-                    for map in raw_maps:
-                        path = getattr(map, 'path', None) or getattr(map, 'addr', None) or ''
-                        if not path:
-                            continue
-                        if path in seen:
-                            continue
-                        seen.add(path)
-                        
-                        if not looks_like_shared_lib(path):
-                            continue
+                    if not looks_like_shared_lib(path):
+                        continue
 
-                        accessible, err = is_readable(path)
-                        opened_dll.append({
-                            "path": path,
-                            "accessible": accessible,
-                            "error": err
-                        })
+                    accessible, err = is_readable(path)
+                    opened_dll.append({
+                        "path": path,
+                        "accessible": accessible,
+                        "error": err
+                    })
 
-                        process_opened_dll = opened_dll
+                    process_opened_dll = opened_dll
 
-                except (psutil.AccessDenied, psutil.NoSuchProcess, OSError) as e:
-                    process_opened_files = []
-                    process_opened_dll = []
-            else:
-                process_opened_files = None
-                process_opened_dll = None
+            except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
+                pass
+                
 
         try:
             connections = process.net_connections()
@@ -82,16 +87,16 @@ class ProcessGetter:
             active_connections = None
 
         return {
-            "name": process_name,
+            "name": info["name"],
             "PID": process_pid,
-            "memory usage": round(process_memory_usage, 2),
+            "memory usage": round(info["memory_percent"], 2),
             "path": process_path,
-            "time alive": process_starting_time,
-            "status": process_status,
+            "time alive": time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(info["create_time"])),
+            "status": info["status"],
             "connections": active_connections,
             "parent": process_parent,
             "hash": process_hash,
-            "parent_pid":process_parent_pid,
+            "parent_pid":info["ppid"],
             "opened_files":process_opened_files,
             "opened_dll":process_opened_dll
         }
