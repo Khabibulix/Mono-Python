@@ -46,6 +46,14 @@ Working on DLL and opened files. It is now possible to check certain metrics abo
 - Geolocation of opened connections
 - DB conn
 - Replace _psutil_ by _ETW_
+- More DLL infos with pefile
+- Read files async style with _aiofiles_
+- Hashing files in _WebAssembly_ to free the back-end, _Pyodide_, then _Rust-WASM_
+- _Hierplane_ for displaying tree
+- Optimize fetching of services with _WMI Watcher_ or _psutil_
+- Workers _Dask_
+- Plugin System and _REPL_ for modifying system while running
+
 
 ## What i want to learn
 
