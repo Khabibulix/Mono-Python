@@ -38,7 +38,7 @@ Working on DLL and opened files. It is now possible to check certain metrics abo
 ## Possible improvements
 
 - ✅ Make it quicker
-- Add a real logging file for easier debug
+- ✅ Add a real logging file for easier debug
 - Styling of _waiting web-page_
 - ✅    Process Tree
 - ✅    DLL & files opened

@@ -1,8 +1,10 @@
-import pythoncom, asyncio, os, re
+import pythoncom, os, re, logging, asyncio
+from setup_log import setup_logger
 from quart import Quart, render_template, request, abort
 from process_manager import *
 from utils import is_readable
 from urllib.parse import unquote_plus
+
 
 app = Quart(__name__)
 
@@ -14,8 +16,9 @@ async def refresh_cache():
         try:
             data = await asyncio.to_thread(ProcessGetter.get_processes)
             process_cache = data
+            logger.debug("Process cache updated with %d entries", len(data))
         except Exception as e:
-            print("Cache error")
+            logger.warning("Cache error")
         await asyncio.sleep(3)
 
 @app.context_processor
@@ -39,8 +42,10 @@ async def process_view(pid):
     def fetch_and_analyze():
         pythoncom.CoInitialize()
         try:
+            logger.info("Analyzing process PID=%d", pid)
             infos = ProcessGetter.get_infos_for_process_with_pid(pid)
             if not infos:
+                logger.warning("Process PID=%d not found", pid)
                 return None, None
             analyzer = ProcessAnalyzer(pid)
             result = analyzer.run()
@@ -57,13 +62,20 @@ async def process_view(pid):
 @app.route("/tree")
 async def display_process_tree():
     if process_cache is None:
+        logger.warning("Cache not ready when accessing /tree")
         return "Loading...", 503
     
     processes_by_pid = {
         v["PID"]: v for v in process_cache.values()
     }
 
-    tree = build_process_tree(processes_by_pid)
+    logger.debug("Building process tree from %d processes", len(processes_by_pid))
+
+    try:
+        tree = build_process_tree(processes_by_pid)
+    except Exception as e:
+        logger.exception("Error building process tree")
+        return "Internal error while building tree", 500
 
     return await render_template("tree.html", process_tree=tree)
 
@@ -109,4 +121,11 @@ async def dll_view(pid):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.set_debug(False)
+
+    logger = setup_logger(__name__)
+    logger.info("Launching Quart app...")
+    
+    app.run(debug=False)
