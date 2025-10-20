@@ -47,8 +47,8 @@ Working on DLL and opened files. It is now possible to check certain metrics abo
 
 ###  📅  19/10/25
 
-Adding loggings features and removing asyncio noise, quick debug on process main page click events.
-Optimizing psutil with attrs[], calls are less frequent, then faster. Beginning of TDD for all processes classes.
+Adding loggings features and removing _asyncio_ noise, quick debug on process main page click events.
+Optimizing _psutil_ with ```attrs[]```, calls are less frequent, then faster. Beginning of TDD for all processes classes.
 
 
 ## Possible improvements
@@ -62,17 +62,23 @@ Optimizing psutil with attrs[], calls are less frequent, then faster. Beginning 
 - ✅    Profile code
 - ✅    Optimize _psutil_ with attrs
 - Test coverage for classes
+- Dynamic dashboard Event-Driven with Asyncio.Queue
+- Optimize search in CONFIG
+
+- Visual profiling
+- Lazy loading, load only x's first processes then frontend JS
+- Auto fetch() without reloading page for standard access in / and /tree
+- Hashing files in _WebAssembly_ to free the back-end, _Pyodide_, then _Rust-WASM_
+
 - Geolocation of opened connections
 - DB conn
 - More DLL infos with pefile
 - Read files async style with _aiofiles_
-- Hashing files in _WebAssembly_ to free the back-end, _Pyodide_, then _Rust-WASM_
 - _Hierplane_ for displaying tree
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
 - Workers _Dask_
 - Plugin System and _REPL_ for modifying system while running
-- Lazy loading, load only x's first processes then frontend JS
-- Auto fetch() without reloading page for standard access in / and /tree
+
 
 
 ## What i want to learn
@@ -86,5 +92,5 @@ Optimizing psutil with attrs[], calls are less frequent, then faster. Beginning 
 - Review for dictionary/JSON
 - Services
 - Hashlib, Radon, Signtool, Psutil
-- Quart, context processor
+- Quart, Context processor
 - Py-Spy, Mocking with _unittest.mock_

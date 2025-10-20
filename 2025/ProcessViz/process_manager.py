@@ -103,20 +103,20 @@ class ProcessGetter:
 
 
     @staticmethod
-    def get_infos_for_process_with_pid(pid):
+    async def get_infos_for_process_with_pid(pid):
         if not psutil.pid_exists(pid):
             return None
         try:
-            return ProcessGetter.fetch_infos_for_process(psutil.Process(pid), pid, include_opened_files=True)
+            return await ProcessGetter.fetch_infos_for_process(psutil.Process(pid), pid, include_opened_files=True)
         except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
             return None
 
-
-    def get_processes():
+    @staticmethod
+    async def get_processes():
         processes = {}
         for process_pid in psutil.pids():
             try:
-                proc_info = ProcessGetter.fetch_infos_for_process(psutil.Process(process_pid), process_pid, include_opened_files=False)
+                proc_info = await ProcessGetter.fetch_infos_for_process(psutil.Process(process_pid), process_pid, include_opened_files=False)
                 processes[proc_info["name"]] = proc_info
             except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
                 continue

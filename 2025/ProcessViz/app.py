@@ -2,7 +2,7 @@ import pythoncom, os, re, logging, asyncio
 from setup_log import setup_logger
 from quart import Quart, render_template, request, abort
 from process_manager import *
-from utils import is_readable, grab_sha256_async
+from utils import is_readable
 from urllib.parse import unquote_plus
 
 
@@ -14,11 +14,11 @@ async def refresh_cache():
     global process_cache
     while True:
         try:
-            data = await asyncio.to_thread(ProcessGetter.get_processes)
+            data = await ProcessGetter.get_processes()
             process_cache = data
             logger.debug("Process cache updated with %d entries", len(data))
         except Exception as e:
-            logger.warning("Cache error")
+            logger.warning("Cache refresh error: %s", e)
         await asyncio.sleep(3)
 
 @app.context_processor
@@ -39,11 +39,11 @@ async def display_processes():
 
 @app.route("/process/<int:pid>")
 async def process_view(pid):
-    def fetch_and_analyze():
+    async def fetch_and_analyze():
         pythoncom.CoInitialize()
         try:
             logger.info("Analyzing process PID=%d", pid)
-            infos = ProcessGetter.get_infos_for_process_with_pid(pid)
+            infos = await ProcessGetter.get_infos_for_process_with_pid(pid)
             if not infos:
                 logger.warning("Process PID=%d not found", pid)
                 return None, None
@@ -53,7 +53,7 @@ async def process_view(pid):
         finally:
             pythoncom.CoUninitialize()
     
-    infos, result = await asyncio.to_thread(fetch_and_analyze)
+    infos, result = await fetch_and_analyze
 
     if not infos:
         return "Process not found", 404
