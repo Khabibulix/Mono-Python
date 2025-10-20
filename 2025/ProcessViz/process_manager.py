@@ -153,14 +153,14 @@ class ProcessAnalyzer:
 
         # Suspicious path
         for path in CONFIG["paths"]["suspicious"]:
-            if exe_path.startswith(path):
+            if exe_path.startswith(path.lower()):
                 score += 20
                 justifications["path_suspicious"] = True
                 raw_metrics["path_suspicious"] = True
 
         # Trustworthy path
         for path in CONFIG["paths"]["trustworthy"]:
-            if exe_path.startswith(path):
+            if exe_path.startswith(path.lower()):
                 score -= 20
                 raw_metrics["path_trustworthy"] = True
 

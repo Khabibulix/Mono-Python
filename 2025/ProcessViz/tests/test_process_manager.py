@@ -1,7 +1,12 @@
-import unittest
-from unittest.mock import patch
-from process_manager import ProcessAnalyzer
 
+import unittest, psutil, sys, os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from unittest.mock import patch, MagicMock
+from process_manager import ProcessAnalyzer, MAX_SCORE
+from config_loader import CONFIG
+from utils import normalizing_score
 
 class TestProcessAnalyzer(unittest.TestCase):
     
@@ -11,12 +16,42 @@ class TestProcessAnalyzer(unittest.TestCase):
         result = analyzer.run()
         self.assertIsNone(result)
     
-    # Test 2 : Process inaccessible (AccessDenied) → run() retourne None
-    # Mock: pid_exists = True, mais psutil.Process(pid) lève psutil.AccessDenied
+    @patch('process_manager.psutil.pid_exists', return_value=True)
+    @patch('process_manager.psutil.Process', side_effect=psutil.AccessDenied(pid=1234))
+    def test_access_denied(self, mock_process, mock_pid_exists):
+        analyzer = ProcessAnalyzer(1234)
+        result = analyzer.run()
+        self.assertIsNone(result)
+        mock_pid_exists.assert_called_once_with(1234)
+        mock_process.assert_called_once_with(1234)
+
+
+
 
     # Test 3 : Executable dans un chemin "suspicious" → +20 points
     # Mock: exe_path retourne un path commençant par CONFIG["paths"]["suspicious"][0]
     # Vérifie que justification["path_suspicious"] == True et score += 20
+    def test_suspicious_path(self):
+        with patch('process_manager.psutil.pid_exists', return_value=True), \
+            patch('process_manager.psutil.Process') as mock_process, \
+            patch('process_manager.is_signed', return_value=True), \
+            patch('process_manager.is_invocating_scripts', return_value=False), \
+            patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+            patch('process_manager.is_deleted_executable', return_value=False):
+            
+            mock_proc_instance = MagicMock()
+            mock_proc_instance.exe.return_value = (CONFIG["paths"]["suspicious"][0] + "\\malicious.exe").lower()
+            mock_proc_instance.net_connections.return_value = []
+            mock_process.return_value = mock_proc_instance
+        
+            analyzer = ProcessAnalyzer(1234)
+            result = analyzer.run()
+
+        expected_score = normalizing_score(20, MAX_SCORE)
+    
+        self.assertEqual(result["score"], expected_score)
+        self.assertTrue(result["justifications"].get("path_suspicious", False))
+        self.assertTrue(result["raw_metrics"]["path_suspicious"])
 
     # Test 4 : Executable dans un chemin "trustworthy" → -20 points
     # Mock: exe_path retourne un path commençant par CONFIG["paths"]["trustworthy"][0]
@@ -69,4 +104,5 @@ class TestProcessAnalyzer(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    print((CONFIG["paths"]["suspicious"][0] + "\\malicious.exe").lower())
+    # unittest.main()

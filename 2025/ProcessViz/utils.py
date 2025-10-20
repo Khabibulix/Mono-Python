@@ -49,7 +49,7 @@ def is_signed(filepath: str) -> bool | str:
     
 
 def normalizing_score(score, max_score):
-    return min(int((score / max_score) * 100), 100)
+    return min(round((score / max_score) * 100), 100)
 
 def analyze_score_risk(score: int) -> str:
     if score >= 80:

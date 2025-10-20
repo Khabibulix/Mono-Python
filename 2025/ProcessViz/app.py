@@ -123,7 +123,7 @@ async def dll_view(pid):
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    loop.set_debug(False)
+    loop.set_debug(True)
 
     logger = setup_logger(__name__)
     logger.info("Launching Quart app...")

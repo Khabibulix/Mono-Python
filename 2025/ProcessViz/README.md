@@ -50,6 +50,11 @@ Working on DLL and opened files. It is now possible to check certain metrics abo
 Adding loggings features and removing _asyncio_ noise, quick debug on process main page click events.
 Optimizing _psutil_ with ```attrs[]```, calls are less frequent, then faster. Beginning of TDD for all processes classes.
 
+### 📅 21/10/25
+Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Developed unit tests for the `ProcessAnalyzer` class using `unittest.mock` to simulate `psutil` behaviors and utility functions (`is_signed`, `is_invocating_scripts`, etc.). Adjusting mocks to precisely reflect real execution conditions, including normalization of suspicious executable paths with `.lower()`.
+
+
+
 
 ## Possible improvements
 
