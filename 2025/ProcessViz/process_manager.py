@@ -134,7 +134,7 @@ class ProcessAnalyzer:
 
         try:
             proc = psutil.Process(self.pid)
-            exe_path = proc.exe().lower()
+            exe_path = proc.exe()
         except (psutil.AccessDenied, psutil.NoSuchProcess):
             return None
 
@@ -162,13 +162,18 @@ class ProcessAnalyzer:
         for path in CONFIG["paths"]["trustworthy"]:
             if exe_path.startswith(path.lower()):
                 score -= 20
+                print("score in trustworthy:",score)
                 raw_metrics["path_trustworthy"] = True
+                break
 
+        print("is_signed before is_signed:", is_signed(exe_path))
         # Signature
         if not is_signed(exe_path):
             score += 30
+            print("score after is_signed:",score)
             justifications["is_signed"] = True
             raw_metrics["is_signed"] = False
+            print("Normalizing_score in run():",normalizing_score(score, MAX_SCORE))
 
         # Invokes Python
         if is_invocating_scripts(proc):
