@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # self.assertEqual(result["score"], normalizing_score(20, 135)) where 20 is the awaited score
 
+=======
+>>>>>>> 41acee971d9e4e8cecb325e933b7e8b23c3004cc
 import unittest, psutil, sys, os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -69,6 +72,31 @@ class TestProcessAnalyzer(unittest.TestCase):
         self.assertEqual(result["score"], expected_score)
         self.assertTrue(result["justifications"].get("path_trustworthy", True))
         self.assertTrue(result["raw_metrics"]["path_trustworthy"])
+<<<<<<< HEAD
+=======
+
+    def test_executable_is_signed_gets_30_points(self):
+        with patch('process_manager.psutil.pid_exists', return_value=True), \
+            patch('process_manager.psutil.Process') as mock_process, \
+            patch('process_manager.is_signed', return_value=False), \
+            patch('process_manager.is_invocating_scripts', return_value=False), \
+            patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+            patch('process_manager.is_deleted_executable', return_value=False):
+
+            mock_proc_instance = MagicMock()
+            mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+            mock_proc_instance.net_connections.return_value = []
+            mock_process.return_value = mock_proc_instance
+
+        
+            analyzer = ProcessAnalyzer(1234)
+            result = analyzer.run()
+
+    
+        self.assertEqual(result["score"], normalizing_score(30, 135))
+        self.assertTrue(result["justifications"].get("is_signed", True))
+        self.assertFalse(result["raw_metrics"]["is_signed"])
+>>>>>>> 41acee971d9e4e8cecb325e933b7e8b23c3004cc
 
     def test_executable_is_not_signed_gets_30_points(self):
         with patch('process_manager.psutil.pid_exists', return_value=True), \
