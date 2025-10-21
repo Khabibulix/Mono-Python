@@ -1,4 +1,3 @@
-
 import unittest, psutil, sys, os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -25,12 +24,6 @@ class TestProcessAnalyzer(unittest.TestCase):
         mock_pid_exists.assert_called_once_with(1234)
         mock_process.assert_called_once_with(1234)
 
-
-
-
-    # Test 3 : Executable dans un chemin "suspicious" → +20 points
-    # Mock: exe_path retourne un path commençant par CONFIG["paths"]["suspicious"][0]
-    # Vérifie que justification["path_suspicious"] == True et score += 20
     def test_suspicious_path(self):
         with patch('process_manager.psutil.pid_exists', return_value=True), \
             patch('process_manager.psutil.Process') as mock_process, \
@@ -53,13 +46,49 @@ class TestProcessAnalyzer(unittest.TestCase):
         self.assertTrue(result["justifications"].get("path_suspicious", False))
         self.assertTrue(result["raw_metrics"]["path_suspicious"])
 
-    # Test 4 : Executable dans un chemin "trustworthy" → -20 points
-    # Mock: exe_path retourne un path commençant par CONFIG["paths"]["trustworthy"][0]
-    # Vérifie que raw_metrics["path_trustworthy"] == True et score -= 20
+    def test_trustworthy_path(self):
+        with patch('process_manager.psutil.pid_exists', return_value=True), \
+            patch('process_manager.psutil.Process') as mock_process, \
+            patch('process_manager.is_signed', return_value=True), \
+            patch('process_manager.is_invocating_scripts', return_value=True), \
+            patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+            patch('process_manager.is_deleted_executable', return_value=False):
+            
+            mock_proc_instance = MagicMock()
+            mock_proc_instance.exe.return_value = (CONFIG["paths"]["trustworthy"][0]+"\\malicious.exe").lower()
+            mock_proc_instance.net_connections.return_value = []
+            mock_process.return_value = mock_proc_instance
+        
+            analyzer = ProcessAnalyzer(1234)
+            result = analyzer.run()
 
-    # Test 5 : Executable non signé → +30 points
-    # Mock: is_signed() retourne False
-    # Vérifie que justification["is_signed"] == True et score += 30
+        expected_score = normalizing_score(0, MAX_SCORE)
+    
+        self.assertEqual(result["score"], expected_score)
+        self.assertTrue(result["justifications"].get("path_trustworthy", True))
+        self.assertTrue(result["raw_metrics"]["path_trustworthy"])
+
+    def test_executable_is_signed_gets_30_points(self):
+        with patch('process_manager.psutil.pid_exists', return_value=True), \
+            patch('process_manager.psutil.Process') as mock_process, \
+            patch('process_manager.is_signed', return_value=False), \
+            patch('process_manager.is_invocating_scripts', return_value=False), \
+            patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+            patch('process_manager.is_deleted_executable', return_value=False):
+
+            mock_proc_instance = MagicMock()
+            mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+            mock_proc_instance.net_connections.return_value = []
+            mock_process.return_value = mock_proc_instance
+
+        
+            analyzer = ProcessAnalyzer(1234)
+            result = analyzer.run()
+
+    
+        self.assertEqual(result["score"], normalizing_score(30, 135))
+        self.assertTrue(result["justifications"].get("is_signed", True))
+        self.assertFalse(result["raw_metrics"]["is_signed"])
 
     # Test 6 : Executable signé → 0 point
     # Mock: is_signed() retourne True
@@ -104,5 +133,4 @@ class TestProcessAnalyzer(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    print((CONFIG["paths"]["suspicious"][0] + "\\malicious.exe").lower())
-    # unittest.main()
+    unittest.main()
