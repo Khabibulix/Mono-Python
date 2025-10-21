@@ -1,4 +1,5 @@
 import psutil, os
+from utils import looks_like_shared_lib, is_readable
 
 def is_invocating_scripts(process: psutil.Process) -> bool:
     try:
@@ -56,3 +57,29 @@ def build_process_tree(processes_by_pid):
     # Build forest from roots
     process_forest = [build_node(pid) for pid in roots_pids]
     return process_forest
+
+def get_dll_info_sync(process: psutil.Process): 
+    try:
+        raw_maps = process.memory_maps()
+        opened_dll = []
+        seen = set()
+
+        for map in raw_maps:
+            path = getattr(map, 'path', None) or getattr(map, 'addr', None) or ''
+            if not path or path in seen:
+                continue
+            seen.add(path)
+
+            if not looks_like_shared_lib(path):
+                continue
+
+            accessible, err = is_readable(path)
+            opened_dll.append({
+                "path": path,
+                "accessible": accessible,
+                "error": err
+            })
+
+        return opened_dll
+    except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
+        return None

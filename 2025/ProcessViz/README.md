@@ -66,6 +66,7 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 - ✅    Opening and inspecting DLL files on click
 - ✅    Profile code
 - ✅    Optimize _psutil_ with attrs
+- ✅    Read files async style with _aiofiles_
 - Test coverage for classes
 - Dynamic dashboard Event-Driven with Asyncio.Queue
 
@@ -77,7 +78,6 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 - Geolocation of opened connections
 - DB conn
 - More DLL infos with pefile
-- Read files async style with _aiofiles_
 - _Hierplane_ for displaying tree
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
 - Workers _Dask_
@@ -97,4 +97,5 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 - Services
 - Hashlib, Radon, Signtool, Psutil
 - Quart, Context processor
+- Async/Await for Files(```aiofiles```) or Requests(```asyncio```)
 - Py-Spy, Mocking with _unittest.mock_

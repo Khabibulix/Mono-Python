@@ -2,10 +2,9 @@ import psutil, time, re, asyncio
 from utils import *
 from utils_process import *
 from utils_services import *
-from config_loader import CONFIG
+from config_loader import get_config
 
 MAX_SCORE = 135
-
 
 class ProcessGetter:
     @staticmethod    
@@ -39,36 +38,11 @@ class ProcessGetter:
 
         if include_opened_files:
             try:
-                process_opened_files = [f.path for f in process.open_files()]
+                loop = asyncio.get_event_loop()
+                process_opened_dll = await loop.run_in_executor(None, get_dll_info_sync, process)
+            except Exception:
+                process_opened_dll = None
                 
-                raw_maps = process.memory_maps()
-                opened_dll = []
-                seen = set()
-                
-                for map in raw_maps:
-                    path = getattr(map, 'path', None) or getattr(map, 'addr', None) or ''
-                    if not path:
-                        continue
-                    if path in seen:
-                        continue
-                    seen.add(path)
-                    
-                    if not looks_like_shared_lib(path):
-                        continue
-
-                    accessible, err = is_readable(path)
-                    opened_dll.append({
-                        "path": path,
-                        "accessible": accessible,
-                        "error": err
-                    })
-
-                    process_opened_dll = opened_dll
-
-            except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
-                pass
-                
-
         try:
             connections = process.net_connections()
             active_connections = []
@@ -127,8 +101,10 @@ class ProcessAnalyzer:
     def __init__(self, pid:int):
         self.pid = pid
         self.analysis = None
+
     
-    def run(self):
+    async def run(self):
+        CONFIG = await get_config()
         if not psutil.pid_exists(self.pid):
             return None
 
