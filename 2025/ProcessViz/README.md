@@ -50,13 +50,18 @@ Working on DLL and opened files. It is now possible to check certain metrics abo
 Adding loggings features and removing _asyncio_ noise, quick debug on process main page click events.
 Optimizing _psutil_ with ```attrs[]```, calls are less frequent, then faster. Beginning of TDD for all processes classes.
 
-### 📅 21/10/25
+### 📅 20/10/25
 Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Developed unit tests for the `ProcessAnalyzer` class using `unittest.mock` to simulate `psutil` behaviors and utility functions (`is_signed`, `is_invocating_scripts`, etc.). Adjusting mocks to precisely reflect real execution conditions, including normalization of suspicious executable paths with `.lower()`.
 
+### 21/10/25
+Set up asynchronous testing environment with `pytest-asyncio`. Fixed errors related to unawaited coroutine objects by properly awaiting async fixtures.
+Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate the `ProcessAnalyzer` behavior.Achieved all tests passing successfully, ensuring test coverage for key functionality.
 
 
 
-## Possible improvements
+
+
+## Possible improvements that i will make
 
 - ✅    Make it quicker
 - ✅    Add a real logging file for easier debug
@@ -69,19 +74,22 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 - ✅    Read files async style with _aiofiles_
 - Test coverage for classes
 - Dynamic dashboard Event-Driven with Asyncio.Queue
-
-- Visual profiling
-- Lazy loading, load only x's first processes then frontend JS
+- Pytest rapport to check tests coverage
 - Auto fetch() without reloading page for standard access in / and /tree
-- Hashing files in _WebAssembly_ to free the back-end, _Pyodide_, then _Rust-WASM_
-
-- Geolocation of opened connections
-- DB conn
 - More DLL infos with pefile
-- _Hierplane_ for displaying tree
+- Lazy loading, load only x's first processes then frontend JS
+- Geolocation of opened connections
+- DB conn (Tortoise!!)
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
-- Workers _Dask_
+
+## Possible improvements that i will **NOT** make
+
 - Plugin System and _REPL_ for modifying system while running
+- _Hierplane_ for displaying tree
+- Workers _Dask_
+- Hashing files in _WebAssembly_ in _Rust-WASM_
+- Visual profiling of application's speed
+
 
 
 
