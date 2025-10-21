@@ -1,4 +1,5 @@
 import pytest
+import pytest_asyncio
 import psutil
 import asyncio
 import os
@@ -12,10 +13,14 @@ from process_manager import ProcessAnalyzer, MAX_SCORE
 from config_loader import get_config
 from utils import normalizing_score
 
-@pytest.fixture(scope="module")
-@pytest.mark.asyncio
+@pytest_asyncio.fixture(scope="module")
 async def config():
     return await get_config()
+
+@pytest.mark.asyncio
+async def test_config_loaded(config):
+    assert isinstance(config, dict)
+    assert "paths" in config
 
 @pytest.mark.asyncio
 @patch('process_manager.psutil.pid_exists', return_value=False)
