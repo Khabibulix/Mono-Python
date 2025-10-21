@@ -125,9 +125,6 @@ async def test_executable_is_signed_gets_0_points():
     assert "is_signed" not in result["justifications"]
     assert result["raw_metrics"]["is_signed"]
 
-# Test 10 : Le binaire a été supprimé (deleted) → +15 points
-# Mock: is_deleted_executable() retourne True
-# Vérifie que justification["path_deleted"] == True et score += 15
 @pytest.mark.asyncio
 async def test_executable_is_signed_gets_0_points():
     with patch('process_manager.psutil.pid_exists', return_value=True), \
@@ -149,22 +146,190 @@ async def test_executable_is_signed_gets_0_points():
     assert "path_deleted" in result["justifications"]
     assert result["raw_metrics"]["path_deleted"]
 
-# Test 11 : Executable contient des caractères suspects → +15 points
-# Mock: exe_path = "C:\\weird\\µ$\\script.exe"
-# Vérifie que justification["strange_chars"] == True et score += 15
+@pytest.mark.asyncio
+async def test_executable_contains_strange_chars_gets_15_points():
+    with patch('process_manager.psutil.pid_exists', return_value=True), \
+         patch('process_manager.psutil.Process') as mock_process, \
+         patch('process_manager.is_signed', return_value=True), \
+         patch('process_manager.is_invocating_scripts', return_value=False), \
+         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+         patch('process_manager.is_deleted_executable', return_value=False):
 
-# Test 12 : Activité réseau détectée → +20 points
-# Mock: proc.net_connections() retourne une liste avec une connexion raddr + status CONN_ESTABLISHED
-# Vérifie que justification["network_active"] == True et score += 20
+        mock_proc_instance = MagicMock()
+        mock_proc_instance.exe.return_value = ("C:\\weird\\µ$\\script.exe").lower()
+        mock_proc_instance.net_connections.return_value = []
+        mock_process.return_value = mock_proc_instance
 
-# Test 13 : Aucune activité réseau → 0 point
-# Mock: proc.net_connections() retourne []
-# Vérifie que justification ne contient pas "network_active"
+        analyzer = ProcessAnalyzer(1234)
+        result = await analyzer.run()
 
-# Test 14 : Score total normalisé et risk_level corrects
-# Mock un ensemble de conditions pour forcer un score (par ex: 60)
-# Vérifie que score est normalisé correctement (avec normalizing_score)
-# Vérifie que risk_level correspond bien à la valeur attendue (avec analyze_score_risk)
+    assert result["score"] == normalizing_score(15, 135)
+    assert "strange_chars" in result["justifications"]
+    assert result["raw_metrics"]["strange_chars"]
 
-# Test 15 : Tous les mocks combinés → test end-to-end d’un run() complet
-# Simule un cas avec plusieurs flags actifs, vérifie le score final et les justifications
+@pytest.mark.asyncio
+async def test_executable_connects_to_internet_and_gets_20_points():
+    with patch('process_manager.psutil.pid_exists', return_value=True), \
+         patch('process_manager.psutil.Process') as mock_process, \
+         patch('process_manager.is_signed', return_value=True), \
+         patch('process_manager.is_invocating_scripts', return_value=False), \
+         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+         patch('process_manager.is_deleted_executable', return_value=False):
+
+        mock_proc_instance = MagicMock()
+        mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+        mock_process.return_value = mock_proc_instance
+
+        mock_conn = MagicMock()
+        mock_conn.raddr = ('192.168.1.42', 443)
+        mock_conn.status = 'ESTABLISHED'
+
+        mock_proc_instance.net_connections.return_value = [mock_conn]
+        
+
+
+        analyzer = ProcessAnalyzer(1234)
+        result = await analyzer.run()
+
+    assert result["score"] == normalizing_score(20, 135)
+    assert "network_active" in result["justifications"]
+    assert result["raw_metrics"]["network_active"]
+
+@pytest.mark.asyncio
+async def test_executable_connects_to_internet_with_wait_status_and_gets_0_points():
+    with patch('process_manager.psutil.pid_exists', return_value=True), \
+         patch('process_manager.psutil.Process') as mock_process, \
+         patch('process_manager.is_signed', return_value=True), \
+         patch('process_manager.is_invocating_scripts', return_value=False), \
+         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+         patch('process_manager.is_deleted_executable', return_value=False):
+
+        mock_proc_instance = MagicMock()
+        mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+        mock_process.return_value = mock_proc_instance
+
+        mock_conn = MagicMock()
+        mock_conn.raddr = ('192.168.1.42', 443)
+        mock_conn.status = 'CLOSE_WAIT'
+
+        mock_proc_instance.net_connections.return_value = [mock_conn]
+        
+
+
+        analyzer = ProcessAnalyzer(1234)
+        result = await analyzer.run()
+
+    assert result["score"] == normalizing_score(0, 135)
+    assert "network_active" not in result["justifications"]
+    assert not result["raw_metrics"]["network_active"]
+
+@pytest.mark.asyncio
+async def test_net_connections_access_denied_gracefully_handled():
+    with patch('process_manager.psutil.pid_exists', return_value=True), \
+         patch('process_manager.psutil.Process') as mock_process, \
+         patch('process_manager.is_signed', return_value=True), \
+         patch('process_manager.is_invocating_scripts', return_value=False), \
+         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+         patch('process_manager.is_deleted_executable', return_value=False):
+
+        mock_proc_instance = MagicMock()
+        mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+        mock_process.return_value = mock_proc_instance
+        mock_proc_instance.net_connections.side_effect = psutil.AccessDenied(1234)
+        mock_process.return_value = mock_proc_instance         
+
+
+        analyzer = ProcessAnalyzer(1234)
+        result = await analyzer.run()
+
+    assert result is not None
+    assert result["score"] == normalizing_score(0, 135)
+    assert "network_active" not in result["justifications"]
+
+
+
+@pytest.mark.asyncio
+async def test_executable_not_connects_to_internet_and_gets_0_points():
+    with patch('process_manager.psutil.pid_exists', return_value=True), \
+         patch('process_manager.psutil.Process') as mock_process, \
+         patch('process_manager.is_signed', return_value=True), \
+         patch('process_manager.is_invocating_scripts', return_value=False), \
+         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+         patch('process_manager.is_deleted_executable', return_value=False):
+
+        mock_proc_instance = MagicMock()
+        mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+        mock_process.return_value = mock_proc_instance
+        mock_proc_instance.net_connections.return_value = []
+        
+
+
+        analyzer = ProcessAnalyzer(1234)
+        result = await analyzer.run()
+
+    assert result["score"] == normalizing_score(0, 135)
+    assert "network_active" not in result["justifications"]
+    assert not result["raw_metrics"]["network_active"]
+
+@pytest.mark.asyncio
+async def test_executable_is_score_normalized_correctly_and_risk_level_ok():
+    with patch('process_manager.psutil.pid_exists', return_value=True), \
+         patch('process_manager.psutil.Process') as mock_process, \
+         patch('process_manager.is_signed', return_value=False), \
+         patch('process_manager.is_invocating_scripts', return_value=True), \
+         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+         patch('process_manager.is_deleted_executable', return_value=False):
+
+        mock_proc_instance = MagicMock()
+        mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+        mock_process.return_value = mock_proc_instance
+
+        mock_conn = MagicMock()
+        mock_conn.raddr = ('192.168.1.42', 443)
+        mock_conn.status = 'ESTABLISHED'
+
+        mock_proc_instance.net_connections.return_value = [mock_conn]
+
+        analyzer = ProcessAnalyzer(1234)
+        result = await analyzer.run()
+
+    assert normalizing_score(result["score"], 135) == 39
+    assert all(key in result["justifications"] for key in("is_signed", "invokes_python", "network_active"))
+    assert "warning" in result["risk_level"]
+
+@pytest.mark.asyncio
+async def test_executable_is_critical_risk_level(config):
+    with patch('process_manager.psutil.pid_exists', return_value=True), \
+         patch('process_manager.psutil.Process') as mock_process, \
+         patch('process_manager.is_signed', return_value=False), \
+         patch('process_manager.is_invocating_scripts', return_value=True), \
+         patch('process_manager.is_process_bound_to_a_service', return_value=False), \
+         patch('process_manager.is_deleted_executable', return_value=True):
+
+        mock_proc_instance = MagicMock()
+        mock_proc_instance.exe.return_value = (config["paths"]["suspicious"][0] + "\\malicious.exe").lower()
+        mock_process.return_value = mock_proc_instance
+
+        mock_conn = MagicMock()
+        mock_conn.raddr = ('192.168.1.42', 443)
+        mock_conn.status = 'ESTABLISHED'
+
+        mock_proc_instance.net_connections.return_value = [mock_conn]
+
+        analyzer = ProcessAnalyzer(1234)
+        result = await analyzer.run()
+
+    assert normalizing_score(result["score"], 135) == 66
+    assert "critical" in result["risk_level"]
+
+@pytest.mark.asyncio
+@patch('process_manager.psutil.pid_exists', return_value=True)
+@patch('process_manager.psutil.Process')
+async def test_process_exe_access_denied(mock_process, _):
+    mock_proc_instance = MagicMock()
+    mock_proc_instance.exe.side_effect = psutil.AccessDenied(1234)
+    mock_process.return_value = mock_proc_instance
+
+    analyzer = ProcessAnalyzer(1234)
+    result = await analyzer.run()
+    assert result is None

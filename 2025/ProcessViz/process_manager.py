@@ -144,7 +144,6 @@ class ProcessAnalyzer:
         # Signature
         if not is_signed(exe_path):
             score += CONFIG["weights"]["not_signed"]
-            print("score after is_signed:",score)
             justifications["is_signed"] = True
             raw_metrics["is_signed"] = False
 
