@@ -9,20 +9,13 @@
             <h1>List of processes</h1>
             <a href="{{url_for('display_process_tree')}}">See Process Tree</a>
             {% block content %}
-                {% for k, v in get_processes.items() %}
-                <div class="flex_container">
-                    <table onclick="send_data(this)" data-pid="{{v['PID']}}" style="cursor:pointer;">
-                        <caption>{{k}}</caption>
-                            {% for key, value in v.items()%}
-                                <tr>
-                                    <th>{{key}}</th>
-                                    <th class="value">{{value}}</th>
-                                </tr>
-                            {% endfor %}
-                    <br>
-                    </table>
-                </div>                    
-                {% endfor %} 
+                <div>
+                    <h1>Loading data...</h1>
+                    <p>Please be kind and wait a moment ⏳</p>
+                </div>
+                <div id="process-list">
+                    Loading processes...
+                </div>
 
                 <script>
                         function send_data(process) {
@@ -30,6 +23,45 @@
                             var pid = process.dataset.pid;
                             window.location.href = `process/${pid}`;
                         }
+
+                        async function fetchProcesses() {
+                            const container = document.getElementById("process-list");
+                            const scrollPos = window.scrollY;
+                            try {
+                                const res = await fetch("/api/processes");
+                                const data = await res.json();
+
+                                if (data.status !== "ok") {
+                                    container.innerHTML = "<p>Still loading...</p>";
+                                } else {
+                                    const processes = Object.entries(data.data).map(([name, v]) => {
+                                        const rows = Object.entries(v).map(([key, value]) => {
+                                            return `<tr><th>${key}</th><th class="value">${value}</th></tr>`;
+                                        }).join("");
+
+                                        return `
+                                            <div class="flex_container">
+                                                <table onclick="send_data(this)" data-pid="${v.PID}" style="cursor:pointer;">
+                                                    <caption>${name}</caption>
+                                                    ${rows}
+                                                </table>
+                                            </div>
+                                        `;
+                                    }).join("<br>");
+
+                                    container.innerHTML = processes;
+                                }
+                            } catch (e) {
+                                console.error("Fetch error:", e);
+                                container.innerHTML = "<p>Failed to load process data </p>";
+                            } finally {
+                                window.scrollTo(0, scrollPos);
+                            }
+                        }
+
+
+                        fetchProcesses();
+                        setInterval(fetchProcesses, 5000);
                     </script>
             {%endblock%}      
         

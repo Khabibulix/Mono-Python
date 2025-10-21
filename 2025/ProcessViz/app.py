@@ -1,4 +1,4 @@
-import pythoncom, os, re, logging, asyncio
+import pythoncom, os, re, asyncio
 from setup_log import setup_logger
 from quart import Quart, render_template, request, abort
 from process_manager import *
@@ -33,9 +33,7 @@ async def startup():
 
 @app.route("/")
 async def display_processes():
-    if process_cache is None:
-        return await render_template("loading.html"), 503
-    return await render_template('index.html', get_processes=process_cache)
+    return await render_template('index.html')
 
 @app.route("/process/<int:pid>")
 async def process_view(pid):
@@ -120,6 +118,11 @@ async def dll_view(pid):
         hexdump=hex_lines    
     )
 
+@app.route("/api/processes")
+async def api_get_processes():
+    if process_cache is None:
+        return {"status":"loading", "data":[]}, 503
+    return {"status":"ok", "data":process_cache}
 
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()

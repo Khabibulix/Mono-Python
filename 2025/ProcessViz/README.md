@@ -7,14 +7,15 @@ Process Viz is a fast and asynchronous web application designed to capture and v
 
 - [Expectations](#expectations-at-051025)
 - [DevLog](#where-i-am-at-141025)
-- [Improvements?](#possible-improvements)
+- [Improvements](#possible-improvements)
 - [Learning Objectives](#what-i-want-to-learn)
 - [What I learned](#what-i-learnedrelearned)
 
 ## How to launch things
-
-- ```python app.py``` for main app
-- ```python -m unittest discover -s tests``` for unittest tests
+- ```git clone http://www.github.com/Khabibulix/Mono-Python```
+- ```cd Mono-Python\2025\ProcessViz```
+- ```python app.py``` for main web-app
+- ```pytest``` to launch tests
 
 
 
@@ -55,7 +56,7 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 
 ### 21/10/25
 Set up asynchronous testing environment with `pytest-asyncio`. Fixed errors related to unawaited coroutine objects by properly awaiting async fixtures.
-Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate the `ProcessAnalyzer` behavior.Achieved all tests passing successfully, writing tests for ProcessAnalyzer.
+Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate the `ProcessAnalyzer` behavior.Achieved all tests passing successfully, writing tests for ProcessAnalyzer. ```Pytest-cov``` score is at 60% for ```process_manager.py```
 
 
 
@@ -71,9 +72,9 @@ Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate th
 - ✅    Profile code
 - ✅    Optimize _psutil_ with attrs
 - ✅    Read files async style with _aiofiles_
-- Test coverage for classes
+- Full test coverage for classes
 - Dynamic dashboard Event-Driven with Asyncio.Queue
-- Pytest rapport to check tests coverage
+- ✅    Pytest rapport to check tests coverage
 - Auto fetch() without reloading page for standard access in / and /tree
 - More DLL infos with pefile
 - Lazy loading, load only x's first processes then frontend JS
