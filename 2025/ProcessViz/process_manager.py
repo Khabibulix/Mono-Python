@@ -130,55 +130,52 @@ class ProcessAnalyzer:
         # Suspicious path
         for path in CONFIG["paths"]["suspicious"]:
             if exe_path.startswith(path.lower()):
-                score += 20
+                score += CONFIG["weights"]["suspicious_path"]
                 justifications["path_suspicious"] = True
                 raw_metrics["path_suspicious"] = True
 
         # Trustworthy path
         for path in CONFIG["paths"]["trustworthy"]:
             if exe_path.startswith(path.lower()):
-                score -= 20
-                print("score in trustworthy:",score)
+                score += CONFIG["weights"]["trustworthy_path"]
                 raw_metrics["path_trustworthy"] = True
                 break
 
-        print("is_signed before is_signed:", is_signed(exe_path))
         # Signature
         if not is_signed(exe_path):
-            score += 30
+            score += CONFIG["weights"]["not_signed"]
             print("score after is_signed:",score)
             justifications["is_signed"] = True
             raw_metrics["is_signed"] = False
-            print("Normalizing_score in run():",normalizing_score(score, MAX_SCORE))
 
         # Invokes Python
         if is_invocating_scripts(proc):
-            score += 20
+            score += CONFIG["weights"]["invokes_python"]
             justifications["invokes_python"] = True
             raw_metrics["invokes_python"] = True
 
         # Not bound to service
         if not is_process_bound_to_a_service(proc):
-            score += 15
+            score += CONFIG["weights"]["not_bound_to_service"]
             justifications["not_bound_to_a_service"] = True
             raw_metrics["not_bound_to_service"] = True
 
         # Deleted path
         if is_deleted_executable(proc):
-            score += 15
+            score += CONFIG["weights"]["deleted_path"]
             justifications["path_deleted"] = True
             raw_metrics["path_deleted"] = True
 
         # Strange chars
         if re.search(r'[^a-zA-Z0-9_:\\\.\- ]', exe_path):
-            score += 15
+            score += CONFIG["weights"]["strange_chars"]
             justifications["strange_chars"] = True
             raw_metrics["strange_chars"] = True
 
         # Network activity
         try:
             if any(conn.status == psutil.CONN_ESTABLISHED and conn.raddr for conn in proc.net_connections(kind='inet')):
-                score += 20
+                score += CONFIG["weights"]["network_activity"]
                 justifications["network_active"] = True
                 raw_metrics["network_active"] = True
         except (psutil.AccessDenied, psutil.NoSuchProcess):

@@ -55,8 +55,7 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 
 ### 21/10/25
 Set up asynchronous testing environment with `pytest-asyncio`. Fixed errors related to unawaited coroutine objects by properly awaiting async fixtures.
-Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate the `ProcessAnalyzer` behavior.Achieved all tests passing successfully, ensuring test coverage for key functionality.
-
+Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate the `ProcessAnalyzer` behavior.Achieved all tests passing successfully, writing tests for ProcessAnalyzer.
 
 
 

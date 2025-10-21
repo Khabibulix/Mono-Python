@@ -48,15 +48,16 @@ async def process_view(pid):
                 logger.warning("Process PID=%d not found", pid)
                 return None, None
             analyzer = ProcessAnalyzer(pid)
-            result = analyzer.run()
+            result = await analyzer.run()
             return infos, result
         finally:
             pythoncom.CoUninitialize()
     
-    infos, result = await fetch_and_analyze
+    infos, result = await fetch_and_analyze()
 
     if not infos:
         return "Process not found", 404
+    print("type(result) =", type(result))
     return await render_template('process.html', process_info=infos, result=result)
 
 @app.route("/tree")
