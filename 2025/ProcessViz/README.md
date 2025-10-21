@@ -68,7 +68,6 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 - ✅    Optimize _psutil_ with attrs
 - Test coverage for classes
 - Dynamic dashboard Event-Driven with Asyncio.Queue
-- Optimize search in CONFIG
 
 - Visual profiling
 - Lazy loading, load only x's first processes then frontend JS

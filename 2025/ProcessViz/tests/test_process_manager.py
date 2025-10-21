@@ -1,3 +1,5 @@
+# self.assertEqual(result["score"], normalizing_score(20, 135)) where 20 is the awaited score
+
 import unittest, psutil, sys, os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -68,7 +70,7 @@ class TestProcessAnalyzer(unittest.TestCase):
         self.assertTrue(result["justifications"].get("path_trustworthy", True))
         self.assertTrue(result["raw_metrics"]["path_trustworthy"])
 
-    def test_executable_is_signed_gets_30_points(self):
+    def test_executable_is_not_signed_gets_30_points(self):
         with patch('process_manager.psutil.pid_exists', return_value=True), \
             patch('process_manager.psutil.Process') as mock_process, \
             patch('process_manager.is_signed', return_value=False), \
@@ -90,13 +92,49 @@ class TestProcessAnalyzer(unittest.TestCase):
         self.assertTrue(result["justifications"].get("is_signed", True))
         self.assertFalse(result["raw_metrics"]["is_signed"])
 
-    # Test 6 : Executable signé → 0 point
-    # Mock: is_signed() retourne True
-    # Vérifie que justification ne contient pas "is_signed"
+    def test_executable_is_signed_gets_0_points(self):
+        with patch('process_manager.psutil.pid_exists', return_value=True), \
+            patch('process_manager.psutil.Process') as mock_process, \
+            patch('process_manager.is_signed', return_value=True), \
+            patch('process_manager.is_invocating_scripts', return_value=False), \
+            patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+            patch('process_manager.is_deleted_executable', return_value=False):
 
-    # Test 7 : Le processus exécute du Python → +20 points
-    # Mock: is_invocating_scripts() retourne True
-    # Vérifie que justification["invokes_python"] == True et score += 20
+            mock_proc_instance = MagicMock()
+            mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+            mock_proc_instance.net_connections.return_value = []
+            mock_process.return_value = mock_proc_instance
+
+        
+            analyzer = ProcessAnalyzer(1234)
+            result = analyzer.run()
+
+    
+        self.assertEqual(result["score"], normalizing_score(0, 135))
+        self.assertNotIn("is_signed", result["justifications"])
+        self.assertTrue(result["raw_metrics"]["is_signed"])
+
+    def test_executable_is_executing_python_and_gets_20_points(self):
+        with patch('process_manager.psutil.pid_exists', return_value=True), \
+            patch('process_manager.psutil.Process') as mock_process, \
+            patch('process_manager.is_signed', return_value=True), \
+            patch('process_manager.is_invocating_scripts', return_value=True), \
+            patch('process_manager.is_process_bound_to_a_service', return_value=True), \
+            patch('process_manager.is_deleted_executable', return_value=False):
+
+            mock_proc_instance = MagicMock()
+            mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
+            mock_proc_instance.net_connections.return_value = []
+            mock_process.return_value = mock_proc_instance
+
+        
+            analyzer = ProcessAnalyzer(1234)
+            result = analyzer.run()
+
+    
+        self.assertEqual(result["score"], normalizing_score(20, 135))
+        self.assertIn("invokes_python", result["justifications"])
+        self.assertTrue(result["raw_metrics"]["invokes_python"])
 
     # Test 8 : Le processus est lié à un service → 0 point
     # Mock: is_process_bound_to_a_service() retourne True
