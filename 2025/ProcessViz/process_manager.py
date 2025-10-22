@@ -63,9 +63,9 @@ class ProcessGetter:
         return {
             "name": info["name"],
             "PID": process_pid,
-            "memory usage": round(info["memory_percent"], 2),
+            "memory_percent": round(info["memory_percent"], 2),
             "path": process_path,
-            "time alive": time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(info["create_time"])),
+            "time_alive": time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(info["create_time"])),
             "status": info["status"],
             "connections": active_connections,
             "parent": process_parent,

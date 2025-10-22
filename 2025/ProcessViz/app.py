@@ -125,14 +125,17 @@ async def api_get_processes():
         return {"status":"loading", "data":[]}, 503
     
     top = sorted(process_cache.items(),
-                 key=lambda item: item[1].get("memory_percent", 0),
+                 key=lambda item: float(item[1].get("memory_percent", 0) or 0),
                  reverse=True             
     )[:10]
 
     light_cache = {
         name: {
+            "Name":proc.get("name"),
             "PID":proc.get("PID"),
-            "Memory Usage":proc.get("memory_percent")
+            "Memory Usage":proc.get("memory_percent"),
+            "Status":proc.get("status"),
+            "Time Alive":proc.get("time_alive")
         } for name, proc in top
     }
     return {"status":"ok", "data":light_cache}
