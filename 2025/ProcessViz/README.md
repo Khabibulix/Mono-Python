@@ -79,7 +79,7 @@ Broke LightHouse Score, currently at 40.
 - ✅    Pytest rapport to check tests coverage
 - ✅    Auto fetch() without reloading page for standard access in /
 - More DLL infos with pefile
-- Lazy loading, load only x's first processes then frontend JS
+- ✅    Lazy loading, load only x's first processes
 - Geolocation of opened connections
 - DB conn (Tortoise!!)
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
