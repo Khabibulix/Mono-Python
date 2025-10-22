@@ -9,59 +9,20 @@
 
     <h1>Liste des processus</h1>
     <a href="{{ url_for('display_process_tree') }}">🧩 Voir l’arbre des processus</a>
+    <template>
+        <div class="process-card">
+            <table>
+                <caption></caption>
+                <tbody></tbody>
+            </table>
+            <button class="analyze-button">🧪 Analyser</button>
+        </div>
+    </template>
+    
 
     <div id="process-list">
         Chargement des processus...
     </div>
-
-    <script>
-        function send_data(pid) {
-            window.location.href = `/process/${pid}`;
-        }
-
-        async function fetchProcesses() {
-            const container = document.getElementById("process-list");
-            const scrollPos = window.scrollY;
-
-            try {
-                const res = await fetch("/api/processes");
-                const data = await res.json();
-
-                if (data.status !== "ok") {
-                    container.innerHTML = "<p>Chargement en cours...</p>";
-                    return;
-                }
-
-                const processesHTML = Object.entries(data.data).map(([name, v]) => {
-                    const rows = Object.entries(v).map(([key, value]) => {
-                        return `<tr><th>${key}</th><th>${value}</th></tr>`;
-                    }).join("");
-
-                    return `
-                        <div class="process-card">
-                            <table>
-                                <caption>${name}</caption>
-                                ${rows}
-                            </table>
-                            <button class="analyze-button" onclick="send_data(${v.PID})">
-                                🧪 Analyser
-                            </button>
-                        </div>
-                    `;
-                }).join("");
-
-                container.innerHTML = `<div class="process-container">${processesHTML}</div>`;
-
-            } catch (e) {
-                console.error("Fetch error:", e);
-                container.innerHTML = "<p>Erreur lors du chargement des données</p>";
-            } finally {
-                window.scrollTo(0, scrollPos);
-                setTimeout(fetchProcesses, 10000); // Refresh every 10s
-            }
-        }
-
-        fetchProcesses();
-    </script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
 </html>

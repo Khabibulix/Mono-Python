@@ -54,11 +54,14 @@ Optimizing _psutil_ with ```attrs[]```, calls are less frequent, then faster. Be
 ### 📅 20/10/25
 Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Developed unit tests for the `ProcessAnalyzer` class using `unittest.mock` to simulate `psutil` behaviors and utility functions (`is_signed`, `is_invocating_scripts`, etc.). Adjusting mocks to precisely reflect real execution conditions, including normalization of suspicious executable paths with `.lower()`.
 
-### 21/10/25
+### 📅 21/10/25
 Set up asynchronous testing environment with `pytest-asyncio`. Fixed errors related to unawaited coroutine objects by properly awaiting async fixtures.
 Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate the `ProcessAnalyzer` behavior.Achieved all tests passing successfully, writing tests for ProcessAnalyzer. ```Pytest-cov``` score is at 60% for ```process_manager.py```
 _Auto Fetch()_, page reloads automatically without user intervention. Using full ```JS/AJAX```, not needing more. 
 Broke LightHouse Score, currently at 40.
+
+### 📅 22/10/25
+Full glow-up for speed, removing some infos on the first page the user sees, adding a button to analyse and display more. Front-end is quicker still with full AJAX. Reaching 91% of test coverage for ```process_manager.py```
 
 
 
@@ -74,12 +77,13 @@ Broke LightHouse Score, currently at 40.
 - ✅    Profile code
 - ✅    Optimize _psutil_ with attrs
 - ✅    Read files async style with _aiofiles_
-- Full test coverage for classes
-- Dynamic dashboard Event-Driven with Asyncio.Queue
 - ✅    Pytest rapport to check tests coverage
 - ✅    Auto fetch() without reloading page for standard access in /
-- More DLL infos with pefile
 - ✅    Lazy loading, load only x's first processes
+- ✅    Full test coverage for classes
+
+- Dynamic dashboard Event-Driven with Asyncio.Queue
+- More DLL infos with pefile
 - Geolocation of opened connections
 - DB conn (Tortoise!!)
 - Optimize fetching of services with _WMI Watcher_ or _psutil_

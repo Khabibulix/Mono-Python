@@ -40,6 +40,39 @@ async def test_access_denied(mock_process, mock_pid_exists):
     mock_process.assert_called_once_with(1234)
 
 @pytest.mark.asyncio
+@patch('process_manager.grab_sha256_async', new_callable=AsyncMock)
+async def test_no_such_process(mock_hash, config):
+    process_pid = 1234
+    mock_hash.return_value = "fakehash123"
+
+    mock_proc_instance = MagicMock()
+    mock_proc_instance.as_dict.return_value = {
+        "name": "malicious.exe",
+        "memory_percent": 12.5,
+        "exe": (config["paths"]["suspicious"][0] + "\\malicious.exe").lower(),
+        "create_time": 1630000000.0,
+        "status": "running",
+        "ppid": 1
+    }
+
+    mock_proc_instance.parent.side_effect = psutil.NoSuchProcess(pid=1234)
+
+    mock_conn = MagicMock()
+    mock_conn.raddr = ('192.168.1.42', 443)
+    mock_conn.laddr = ('127.0.0.1', 1234)
+    mock_conn.status = 'ESTABLISHED'
+
+    mock_proc_instance.net_connections.return_value = [mock_conn]
+
+    result = await ProcessGetter.fetch_infos_for_process(mock_proc_instance, process_pid)
+
+    assert result is not None
+    assert result["parent"] is None
+    assert result["name"] == "malicious.exe"
+    assert result["hash"] == "fakehash123"
+
+
+@pytest.mark.asyncio
 async def test_suspicious_path(config):
     with patch('process_manager.psutil.pid_exists', return_value=True), \
          patch('process_manager.psutil.Process') as mock_process, \
@@ -246,8 +279,6 @@ async def test_net_connections_access_denied_gracefully_handled():
     assert result["score"] == normalizing_score(0, 135)
     assert "network_active" not in result["justifications"]
 
-
-
 @pytest.mark.asyncio
 async def test_executable_not_connects_to_internet_and_gets_0_points():
     with patch('process_manager.psutil.pid_exists', return_value=True), \
@@ -323,6 +354,13 @@ async def test_executable_is_critical_risk_level(config):
     assert "critical" in result["risk_level"]
 
 @pytest.mark.asyncio
+@patch('process_manager.grab_sha256_async', new_callable=AsyncMock)
+async def test_mock_grab_sha256_async(mock_hash):
+    mock_hash.return_value = "fakehash123"
+    result = await mock_hash()
+    assert result == "fakehash123"
+
+@pytest.mark.asyncio
 @patch('process_manager.psutil.pid_exists', return_value=True)
 @patch('process_manager.psutil.Process')
 async def test_process_exe_access_denied(mock_process, _):
@@ -337,14 +375,9 @@ async def test_process_exe_access_denied(mock_process, _):
 @pytest.mark.asyncio
 @patch('process_manager.psutil.Process')
 @patch('process_manager.grab_sha256_async', new_callable=AsyncMock)
-async def test_fetch_infos_for_process(mock_process_class, mock_hash, config):
+async def test_fetch_infos_for_process(mock_hash, mock_process_class, config):
     process_pid = 1234
     mock_hash.return_value = "fakehash123"
-
-    mock_parent = MagicMock()
-    mock_parent.name.return_value = "explorer.exe"
-    mock_proc_instance.parent.return_value = mock_parent
-
 
     mock_proc_instance = MagicMock()
     mock_proc_instance.as_dict.return_value = {
@@ -355,6 +388,10 @@ async def test_fetch_infos_for_process(mock_process_class, mock_hash, config):
         "status": "running",
         "ppid": 1
     }
+
+    mock_parent = MagicMock()
+    mock_parent.name.return_value = "explorer.exe"
+    mock_proc_instance.parent.return_value = mock_parent
 
     mock_conn = MagicMock()
     mock_conn.raddr = ('192.168.1.42', 443)
@@ -376,6 +413,59 @@ async def test_fetch_infos_for_process(mock_process_class, mock_hash, config):
     assert result["memory_percent"] == 12.5
     assert isinstance(result["connections"], list)
     assert any("192.168.1.42:443" in conn for conn in result["connections"])
+
+@pytest.mark.asyncio
+@patch('process_manager.ProcessGetter.fetch_infos_for_process', new_callable=AsyncMock)
+@patch('process_manager.psutil.Process')
+@patch('process_manager.psutil.pids')
+async def test_get_processes_success(mock_pids, mock_process_class, mock_fetch):
+    mock_pids.return_value = [123, 456]
+    mock_proc1 = MagicMock()
+    mock_proc2 = MagicMock()
+    mock_process_class.side_effect = [mock_proc1, mock_proc2]
+
+    mock_fetch.side_effect = [
+        {"name": "proc1"},
+        {"name": "proc2"}
+    ]
+
+    result = await ProcessGetter.get_processes()
+
+    assert isinstance(result, dict)
+    assert len(result) == 2
+    assert result[123]["name"] == "proc1"
+    assert result[456]["name"] == "proc2"
+
+    mock_pids.assert_called_once()
+    assert mock_process_class.call_count == 2
+    assert mock_fetch.call_count == 2
+
+@pytest.mark.asyncio
+@patch('process_manager.ProcessGetter.fetch_infos_for_process', new_callable=AsyncMock)
+@patch('process_manager.psutil.Process')
+@patch('process_manager.psutil.pids')
+async def test_get_processes_with_errors(mock_pids, mock_process_class, mock_fetch_infos):
+    mock_pids.return_value = [123, 456, 789]
+
+    mock_proc1 = MagicMock()
+    mock_proc2 = MagicMock()
+    mock_proc3 = MagicMock()
+    mock_process_class.side_effect = [mock_proc1, mock_proc2, mock_proc3]
+
+    # Simule une exception pour le second PID
+    mock_fetch_infos.side_effect = [
+        {"name": "proc1"}, 
+        psutil.AccessDenied(pid=456),
+        {"name": "proc3"}
+    ]
+
+    result = await ProcessGetter.get_processes()
+
+    assert 123 in result
+    assert 456 not in result  # Erreur => ignoré
+    assert 789 in result
+    assert len(result) == 2
+
 
 @pytest.mark.asyncio
 @patch('process_manager.grab_sha256_async', return_value="fakehash123")
