@@ -1,7 +1,7 @@
 import psutil, time, re, asyncio
-from utils import *
-from utils_process import *
-from utils_services import *
+from utils import grab_sha256_async, is_signed, normalizing_score, analyze_score_risk
+from utils_process import is_invocating_scripts, is_deleted_executable, get_dll_info_sync
+from utils_services import is_process_bound_to_a_service
 from config_loader import get_config
 
 MAX_SCORE = 135
@@ -82,7 +82,7 @@ class ProcessGetter:
             return None
         try:
             return await ProcessGetter.fetch_infos_for_process(psutil.Process(pid), pid, include_opened_files=True)
-        except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
+        except (psutil.AccessDenied, psutil.NoSuchProcess):
             return None
 
     @staticmethod
@@ -99,7 +99,6 @@ class ProcessGetter:
         pids = psutil.pids()
         tasks = [gather_process_info(pid) for pid in pids]
 
-        results = []
         semaphore = asyncio.Semaphore(20)
 
         async def sem_task(task):

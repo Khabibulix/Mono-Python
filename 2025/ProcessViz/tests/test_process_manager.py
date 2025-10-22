@@ -8,8 +8,8 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
-from unittest.mock import patch, MagicMock
-from process_manager import ProcessAnalyzer, MAX_SCORE
+from unittest.mock import patch, MagicMock, AsyncMock
+from process_manager import ProcessAnalyzer, MAX_SCORE, ProcessGetter
 from config_loader import get_config
 from utils import normalizing_score
 
@@ -333,3 +333,75 @@ async def test_process_exe_access_denied(mock_process, _):
     analyzer = ProcessAnalyzer(1234)
     result = await analyzer.run()
     assert result is None
+
+@pytest.mark.asyncio
+@patch('process_manager.psutil.Process')
+@patch('process_manager.grab_sha256_async', new_callable=AsyncMock)
+async def test_fetch_infos_for_process(mock_process_class, mock_hash, config):
+    process_pid = 1234
+    mock_hash.return_value = "fakehash123"
+
+    mock_parent = MagicMock()
+    mock_parent.name.return_value = "explorer.exe"
+    mock_proc_instance.parent.return_value = mock_parent
+
+
+    mock_proc_instance = MagicMock()
+    mock_proc_instance.as_dict.return_value = {
+        "name": "malicious.exe",
+        "memory_percent": 12.5,
+        "exe": (config["paths"]["suspicious"][0] + "\\malicious.exe").lower(),
+        "create_time": 1630000000.0,
+        "status": "running",
+        "ppid": 1
+    }
+
+    mock_conn = MagicMock()
+    mock_conn.raddr = ('192.168.1.42', 443)
+    mock_conn.laddr = ('127.0.0.1', 1234)
+    mock_conn.status = 'ESTABLISHED'
+
+    mock_proc_instance.net_connections.return_value = [mock_conn]
+
+    mock_process_class.return_value = mock_proc_instance
+    result = await ProcessGetter.fetch_infos_for_process(mock_proc_instance, process_pid)
+
+    assert isinstance(result, dict)
+    assert result["name"] == "malicious.exe"
+    assert result["PID"] == process_pid
+    assert result["path"].endswith("malicious.exe")
+    assert result["status"] == "running"
+    assert result["parent"] == "explorer.exe"
+    assert result["hash"] == "fakehash123"
+    assert result["memory_percent"] == 12.5
+    assert isinstance(result["connections"], list)
+    assert any("192.168.1.42:443" in conn for conn in result["connections"])
+
+@pytest.mark.asyncio
+@patch('process_manager.grab_sha256_async', return_value="fakehash123")
+@patch('process_manager.get_dll_info_sync', return_value=["dll1.dll", "dll2.dll"])
+@patch('process_manager.psutil.Process')
+async def test_fetch_infos_for_process_with_opened_files(mock_process_class, mock_get_dll, mock_hash, config):
+    process_pid = 5678
+    mock_proc_instance = MagicMock()
+    mock_proc_instance.as_dict.return_value = {
+        "name": "trusted.exe",
+        "memory_percent": 3.14,
+        "exe": (config["paths"]["trustworthy"][0] + "\\trusted.exe").lower(),
+        "create_time": 1630000000.0,
+        "status": "sleeping",
+        "ppid": 2
+    }
+    mock_proc_instance.parent.return_value.name.return_value = "explorer.exe"
+    mock_proc_instance.net_connections.return_value = []
+    mock_process_class.return_value = mock_proc_instance
+
+    result = await ProcessGetter.fetch_infos_for_process(mock_proc_instance, process_pid, include_opened_files=True)
+
+    # Assertions
+    assert result["name"] == "trusted.exe"
+    assert result["PID"] == process_pid
+    assert result["path"].endswith("trusted.exe")
+    assert result["opened_dll"] == ["dll1.dll", "dll2.dll"]
+    assert result["connections"] is None
+    assert result["memory_percent"] == 3.14
