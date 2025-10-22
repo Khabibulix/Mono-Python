@@ -57,6 +57,8 @@ Resolved recurring issues with Async/Await, nasty bugs these ones! 🤯 Develope
 ### 21/10/25
 Set up asynchronous testing environment with `pytest-asyncio`. Fixed errors related to unawaited coroutine objects by properly awaiting async fixtures.
 Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate the `ProcessAnalyzer` behavior.Achieved all tests passing successfully, writing tests for ProcessAnalyzer. ```Pytest-cov``` score is at 60% for ```process_manager.py```
+_Auto Fetch()_, page reloads automatically without user intervention. Using full ```JS/AJAX```, not needing more. 
+Broke LightHouse Score, currently at 40.
 
 
 
@@ -75,7 +77,7 @@ Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate th
 - Full test coverage for classes
 - Dynamic dashboard Event-Driven with Asyncio.Queue
 - ✅    Pytest rapport to check tests coverage
-- Auto fetch() without reloading page for standard access in / and /tree
+- ✅    Auto fetch() without reloading page for standard access in /
 - More DLL infos with pefile
 - Lazy loading, load only x's first processes then frontend JS
 - Geolocation of opened connections
@@ -89,8 +91,6 @@ Mocked various dependencies (`psutil`, `is_signed`, etc.) in tests to isolate th
 - Workers _Dask_
 - Hashing files in _WebAssembly_ in _Rust-WASM_
 - Visual profiling of application's speed
-
-
 
 
 ## What i want to learn

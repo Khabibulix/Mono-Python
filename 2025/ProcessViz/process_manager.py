@@ -88,12 +88,30 @@ class ProcessGetter:
     @staticmethod
     async def get_processes():
         processes = {}
-        for process_pid in psutil.pids():
+        async def gather_process_info(pid):
             try:
-                proc_info = await ProcessGetter.fetch_infos_for_process(psutil.Process(process_pid), process_pid, include_opened_files=False)
-                processes[proc_info["name"]] = proc_info
-            except (psutil.AccessDenied, psutil.NoSuchProcess) as error:
-                continue
+                proc = psutil.Process(pid)
+                info = await ProcessGetter.fetch_infos_for_process(proc, pid, include_opened_files=False)
+                return pid, info
+            except (psutil.AccessDenied, psutil.NoSuchProcess):
+                return None
+        
+        pids = psutil.pids()
+        tasks = [gather_process_info(pid) for pid in pids]
+
+        results = []
+        semaphore = asyncio.Semaphore(20)
+
+        async def sem_task(task):
+            async with semaphore:
+                return await task
+            
+        sem_tasks = [sem_task(task) for task in tasks]
+        for res in await asyncio.gather(*sem_tasks):
+            if res is not None:
+                pid, info = res
+                processes[pid] = info
+        
         return processes
 
 

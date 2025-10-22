@@ -16,10 +16,11 @@ async def refresh_cache():
         try:
             data = await ProcessGetter.get_processes()
             process_cache = data
+            logger.debug("First cached process: %s", list(process_cache.items())[0])
             logger.debug("Process cache updated with %d entries", len(data))
         except Exception as e:
             logger.warning("Cache refresh error: %s", e)
-        await asyncio.sleep(3)
+        await asyncio.sleep(5)
 
 @app.context_processor
 def utility_processor():
@@ -122,7 +123,19 @@ async def dll_view(pid):
 async def api_get_processes():
     if process_cache is None:
         return {"status":"loading", "data":[]}, 503
-    return {"status":"ok", "data":process_cache}
+    
+    top = sorted(process_cache.items(),
+                 key=lambda item: item[1].get("memory_percent", 0),
+                 reverse=True             
+    )[:10]
+
+    light_cache = {
+        name: {
+            "PID":proc.get("PID"),
+            "Memory Usage":proc.get("memory_percent")
+        } for name, proc in top
+    }
+    return {"status":"ok", "data":light_cache}
 
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()
