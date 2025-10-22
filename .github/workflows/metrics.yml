@@ -1,14 +1,17 @@
 name: GitHub Metrics
 
 on:
-  workflow_dispatch:  # Permet de déclencher manuellement depuis l'onglet Actions
+  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 0"  # Exécute une fois par semaine (dimanche à minuit UTC)
+    - cron: "0 0 * * 0"
 
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Generate Metrics
         uses: lowlighter/metrics@latest
         with:
@@ -20,14 +23,21 @@ jobs:
           plugin_languages_recent_days: 1000
           plugin_languages_ignored: >-
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell, gnuplot
+
       - name: Mildly interesting facts
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.habits.facts.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          base: ""
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: no
           config_timezone: Europe/Paris
 
+      - name: Commit and push metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metrics/
+          git commit -m "Update metrics" || echo "No changes to commit"
+          git push
