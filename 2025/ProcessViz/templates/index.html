@@ -9,7 +9,12 @@
 
     <h1>Liste des processus</h1>
     <a href="{{ url_for('display_process_tree') }}">🧩 Voir l’arbre des processus</a>
-    <template>
+    <br>
+    <div id="process-list" class="process-container">
+        Chargement des processus...
+    </div>
+    
+    <template id="process-template">
         <div class="process-card">
             <table>
                 <caption></caption>
@@ -17,12 +22,7 @@
             </table>
             <button class="analyze-button">🧪 Analyser</button>
         </div>
-    </template>
-    
-
-    <div id="process-list">
-        Chargement des processus...
-    </div>
+    </template>  
     <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
 </html>

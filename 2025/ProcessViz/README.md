@@ -61,7 +61,14 @@ _Auto Fetch()_, page reloads automatically without user intervention. Using full
 Broke LightHouse Score, currently at 40.
 
 ### 📅 22/10/25
-Full glow-up for speed, removing some infos on the first page the user sees, adding a button to analyse and display more. Front-end is quicker still with full AJAX. Reaching 91% of test coverage for ```process_manager.py```
+Full glow-up for speed, removing some infos on the first page the user sees, adding a button to analyse and display more. 
+
+Front-end is quicker still with full AJAX. 
+
+Reaching 91% of test coverage for ```process_manager.py```
+
+Fighting with CSS, currently the loadout is like this:
+![Loadout](pics/loadout.png)
 
 
 

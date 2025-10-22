@@ -10,7 +10,6 @@ async function fetchProcesses() {
 
     container.innerHTML = "";
 
-
     try {
         const res = await fetch("/api/processes");
         const data = await res.json();

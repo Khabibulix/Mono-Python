@@ -1,153 +1,73 @@
 body {
-    background-color: black;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0 10px;
+  background-color: black;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0 10px;
 }
 
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        .process-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .process-card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 1rem;
-            width: 250px;
-            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-        }
-
-        .process-card table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .process-card th {
-            text-align: left;
-            padding: 2px 4px;
-        }
-
-        .process-card caption {
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .analyze-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .analyze-button:hover {
-            background-color: #0056b3;
-        }
-
-
-h1, h2, h3, h4 {
-    text-align: center;
-    font-family: cursive;
+.process-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  justify-items: center;
 }
 
-
-caption {
-    padding: 8px;
-    font-weight: bold;
-    font-size: 1.2em;
+.process-card {
+  max-width: 300px;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #222; /* foncé */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-table {
-    width: 90%;
-    margin: 10px auto;
-    border-collapse: collapse; 
-    box-shadow: 0 0 10px rgba(255,255,255,0.1); 
+.process-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
 }
 
-
-th, td {
-    padding: 8px 12px;
-    border: 1px solid white;
+.process-card th {
+  text-align: left;
+  padding: 4px 8px;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
 }
 
-
-th {
-    text-align: left;
-    width: 20%;
-    font-weight: 600;
-    background-color: #111;
+.process-card td {
+  padding: 4px 8px;
+  border: 1px solid #555;
+  color: #ccc;
 }
 
-.value {
-    width: 80%;
-    margin-left: 10px;
+.process-card caption {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+  color: white;
 }
 
-table:hover {
-    border: 1px solid purple;
+.analyze-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-
-tbody tr:hover {
-    background-color: #222;
-    cursor: default;
-}
-
-.flex_container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    background: transparent;
-    pointer-events: auto;
-}
-
-.flex_container table {
-    position: relative;
-    z-index: 10; 
-}
-
-.toggle-btn {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 6px 14px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 8px;
-    display: inline-block;
-    user-select: none;
-}
-
-.toggle-btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-.file-list-container {
-    margin-top: 5px;
-}
-
-.file-list {
-    list-style-type: disc;
-    margin-left: 20px;
-    max-height: 150px;
-    overflow-y: auto;
-    padding-right: 10px;
+.analyze-button:hover {
+  background-color: #0056b3;
 }
