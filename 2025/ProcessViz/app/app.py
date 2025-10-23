@@ -6,8 +6,14 @@ from app.setup_log import setup_logger
 from app.ProcessGetter import ProcessGetter
 from app.utils_process import is_readable
 
+base_dir = os.path.dirname(os.path.dirname(__file__)) #ProcessViz
 
-app = Quart(__name__)
+app = Quart(
+    __name__, 
+    template_folder=os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates'),
+    static_folder=os.path.join(base_dir, 'static'),
+    static_url_path='/static'
+)
 
 process_cache = None
 
