@@ -1,24 +1,7 @@
-import hashlib, subprocess, os
-import concurrent.futures, asyncio
-from typing import Tuple
-
-
-def looks_like_shared_lib(path: str) -> bool:
-    if not path:
-        return False
-    p = path.lower()
-    return p.endswith(".dll")
-
-def is_readable(path:str) ->  Tuple[bool, str]:
-    if not path:
-        return False, "empty path"
-    if not os.path.exists(path):
-        return False, "not found"
-    if not os.path.isfile(path):
-        return False, "not a file"
-    if not os.access(path, os.R_OK):
-        return False, "permission denied"
-    return True, ''
+import hashlib
+import subprocess
+import os
+import asyncio
 
 def grab_sha256_hash_of_process(path: str) -> str:
     h = hashlib.sha256()

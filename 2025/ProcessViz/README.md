@@ -1,7 +1,7 @@
 # Process Viz (current project)
 
 
-Process Viz is a fast and asynchronous web application designed to capture and visualize process snapshots on a server. Built initially with FastAPI and evolving towards Quart with asyncio, it allows users to browse and analyze system processes in real-time through a clean web interface.
+Process Viz is a fast and asynchronous web application designed to capture and visualize process snapshots on a server. Built initially with Flask and evolving towards Quart with asyncio, it allows users to browse and analyze system processes in real-time through a clean web interface.
 
 ### Table of contents
 
@@ -67,10 +67,14 @@ Front-end is quicker still with full AJAX.
 
 Reaching 91% of test coverage for ```process_manager.py```
 
-Fighting with CSS, currently the loadout is like this:
-![Loadout](pics/loadout.png)
+Fighting with CSS, currently the layout is like this:
 
+![Layout](pics/loadout.png)
 
+### 📅 23/10/25
+
+_Plan for the day_: Transition from _polling AJAX_ to _WebSocket_ for ```/``` route to have a "live" view of the processes.
+Organizing project with ```/app``` and others mains refactorisations
 
 
 ## Possible improvements that i will make

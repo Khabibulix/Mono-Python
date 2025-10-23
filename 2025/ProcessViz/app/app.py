@@ -1,9 +1,10 @@
 import pythoncom, os, re, asyncio
-from setup_log import setup_logger
 from quart import Quart, render_template, request, abort
-from process_manager import *
-from utils import is_readable
 from urllib.parse import unquote_plus
+
+from app.setup_log import setup_logger
+from app.ProcessGetter import ProcessGetter
+from app.utils_process import is_readable
 
 
 app = Quart(__name__)

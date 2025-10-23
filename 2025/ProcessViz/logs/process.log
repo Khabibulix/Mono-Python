@@ -603,3 +603,4 @@
 [16:01:07] DEBUG: Process cache updated with 188 entries
 [16:01:39] DEBUG: First cached process: (0, {'name': 'System Idle Process', 'PID': 0, 'memory_percent': 0.0, 'path': None, 'time_alive': '01-01-1970 01:00:00', 'status': 'running', 'connections': ['127.0.0.1:61352 -> TIME_WAIT', '127.0.0.1:62161 -> TIME_WAIT', '127.0.0.1:50956 -> TIME_WAIT', '127.0.0.1:58843 -> TIME_WAIT', '127.0.0.1:57406 -> TIME_WAIT', '127.0.0.1:65165 -> TIME_WAIT', '127.0.0.1:50149 -> TIME_WAIT', '127.0.0.1:57404 -> TIME_WAIT', '127.0.0.1:61138 -> TIME_WAIT', '127.0.0.1:53613 -> TIME_WAIT'], 'parent': None, 'hash': None, 'parent_pid': 0, 'opened_files': None, 'opened_dll': None})
 [16:01:39] DEBUG: Process cache updated with 187 entries
+[13:46:47] INFO: Launching Quart app...

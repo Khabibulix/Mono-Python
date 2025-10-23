@@ -1,7 +1,7 @@
 import json, os, aiofiles
 _config = None
 
-config_path = os.path.join(os.path.dirname(__file__), "config.json")
+config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "config.json"))
 
 async def get_config():
     global _config

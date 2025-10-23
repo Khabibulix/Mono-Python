@@ -9,9 +9,10 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 
 from unittest.mock import patch, MagicMock, AsyncMock
-from process_manager import ProcessAnalyzer, MAX_SCORE, ProcessGetter
-from config_loader import get_config
-from utils import normalizing_score
+from app.ProcessAnalyzer import ProcessAnalyzer, MAX_SCORE
+from app.ProcessGetter import ProcessGetter
+from app.config_loader import get_config
+from app.utils import normalizing_score
 
 @pytest_asyncio.fixture(scope="module")
 async def config():
@@ -23,15 +24,15 @@ async def test_config_loaded(config):
     assert "paths" in config
 
 @pytest.mark.asyncio
-@patch('process_manager.psutil.pid_exists', return_value=False)
+@patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=False)
 async def test_run_pid_not_exists(mock_pid_exists):
     analyzer = ProcessAnalyzer(99999)
     result = await analyzer.run()
     assert result is None
 
 @pytest.mark.asyncio
-@patch('process_manager.psutil.pid_exists', return_value=True)
-@patch('process_manager.psutil.Process', side_effect=psutil.AccessDenied(pid=1234))
+@patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True)
+@patch('app.ProcessAnalyzer.psutil.Process', side_effect=psutil.AccessDenied(pid=1234))
 async def test_access_denied(mock_process, mock_pid_exists):
     analyzer = ProcessAnalyzer(1234)
     result = await analyzer.run()
@@ -40,7 +41,7 @@ async def test_access_denied(mock_process, mock_pid_exists):
     mock_process.assert_called_once_with(1234)
 
 @pytest.mark.asyncio
-@patch('process_manager.grab_sha256_async', new_callable=AsyncMock)
+@patch('app.ProcessGetter.grab_sha256_async', new_callable=AsyncMock)
 async def test_no_such_process(mock_hash, config):
     process_pid = 1234
     mock_hash.return_value = "fakehash123"
@@ -74,12 +75,12 @@ async def test_no_such_process(mock_hash, config):
 
 @pytest.mark.asyncio
 async def test_suspicious_path(config):
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
         
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = (config["paths"]["suspicious"][0] + "\\malicious.exe").lower()
@@ -96,12 +97,12 @@ async def test_suspicious_path(config):
 
 @pytest.mark.asyncio
 async def test_trustworthy_path(config):
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=True), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=True), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
         
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = (config["paths"]["trustworthy"][0] + "\\malicious.exe").lower()
@@ -118,12 +119,12 @@ async def test_trustworthy_path(config):
 
 @pytest.mark.asyncio
 async def test_executable_is_not_signed_gets_30_points():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=False), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=False), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -139,12 +140,12 @@ async def test_executable_is_not_signed_gets_30_points():
 
 @pytest.mark.asyncio
 async def test_executable_is_signed_gets_0_points():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -160,12 +161,12 @@ async def test_executable_is_signed_gets_0_points():
 
 @pytest.mark.asyncio
 async def test_executable_is_signed_gets_0_points():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=True):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=True):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -181,12 +182,12 @@ async def test_executable_is_signed_gets_0_points():
 
 @pytest.mark.asyncio
 async def test_executable_contains_strange_chars_gets_15_points():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("C:\\weird\\µ$\\script.exe").lower()
@@ -202,12 +203,12 @@ async def test_executable_contains_strange_chars_gets_15_points():
 
 @pytest.mark.asyncio
 async def test_executable_connects_to_internet_and_gets_20_points():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -230,12 +231,12 @@ async def test_executable_connects_to_internet_and_gets_20_points():
 
 @pytest.mark.asyncio
 async def test_executable_connects_to_internet_with_wait_status_and_gets_0_points():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -247,8 +248,6 @@ async def test_executable_connects_to_internet_with_wait_status_and_gets_0_point
 
         mock_proc_instance.net_connections.return_value = [mock_conn]
         
-
-
         analyzer = ProcessAnalyzer(1234)
         result = await analyzer.run()
 
@@ -258,12 +257,12 @@ async def test_executable_connects_to_internet_with_wait_status_and_gets_0_point
 
 @pytest.mark.asyncio
 async def test_net_connections_access_denied_gracefully_handled():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -281,12 +280,12 @@ async def test_net_connections_access_denied_gracefully_handled():
 
 @pytest.mark.asyncio
 async def test_executable_not_connects_to_internet_and_gets_0_points():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=True), \
-         patch('process_manager.is_invocating_scripts', return_value=False), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=True), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=False), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -304,12 +303,12 @@ async def test_executable_not_connects_to_internet_and_gets_0_points():
 
 @pytest.mark.asyncio
 async def test_executable_is_score_normalized_correctly_and_risk_level_ok():
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=False), \
-         patch('process_manager.is_invocating_scripts', return_value=True), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=True), \
-         patch('process_manager.is_deleted_executable', return_value=False):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=False), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=True), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=True), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=False):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = ("d:\\apps\\myapp\\app.exe").lower()
@@ -330,12 +329,12 @@ async def test_executable_is_score_normalized_correctly_and_risk_level_ok():
 
 @pytest.mark.asyncio
 async def test_executable_is_critical_risk_level(config):
-    with patch('process_manager.psutil.pid_exists', return_value=True), \
-         patch('process_manager.psutil.Process') as mock_process, \
-         patch('process_manager.is_signed', return_value=False), \
-         patch('process_manager.is_invocating_scripts', return_value=True), \
-         patch('process_manager.is_process_bound_to_a_service', return_value=False), \
-         patch('process_manager.is_deleted_executable', return_value=True):
+    with patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True), \
+         patch('app.ProcessAnalyzer.psutil.Process') as mock_process, \
+         patch('app.ProcessAnalyzer.is_signed', return_value=False), \
+         patch('app.ProcessAnalyzer.is_invocating_scripts', return_value=True), \
+         patch('app.ProcessAnalyzer.is_process_bound_to_a_service', return_value=False), \
+         patch('app.ProcessAnalyzer.is_deleted_executable', return_value=True):
 
         mock_proc_instance = MagicMock()
         mock_proc_instance.exe.return_value = (config["paths"]["suspicious"][0] + "\\malicious.exe").lower()
@@ -354,15 +353,15 @@ async def test_executable_is_critical_risk_level(config):
     assert "critical" in result["risk_level"]
 
 @pytest.mark.asyncio
-@patch('process_manager.grab_sha256_async', new_callable=AsyncMock)
+@patch('app.ProcessGetter.grab_sha256_async', new_callable=AsyncMock)
 async def test_mock_grab_sha256_async(mock_hash):
     mock_hash.return_value = "fakehash123"
     result = await mock_hash()
     assert result == "fakehash123"
 
 @pytest.mark.asyncio
-@patch('process_manager.psutil.pid_exists', return_value=True)
-@patch('process_manager.psutil.Process')
+@patch('app.ProcessAnalyzer.psutil.pid_exists', return_value=True)
+@patch('app.ProcessAnalyzer.psutil.Process')
 async def test_process_exe_access_denied(mock_process, _):
     mock_proc_instance = MagicMock()
     mock_proc_instance.exe.side_effect = psutil.AccessDenied(1234)
@@ -373,8 +372,8 @@ async def test_process_exe_access_denied(mock_process, _):
     assert result is None
 
 @pytest.mark.asyncio
-@patch('process_manager.psutil.Process')
-@patch('process_manager.grab_sha256_async', new_callable=AsyncMock)
+@patch('app.ProcessGetter.psutil.Process')
+@patch('app.ProcessGetter.grab_sha256_async', new_callable=AsyncMock)
 async def test_fetch_infos_for_process(mock_hash, mock_process_class, config):
     process_pid = 1234
     mock_hash.return_value = "fakehash123"
@@ -415,9 +414,9 @@ async def test_fetch_infos_for_process(mock_hash, mock_process_class, config):
     assert any("192.168.1.42:443" in conn for conn in result["connections"])
 
 @pytest.mark.asyncio
-@patch('process_manager.ProcessGetter.fetch_infos_for_process', new_callable=AsyncMock)
-@patch('process_manager.psutil.Process')
-@patch('process_manager.psutil.pids')
+@patch('app.ProcessGetter.ProcessGetter.fetch_infos_for_process', new_callable=AsyncMock)
+@patch('app.ProcessGetter.psutil.Process')
+@patch('app.ProcessGetter.psutil.pids')
 async def test_get_processes_success(mock_pids, mock_process_class, mock_fetch):
     mock_pids.return_value = [123, 456]
     mock_proc1 = MagicMock()
@@ -441,9 +440,9 @@ async def test_get_processes_success(mock_pids, mock_process_class, mock_fetch):
     assert mock_fetch.call_count == 2
 
 @pytest.mark.asyncio
-@patch('process_manager.ProcessGetter.fetch_infos_for_process', new_callable=AsyncMock)
-@patch('process_manager.psutil.Process')
-@patch('process_manager.psutil.pids')
+@patch('app.ProcessGetter.ProcessGetter.fetch_infos_for_process', new_callable=AsyncMock)
+@patch('app.ProcessGetter.psutil.Process')
+@patch('app.ProcessGetter.psutil.pids')
 async def test_get_processes_with_errors(mock_pids, mock_process_class, mock_fetch_infos):
     mock_pids.return_value = [123, 456, 789]
 
@@ -468,9 +467,9 @@ async def test_get_processes_with_errors(mock_pids, mock_process_class, mock_fet
 
 
 @pytest.mark.asyncio
-@patch('process_manager.grab_sha256_async', return_value="fakehash123")
-@patch('process_manager.get_dll_info_sync', return_value=["dll1.dll", "dll2.dll"])
-@patch('process_manager.psutil.Process')
+@patch('app.ProcessGetter.grab_sha256_async', return_value="fakehash123")
+@patch('app.ProcessGetter.get_dll_info_sync', return_value=["dll1.dll", "dll2.dll"])
+@patch('app.ProcessGetter.psutil.Process')
 async def test_fetch_infos_for_process_with_opened_files(mock_process_class, mock_get_dll, mock_hash, config):
     process_pid = 5678
     mock_proc_instance = MagicMock()
