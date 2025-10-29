@@ -76,6 +76,15 @@ Fighting with CSS, currently the layout is like this:
 _Plan for the day_: Transition from _polling AJAX_ to _WebSocket_ for ```/``` route to have a "live" view of the processes.
 Organizing project with ```/app``` and others mains refactorisations
 
+### 📅 24/10/25
+
+Cleaning ```app.py``` for better structure.
+
+
+### Strange behaviour to fix
+
+- Unclickable buttons
+
 
 ## Possible improvements that i will make
 

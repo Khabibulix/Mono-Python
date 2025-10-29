@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
 <body>
 
     <h1>Liste des processus</h1>
-    <a href="{{ url_for('display_process_tree') }}">🧩 Voir l’arbre des processus</a>
+    <a href="{{ url_for('views.display_process_tree') }}">Voir l’arbre des processus</a>
     <br>
     <div id="process-list" class="process-container">
         Chargement des processus...
@@ -20,7 +20,7 @@
                 <caption></caption>
                 <tbody></tbody>
             </table>
-            <button class="analyze-button">🧪 Analyser</button>
+            <button class="analyze-button">Analyser</button>
         </div>
     </template>  
     <script src="{{url_for('static', filename='script.js')}}"></script>

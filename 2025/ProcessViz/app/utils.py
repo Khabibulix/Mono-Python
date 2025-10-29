@@ -3,6 +3,7 @@ import subprocess
 import os
 import asyncio
 
+
 def grab_sha256_hash_of_process(path: str) -> str:
     h = hashlib.sha256()
     with open(path, 'rb') as f:
