@@ -82,12 +82,13 @@ Cleaning ```app.py``` for better structure.
 
 ### 📅 05/11/25
 
-Implementation of WebSocket, linting/testing all project before each commit with ```black/pytest```
+Implementation of WebSocket, linting/testing all project before each commit with ```black/pytest``` More styling for index page.
 
 ### Strange behaviour to fix
 
 - ✅    Unclickable buttons (<button> element was not correctyl placed)
-- Broken route for /process/<pid> 
+- ✅    Broken route for /process/<pid> (Blueprint for DLL link was not correctly called in template)
+- CSS not linked correctly for /process/<pid> route
 
 
 ## Possible improvements that i will make

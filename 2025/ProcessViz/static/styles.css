@@ -18,15 +18,17 @@ body {
 
 .process-card {
   max-width: 300px;
+  width: 100%;
   box-sizing: border-box;
-  border: 1px solid #555;
+  border: 1px solid #888;
   padding: 12px;
   border-radius: 8px;
-  background-color: #222; /* foncé */
+  background-color: #222;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
@@ -41,12 +43,12 @@ body {
   padding: 4px 8px;
   background-color: #333;
   color: #eee;
-  border: 1px solid #555;
+  border: 1px solid #888;
 }
 
 .process-card td {
   padding: 4px 8px;
-  border: 1px solid #555;
+  border: 1px solid #888;
   color: #ccc;
 }
 
@@ -70,4 +72,26 @@ body {
 
 .analyze-button:hover {
   background-color: #0056b3;
+}
+
+.flex-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.flex-container th, .flex-container td {
+    padding: 6px 10px;
+    border: 1px solid #888;
+    color: #ccc;
+}
+
+.file-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.file-list li {
+    padding: 2px 0;
 }
