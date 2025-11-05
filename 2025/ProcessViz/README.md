@@ -14,7 +14,7 @@ Process Viz is a fast and asynchronous web application designed to capture and v
 ## How to launch things
 - ```git clone http://www.github.com/Khabibulix/Mono-Python```
 - ```cd Mono-Python\2025\ProcessViz```
-- ```python app.py``` for main web-app
+- ```python app app.py``` for main web-app
 - ```pytest``` to launch tests
 
 
@@ -80,10 +80,14 @@ Organizing project with ```/app``` and others mains refactorisations
 
 Cleaning ```app.py``` for better structure.
 
+### 📅 05/11/25
+
+Implementation of WebSocket, linting/testing all project before each commit with ```black/pytest```
 
 ### Strange behaviour to fix
 
 - Unclickable buttons
+- Broken CSS since
 
 
 ## Possible improvements that i will make
@@ -102,7 +106,7 @@ Cleaning ```app.py``` for better structure.
 - ✅    Lazy loading, load only x's first processes
 - ✅    Full test coverage for classes
 
-- Dynamic dashboard Event-Driven with Asyncio.Queue
+- WebSocket implementation
 - More DLL infos with pefile
 - Geolocation of opened connections
 - DB conn (Tortoise!!)
@@ -115,6 +119,7 @@ Cleaning ```app.py``` for better structure.
 - Workers _Dask_
 - Hashing files in _WebAssembly_ in _Rust-WASM_
 - Visual profiling of application's speed
+- Dynamic dashboard Event-Driven with Asyncio.Queue
 
 
 ## What i want to learn

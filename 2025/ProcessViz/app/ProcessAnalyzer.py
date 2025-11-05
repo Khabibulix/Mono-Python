@@ -6,12 +6,12 @@ from app.config_loader import get_config
 
 MAX_SCORE = 135
 
+
 class ProcessAnalyzer:
-    def __init__(self, pid:int):
+    def __init__(self, pid: int):
         self.pid = pid
         self.analysis = None
 
-    
     async def run(self):
         CONFIG = await get_config()
         if not psutil.pid_exists(self.pid):
@@ -33,7 +33,7 @@ class ProcessAnalyzer:
             "not_bound_to_service": False,
             "path_deleted": False,
             "strange_chars": False,
-            "network_active": False
+            "network_active": False,
         }
 
         # Suspicious path
@@ -75,14 +75,17 @@ class ProcessAnalyzer:
             raw_metrics["path_deleted"] = True
 
         # Strange chars
-        if re.search(r'[^a-zA-Z0-9_:\\\.\- ]', exe_path):
+        if re.search(r"[^a-zA-Z0-9_:\\\.\- ]", exe_path):
             score += CONFIG["weights"]["strange_chars"]
             justifications["strange_chars"] = True
             raw_metrics["strange_chars"] = True
 
         # Network activity
         try:
-            if any(conn.status == psutil.CONN_ESTABLISHED and conn.raddr for conn in proc.net_connections(kind='inet')):
+            if any(
+                conn.status == psutil.CONN_ESTABLISHED and conn.raddr
+                for conn in proc.net_connections(kind="inet")
+            ):
                 score += CONFIG["weights"]["network_activity"]
                 justifications["network_active"] = True
                 raw_metrics["network_active"] = True
@@ -96,8 +99,7 @@ class ProcessAnalyzer:
             "score": normalized,
             "justifications": justifications,
             "raw_metrics": raw_metrics,
-            "risk_level": risk
+            "risk_level": risk,
         }
 
         return self.analysis
-        

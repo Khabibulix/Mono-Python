@@ -1,13 +1,15 @@
 import psutil, os
 from typing import Tuple
 
+
 def looks_like_shared_lib(path: str) -> bool:
     if not path:
         return False
     p = path.lower()
     return p.endswith(".dll")
 
-def is_readable(path:str) ->  Tuple[bool, str]:
+
+def is_readable(path: str) -> Tuple[bool, str]:
     if not path:
         return False, "empty path"
     if not os.path.exists(path):
@@ -16,7 +18,8 @@ def is_readable(path:str) ->  Tuple[bool, str]:
         return False, "not a file"
     if not os.access(path, os.R_OK):
         return False, "permission denied"
-    return True, ''
+    return True, ""
+
 
 def is_invocating_scripts(process: psutil.Process) -> bool:
     try:
@@ -25,20 +28,22 @@ def is_invocating_scripts(process: psutil.Process) -> bool:
         exe = process.exe() if process.exe() else ""
 
         if "python" in name or "python" in exe:
-            return any(arg.endswith((".py", ".pyw")) or arg.startswith("-c") for arg in cmdline)
+            return any(
+                arg.endswith((".py", ".pyw")) or arg.startswith("-c") for arg in cmdline
+            )
         return False
-    
+
     except (psutil.AccessDenied, psutil.NoSuchProcess):
         return False
-    
-    
+
+
 def is_deleted_executable(process: psutil.Process) -> bool:
-    try: 
+    try:
         exe_path = process.exe()
         return not os.path.exists(exe_path)
     except (psutil.AccessDenied, psutil.NoSuchProcess):
         return False
-    
+
 
 def build_process_tree(processes_by_pid):
     """Build one or more process trees from a dictionary with process infos
@@ -49,7 +54,7 @@ def build_process_tree(processes_by_pid):
     :rtype: dict
     """
     from collections import defaultdict
-    
+
     # Build childs table {parent_pid: [child_pid1, child_pid2, ...]}
     children_map = defaultdict(list)
     for pid, info in processes_by_pid.items():
@@ -60,29 +65,33 @@ def build_process_tree(processes_by_pid):
     def build_node(pid):
         process_info = processes_by_pid[pid]
         return {
-            "pid":pid,
+            "pid": pid,
             "name": process_info["name"],
-            "children": [build_node(child_pid) for child_pid in children_map.get(pid, [])]
-        }        
-    
-    #Find roots (process with unknown parents)
+            "children": [
+                build_node(child_pid) for child_pid in children_map.get(pid, [])
+            ],
+        }
+
+    # Find roots (process with unknown parents)
     roots_pids = [
-            pid for pid, info in processes_by_pid.items() 
-            if info["parent_pid"] not in processes_by_pid
-        ]
+        pid
+        for pid, info in processes_by_pid.items()
+        if info["parent_pid"] not in processes_by_pid
+    ]
 
     # Build forest from roots
     process_forest = [build_node(pid) for pid in roots_pids]
     return process_forest
 
-def get_dll_info_sync(process: psutil.Process): 
+
+def get_dll_info_sync(process: psutil.Process):
     try:
         raw_maps = process.memory_maps()
         opened_dll = []
         seen = set()
 
         for map in raw_maps:
-            path = getattr(map, 'path', None) or getattr(map, 'addr', None) or ''
+            path = getattr(map, "path", None) or getattr(map, "addr", None) or ""
             if not path or path in seen:
                 continue
             seen.add(path)
@@ -91,11 +100,7 @@ def get_dll_info_sync(process: psutil.Process):
                 continue
 
             accessible, err = is_readable(path)
-            opened_dll.append({
-                "path": path,
-                "accessible": accessible,
-                "error": err
-            })
+            opened_dll.append({"path": path, "accessible": accessible, "error": err})
 
         return opened_dll
     except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
