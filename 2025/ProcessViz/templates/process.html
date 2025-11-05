@@ -36,7 +36,7 @@
                                         {% for dll in details[:3] %}
                                             <li>
                                                 {% if dll.accessible %}
-                                                    <a href="{{ url_for('dll_view', pid=process_info.PID,path=dll.path)}}">{{ dll.path }}</a>
+                                                    <a href="{{ url_for('views.dll_view', pid=process_info.PID,path=dll.path)}}">{{ dll.path }}</a>
                                                 {% else %}
                                                     {{dll.path}} <small style="color:red;">{{dll.error}}</small>
                                                 {% endif %}
@@ -48,7 +48,7 @@
                                             {% for dll in details[3:] %}
                                                 <li>
                                                 {% if dll.accessible %}
-                                                    <a href="{{ url_for('dll_view', pid=process_info.PID,path=dll.path)}}">{{ dll.path }}</a>
+                                                    <a href="{{ url_for('views.dll_view', pid=process_info.PID,path=dll.path)}}">{{ dll.path }}</a>
                                                 {% else %}
                                                     {{ dll.path }} <small style="color: red;">({{ dll.error }})</small>
                                                 {% endif %}

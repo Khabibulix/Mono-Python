@@ -6,7 +6,7 @@ from logging.handlers import RotatingFileHandler
 def setup_logger(name: str = None) -> logging.Logger:
 
     logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
 
     if logger.handlers:
         return logger

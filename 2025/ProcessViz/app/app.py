@@ -56,4 +56,7 @@ if __name__ == "__main__":
 
     logger.info("Launching Quart app...")
 
+    for rule in app.url_map.iter_rules():
+        print(rule.endpoint, rule.rule)
+
     app.run(debug=False)
