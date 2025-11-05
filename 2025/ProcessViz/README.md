@@ -86,8 +86,8 @@ Implementation of WebSocket, linting/testing all project before each commit with
 
 ### Strange behaviour to fix
 
-- Unclickable buttons
-- Broken CSS since
+- ✅    Unclickable buttons (<button> element was not correctyl placed)
+- Broken route for /process/<pid> 
 
 
 ## Possible improvements that i will make
@@ -105,8 +105,8 @@ Implementation of WebSocket, linting/testing all project before each commit with
 - ✅    Auto fetch() without reloading page for standard access in /
 - ✅    Lazy loading, load only x's first processes
 - ✅    Full test coverage for classes
+- ✅    WebSocket implementation
 
-- WebSocket implementation
 - More DLL infos with pefile
 - Geolocation of opened connections
 - DB conn (Tortoise!!)

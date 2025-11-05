@@ -101,8 +101,9 @@ function setupClickHandler() {
     const container = document.getElementById("process-list");
     container.addEventListener("click", event => {
         if (event.target.tagName === "BUTTON") {
-            const table = event.target.closest("table");
-            if (table) {
+            const card = event.target.closest(".process-card");
+            if (card) {
+                const table = card.querySelector("table");
                 const pid = table.dataset.pid;
                 navigateToProcess(pid);
             }
