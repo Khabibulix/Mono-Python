@@ -5,9 +5,10 @@ from app.setup_log import setup_logger
 
 from app.ProcessGetter import ProcessGetter
 from app.ProcessAnalyzer import ProcessAnalyzer
-from app.utils_process import is_readable, build_process_tree
-from app.utils import hexdump
-from app.utils_watcher import alerts_queue
+from app.utils.utils_process import is_readable, build_process_tree
+from app.utils.utils import hexdump
+from app.utils.utils_watcher import alerts_queue
+from app.utils.utils_score import compute_score
 
 views_bp = Blueprint("views", __name__)
 logger = setup_logger(__name__)

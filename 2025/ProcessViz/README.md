@@ -91,7 +91,7 @@ Implementation of WebSocket, linting/testing all project before each commit with
 
 ### 📅 06/11/25
 
-Jinja Templates inheritance. Adding colored borders to see potentially suspicious processes on ```index``` page. PeFile infos for DLL view, really cryptic for now, but useful infos to see if DLL is packed or known. Preparing events alerts for strange new processes with ```Asyncio.Queue()```
+Jinja Templates inheritance. Adding colored borders to see potentially suspicious processes on ```index``` page. PeFile infos for DLL view, really cryptic for now, but useful infos to see if DLL is packed or known. Preparing events alerts for strange new processes with ```Asyncio.Queue()``` Hunt for logic flaws in score, making easiest maintainable function for score handling.
 
 
 ### Strange behaviour to fix
@@ -129,14 +129,12 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - Improve alerts for events.
 - Plugin System and _REPL_ for modifying system while running
 - _Hierplane_ for displaying tree
-- Visual profiling of application's speed
-- Dynamic dashboard Event-Driven with Asyncio.Queue
 
 ## Current task:
 - Notification in UI if a potentially dangerous process begins
 
 ## Improving codebase
-- Centralize all three scores in one function to remove duplicates
+- ✅    Centralize all three scores in one function to remove duplicates
 - Tests for utils functions
 - Separate tests files, one for each file tested
 

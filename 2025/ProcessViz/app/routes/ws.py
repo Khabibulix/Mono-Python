@@ -2,8 +2,9 @@ import asyncio
 import json
 from quart import Blueprint, websocket, current_app
 from app.setup_log import setup_logger
-from app.utils import estimate_risk_level
-from app.utils_watcher import alerts_queue
+from app.utils.utils import estimate_risk_level
+from app.utils.utils_watcher import alerts_queue
+from app.utils.utils_score import compute_score
 
 ws_bp = Blueprint("ws", __name__)
 logger = setup_logger(__name__)
@@ -54,4 +55,5 @@ async def process_stream():
 async def alerts_ws():
     while True:
         alert = await alerts_queue.get()
-        await websocket.send_json(alert)
+        score_data = await compute_score(alert["pid"], mode="alert")
+        await websocket.send_json(score_data)

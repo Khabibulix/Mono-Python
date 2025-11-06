@@ -439,3 +439,62 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'proces
 [16:24:40] INFO: New process detected: PID=11768, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
 [16:24:40] INFO: New process detected: PID=6908, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
 [16:24:40] INFO: New process detected: PID=10988, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:41:04] INFO: Launching Quart app...
+[17:41:04] INFO: Launching Quart app...
+[17:41:19] INFO: Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[17:41:24] INFO: Client connected via WebSocket
+[17:41:24] INFO: Client connected via WebSocket
+[17:41:25] INFO: Client connected via WebSocket
+[17:41:25] INFO: Client connected via WebSocket
+[17:42:33] INFO: New process detected: PID=11040, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:42:33] INFO: New process detected: PID=8740, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[17:42:33] INFO: New process detected: PID=14916, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:33] INFO: New process detected: PID=4176, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:33] INFO: New process detected: PID=11664, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:42:33] INFO: New process detected: PID=6196, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:42:37] INFO: New process detected: PID=11784, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:42:37] INFO: New process detected: PID=4008, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:42:37] INFO: New process detected: PID=12524, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:42:37] INFO: New process detected: PID=9944, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:42:37] INFO: New process detected: PID=8600, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:37] INFO: New process detected: PID=13852, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:39] INFO: New process detected: PID=12928, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:42:39] INFO: New process detected: PID=672, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:42:39] INFO: New process detected: PID=14376, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:42:39] INFO: New process detected: PID=7212, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:39] INFO: New process detected: PID=13580, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:42:39] INFO: New process detected: PID=3052, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:42:39] INFO: New process detected: PID=10832, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:42:39] INFO: New process detected: PID=13648, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:39] INFO: New process detected: PID=6620, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:46] INFO: New process detected: PID=6920, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[17:42:46] INFO: New process detected: PID=7472, Name=Code.exe, Path=C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\Code.exe
+[17:42:48] INFO: New process detected: PID=12416, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:42:48] INFO: New process detected: PID=3196, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:44:12] INFO: New process detected: PID=5472, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:44:12] INFO: New process detected: PID=16256, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:44:12] INFO: New process detected: PID=10764, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:44:12] INFO: New process detected: PID=14928, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:44:12] INFO: New process detected: PID=6712, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:44:12] INFO: New process detected: PID=7580, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:44:17] INFO: New process detected: PID=13096, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:44:17] INFO: New process detected: PID=9868, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:44:17] INFO: New process detected: PID=10124, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:44:17] INFO: New process detected: PID=4720, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:44:17] INFO: New process detected: PID=6800, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:44:17] INFO: New process detected: PID=8340, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:48:51] INFO: New process detected: PID=6540, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:48:55] INFO: New process detected: PID=12996, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:48:55] INFO: New process detected: PID=10248, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:48:55] INFO: New process detected: PID=9772, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:48:55] INFO: New process detected: PID=9004, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:48:55] INFO: New process detected: PID=14164, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:48:55] INFO: New process detected: PID=13752, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:50:10] INFO: New process detected: PID=13316, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:50:10] INFO: New process detected: PID=13932, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:50:10] INFO: New process detected: PID=3212, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:50:10] INFO: New process detected: PID=15800, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[17:50:10] INFO: New process detected: PID=7676, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[17:50:12] INFO: New process detected: PID=1576, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[17:52:43] INFO: New process detected: PID=15368, Name=rg.exe, Path=C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\resources\app\node_modules\@vscode\ripgrep\bin\rg.exe
+[17:52:43] INFO: New process detected: PID=4644, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
