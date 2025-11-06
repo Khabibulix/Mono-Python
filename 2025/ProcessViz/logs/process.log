@@ -1,11 +1,5 @@
-[13:59:42] INFO: Launching Quart app...
-[13:59:50] INFO: Launching Quart app...
-[14:00:35] INFO: Launching Quart app...
-[14:01:00] INFO: Client connected via WebSocket
-[14:01:03] INFO: Analyzing process PID=3308
-[14:10:48] INFO: Analyzing process PID=3308
-[14:12:44] INFO: Analyzing process PID=3308
-[14:14:07] INFO: Analyzing process PID=3308
-[14:15:33] INFO: Client connected via WebSocket
-[14:15:35] INFO: Analyzing process PID=1524
-[14:17:57] INFO: Analyzing process PID=1524
+[10:51:54] INFO: Launching Quart app...
+[10:52:12] INFO: Client connected via WebSocket
+[10:52:33] INFO: Analyzing process PID=4132
+[10:53:42] INFO: Client connected via WebSocket
+[10:54:56] INFO: Launching Quart app...

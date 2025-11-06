@@ -91,13 +91,14 @@ Implementation of WebSocket, linting/testing all project before each commit with
 
 ### 📅 06/11/25
 
+Jinja Templates inheritance. Adding colored borders to see potentially suspicious processes on ```index``` page.
 
 
 ### Strange behaviour to fix
 
 - ✅    Unclickable buttons (<button> element was not correctly placed)
 - ✅    Broken route for /process/<pid> (Blueprint for DLL link was not correctly called in template)
-- CSS not linked correctly for /process/<pid> route
+- ✅    CSS not linked correctly for /process/<pid> route (Unorthodox use of {extends})
 
 
 ## Possible improvements that i will make
@@ -116,12 +117,12 @@ Implementation of WebSocket, linting/testing all project before each commit with
 - ✅    Lazy loading, load only x's first processes
 - ✅    Full test coverage for classes
 - ✅    WebSocket implementation
+- ✅    Risk level in index page to view suspicious processes
 
 - More DLL infos with pefile
 - Geolocation of opened connections
 - DB conn (Tortoise!!)
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
-- Risk level in index page to view suspicious processes
 
 ## Possible improvements that i will **NOT** make
 

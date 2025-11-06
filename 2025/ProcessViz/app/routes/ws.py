@@ -2,6 +2,7 @@ import asyncio
 import json
 from quart import Blueprint, websocket, current_app
 from app.setup_log import setup_logger
+from app.utils import estimate_risk_level
 
 ws_bp = Blueprint("ws", __name__)
 logger = setup_logger(__name__)
@@ -26,16 +27,19 @@ async def process_stream():
                 reverse=True,
             )[:10]
 
-            light_cache = {
-                name: {
+            light_cache = {}
+
+            for name, proc in top:
+                raw_metrics = proc.get("raw_metrics", {})
+                risk_level = estimate_risk_level(raw_metrics)
+                light_cache[name] = {
                     "Name": proc.get("name"),
                     "PID": proc.get("PID"),
                     "Memory Usage": proc.get("memory_percent"),
                     "Status": proc.get("status"),
                     "Time Alive": proc.get("time_alive"),
+                    "risk_level": proc.get("risk_level", "low"),
                 }
-                for name, proc in top
-            }
 
             data = {"status": "ok", "data": light_cache}
             await websocket.send(json.dumps(data))

@@ -65,6 +65,13 @@ function renderProcesses(processData) {
 function fillTable(table, name, proc){
     const caption = table.querySelector("caption");
     const tbody = table.querySelector("tbody");
+    const card = table.closest(".process-card");
+
+    card.classList.remove("risk-low", "risk-medium", "risk-high");
+
+    if (proc.risk_level){
+        card.classList.add(`risk-${proc.risk_level}`);
+    }
     
     caption.textContent = name;
     tbody.innerHTML = ""

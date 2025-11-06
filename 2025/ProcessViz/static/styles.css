@@ -59,6 +59,19 @@ body {
   color: white;
 }
 
+.process-card.risk-low {
+  border: 2px solid green;
+}
+
+.process-card.risk-medium {
+  border: 2px solid orange;
+}
+
+.process-card.risk-high {
+  border: 2px solid red;
+}
+
+
 .analyze-button {
   margin-top: 10px;
   padding: 5px 10px;

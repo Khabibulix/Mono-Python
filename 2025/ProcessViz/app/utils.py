@@ -46,3 +46,32 @@ def analyze_score_risk(score: int) -> str:
     if score >= 50:
         return "warning"
     return "safe"
+
+
+def estimate_risk_level(raw_metrics: dict) -> str:
+    if not raw_metrics:
+        return "unknown"
+
+    risky_flags = [
+        "path_suspicious",
+        "path_deleted",
+        "strange_chars",
+        "not_bound_to_service",
+        "invokes_python",
+        "network_active",
+    ]
+
+    risk_points = sum(raw_metrics.get(flag, False) for flag in risky_flags)
+
+    if not raw_metrics.get("is_signed", True):
+        risk_points += 1
+
+    if raw_metrics.get("path_trustworthy", False):
+        risk_points -= 1
+
+    if risk_points <= 1:
+        return "low"
+    elif risk_points <= 3:
+        return "medium"
+    else:
+        return "high"
