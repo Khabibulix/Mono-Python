@@ -32,6 +32,11 @@ Process Viz is a fast and asynchronous web application designed to capture and v
 - Consulting a process via its PID
 - View metrics for memory, CPU usage... etc
 
+## Expectations at 06/11/25
+
+- DLL static analysis in webpage
+- Clear reading of what is going on
+
 ###  📅 14/10/25
 
 Web app is styled with CSS, vanilla CSS and I'm using JS to grab a click event on a process and display it in a new Flask route. The web-app looks slow to load but is working as intended.
@@ -84,9 +89,13 @@ Cleaning ```app.py``` for better structure.
 
 Implementation of WebSocket, linting/testing all project before each commit with ```black/pytest``` More styling for index page.
 
+### 📅 06/11/25
+
+
+
 ### Strange behaviour to fix
 
-- ✅    Unclickable buttons (<button> element was not correctyl placed)
+- ✅    Unclickable buttons (<button> element was not correctly placed)
 - ✅    Broken route for /process/<pid> (Blueprint for DLL link was not correctly called in template)
 - CSS not linked correctly for /process/<pid> route
 
@@ -112,6 +121,7 @@ Implementation of WebSocket, linting/testing all project before each commit with
 - Geolocation of opened connections
 - DB conn (Tortoise!!)
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
+- Risk level in index page to view suspicious processes
 
 ## Possible improvements that i will **NOT** make
 
@@ -134,6 +144,8 @@ Implementation of WebSocket, linting/testing all project before each commit with
 - Review for dictionary/JSON
 - Services
 - Hashlib, Radon, Signtool, Psutil
-- Quart, Context processor
+- Project organisation and modularization
+- Quart, Blueprint, Context processor
 - Async/Await for Files(```aiofiles```) or Requests(```asyncio```)
 - Py-Spy, Mocking with _unittest.mock_
+- Black linter to format the code properly

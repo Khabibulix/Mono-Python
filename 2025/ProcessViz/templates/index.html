@@ -1,11 +1,8 @@
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Process Visualizer</title>
-    <link rel="preload" href="{{ url_for('static', filename='styles.css') }}" as="style" onload="this.rel='stylesheet'">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Process Visualizer{% endblock %}
+
+{% block content %}
 
     <h1>Liste des processus</h1>
     <a href="{{ url_for('views.display_process_tree') }}">Voir l’arbre des processus</a>
@@ -24,5 +21,4 @@
         </div>
     </template>  
     <script src="{{url_for('static', filename='script.js')}}"></script>
-</body>
-</html>
+{% endblock %}
