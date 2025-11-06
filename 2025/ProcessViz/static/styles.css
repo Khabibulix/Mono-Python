@@ -60,7 +60,7 @@ body {
 }
 
 .process-card.risk-low {
-  border: 2px solid green;
+  border: 2px solid lightgreen;
 }
 
 .process-card.risk-medium {
@@ -68,7 +68,7 @@ body {
 }
 
 .process-card.risk-high {
-  border: 2px solid red;
+  border: 3px solid red;
 }
 
 

@@ -3,3 +3,188 @@
 [10:52:33] INFO: Analyzing process PID=4132
 [10:53:42] INFO: Client connected via WebSocket
 [10:54:56] INFO: Launching Quart app...
+[10:54:59] INFO: Launching Quart app...
+[10:55:32] INFO: Client connected via WebSocket
+[11:03:51] INFO: Launching Quart app...
+[11:41:17] INFO: Launching Quart app...
+[11:41:59] INFO: Client connected via WebSocket
+[11:42:19] INFO: Client connected via WebSocket
+[11:42:25] INFO: Client connected via WebSocket
+[11:42:40] INFO: Client connected via WebSocket
+[11:42:50] INFO: Client connected via WebSocket
+[11:43:07] INFO: Launching Quart app...
+[11:43:33] INFO: Client connected via WebSocket
+[11:45:14] INFO: Client connected via WebSocket
+[11:45:28] INFO: Client connected via WebSocket
+[12:14:34] INFO: Launching Quart app...
+[12:14:55] INFO: Analyzing process PID=9564
+[12:18:48] ERROR: Exception on request GET /process/9564/dll
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1464, in handle_request
+    return await self.full_dispatch_request(request_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1502, in full_dispatch_request
+    result = await self.handle_user_exception(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1059, in handle_user_exception
+    raise error
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1500, in full_dispatch_request
+    result = await self.dispatch_request(request_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1597, in dispatch_request
+    return await self.ensure_async(handler)(**request_.view_args)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\app\routes\views.py", line 113, in dll_view
+    return await render_template(
+           ^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\templating.py", line 58, in render_template
+    return await _render(template, context, current_app._get_current_object())  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\templating.py", line 80, in _render
+    rendered_template = await template.render_async(context)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\jinja2\environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\dll.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\base.html", line 10, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\dll.html", line 10, in block 'content'
+    <a href="{{ url_for('views.process_view', pid=pid) }}">chcp 65001 Back to process</a>
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 756, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 752, in url_for
+    url = url_adapter.build(
+        endpoint, values, method=_method, force_external=_external
+    )
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'process_view' with values ['pid']. Did you mean 'views.process_view' instead?
+[12:19:00] INFO: Analyzing process PID=9564
+[12:19:32] ERROR: Exception on request GET /process/9564/dll
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1464, in handle_request
+    return await self.full_dispatch_request(request_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1502, in full_dispatch_request
+    result = await self.handle_user_exception(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1059, in handle_user_exception
+    raise error
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1500, in full_dispatch_request
+    result = await self.dispatch_request(request_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1597, in dispatch_request
+    return await self.ensure_async(handler)(**request_.view_args)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\app\routes\views.py", line 113, in dll_view
+    return await render_template(
+           ^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\templating.py", line 58, in render_template
+    return await _render(template, context, current_app._get_current_object())  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\templating.py", line 80, in _render
+    rendered_template = await template.render_async(context)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\jinja2\environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\dll.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\base.html", line 10, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\dll.html", line 10, in block 'content'
+    <a href="{{ url_for('views.process_view', pid=pid) }}">chcp 65001 Back to process</a>
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 756, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 752, in url_for
+    url = url_adapter.build(
+        endpoint, values, method=_method, force_external=_external
+    )
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'process_view' with values ['pid']. Did you mean 'views.process_view' instead?
+[12:22:01] ERROR: Exception on request GET /process/9564/dll
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1464, in handle_request
+    return await self.full_dispatch_request(request_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1502, in full_dispatch_request
+    result = await self.handle_user_exception(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1059, in handle_user_exception
+    raise error
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1500, in full_dispatch_request
+    result = await self.dispatch_request(request_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 1597, in dispatch_request
+    return await self.ensure_async(handler)(**request_.view_args)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\app\routes\views.py", line 113, in dll_view
+    return await render_template(
+           ^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\templating.py", line 58, in render_template
+    return await _render(template, context, current_app._get_current_object())  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\templating.py", line 80, in _render
+    rendered_template = await template.render_async(context)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\jinja2\environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\dll.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\base.html", line 10, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\templates\dll.html", line 10, in block 'content'
+    <a href="{{ url_for('views.process_view', pid=pid) }}">Back to process</a>
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 756, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\quart\app.py", line 752, in url_for
+    url = url_adapter.build(
+        endpoint, values, method=_method, force_external=_external
+    )
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'process_view' with values ['pid']. Did you mean 'views.process_view' instead?
+[12:22:34] INFO: Launching Quart app...
+[12:23:01] INFO: Client connected via WebSocket
+[12:23:17] INFO: Analyzing process PID=4904
+[12:28:33] INFO: Launching Quart app...
+[12:29:00] INFO: Client connected via WebSocket
+[12:29:07] INFO: Analyzing process PID=4904
+[12:29:44] INFO: Analysing C:\Windows\System32\dbgcore.dll DLL
+[12:34:18] INFO: Launching Quart app...
+[12:34:44] INFO: Client connected via WebSocket
+[12:34:47] INFO: Client connected via WebSocket
+[12:34:50] INFO: Analyzing process PID=4904
+[12:35:09] INFO: Analysing C:\Windows\System32\dbgcore.dll DLL
+[12:40:22] INFO: Launching Quart app...
+[12:40:51] INFO: Client connected via WebSocket
+[12:40:53] INFO: Analyzing process PID=4904
+[12:41:13] INFO: Analysing C:\Windows\System32\dbgcore.dll DLL

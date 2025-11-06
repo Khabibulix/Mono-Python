@@ -7,7 +7,7 @@
     <p><strong>File :</strong> {{ path }}</p>
     <p><strong>Process :</strong> PID {{ pid }}</p>
     <p>
-        <a href="{{ url_for('process_view', pid=pid) }}">← Back to process</a>
+        <a href="{{ url_for('views.process_view', pid=pid) }}">Back to process</a>
     </p>
 
     <h3>ASCII chained detected (< to 100)</h3>
@@ -27,4 +27,24 @@
     {% else %}
         <em>Hexdump is empty</em>
     {% endif %}
+
+    <h3>PEFile infos</h3>
+        <h3>Sections</h3>
+            {% if dll_info and dll_info.sections %}
+                <ul>
+                {% for sec in dll_info.sections %}
+                    <li>{{ sec.name }} - VA: {{ sec.virtual_size}} - Raw Size: {{ sec.raw_size }} - Entropy : {{ "%.2f"|format(sec.entropy)}}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <em>No sections found</em>
+            {% endif %}
+        <h3>Imports</h3>
+            {{dll_info["imports"]}}
+        <h3>Exports</h3>
+           {{dll_info["exports"]}}
+        <h3>Entry point</h3>
+           {{dll_info["entry_point"]}}
+        <h3>DLL Characteristics</h3>
+           {{dll_info["dll_characteristics"]}}
 {% endblock %}

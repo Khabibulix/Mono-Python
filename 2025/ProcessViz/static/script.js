@@ -127,4 +127,6 @@ function main(){
     initWebSocket();
 }
 
-main();
+document.addEventListener("DOMContentLoaded", () => {
+    main();
+});

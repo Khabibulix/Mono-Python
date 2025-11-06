@@ -4,11 +4,11 @@
 
 {% block content %}
 
-    <h1>Liste des processus</h1>
-    <a href="{{ url_for('views.display_process_tree') }}">Voir l’arbre des processus</a>
+    <h1 style="text-align: center;">Processes List</h1>
+    <a style="text-align: center;" href="{{ url_for('views.display_process_tree') }}">See Process Tree</a>
     <br>
     <div id="process-list" class="process-container">
-        Chargement des processus...
+
     </div>
     
     <template id="process-template">

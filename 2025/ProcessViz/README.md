@@ -123,6 +123,9 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - Geolocation of opened connections
 - DB conn (Tortoise!!)
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
+- Notification if a potentially dangerous process begins
+- _Pretty_ print of strings in DLL View
+- Adding script to create a shitty malicious process 
 
 ## Possible improvements that i will **NOT** make
 

@@ -1,4 +1,4 @@
-import pythoncom, re
+import pythoncom, re, pefile
 from quart import Blueprint, render_template, request, abort, current_app
 from urllib.parse import unquote_plus
 from app.setup_log import setup_logger
@@ -6,6 +6,7 @@ from app.setup_log import setup_logger
 from app.ProcessGetter import ProcessGetter
 from app.ProcessAnalyzer import ProcessAnalyzer
 from app.utils_process import is_readable, build_process_tree
+from app.utils import hexdump
 
 views_bp = Blueprint("views", __name__)
 logger = setup_logger(__name__)
@@ -63,6 +64,7 @@ async def display_process_tree():
 @views_bp.route("/process/<int:pid>/dll")
 async def dll_view(pid):
     path = request.args.get("path")
+    logger.info(f"Analysing {path} DLL")
     if not path:
         abort(400, "Missing path param")
 
@@ -79,21 +81,43 @@ async def dll_view(pid):
 
     ascii_strings = re.findall(rb"[\x20-\x7E]{4,}", data)
     strings = [s.decode("ascii", errors="ignore") for s in ascii_strings[:100]]
-
-    def hexdump(data: bytes, length: int = 16):
-        result = []
-        for i in range(0, min(len(data), 512), length):
-            chunk = data[i : i + length]
-            hex_part = " ".join(f"{b:02x}" for b in chunk)
-            # Classic ASCII Chars, 32 is ' ' and 127 is '~'
-            ascii_part = "".join(chr(b) if 32 <= b < 127 else "." for b in chunk)
-            result.append(f"{i:08x} {hex_part:<48} |{ascii_part}|")
-        return result
-
     hex_lines = hexdump(data)
 
+    try:
+        pe = pefile.PE(path, fast_load=True)
+        pe.parse_data_directories()
+        dll_info = {
+            "sections": [
+                {
+                    "name": sec.Name.decode(errors="ignore").rstrip("\x00"),
+                    "virtual_size": sec.Misc_VirtualSize,
+                    "raw_size": sec.SizeOfRawData,
+                    "entropy": sec.get_entropy(),
+                }
+                for sec in pe.sections
+            ],
+            "imports": [
+                imp.name.decode() if imp.name else ""
+                for entry in getattr(pe, "DIRECTORY_ENTRY_IMPORT", [])
+                for imp in entry.imports
+            ],
+            "exports": [
+                exp.name.decode() if exp.name else ""
+                for exp in getattr(pe, "DIRECTORY_ENTRY_EXPORT", []).symbols
+            ],
+            "entry_point": hex(pe.OPTIONAL_HEADER.AddressOfEntryPoint),
+            "dll_characteristics": pe.OPTIONAL_HEADER.DllCharacteristics,
+        }
+    except Exception as e:
+        logger.info(e)
+
     return await render_template(
-        "dll.html", pid=pid, path=path, strings=strings, hexdump=hex_lines
+        "dll.html",
+        pid=pid,
+        path=path,
+        strings=strings,
+        hexdump=hex_lines,
+        dll_info=dll_info,
     )
 
 

@@ -4,6 +4,17 @@ import os
 import asyncio
 
 
+def hexdump(data: bytes, length: int = 16):
+    result = []
+    for i in range(0, min(len(data), 512), length):
+        chunk = data[i : i + length]
+        hex_part = " ".join(f"{b:02x}" for b in chunk)
+        # Classic ASCII Chars, 32 is ' ' and 127 is '~'
+        ascii_part = "".join(chr(b) if 32 <= b < 127 else "." for b in chunk)
+        result.append(f"{i:08x} {hex_part:<48} |{ascii_part}|")
+    return result
+
+
 def grab_sha256_hash_of_process(path: str) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
