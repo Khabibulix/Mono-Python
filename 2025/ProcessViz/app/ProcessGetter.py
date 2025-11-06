@@ -1,8 +1,8 @@
 import asyncio
 import psutil
 import time
-from app.utils import grab_sha256_async
-from app.utils_process import get_dll_info_sync
+from app.utils.utils import grab_sha256_async
+from app.utils.utils_process import get_dll_info_sync
 
 
 class ProcessGetter:

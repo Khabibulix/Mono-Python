@@ -188,3 +188,254 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'proces
 [12:40:51] INFO: Client connected via WebSocket
 [12:40:53] INFO: Analyzing process PID=4904
 [12:41:13] INFO: Analysing C:\Windows\System32\dbgcore.dll DLL
+[12:42:21] INFO: Launching Quart app...
+[12:49:41] INFO: Launching Quart app...
+[12:50:01] INFO: Launching Quart app...
+[13:00:54] INFO: New process detected: PID=13904, Name=Notepad.exe, Path=C:\Program Files\WindowsApps\Microsoft.WindowsNotepad_11.2507.26.0_x64__8wekyb3d8bbwe\Notepad\Notepad.exe
+[13:01:00] INFO: New process detected: PID=2612, Name=DataExchangeHost.exe, Path=C:\Windows\System32\DataExchangeHost.exe
+[13:01:02] INFO: New process detected: PID=14176, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:01:02] INFO: New process detected: PID=5220, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:01:02] INFO: New process detected: PID=11524, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:26:43] INFO: Launching Quart app...
+[13:26:43] INFO: Launching Quart app...
+[13:26:55] INFO: Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[13:27:03] INFO: Client connected via WebSocket
+[13:27:03] INFO: Client connected via WebSocket
+[13:27:07] INFO: Client connected via WebSocket
+[13:27:07] INFO: Client connected via WebSocket
+[13:27:47] INFO: New process detected: PID=8416, Name=python.exe, Path=C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Scripts\python.exe
+[13:27:47] INFO: New process detected: PID=14176, Name=python.exe, Path=C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
+[13:27:47] INFO: New process detected: PID=1828, Name=python.exe, Path=C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
+[13:27:47] INFO: New process detected: PID=13896, Name=python.exe, Path=C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
+[13:27:47] INFO: New process detected: PID=8844, Name=black.exe, Path=C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\venv\Scripts\black.exe
+[13:27:57] INFO: Launching Quart app...
+[13:27:57] INFO: Launching Quart app...
+[13:28:18] INFO: Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[13:28:20] INFO: New process detected: PID=10088, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[13:28:20] INFO: New process detected: PID=2988, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:28:20] INFO: New process detected: PID=14208, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:28:24] INFO: Client connected via WebSocket
+[13:28:24] INFO: Client connected via WebSocket
+[13:29:15] INFO: New process detected: PID=14560, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:29:15] INFO: New process detected: PID=10124, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:29:15] INFO: New process detected: PID=3820, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:29:15] INFO: New process detected: PID=9904, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:29:15] INFO: New process detected: PID=8092, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:30:48] INFO: New process detected: PID=3672, Name=chrome.exe, Path=C:\Program Files\Google\Chrome\Application\chrome.exe
+[13:30:48] INFO: New process detected: PID=14424, Name=chrome.exe, Path=C:\Program Files\Google\Chrome\Application\chrome.exe
+[13:30:48] INFO: New process detected: PID=4188, Name=chrome.exe, Path=C:\Program Files\Google\Chrome\Application\chrome.exe
+[13:30:48] INFO: New process detected: PID=2852, Name=chrome.exe, Path=C:\Program Files\Google\Chrome\Application\chrome.exe
+[13:31:27] INFO: New process detected: PID=4432, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[13:31:29] INFO: New process detected: PID=7688, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:31:29] INFO: New process detected: PID=3200, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:31:29] INFO: New process detected: PID=3256, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:31:29] INFO: New process detected: PID=3032, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[13:31:31] INFO: New process detected: PID=9068, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:31:47] INFO: New process detected: PID=10984, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:31:47] INFO: New process detected: PID=13800, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:31:47] INFO: New process detected: PID=3148, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:31:47] INFO: New process detected: PID=15728, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:31:47] INFO: New process detected: PID=10008, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[13:31:49] INFO: New process detected: PID=11296, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:31:49] INFO: New process detected: PID=3360, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:31:52] INFO: New process detected: PID=5816, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[13:31:52] INFO: New process detected: PID=9772, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:31:52] INFO: New process detected: PID=16220, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:32:28] INFO: New process detected: PID=2880, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:32:28] INFO: New process detected: PID=15032, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[13:32:28] INFO: New process detected: PID=13040, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:32:28] INFO: New process detected: PID=9336, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[13:32:28] INFO: New process detected: PID=5724, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[13:36:30] INFO: New process detected: PID=2432, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[13:36:30] INFO: New process detected: PID=15332, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[13:36:30] INFO: New process detected: PID=6552, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[13:36:30] INFO: New process detected: PID=8148, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[13:36:30] INFO: New process detected: PID=15928, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[13:36:30] INFO: New process detected: PID=13596, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[13:37:16] INFO: New process detected: PID=13412, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[13:37:16] INFO: New process detected: PID=12316, Name=MoUsoCoreWorker.exe, Path=C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+[13:37:19] INFO: New process detected: PID=9124, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[13:37:22] INFO: New process detected: PID=12096, Name=sppsvc.exe, Path=C:\Windows\System32\sppsvc.exe
+[13:46:15] INFO: New process detected: PID=9036, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:01:15] INFO: New process detected: PID=10176, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:02:50] INFO: New process detected: PID=15652, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:02:50] INFO: New process detected: PID=4568, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:02:50] INFO: New process detected: PID=14344, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:02:50] INFO: New process detected: PID=2968, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:02:50] INFO: New process detected: PID=14844, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:02:50] INFO: New process detected: PID=7196, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:16:16] INFO: New process detected: PID=11180, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:24:53] INFO: New process detected: PID=8804, Name=MicrosoftEdgeUpdate.exe, Path=C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe
+[14:26:38] INFO: New process detected: PID=14936, Name=dllhost.exe, Path=C:\Windows\System32\dllhost.exe
+[14:28:40] INFO: New process detected: PID=4608, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[14:28:40] INFO: New process detected: PID=15172, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:28:40] INFO: New process detected: PID=14472, Name=wermgr.exe, Path=C:\Windows\System32\wermgr.exe
+[14:28:40] INFO: New process detected: PID=14892, Name=taskhostw.exe, Path=C:\Windows\System32\taskhostw.exe
+[14:28:40] INFO: New process detected: PID=15192, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[14:28:40] INFO: New process detected: PID=11124, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[14:28:40] INFO: New process detected: PID=10456, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:28:40] INFO: New process detected: PID=4444, Name=MoUsoCoreWorker.exe, Path=C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+[14:28:44] INFO: New process detected: PID=8900, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[14:28:44] INFO: New process detected: PID=12616, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[14:28:44] INFO: New process detected: PID=10696, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:28:44] INFO: New process detected: PID=12212, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:28:44] INFO: New process detected: PID=11128, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:28:47] INFO: New process detected: PID=15560, Name=sppsvc.exe, Path=C:\Windows\System32\sppsvc.exe
+[14:28:53] INFO: New process detected: PID=12160, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[14:28:53] INFO: New process detected: PID=9788, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[14:28:57] INFO: New process detected: PID=6964, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[14:29:13] INFO: New process detected: PID=15752, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[14:29:20] INFO: New process detected: PID=14096, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:29:20] INFO: New process detected: PID=12812, Name=sppsvc.exe, Path=C:\Windows\System32\sppsvc.exe
+[14:29:24] INFO: New process detected: PID=1616, Name=WmiPrvSE.exe, Path=C:\Windows\System32\wbem\WmiPrvSE.exe
+[14:29:24] INFO: New process detected: PID=16004, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:29:28] INFO: New process detected: PID=8924, Name=dmclient.exe, Path=C:\Windows\System32\dmclient.exe
+[14:29:40] INFO: New process detected: PID=15448, Name=wermgr.exe, Path=C:\Windows\System32\wermgr.exe
+[14:29:40] INFO: New process detected: PID=12384, Name=TrustedInstaller.exe, Path=C:\Windows\servicing\TrustedInstaller.exe
+[14:29:42] INFO: New process detected: PID=11196, Name=TiWorker.exe, Path=C:\Windows\WinSxS\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.26100.7010_none_a54d8be7772fd084\TiWorker.exe
+[14:29:55] INFO: New process detected: PID=16108, Name=WmiPrvSE.exe, Path=C:\Windows\System32\wbem\WmiPrvSE.exe
+[14:31:41] INFO: New process detected: PID=10820, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:35:09] INFO: New process detected: PID=7188, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:35:55] INFO: New process detected: PID=10032, Name=WmiPrvSE.exe, Path=C:\Windows\System32\wbem\WmiPrvSE.exe
+[14:36:30] INFO: New process detected: PID=8928, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:36:30] INFO: New process detected: PID=4548, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:36:30] INFO: New process detected: PID=11400, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:36:30] INFO: New process detected: PID=16072, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:36:30] INFO: New process detected: PID=8528, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:36:30] INFO: New process detected: PID=9748, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[14:37:17] INFO: New process detected: PID=11460, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:37:23] INFO: New process detected: PID=8044, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:39:51] INFO: New process detected: PID=5608, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:40:08] INFO: New process detected: PID=10984, Name=smartscreen.exe, Path=C:\Windows\System32\smartscreen.exe
+[14:41:42] INFO: New process detected: PID=11420, Name=WmiPrvSE.exe, Path=C:\Windows\System32\wbem\WmiPrvSE.exe
+[14:41:47] INFO: New process detected: PID=12096, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:42:47] INFO: New process detected: PID=10264, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[14:44:52] INFO: New process detected: PID=5024, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[14:54:51] INFO: New process detected: PID=15996, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:00:04] INFO: New process detected: PID=6448, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:01:35] INFO: New process detected: PID=13472, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:01:35] INFO: New process detected: PID=12804, Name=StoreDesktopExtension.exe, Path=C:\Program Files\WindowsApps\Microsoft.WindowsStore_22509.1401.11.0_x64__8wekyb3d8bbwe\WinStore.DesktopExtension\StoreDesktopExtension.exe
+[15:02:49] INFO: New process detected: PID=5684, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:02:49] INFO: New process detected: PID=9284, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:02:51] INFO: New process detected: PID=6328, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:02:51] INFO: New process detected: PID=12492, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:02:51] INFO: New process detected: PID=3212, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:02:51] INFO: New process detected: PID=3456, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=9860, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=10148, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=10536, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:09:52] INFO: New process detected: PID=10352, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=3896, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=15796, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=9336, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=11900, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:09:52] INFO: New process detected: PID=4312, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:10:25] INFO: New process detected: PID=1112, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:10:39] INFO: New process detected: PID=7572, Name=chrome.exe, Path=C:\Program Files\Google\Chrome\Application\chrome.exe
+[15:10:39] INFO: New process detected: PID=14148, Name=chrome.exe, Path=C:\Program Files\Google\Chrome\Application\chrome.exe
+[15:15:05] INFO: New process detected: PID=4768, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:15:05] INFO: New process detected: PID=9884, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:15:05] INFO: New process detected: PID=14800, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:17:36] INFO: New process detected: PID=8272, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:24:51] INFO: New process detected: PID=10204, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:24:53] INFO: New process detected: PID=1592, Name=MicrosoftEdgeUpdate.exe, Path=C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe
+[15:28:13] INFO: New process detected: PID=12056, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[15:28:13] INFO: New process detected: PID=1532, Name=taskhostw.exe, Path=C:\Windows\System32\taskhostw.exe
+[15:28:16] INFO: New process detected: PID=9772, Name=sppsvc.exe, Path=C:\Windows\System32\sppsvc.exe
+[15:28:20] INFO: New process detected: PID=14848, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:31:27] INFO: New process detected: PID=15672, Name=sdbinst.exe, Path=C:\Windows\System32\sdbinst.exe
+[15:32:18] INFO: New process detected: PID=11116, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[15:32:18] INFO: New process detected: PID=8980, Name=taskhostw.exe, Path=C:\Windows\System32\taskhostw.exe
+[15:32:20] INFO: New process detected: PID=15388, Name=sppsvc.exe, Path=C:\Windows\System32\sppsvc.exe
+[15:33:43] INFO: New process detected: PID=5656, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:36:29] INFO: New process detected: PID=13684, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:36:31] INFO: New process detected: PID=14560, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:36:31] INFO: New process detected: PID=6920, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:36:31] INFO: New process detected: PID=12596, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:36:31] INFO: New process detected: PID=2460, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:36:31] INFO: New process detected: PID=7452, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[15:37:20] INFO: New process detected: PID=3712, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:37:20] INFO: New process detected: PID=9004, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:37:20] INFO: New process detected: PID=4304, Name=MoUsoCoreWorker.exe, Path=C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+[15:37:23] INFO: New process detected: PID=8848, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[15:37:23] INFO: New process detected: PID=11292, Name=sppsvc.exe, Path=C:\Windows\System32\sppsvc.exe
+[15:39:53] INFO: New process detected: PID=10128, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:50:00] INFO: New process detected: PID=15368, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:54:52] INFO: New process detected: PID=14740, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[15:55:32] INFO: New process detected: PID=4476, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[15:55:34] INFO: New process detected: PID=8512, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[16:00:59] INFO: New process detected: PID=8536, Name=taskhostw.exe, Path=C:\Windows\System32\taskhostw.exe
+[16:01:05] INFO: New process detected: PID=14036, Name=MoUsoCoreWorker.exe, Path=C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+[16:01:07] INFO: New process detected: PID=6744, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[16:01:07] INFO: New process detected: PID=5476, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[16:01:09] INFO: New process detected: PID=4720, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[16:02:49] INFO: New process detected: PID=1376, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[16:02:49] INFO: New process detected: PID=14752, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[16:02:49] INFO: New process detected: PID=14436, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[16:02:49] INFO: New process detected: PID=2508, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[16:02:49] INFO: New process detected: PID=16244, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[16:02:49] INFO: New process detected: PID=13876, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[16:02:49] INFO: New process detected: PID=7800, Name=updater.exe, Path=C:\Program Files (x86)\Google\GoogleUpdater\143.0.7482.0\updater.exe
+[16:06:56] INFO: New process detected: PID=12748, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[16:06:56] INFO: New process detected: PID=8924, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[16:06:58] INFO: New process detected: PID=15552, Name=taskhostw.exe, Path=C:\Windows\System32\taskhostw.exe
+[16:06:58] INFO: New process detected: PID=9348, Name=RuntimeBroker.exe, Path=C:\Windows\System32\RuntimeBroker.exe
+[16:07:01] INFO: New process detected: PID=15880, Name=sppsvc.exe, Path=C:\Windows\System32\sppsvc.exe
+[16:08:51] INFO: New process detected: PID=8400, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:08:51] INFO: New process detected: PID=9092, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:08:51] INFO: New process detected: PID=3024, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:09:54] INFO: New process detected: PID=5984, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:09:54] INFO: New process detected: PID=13040, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:09:54] INFO: New process detected: PID=5684, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:09:54] INFO: New process detected: PID=16148, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:09:54] INFO: New process detected: PID=14680, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[16:11:03] INFO: New process detected: PID=16224, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:11:03] INFO: New process detected: PID=14984, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:11:03] INFO: New process detected: PID=11468, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:03] INFO: New process detected: PID=13104, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:03] INFO: New process detected: PID=13528, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:03] INFO: New process detected: PID=12508, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:11:07] INFO: New process detected: PID=12928, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:07] INFO: New process detected: PID=6788, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:11:07] INFO: New process detected: PID=5360, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[16:11:07] INFO: New process detected: PID=3264, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:12] INFO: New process detected: PID=15408, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:12] INFO: New process detected: PID=10488, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:11:12] INFO: New process detected: PID=15072, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:14] INFO: New process detected: PID=8076, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:11:16] INFO: New process detected: PID=15016, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:11:30] INFO: New process detected: PID=9876, Name=backgroundTaskHost.exe, Path=C:\Windows\System32\backgroundTaskHost.exe
+[16:12:24] INFO: New process detected: PID=15212, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:12:24] INFO: New process detected: PID=10348, Name=python.exe, Path=C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
+[16:17:19] INFO: New process detected: PID=5560, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:17:19] INFO: New process detected: PID=9956, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:17:19] INFO: New process detected: PID=13100, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:17:19] INFO: New process detected: PID=5608, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:18:52] INFO: New process detected: PID=12344, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:18:52] INFO: New process detected: PID=6904, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:18:54] INFO: New process detected: PID=13464, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:18:54] INFO: New process detected: PID=15564, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[16:18:54] INFO: New process detected: PID=5404, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:18:54] INFO: New process detected: PID=11696, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[16:19:18] INFO: Launching Quart app...
+[16:19:18] INFO: Launching Quart app...
+[16:19:30] INFO: Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[16:19:37] INFO: Client connected via WebSocket
+[16:19:37] INFO: Client connected via WebSocket
+[16:19:52] INFO: New process detected: PID=12304, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:19:52] INFO: New process detected: PID=15764, Name=python.exe, Path=C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
+[16:19:52] INFO: New process detected: PID=7572, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:19:52] INFO: New process detected: PID=1436, Name=python.exe, Path=C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
+[16:19:52] INFO: New process detected: PID=11196, Name=python.exe, Path=C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
+[16:23:29] INFO: New process detected: PID=7568, Name=OneDriveStandaloneUpdater.exe, Path=C:\Users\Admin\AppData\Local\Microsoft\OneDrive\OneDriveStandaloneUpdater.exe
+[16:23:31] INFO: New process detected: PID=10320, Name=svchost.exe, Path=C:\Windows\System32\svchost.exe
+[16:24:19] INFO: New process detected: PID=6448, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:24:19] INFO: New process detected: PID=8560, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:24:31] INFO: New process detected: PID=2880, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:24:31] INFO: New process detected: PID=1640, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe
+[16:24:31] INFO: New process detected: PID=12492, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:24:31] INFO: New process detected: PID=12880, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:24:31] INFO: New process detected: PID=14960, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:24:40] INFO: New process detected: PID=11768, Name=git.exe, Path=C:\Program Files\Git\cmd\git.exe
+[16:24:40] INFO: New process detected: PID=6908, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[16:24:40] INFO: New process detected: PID=10988, Name=git.exe, Path=C:\Program Files\Git\mingw64\bin\git.exe

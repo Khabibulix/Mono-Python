@@ -7,6 +7,7 @@ from app.ProcessGetter import ProcessGetter
 from app.ProcessAnalyzer import ProcessAnalyzer
 from app.utils_process import is_readable, build_process_tree
 from app.utils import hexdump
+from app.utils_watcher import alerts_queue
 
 views_bp = Blueprint("views", __name__)
 logger = setup_logger(__name__)
@@ -132,7 +133,7 @@ async def api_get_processes():
         cache.items(),
         key=lambda item: float(item[1].get("memory_percent", 0) or 0),
         reverse=True,
-    )[:10]
+    )[:20]
 
     light_cache = {
         name: {

@@ -1,6 +1,18 @@
 import psutil, os
 from typing import Tuple
 
+WHITELIST = {"explorer.exe", "python.exe", "cmd.exe"}
+
+
+def score_process(proc: psutil.Process):
+    score = 0
+    try:
+        if proc.name() not in WHITELIST:
+            score += 1
+    except psutil.AccessDenied:
+        pass
+    return score
+
 
 def looks_like_shared_lib(path: str) -> bool:
     if not path:

@@ -91,7 +91,7 @@ Implementation of WebSocket, linting/testing all project before each commit with
 
 ### 📅 06/11/25
 
-Jinja Templates inheritance. Adding colored borders to see potentially suspicious processes on ```index``` page.
+Jinja Templates inheritance. Adding colored borders to see potentially suspicious processes on ```index``` page. PeFile infos for DLL view, really cryptic for now, but useful infos to see if DLL is packed or known. Preparing events alerts for strange new processes with ```Asyncio.Queue()```
 
 
 ### Strange behaviour to fix
@@ -118,23 +118,27 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - ✅    Full test coverage for classes
 - ✅    WebSocket implementation
 - ✅    Risk level in index page to view suspicious processes
+- ✅    More DLL infos with pefile
 
-- More DLL infos with pefile
-- Geolocation of opened connections
-- DB conn (Tortoise!!)
+
+- DB conn (Tortoise!!) for stocking alerts and more.
 - Optimize fetching of services with _WMI Watcher_ or _psutil_
-- Notification if a potentially dangerous process begins
 - _Pretty_ print of strings in DLL View
 - Adding script to create a shitty malicious process 
-
-## Possible improvements that i will **NOT** make
-
+- Creating rapport with pefile infos, a bit cryptic RN
+- Improve alerts for events.
 - Plugin System and _REPL_ for modifying system while running
 - _Hierplane_ for displaying tree
-- Workers _Dask_
-- Hashing files in _WebAssembly_ in _Rust-WASM_
 - Visual profiling of application's speed
 - Dynamic dashboard Event-Driven with Asyncio.Queue
+
+## Current task:
+- Notification in UI if a potentially dangerous process begins
+
+## Improving codebase
+- Centralize all three scores in one function to remove duplicates
+- Tests for utils functions
+- Separate tests files, one for each file tested
 
 
 ## What i want to learn
@@ -153,3 +157,4 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - Async/Await for Files(```aiofiles```) or Requests(```asyncio```)
 - Py-Spy, Mocking with _unittest.mock_
 - Black linter to format the code properly
+- WebSocket replacing Ajax polling

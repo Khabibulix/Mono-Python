@@ -3,6 +3,7 @@ import json
 from quart import Blueprint, websocket, current_app
 from app.setup_log import setup_logger
 from app.utils import estimate_risk_level
+from app.utils_watcher import alerts_queue
 
 ws_bp = Blueprint("ws", __name__)
 logger = setup_logger(__name__)
@@ -25,7 +26,7 @@ async def process_stream():
                 cache.items(),
                 key=lambda item: float(item[1].get("memory_percent", 0) or 0),
                 reverse=True,
-            )[:10]
+            )[:20]
 
             light_cache = {}
 
@@ -47,3 +48,10 @@ async def process_stream():
 
     except Exception as e:
         logger.warning("WebSocket connection closed or errored: %s", e)
+
+
+@ws_bp.websocket("/ws/alerts")
+async def alerts_ws():
+    while True:
+        alert = await alerts_queue.get()
+        await websocket.send_json(alert)
