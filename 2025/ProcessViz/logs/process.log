@@ -498,3 +498,31 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'proces
 [17:50:12] INFO: New process detected: PID=1576, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
 [17:52:43] INFO: New process detected: PID=15368, Name=rg.exe, Path=C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\resources\app\node_modules\@vscode\ripgrep\bin\rg.exe
 [17:52:43] INFO: New process detected: PID=4644, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[18:31:42] INFO: Launching Quart app...
+[18:31:42] INFO: Launching Quart app...
+[18:31:54] INFO: Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[18:32:16] INFO: New process detected: PID=9888, Name=chrome.exe, Path=C:\Program Files\Google\Chrome\Application\chrome.exe
+[18:32:16] ERROR: Task exception was never retrieved
+future: <Task finished name='Task-198' coro=<process_watcher() done, defined at C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\app\utils\utils_watcher.py:9> exception=TypeError("'>' not supported between instances of 'coroutine' and 'int'")>
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\app\utils\utils_watcher.py", line 24, in process_watcher
+    if score > 30:
+       ^^^^^^^^^^
+TypeError: '>' not supported between instances of 'coroutine' and 'int'
+[18:32:18] INFO: Client connected via WebSocket
+[18:32:18] INFO: Client connected via WebSocket
+[18:32:20] INFO: Client connected via WebSocket
+[18:32:20] INFO: Client connected via WebSocket
+[21:38:46] INFO: Launching Quart app...
+[21:38:46] INFO: Launching Quart app...
+[21:39:23] INFO: Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[21:39:36] INFO: New process detected: PID=6312, Name=conhost.exe, Path=C:\Windows\System32\conhost.exe
+[21:39:36] ERROR: Task exception was never retrieved
+future: <Task finished name='Task-204' coro=<process_watcher() done, defined at C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\app\utils\utils_watcher.py:9> exception=TypeError("'>' not supported between instances of 'coroutine' and 'int'")>
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\Mono-Python\2025\ProcessViz\app\utils\utils_watcher.py", line 24, in process_watcher
+    if score > 30:
+       ^^^^^^^^^^
+TypeError: '>' not supported between instances of 'coroutine' and 'int'
+[21:40:00] INFO: Client connected via WebSocket
+[21:40:00] INFO: Client connected via WebSocket

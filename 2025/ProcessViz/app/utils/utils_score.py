@@ -13,7 +13,6 @@ async def compute_score(pid: int, mode: str = "full"):
     """Compute score depending on mode:
     - light: quick mode for index page
     - full: slow and complete mode for distinct process analysis
-    - alert: Quick mode for event watcher
 
     :param process: Process pid to analyze
     :type process: int
@@ -40,7 +39,7 @@ async def compute_score(pid: int, mode: str = "full"):
             "network_active": False,
         }
 
-        if mode in ("light", "alert", "full"):
+        if mode in ("light", "full"):
 
             # Signature
             signed = is_signed(exe_path)
@@ -65,7 +64,6 @@ async def compute_score(pid: int, mode: str = "full"):
                 justifications["path_trustworthy"] = True
                 raw_metrics["path_trustworthy"] = True
 
-        if mode in ("alert", "full"):
             if is_deleted_executable(proc):
                 score += CONFIG["weights"]["deleted_path"]
                 justifications["path_deleted"] = True

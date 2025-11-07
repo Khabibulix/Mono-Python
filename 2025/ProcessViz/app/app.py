@@ -4,7 +4,6 @@ from app.setup_log import setup_logger
 from app.ProcessGetter import ProcessGetter
 from app.routes.views import views_bp
 from app.routes.ws import ws_bp
-from app.utils.utils_watcher import process_watcher
 
 base_dir = os.path.dirname(os.path.dirname(__file__))  # ProcessViz
 
@@ -45,8 +44,6 @@ def utility_processor():
 async def startup():
     app.config["PROCESS_CACHE"] = await ProcessGetter.get_processes()
     app.add_background_task(refresh_cache)
-    asyncio.create_task(process_watcher())
-
 
 app.register_blueprint(views_bp)
 app.register_blueprint(ws_bp)

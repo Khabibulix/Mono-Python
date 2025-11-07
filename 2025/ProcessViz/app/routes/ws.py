@@ -3,7 +3,6 @@ import json
 from quart import Blueprint, websocket, current_app
 from app.setup_log import setup_logger
 from app.utils.utils import estimate_risk_level
-from app.utils.utils_watcher import alerts_queue
 from app.utils.utils_score import compute_score
 
 ws_bp = Blueprint("ws", __name__)
@@ -50,10 +49,3 @@ async def process_stream():
     except Exception as e:
         logger.warning("WebSocket connection closed or errored: %s", e)
 
-
-@ws_bp.websocket("/ws/alerts")
-async def alerts_ws():
-    while True:
-        alert = await alerts_queue.get()
-        score_data = await compute_score(alert["pid"], mode="alert")
-        await websocket.send_json(score_data)
