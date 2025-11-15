@@ -526,3 +526,10 @@ Traceback (most recent call last):
 TypeError: '>' not supported between instances of 'coroutine' and 'int'
 [21:40:00] INFO: Client connected via WebSocket
 [21:40:00] INFO: Client connected via WebSocket
+[17:00:16] INFO: Launching Quart app...
+[17:00:16] INFO: Launching Quart app...
+[17:00:39] INFO: Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[17:00:50] INFO: Client connected via WebSocket
+[17:00:50] INFO: Client connected via WebSocket
+[17:00:56] INFO: Analyzing process PID=4040
+[17:00:56] INFO: Analyzing process PID=4040

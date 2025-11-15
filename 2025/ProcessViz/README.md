@@ -1,7 +1,7 @@
 # Process Viz (current project)
 
-
-Process Viz is a fast and asynchronous web application designed to capture and visualize process snapshots on a server. Built initially with Flask and evolving towards Quart with asyncio, it allows users to browse and analyze system processes in real-time through a clean web interface.
+ProcessViz is a high-performance monitoring tool that provides real-time visibility into running processes, DLLs, open files, signatures, and potential security risks.
+Built with Quart (async Flask), psutil, WebSockets, and pefile, it delivers an interactive dashboard designed for developers, analysts, and security practitioners who need to understand what is happening on a machine — right now.
 
 ### Table of contents
 
@@ -14,7 +14,7 @@ Process Viz is a fast and asynchronous web application designed to capture and v
 ## How to launch things
 - ```git clone http://www.github.com/Khabibulix/Mono-Python```
 - ```cd Mono-Python\2025\ProcessViz```
-- ```python app app.py``` for main web-app
+- ```python -m app.app``` for main web-app
 - ```pytest``` to launch tests
 
 
@@ -121,15 +121,13 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - ✅    More DLL infos with pefile
 
 
-- Optimize fetching of services with _WMI Watcher_ or _psutil_
-- _Pretty_ print of strings in DLL View
-- Creating rapport with pefile infos, a bit cryptic RN
+## Main improvement if i take back the project
+- Intelligent Alert System via async watcher and WebSocket alerting
 
 
 ## Improving codebase
 - ✅    Centralize all three scores in one function to remove duplicates
 - ✅    Separate tests files, one for each file tested
-- Tests for utils functions
 
 
 ## What i want to learn
