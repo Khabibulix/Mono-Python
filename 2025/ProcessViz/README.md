@@ -3,13 +3,15 @@
 ProcessViz is a high-performance monitoring tool that provides real-time visibility into running processes, DLLs, open files, signatures, and potential security risks.
 Built with Quart (async Flask), psutil, WebSockets, and pefile, it delivers an interactive dashboard designed for developers, analysts, and security practitioners who need to understand what is happening on a machine — right now.
 
-### Table of contents
 
+### Table of contents
+- [V 1.0](#process-viz-v-10)
 - [Expectations](#expectations-at-051025)
 - [DevLog](#where-i-am-at-141025)
 - [Improvements](#possible-improvements)
 - [Learning Objectives](#what-i-want-to-learn)
 - [What I learned](#what-i-learnedrelearned)
+- [V 2.0](#process-viz-v-20)
 
 ## How to launch things
 - ```git clone http://www.github.com/Khabibulix/Mono-Python```
@@ -17,6 +19,8 @@ Built with Quart (async Flask), psutil, WebSockets, and pefile, it delivers an i
 - ```python -m app.app``` for main web-app
 - ```pytest``` to launch tests
 
+
+## Process Viz v 1.0
 
 
 ## Expectations at 05/10/25
@@ -36,6 +40,7 @@ Built with Quart (async Flask), psutil, WebSockets, and pefile, it delivers an i
 
 - DLL static analysis in webpage
 - Clear reading of what is going on
+
 
 ###  📅 14/10/25
 
@@ -96,8 +101,8 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 
 ### Strange behaviour to fix
 
-- ✅    Unclickable buttons (<button> element was not correctly placed)
-- ✅    Broken route for /process/<pid> (Blueprint for DLL link was not correctly called in template)
+- ✅    Unclickable buttons (button element was not correctly placed)
+- ✅    Broken route for /process/pid (Blueprint for DLL link was not correctly called in template)
 - ✅    CSS not linked correctly for /process/<pid> route (Unorthodox use of {extends})
 
 
@@ -121,15 +126,6 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - ✅    More DLL infos with pefile
 
 
-## Main improvement if i take back the project
-- Intelligent Alert System via async watcher and WebSocket alerting
-
-
-## Improving codebase
-- ✅    Centralize all three scores in one function to remove duplicates
-- ✅    Separate tests files, one for each file tested
-
-
 ## What i want to learn
 
 - Basic API design
@@ -147,3 +143,13 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - Py-Spy, Mocking with _unittest.mock_, _pytest_ TDD
 - Black linter to format the code properly
 - WebSocket replacing Ajax polling
+
+
+## Process Viz v 2.0
+
+## Expectations at 06/11/25
+- Basic behavioral detection nore like an EDR
+- Live-streamed alerts
+- Real Web Dashboard
+- Multimachine controller
+- FastAPI stack
