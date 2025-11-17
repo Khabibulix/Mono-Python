@@ -160,3 +160,7 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - Event Tracing for Windows, follow behaviours
 - Mini Kernel Driver
 - Rules Engine
+
+### 📅 17/11/25
+
+Refactorising ```utils.py``` following *Clean Code* principles and fighting with circular import.

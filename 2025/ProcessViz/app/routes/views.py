@@ -5,7 +5,8 @@ from urllib.parse import unquote_plus
 from app.setup_log import setup_logger
 
 
-from app.utils.utils_process import is_readable, build_process_tree, fetch_and_analyze
+from app.utils.utils_process_helpers import is_readable, build_process_tree
+from app.utils.utils_process import fetch_and_analyze
 from app.utils.utils import hexdump
 from app.utils.utils_dll import read_file_chunk, extract_ascii_strings, parse_pe_info
 

@@ -37,7 +37,8 @@ class ProcessGetter:
         if include_opened_files:
             try:
                 loop = asyncio.get_event_loop()
-                from app.utils.utils_process import get_dll_info_sync
+                from app.utils.utils_process_helpers import get_dll_info_sync
+
                 process_opened_dll = await loop.run_in_executor(
                     None, get_dll_info_sync, process
                 )

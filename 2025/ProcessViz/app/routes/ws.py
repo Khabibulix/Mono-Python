@@ -3,7 +3,6 @@ import json
 from quart import Blueprint, websocket, current_app
 from app.setup_log import setup_logger
 from app.utils.utils import estimate_risk_level
-from app.utils.utils_score import compute_score
 
 ws_bp = Blueprint("ws", __name__)
 logger = setup_logger(__name__)

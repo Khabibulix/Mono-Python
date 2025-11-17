@@ -1,6 +1,6 @@
 import psutil, re
 from app.utils.utils import is_signed, normalizing_score, analyze_score_risk
-from app.utils.utils_process import is_invocating_scripts, is_deleted_executable
+from app.utils.utils_process_helpers import is_invocating_scripts, is_deleted_executable
 from app.utils.utils_services import is_process_bound_to_a_service
 from app.config_loader import get_config
 from app.setup_log import setup_logger
