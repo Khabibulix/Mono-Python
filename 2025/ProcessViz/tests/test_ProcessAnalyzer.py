@@ -163,7 +163,7 @@ async def test_executable_is_signed_gets_0_points():
 
 
 @pytest.mark.asyncio
-async def test_executable_is_signed_gets_0_points():
+async def test_executable_deleted_gets_15_points():
     with patch("app.utils.utils_score.psutil.pid_exists", return_value=True), patch(
         "app.utils.utils_score.psutil.Process"
     ) as mock_process, patch(

@@ -153,7 +153,6 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 - Live-streamed alerts
 - Real Web Dashboard
 - Multimachine controller
-- FastAPI stack
 
 ## V2 possible improvements
 
@@ -163,4 +162,4 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 
 ### 📅 17/11/25
 
-Refactorising ```utils.py``` following *Clean Code* principles and fighting with circular import.
+Refactorising ```utils.py``` following *Clean Code* principles and fighting with circular import. 
