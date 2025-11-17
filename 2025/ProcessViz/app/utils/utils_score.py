@@ -5,7 +5,7 @@ from app.utils.utils_services import is_process_bound_to_a_service
 from app.config_loader import get_config
 from app.setup_log import setup_logger
 
-logger = setup_logger
+logger = setup_logger()
 MAX_SCORE = 135
 
 

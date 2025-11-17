@@ -12,6 +12,7 @@ Built with Quart (async Flask), psutil, WebSockets, and pefile, it delivers an i
 - [Learning Objectives](#what-i-want-to-learn)
 - [What I learned](#what-i-learnedrelearned)
 - [V 2.0](#process-viz-v-20)
+- [Improvements V2](#v2-possible-improvements)
 
 ## How to launch things
 - ```git clone http://www.github.com/Khabibulix/Mono-Python```
@@ -44,7 +45,7 @@ Built with Quart (async Flask), psutil, WebSockets, and pefile, it delivers an i
 
 ###  📅 14/10/25
 
-Web app is styled with CSS, vanilla CSS and I'm using JS to grab a click event on a process and display it in a new Flask route. The web-app looks slow to load but is working as intended.
+Web app is styled with vanilla CSS and I'm using JS to grab a click event on a process and display it in a new Flask route. The web-app looks slow to load but is working as intended.
 Next step is to analyze the process to display a _score of trust_, it will be the beginning of data visualisation.
 
 ###  📅  16/10/25
@@ -148,8 +149,14 @@ Jinja Templates inheritance. Adding colored borders to see potentially suspiciou
 ## Process Viz v 2.0
 
 ## Expectations at 06/11/25
-- Basic behavioral detection nore like an EDR
+- Basic behavioral detection more like an EDR
 - Live-streamed alerts
 - Real Web Dashboard
 - Multimachine controller
 - FastAPI stack
+
+## V2 possible improvements
+
+- Event Tracing for Windows, follow behaviours
+- Mini Kernel Driver
+- Rules Engine

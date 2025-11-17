@@ -48,4 +48,3 @@ async def process_stream():
 
     except Exception as e:
         logger.warning("WebSocket connection closed or errored: %s", e)
-

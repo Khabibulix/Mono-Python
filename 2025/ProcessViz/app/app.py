@@ -45,6 +45,7 @@ async def startup():
     app.config["PROCESS_CACHE"] = await ProcessGetter.get_processes()
     app.add_background_task(refresh_cache)
 
+
 app.register_blueprint(views_bp)
 app.register_blueprint(ws_bp)
 

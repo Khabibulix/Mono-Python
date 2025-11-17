@@ -1,7 +1,30 @@
-import psutil, os
+import psutil
+import os
+import pythoncom
+
+from app.ProcessGetter import ProcessGetter
+from app.setup_log import setup_logger
+
+logger = setup_logger(__name__)
+
 from typing import Tuple
 
 WHITELIST = {"explorer.exe", "python.exe", "cmd.exe"}
+
+
+async def fetch_and_analyze(pid: int):
+    pythoncom.CoInitialize()
+    try:
+        logger.info("Analyzing process PID=%d", pid)
+        infos = await ProcessGetter.get_infos_for_process_with_pid(pid)
+        if not infos:
+            logger.warning("Process PID=%d not found", pid)
+            return None, None
+        analyzer = ProcessAnalyzer(pid)
+        result = await analyzer.run()
+        return infos, result
+    finally:
+        pythoncom.CoUninitialize()
 
 
 def score_process(proc: psutil.Process):
@@ -34,6 +57,7 @@ def is_readable(path: str) -> Tuple[bool, str]:
 
 
 def is_invocating_scripts(process: psutil.Process) -> bool:
+    from app.ProcessAnalyzer import ProcessAnalyzer 
     try:
         cmdline = process.cmdline()
         name = process.name().lower()

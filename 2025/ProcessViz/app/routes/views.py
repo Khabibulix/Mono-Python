@@ -1,12 +1,15 @@
-import pythoncom, re, pefile
+import asyncio
+
 from quart import Blueprint, render_template, request, abort, current_app
 from urllib.parse import unquote_plus
 from app.setup_log import setup_logger
 
-from app.ProcessGetter import ProcessGetter
-from app.ProcessAnalyzer import ProcessAnalyzer
-from app.utils.utils_process import is_readable, build_process_tree
+
+from app.utils.utils_process import is_readable, build_process_tree, fetch_and_analyze
 from app.utils.utils import hexdump
+from app.utils.utils_dll import read_file_chunk, extract_ascii_strings, parse_pe_info
+
+
 views_bp = Blueprint("views", __name__)
 logger = setup_logger(__name__)
 
@@ -18,22 +21,7 @@ async def display_processes():
 
 @views_bp.route("/process/<int:pid>")
 async def process_view(pid):
-    async def fetch_and_analyze():
-        pythoncom.CoInitialize()
-        try:
-            logger.info("Analyzing process PID=%d", pid)
-            infos = await ProcessGetter.get_infos_for_process_with_pid(pid)
-            if not infos:
-                logger.warning("Process PID=%d not found", pid)
-                return None, None
-            analyzer = ProcessAnalyzer(pid)
-            result = await analyzer.run()
-            return infos, result
-        finally:
-            pythoncom.CoUninitialize()
-
-    infos, result = await fetch_and_analyze()
-
+    infos, result = await fetch_and_analyze(pid)
     if not infos:
         return "Process not found", 404
     return await render_template("process.html", process_info=infos, result=result)
@@ -66,49 +54,25 @@ async def dll_view(pid):
     logger.info(f"Analysing {path} DLL")
     if not path:
         abort(400, "Missing path param")
-
     path = unquote_plus(path)
+
     readable, error = is_readable(path)
     if not readable:
         abort(403, f"Cannot access DLL: {error}")
 
     try:
-        with open(path, "rb") as f:
-            data = f.read(64 * 1024)
+        data = await asyncio.to_thread(read_file_chunk, path)
     except Exception as e:
         abort(500, f"Error reading file: {e}")
 
-    ascii_strings = re.findall(rb"[\x20-\x7E]{4,}", data)
-    strings = [s.decode("ascii", errors="ignore") for s in ascii_strings[:100]]
+    strings = extract_ascii_strings(data)
     hex_lines = hexdump(data)
 
     try:
-        pe = pefile.PE(path, fast_load=True)
-        pe.parse_data_directories()
-        dll_info = {
-            "sections": [
-                {
-                    "name": sec.Name.decode(errors="ignore").rstrip("\x00"),
-                    "virtual_size": sec.Misc_VirtualSize,
-                    "raw_size": sec.SizeOfRawData,
-                    "entropy": sec.get_entropy(),
-                }
-                for sec in pe.sections
-            ],
-            "imports": [
-                imp.name.decode() if imp.name else ""
-                for entry in getattr(pe, "DIRECTORY_ENTRY_IMPORT", [])
-                for imp in entry.imports
-            ],
-            "exports": [
-                exp.name.decode() if exp.name else ""
-                for exp in getattr(pe, "DIRECTORY_ENTRY_EXPORT", []).symbols
-            ],
-            "entry_point": hex(pe.OPTIONAL_HEADER.AddressOfEntryPoint),
-            "dll_characteristics": pe.OPTIONAL_HEADER.DllCharacteristics,
-        }
+        dll_info = await asyncio.to_thread(parse_pe_info, path)
     except Exception as e:
-        logger.info(e)
+        logger.info(f"PE parsing failed: {e}")
+        dll_info = {}
 
     return await render_template(
         "dll.html",
