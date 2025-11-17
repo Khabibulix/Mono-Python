@@ -183,7 +183,8 @@ async def test_fetch_infos_for_process_with_opened_files(config):
     with patch(
         "app.ProcessGetter.psutil.Process", return_value=mock_proc_instance
     ), patch(
-        "app.utils.utils_process.get_dll_info_sync", return_value=["dll1.dll", "dll2.dll"]
+        "app.utils.utils_process.get_dll_info_sync",
+        return_value=["dll1.dll", "dll2.dll"],
     ), patch(
         "app.ProcessGetter.grab_sha256_async", return_value="fakehash123"
     ):

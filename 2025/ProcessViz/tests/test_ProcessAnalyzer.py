@@ -437,7 +437,8 @@ async def test_process_exe_access_denied(config):
         with patch(
             "app.ProcessGetter.grab_sha256_async", return_value="fakehash123"
         ), patch(
-            "app.utils.utils_process.get_dll_info_sync", return_value=["dll1.dll", "dll2.dll"]
+            "app.utils.utils_process.get_dll_info_sync",
+            return_value=["dll1.dll", "dll2.dll"],
         ):
             result = await ProcessGetter.fetch_infos_for_process(
                 mock_proc_instance, process_pid, include_opened_files=True
